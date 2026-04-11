@@ -5,6 +5,22 @@
 #include "Person.h"
 
 
+Person::Person() {
+    id = -1;
+    firstName = "";
+    lastName = "";
+    email = "";
+    birthDate = 0;
+}
+
+Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+    const time_t birth_date): id(id),
+                              firstName(first_name),
+                              lastName(last_name),
+                              email(email),
+                              birthDate(birth_date) {
+}
+
 Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email, const int &day, const int &month, const int &year) {
 }
 
