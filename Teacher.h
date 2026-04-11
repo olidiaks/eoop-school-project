@@ -41,6 +41,8 @@ public:
     Teacher & operator=(const Teacher &other);
 
     Teacher & operator=(Teacher &&other) noexcept;
+
+    Teacher();
 };
 
 

@@ -56,6 +56,11 @@ Teacher & Teacher::operator=(Teacher &&other) noexcept {
     return *this;
 }
 
+Teacher::Teacher() : Person(){
+    salary = 0;
+    subject = "";
+}
+
 std::ostream & operator<<(std::ostream &os, const Teacher &obj) {
     return os
            << static_cast<const Person &>(obj)
