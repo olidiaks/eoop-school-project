@@ -8,10 +8,11 @@ Students will be organized in classes.
 Each class should have a maximum 25 students 
 to be able to focus in time of a lesson.
 Also, to be able to create a class, each class shall
-connect at least one seven students.
+connect at least seven students.
 Because it’s important that young people
 know how to solve accumulation problems.
-That's why students can’t be moved between classes.
+That's why students can’t be moved between classes,
+so they should solve their issues with friends.
 Each class should need to have teachers to teach subjects like:
 - Match
 - English
