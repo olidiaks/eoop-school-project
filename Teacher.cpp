@@ -4,10 +4,12 @@
 
 #include "Teacher.h"
 
+#include <iostream>
+
 Teacher::Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-    const time_t birth_date, const int salary, const std::string &subject): Person(id, first_name, last_name, email, birth_date),
-                                                                            salary(salary),
-                                                                            subject(subject) {
+                 const time_t birth_date, const int salary, const std::string &subject): Person(id, first_name, last_name, email, birth_date),
+                                                                                         salary(salary),
+                                                                                         subject(subject) {
 }
 
 Teacher::Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
