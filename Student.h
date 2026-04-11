@@ -23,6 +23,7 @@ private:
     int computerScienceGrade;
     int physicalEducationGrade;
     void initGrades();
+    std::string print() const;
 
 public:
     Student();
@@ -122,10 +123,10 @@ public:
 
     Student & operator=(const Student &other);
 
-
     Student & operator=(Student &&other) noexcept;
 
     int get_average_grade() const;
+
 };
 
 #endif //PROJECT_STUDENT_H

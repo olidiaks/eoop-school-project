@@ -8,8 +8,12 @@ void Student::initGrades() {
     throw std::runtime_error("Not implemented");
 }
 
+std::string Student::print() const {
+    throw std::runtime_error("Not implemented");
+}
+
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-    const int &day, const int &month, const int &year): Person(id, first_name, last_name, email, day, month, year) {
+                 const int &day, const int &month, const int &year): Person(id, first_name, last_name, email, day, month, year) {
     initGrades();
 }
 
