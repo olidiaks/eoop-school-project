@@ -164,6 +164,23 @@ Student & Student::operator=(const Student &other) {
     return *this;
 }
 
+Student & Student::operator=(Student &&other) noexcept {
+    if (this == &other)
+        return *this;
+    Person::operator =(std::move(other));
+    mathGrade = other.mathGrade;
+    englishGrade = other.englishGrade;
+    polishGrade = other.polishGrade;
+    historyGrade = other.historyGrade;
+    biologyGrade = other.biologyGrade;
+    physicsGrade = other.physicsGrade;
+    chemistryGrade = other.chemistryGrade;
+    geographyGrade = other.geographyGrade;
+    computerScienceGrade = other.computerScienceGrade;
+    physicalEducationGrade = other.physicalEducationGrade;
+    return *this;
+}
+
 int Student::get_average_grade() const {
     throw std::runtime_error("Not implemented");
 }

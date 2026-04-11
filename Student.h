@@ -124,6 +124,9 @@ public:
 
     Student & operator=(const Student &other);
 
+
+    Student & operator=(Student &&other) noexcept;
+
     int get_average_grade() const;
 };
 
