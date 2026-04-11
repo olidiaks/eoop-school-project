@@ -34,3 +34,24 @@ time_t Person::get_birth_date() const {
 
 int Person::get_age() const {
 }
+
+bool operator==(const Person &lhs, const Person &rhs) {
+    return lhs.id == rhs.id
+           && lhs.firstName == rhs.firstName
+           && lhs.lastName == rhs.lastName
+           && lhs.email == rhs.email
+           && lhs.birthDate == rhs.birthDate;
+}
+
+bool operator!=(const Person &lhs, const Person &rhs) {
+    return !(lhs == rhs);
+}
+
+std::ostream & operator<<(std::ostream &os, const Person &obj) {
+    return os
+           << "id: " << obj.id
+           << " firstName: " << obj.firstName
+           << " lastName: " << obj.lastName
+           << " email: " << obj.email
+           << " birthDate: " << obj.birthDate;
+}

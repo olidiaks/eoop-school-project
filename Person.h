@@ -4,6 +4,7 @@
 
 #ifndef PROJECT_PERSON_H
 #define PROJECT_PERSON_H
+#include <ostream>
 #include <string>
 
 
@@ -40,6 +41,14 @@ public:
     [[nodiscard]] time_t get_birth_date() const;
 
     [[nodiscard]] int get_age() const;
+
+    friend bool operator==(const Person &lhs, const Person &rhs);
+
+    friend bool operator!=(const Person &lhs, const Person &rhs);
+
+    friend std::ostream & operator<<(std::ostream &os, const Person &obj);
+
+
 };
 
 
