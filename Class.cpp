@@ -4,22 +4,29 @@
 
 #include "Class.h"
 
+#include <iostream>
+
+std::ostream & Class::list_students(std::ostream &os) {
+    throw std::runtime_error("Method not implemented");
+    return os;
+}
+
 Class::Class(const int id, Teacher * const math_teacher, Teacher * const english_teacher,
-    Teacher * const polish_teacher, Teacher * const history_teacher, Teacher * const biology_teacher,
-    Teacher * const physics_teacher, Teacher * const chemistry_teacher, Teacher * const geography_teacher,
-    Teacher * const computer_science_teacher, Teacher * const physical_education_teacher,
-    Teacher * const super_vising_teacher): id(id),
-                                           mathTeacher(math_teacher),
-                                           englishTeacher(english_teacher),
-                                           polishTeacher(polish_teacher),
-                                           historyTeacher(history_teacher),
-                                           biologyTeacher(biology_teacher),
-                                           physicsTeacher(physics_teacher),
-                                           chemistryTeacher(chemistry_teacher),
-                                           geographyTeacher(geography_teacher),
-                                           computerScienceTeacher(computer_science_teacher),
-                                           physicalEducationTeacher(physical_education_teacher),
-                                           superVisingTeacher(super_vising_teacher) {
+             Teacher * const polish_teacher, Teacher * const history_teacher, Teacher * const biology_teacher,
+             Teacher * const physics_teacher, Teacher * const chemistry_teacher, Teacher * const geography_teacher,
+             Teacher * const computer_science_teacher, Teacher * const physical_education_teacher,
+             Teacher * const super_vising_teacher): id(id),
+                                                    mathTeacher(math_teacher),
+                                                    englishTeacher(english_teacher),
+                                                    polishTeacher(polish_teacher),
+                                                    historyTeacher(history_teacher),
+                                                    biologyTeacher(biology_teacher),
+                                                    physicsTeacher(physics_teacher),
+                                                    chemistryTeacher(chemistry_teacher),
+                                                    geographyTeacher(geography_teacher),
+                                                    computerScienceTeacher(computer_science_teacher),
+                                                    physicalEducationTeacher(physical_education_teacher),
+                                                    superVisingTeacher(super_vising_teacher) {
     numberOfStudents = 0;
 }
 
@@ -177,4 +184,9 @@ void swap(Class &lhs, Class &rhs) noexcept {
     swap(lhs.physicalEducationTeacher, rhs.physicalEducationTeacher);
     swap(lhs.superVisingTeacher, rhs.superVisingTeacher);
     swap(lhs.students, rhs.students);
+}
+
+std::istream & operator>>(std::istream &is, Class &obj) {
+    throw std::runtime_error("Method not implemented");
+    return is;
 }

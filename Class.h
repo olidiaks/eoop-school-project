@@ -26,7 +26,7 @@ private:
     Teacher &physicalEducationTeacher;
     Teacher &superVisingTeacher;
     Student students[25];
-    std::ostream & students();
+    std::ostream & list_students(std::ostream &os);
 
 public:
     Class(const int id, Teacher *const math_teacher, Teacher *const english_teacher, Teacher *const polish_teacher,
@@ -63,6 +63,8 @@ public:
     friend std::ostream & operator<<(std::ostream &os, const Class &obj);
 
     friend void swap(Class &lhs, Class &rhs) noexcept;
+
+    friend std::istream & operator>>(std::istream &is, Class &obj);
 };
 
 
