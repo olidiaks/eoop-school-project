@@ -114,6 +114,10 @@ void Class::print_students() const {
     throw std::runtime_error("Method not implemented");
 }
 
+std::string & Class::format_students() const {
+    throw std::runtime_error("Method not implemented");
+}
+
 void Class::print_teachers() const {
     throw std::runtime_error("Method not implemented");
 }
@@ -125,6 +129,107 @@ Student & Class::get_student(const int &id) const {
 int Class::get_students_avarage_grade() const {
     throw std::runtime_error("Method not implemented");
 }
+
+int Class::get_number_of_students() const {
+    return numberOfStudents;
+}
+
+void Class::set_number_of_students(const int number_of_students) {
+    numberOfStudents = number_of_students;
+}
+
+Teacher Class::get_math_teacher() const {
+    return mathTeacher;
+}
+
+void Class::set_math_teacher(const Teacher &math_teacher) {
+    mathTeacher = math_teacher;
+}
+
+Teacher Class::get_english_teacher() const {
+    return englishTeacher;
+}
+
+void Class::set_english_teacher(const Teacher &english_teacher) {
+    englishTeacher = english_teacher;
+}
+
+Teacher Class::get_polish_teacher() const {
+    return polishTeacher;
+}
+
+void Class::set_polish_teacher(const Teacher &polish_teacher) {
+    polishTeacher = polish_teacher;
+}
+
+Teacher Class::get_history_teacher() const {
+    return historyTeacher;
+}
+
+void Class::set_history_teacher(const Teacher &history_teacher) {
+    historyTeacher = history_teacher;
+}
+
+Teacher Class::get_biology_teacher() const {
+    return biologyTeacher;
+}
+
+void Class::set_biology_teacher(const Teacher &biology_teacher) {
+    biologyTeacher = biology_teacher;
+}
+
+Teacher Class::get_physics_teacher() const {
+    return physicsTeacher;
+}
+
+void Class::set_physics_teacher(const Teacher &physics_teacher) {
+    physicsTeacher = physics_teacher;
+}
+
+Teacher Class::get_chemistry_teacher() const {
+    return chemistryTeacher;
+}
+
+void Class::set_chemistry_teacher(const Teacher &chemistry_teacher) {
+    chemistryTeacher = chemistry_teacher;
+}
+
+Teacher Class::get_geography_teacher() const {
+    return geographyTeacher;
+}
+
+void Class::set_geography_teacher(const Teacher &geography_teacher) {
+    geographyTeacher = geography_teacher;
+}
+
+Teacher Class::get_computer_science_teacher() const {
+    return computerScienceTeacher;
+}
+
+void Class::set_computer_science_teacher(const Teacher &computer_science_teacher) {
+    computerScienceTeacher = computer_science_teacher;
+}
+
+Teacher Class::get_physical_education_teacher() const {
+    return physicalEducationTeacher;
+}
+
+void Class::set_physical_education_teacher(const Teacher &physical_education_teacher) {
+    physicalEducationTeacher = physical_education_teacher;
+}
+
+Teacher Class::get_super_vising_teacher() const {
+    return superVisingTeacher;
+}
+
+void Class::set_super_vising_teacher(const Teacher &super_vising_teacher) {
+    superVisingTeacher = super_vising_teacher;
+}
+
+int Class::get_id() const {
+    return id;
+}
+
 
 bool operator==(const Class &lhs, const Class &rhs) {
     throw std::runtime_error("Method not implemented");
@@ -165,7 +270,7 @@ std::ostream & operator<<(std::ostream &os, const Class &obj) {
            << " computerScienceTeacher: " << obj.computerScienceTeacher
            << " physicalEducationTeacher: " << obj.physicalEducationTeacher
            << " superVisingTeacher: " << obj.superVisingTeacher
-            << " students: " << obj.print_students();
+            << " students: " << obj.format_students();
 }
 
 void swap(Class &lhs, Class &rhs) noexcept {

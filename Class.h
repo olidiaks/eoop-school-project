@@ -50,6 +50,8 @@ public:
 
     void print_students() const;
 
+    std::string & format_students () const;
+
     void print_teachers() const;
 
     Student & get_student(const int &id) const;
@@ -65,6 +67,56 @@ public:
     friend void swap(Class &lhs, Class &rhs) noexcept;
 
     friend std::istream & operator>>(std::istream &is, Class &obj);
+
+    [[nodiscard]] int get_number_of_students() const;
+
+    void set_number_of_students(const int number_of_students);
+
+    [[nodiscard]] Teacher get_math_teacher() const;
+
+    void set_math_teacher(const Teacher &math_teacher);
+
+    [[nodiscard]] Teacher get_english_teacher() const;
+
+    void set_english_teacher(const Teacher &english_teacher);
+
+    [[nodiscard]] Teacher get_polish_teacher() const;
+
+    void set_polish_teacher(const Teacher &polish_teacher);
+
+    [[nodiscard]] Teacher get_history_teacher() const;
+
+    void set_history_teacher(const Teacher &history_teacher);
+
+    [[nodiscard]] Teacher get_biology_teacher() const;
+
+    void set_biology_teacher(const Teacher &biology_teacher);
+
+    [[nodiscard]] Teacher get_physics_teacher() const;
+
+    void set_physics_teacher(const Teacher &physics_teacher);
+
+    [[nodiscard]] Teacher get_chemistry_teacher() const;
+
+    void set_chemistry_teacher(const Teacher &chemistry_teacher);
+
+    [[nodiscard]] Teacher get_geography_teacher() const;
+
+    void set_geography_teacher(const Teacher &geography_teacher);
+
+    [[nodiscard]] Teacher get_computer_science_teacher() const;
+
+    void set_computer_science_teacher(const Teacher &computer_science_teacher);
+
+    [[nodiscard]] Teacher get_physical_education_teacher() const;
+
+    void set_physical_education_teacher(const Teacher &physical_education_teacher);
+
+    [[nodiscard]] Teacher get_super_vising_teacher() const;
+
+    void set_super_vising_teacher(const Teacher &super_vising_teacher);
+
+    [[nodiscard]] int get_id() const;
 };
 
 
