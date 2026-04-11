@@ -23,7 +23,6 @@ private:
     int computerScienceGrade;
     int physicalEducationGrade;
     void initGrades();
-    std::string print() const;
 
 public:
     Student();
