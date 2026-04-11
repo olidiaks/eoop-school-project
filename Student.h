@@ -123,6 +123,8 @@ public:
     Student(Student &&other) noexcept;
 
     Student & operator=(const Student &other);
+
+    int get_average_grade() const;
 };
 
 #endif //PROJECT_STUDENT_H

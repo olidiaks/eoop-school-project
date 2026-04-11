@@ -163,3 +163,7 @@ Student & Student::operator=(const Student &other) {
     physicalEducationGrade = other.physicalEducationGrade;
     return *this;
 }
+
+int Student::get_average_grade() const {
+    throw std::runtime_error("Not implemented");
+}
