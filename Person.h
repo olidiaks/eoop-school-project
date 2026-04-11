@@ -12,16 +12,20 @@ private:
     int id;
     std::string firstName;
     std::string lastName;
+    std::string email;
     time_t birthDate;
 
 public:
-    Person(const int &id, const std::string &first_name, const std::string &last_name, const time_t birth_date)
+    Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+           const time_t birth_date)
         : id(id),
           firstName(first_name),
           lastName(last_name),
-          birthDate(birth_date){};
+          email(email),
+          birthDate(birth_date) {
+    };
 
-    Person (const int &id, const std::string &first_name, const std::string &last_name, int day, int month, int year);
+    Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email, const int &day, const int &month, const int &year);
 
     [[nodiscard]] std::string get_first_name() const;
 
@@ -37,7 +41,6 @@ public:
 
     [[nodiscard]] int get_age() const;
 };
-
 
 
 #endif //PROJECT_PERSON_H

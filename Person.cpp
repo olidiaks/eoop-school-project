@@ -5,8 +5,7 @@
 #include "Person.h"
 
 
-Person::Person(const int &id, const std::string &first_name, const std::string &last_name, int day, int month,
-    int year) {
+Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email, const int &day, const int &month, const int &year) {
 }
 
 std::string Person::get_first_name() const {
