@@ -14,7 +14,7 @@ know how to solve accumulation problems.
 That's why students can’t be moved between classes,
 so they should solve their issues with friends.
 Each class should need to have teachers to teach subjects like:
-- Match
+- Math
 - English
 - Polish
 - History
@@ -31,5 +31,6 @@ Also, because it’s so hard, any teacher won’t be able to teach another subje
 Each teacher can’t teach more than five classes at the same time. 
 Of course, teachers and students need to be able to communicate somehow.
 Communication in this school is done via email.
+Each student should have one final numerical grade from which subject which will be 
 
 Also, school needs to be able to present spending on each class, and teacher. 
