@@ -48,7 +48,13 @@ public:
 
     friend std::ostream & operator<<(std::ostream &os, const Person &obj);
 
+    Person(const Person &other);
 
+    Person(Person &&other) noexcept;
+
+    Person & operator=(const Person &other);
+
+    Person & operator=(Person &&other) noexcept;
 };
 
 

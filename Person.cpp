@@ -35,6 +35,42 @@ time_t Person::get_birth_date() const {
 int Person::get_age() const {
 }
 
+Person::Person(const Person &other): id(other.id),
+                                     firstName(other.firstName),
+                                     lastName(other.lastName),
+                                     email(other.email),
+                                     birthDate(other.birthDate) {
+}
+
+Person::Person(Person &&other) noexcept: id(other.id),
+                                         firstName(std::move(other.firstName)),
+                                         lastName(std::move(other.lastName)),
+                                         email(std::move(other.email)),
+                                         birthDate(other.birthDate) {
+}
+
+Person & Person::operator=(const Person &other) {
+    if (this == &other)
+        return *this;
+    id = other.id;
+    firstName = other.firstName;
+    lastName = other.lastName;
+    email = other.email;
+    birthDate = other.birthDate;
+    return *this;
+}
+
+Person & Person::operator=(Person &&other) noexcept {
+    if (this == &other)
+        return *this;
+    id = other.id;
+    firstName = std::move(other.firstName);
+    lastName = std::move(other.lastName);
+    email = std::move(other.email);
+    birthDate = other.birthDate;
+    return *this;
+}
+
 bool operator==(const Person &lhs, const Person &rhs) {
     return lhs.id == rhs.id
            && lhs.firstName == rhs.firstName
