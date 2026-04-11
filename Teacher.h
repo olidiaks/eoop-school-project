@@ -4,18 +4,37 @@
 
 #ifndef PROJECT_TEACHER_H
 #define PROJECT_TEACHER_H
+#include <ostream>
 #include <string>
 
+#include "Person.h"
 
-class Teacher {
+
+class Teacher : public Person {
 private:
-    std::string firstName;
-    std::string lastName;
-    std::string email;
-    int age;
-    int id;
-    int salery;
+    int salary;
+    std::string subject;
 
+public:
+    friend std::ostream & operator<<(std::ostream &os, const Teacher &obj);
+
+    friend bool operator==(const Teacher &lhs, const Teacher &rhs);
+
+    friend bool operator!=(const Teacher &lhs, const Teacher &rhs) {
+        return !(lhs == rhs);
+    }
+
+    Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+        const time_t birth_date, const int salary, const std::string &subject);
+
+    Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+            const int &day, const int &month, const int &year, const int salary, const std::string &subject);
+
+    [[nodiscard]] std::string get_subject() const;
+
+    [[nodiscard]] int get_salary() const;
+
+    void set_salary(const int salary);
 };
 
 
