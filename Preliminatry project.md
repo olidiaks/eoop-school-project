@@ -26,5 +26,10 @@ Each class should need to have teachers to teach subjects like:
 - Physical Education
 - Supervising teacher\
 Each teacher can only teach one subject because each subject is so complex that noone would be able to teach two subjects and do it correctly.
-Each subject only should be though by one teacher because changing teacher break continuity of teaching chain.
+Each subject only should be though by the same teacher because changing teacher breaks the continuity of present knowledge and way of teaching.
+Also, because it’s so hard, any teacher won’t be able to teach another subject than already taught. 
 Each teacher can’t teach more than five classes at the same time. 
+Of course, teachers and students need to be able to communicate somehow.
+Communication in this school is done via email.
+
+Also, school needs to be able to present spending on each class, and teacher. 
