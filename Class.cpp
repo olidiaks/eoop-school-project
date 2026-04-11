@@ -4,12 +4,12 @@
 
 #include "Class.h"
 
-Class::Class(const int class_id, Teacher * const match_teacher, Teacher * const english_teacher,
+Class::Class(const int id, Teacher * const math_teacher, Teacher * const english_teacher,
     Teacher * const polish_teacher, Teacher * const history_teacher, Teacher * const biology_teacher,
     Teacher * const physics_teacher, Teacher * const chemistry_teacher, Teacher * const geography_teacher,
     Teacher * const computer_science_teacher, Teacher * const physical_education_teacher,
-    Teacher * const super_vising_teacher): classId(class_id),
-                                           matchTeacher(match_teacher),
+    Teacher * const super_vising_teacher): id(id),
+                                           mathTeacher(math_teacher),
                                            englishTeacher(english_teacher),
                                            polishTeacher(polish_teacher),
                                            historyTeacher(history_teacher),
@@ -20,88 +20,161 @@ Class::Class(const int class_id, Teacher * const match_teacher, Teacher * const 
                                            computerScienceTeacher(computer_science_teacher),
                                            physicalEducationTeacher(physical_education_teacher),
                                            superVisingTeacher(super_vising_teacher) {
+    numberOfStudents = 0;
 }
 
-void Class::set_match_teacher(Teacher * const match_teacher) {
-    matchTeacher = match_teacher;
+Class::Class(const Class &other): id(other.id),
+                                  numberOfStudents(other.numberOfStudents),
+                                  mathTeacher(other.mathTeacher),
+                                  englishTeacher(other.englishTeacher),
+                                  polishTeacher(other.polishTeacher),
+                                  historyTeacher(other.historyTeacher),
+                                  biologyTeacher(other.biologyTeacher),
+                                  physicsTeacher(other.physicsTeacher),
+                                  chemistryTeacher(other.chemistryTeacher),
+                                  geographyTeacher(other.geographyTeacher),
+                                  computerScienceTeacher(other.computerScienceTeacher),
+                                  physicalEducationTeacher(other.physicalEducationTeacher),
+                                  superVisingTeacher(other.superVisingTeacher) {
 }
 
-Teacher * Class::get_english_teacher() const {
-    return englishTeacher;
+Class::Class(Class &&other) noexcept: id(other.id),
+                                      numberOfStudents(other.numberOfStudents),
+                                      mathTeacher(other.mathTeacher),
+                                      englishTeacher(other.englishTeacher),
+                                      polishTeacher(other.polishTeacher),
+                                      historyTeacher(other.historyTeacher),
+                                      biologyTeacher(other.biologyTeacher),
+                                      physicsTeacher(other.physicsTeacher),
+                                      chemistryTeacher(other.chemistryTeacher),
+                                      geographyTeacher(other.geographyTeacher),
+                                      computerScienceTeacher(other.computerScienceTeacher),
+                                      physicalEducationTeacher(other.physicalEducationTeacher),
+                                      superVisingTeacher(other.superVisingTeacher) {
 }
 
-void Class::set_english_teacher(Teacher * const english_teacher) {
-    englishTeacher = english_teacher;
+Class & Class::operator=(const Class &other) {
+    if (this == &other)
+        return *this;
+    id = other.id;
+    numberOfStudents = other.numberOfStudents;
+    mathTeacher = other.mathTeacher;
+    englishTeacher = other.englishTeacher;
+    polishTeacher = other.polishTeacher;
+    historyTeacher = other.historyTeacher;
+    biologyTeacher = other.biologyTeacher;
+    physicsTeacher = other.physicsTeacher;
+    chemistryTeacher = other.chemistryTeacher;
+    geographyTeacher = other.geographyTeacher;
+    computerScienceTeacher = other.computerScienceTeacher;
+    physicalEducationTeacher = other.physicalEducationTeacher;
+    superVisingTeacher = other.superVisingTeacher;
+    return *this;
 }
 
-Teacher * Class::get_polish_teacher() const {
-    return polishTeacher;
+Class & Class::operator=(Class &&other) noexcept {
+    if (this == &other)
+        return *this;
+    id = other.id;
+    numberOfStudents = other.numberOfStudents;
+    mathTeacher = other.mathTeacher;
+    englishTeacher = other.englishTeacher;
+    polishTeacher = other.polishTeacher;
+    historyTeacher = other.historyTeacher;
+    biologyTeacher = other.biologyTeacher;
+    physicsTeacher = other.physicsTeacher;
+    chemistryTeacher = other.chemistryTeacher;
+    geographyTeacher = other.geographyTeacher;
+    computerScienceTeacher = other.computerScienceTeacher;
+    physicalEducationTeacher = other.physicalEducationTeacher;
+    superVisingTeacher = other.superVisingTeacher;
+    return *this;
 }
 
-void Class::set_polish_teacher(Teacher * const polish_teacher) {
-    polishTeacher = polish_teacher;
+void Class::add_student(Student student) {
+    throw std::runtime_error("Method not implemented");
 }
 
-Teacher * Class::get_history_teacher() const {
-    return historyTeacher;
+bool Class::remove_student(const int &id) const {
+    throw std::runtime_error("Method not implemented");
 }
 
-void Class::set_history_teacher(Teacher * const history_teacher) {
-    historyTeacher = history_teacher;
+bool Class::is_student_in_class(const int &id) const {
+    throw std::runtime_error("Method not implemented");
 }
 
-Teacher * Class::get_biology_teacher() const {
-    return biologyTeacher;
+void Class::print_students() const {
+    throw std::runtime_error("Method not implemented");
 }
 
-void Class::set_biology_teacher(Teacher * const biology_teacher) {
-    biologyTeacher = biology_teacher;
+void Class::print_teachers() const {
+    throw std::runtime_error("Method not implemented");
 }
 
-Teacher * Class::get_physics_teacher() const {
-    return physicsTeacher;
+Student & Class::get_student(const int &id) const {
+    throw std::runtime_error("Method not implemented");
 }
 
-void Class::set_physics_teacher(Teacher * const physics_teacher) {
-    physicsTeacher = physics_teacher;
+int Class::get_students_avarage_grade() const {
+    throw std::runtime_error("Method not implemented");
 }
 
-Teacher * Class::get_chemistry_teacher() const {
-    return chemistryTeacher;
+bool operator==(const Class &lhs, const Class &rhs) {
+    throw std::runtime_error("Method not implemented");
+    //TODO: add comperasion if students are the same
+    return lhs.id == rhs.id
+           && lhs.numberOfStudents == rhs.numberOfStudents
+           && lhs.mathTeacher == rhs.mathTeacher
+           && lhs.englishTeacher == rhs.englishTeacher
+           && lhs.polishTeacher == rhs.polishTeacher
+           && lhs.historyTeacher == rhs.historyTeacher
+           && lhs.biologyTeacher == rhs.biologyTeacher
+           && lhs.physicsTeacher == rhs.physicsTeacher
+           && lhs.chemistryTeacher == rhs.chemistryTeacher
+           && lhs.geographyTeacher == rhs.geographyTeacher
+           && lhs.computerScienceTeacher == rhs.computerScienceTeacher
+           && lhs.physicalEducationTeacher == rhs.physicalEducationTeacher
+           && lhs.superVisingTeacher == rhs.superVisingTeacher;
 }
 
-void Class::set_chemistry_teacher(Teacher * const chemistry_teacher) {
-    chemistryTeacher = chemistry_teacher;
+bool operator!=(const Class &lhs, const Class &rhs) {
+    return !(lhs == rhs);
 }
 
-Teacher * Class::get_geography_teacher() const {
-    return geographyTeacher;
+std::ostream & operator<<(std::ostream &os, const Class &obj) {
+    //TODO: Print students also.
+    throw std::runtime_error("Method not implemented");
+    return os
+           << "id: " << obj.id
+           << " numberOfStudents: " << obj.numberOfStudents
+           << " mathTeacher: " << obj.mathTeacher
+           << " englishTeacher: " << obj.englishTeacher
+           << " polishTeacher: " << obj.polishTeacher
+           << " historyTeacher: " << obj.historyTeacher
+           << " biologyTeacher: " << obj.biologyTeacher
+           << " physicsTeacher: " << obj.physicsTeacher
+           << " chemistryTeacher: " << obj.chemistryTeacher
+           << " geographyTeacher: " << obj.geographyTeacher
+           << " computerScienceTeacher: " << obj.computerScienceTeacher
+           << " physicalEducationTeacher: " << obj.physicalEducationTeacher
+           << " superVisingTeacher: " << obj.superVisingTeacher
+            << " students: " << obj.print_students();
 }
 
-void Class::set_geography_teacher(Teacher * const geography_teacher) {
-    geographyTeacher = geography_teacher;
-}
-
-Teacher * Class::get_computer_science_teacher() const {
-    return computerScienceTeacher;
-}
-
-void Class::set_computer_science_teacher(Teacher * const computer_science_teacher) {
-    computerScienceTeacher = computer_science_teacher;
-}
-
-Teacher * Class::get_physical_education_teacher() const {
-    return physicalEducationTeacher;
-}
-
-void Class::set_physical_education_teacher(Teacher * const physical_education_teacher) {
-    physicalEducationTeacher = physical_education_teacher;
-}
-
-Teacher * Class::get_super_vising_teacher() const {
-    return superVisingTeacher;
-}
-
-void Class::set_super_vising_teacher(Teacher * const super_vising_teacher) {
-    superVisingTeacher = super_vising_teacher;
+void swap(Class &lhs, Class &rhs) noexcept {
+    using std::swap;
+    swap(lhs.id, rhs.id);
+    swap(lhs.numberOfStudents, rhs.numberOfStudents);
+    swap(lhs.mathTeacher, rhs.mathTeacher);
+    swap(lhs.englishTeacher, rhs.englishTeacher);
+    swap(lhs.polishTeacher, rhs.polishTeacher);
+    swap(lhs.historyTeacher, rhs.historyTeacher);
+    swap(lhs.biologyTeacher, rhs.biologyTeacher);
+    swap(lhs.physicsTeacher, rhs.physicsTeacher);
+    swap(lhs.chemistryTeacher, rhs.chemistryTeacher);
+    swap(lhs.geographyTeacher, rhs.geographyTeacher);
+    swap(lhs.computerScienceTeacher, rhs.computerScienceTeacher);
+    swap(lhs.physicalEducationTeacher, rhs.physicalEducationTeacher);
+    swap(lhs.superVisingTeacher, rhs.superVisingTeacher);
+    swap(lhs.students, rhs.students);
 }
