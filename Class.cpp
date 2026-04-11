@@ -11,22 +11,21 @@ std::ostream & Class::list_students(std::ostream &os) {
     return os;
 }
 
-Class::Class(const int id, Teacher * const math_teacher, Teacher * const english_teacher,
-             Teacher * const polish_teacher, Teacher * const history_teacher, Teacher * const biology_teacher,
-             Teacher * const physics_teacher, Teacher * const chemistry_teacher, Teacher * const geography_teacher,
-             Teacher * const computer_science_teacher, Teacher * const physical_education_teacher,
-             Teacher * const super_vising_teacher): id(id),
-                                                    mathTeacher(math_teacher),
-                                                    englishTeacher(english_teacher),
-                                                    polishTeacher(polish_teacher),
-                                                    historyTeacher(history_teacher),
-                                                    biologyTeacher(biology_teacher),
-                                                    physicsTeacher(physics_teacher),
-                                                    chemistryTeacher(chemistry_teacher),
-                                                    geographyTeacher(geography_teacher),
-                                                    computerScienceTeacher(computer_science_teacher),
-                                                    physicalEducationTeacher(physical_education_teacher),
-                                                    superVisingTeacher(super_vising_teacher) {
+Class::Class(const int id, Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
+    Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
+    Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
+    Teacher &super_vising_teacher): id(id),
+                                    mathTeacher(math_teacher),
+                                    englishTeacher(english_teacher),
+                                    polishTeacher(polish_teacher),
+                                    historyTeacher(history_teacher),
+                                    biologyTeacher(biology_teacher),
+                                    physicsTeacher(physics_teacher),
+                                    chemistryTeacher(chemistry_teacher),
+                                    geographyTeacher(geography_teacher),
+                                    computerScienceTeacher(computer_science_teacher),
+                                    physicalEducationTeacher(physical_education_teacher),
+                                    superVisingTeacher(super_vising_teacher) {
     numberOfStudents = 0;
 }
 

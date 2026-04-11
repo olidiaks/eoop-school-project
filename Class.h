@@ -29,10 +29,10 @@ private:
     std::ostream & list_students(std::ostream &os);
 
 public:
-    Class(const int id, Teacher *const math_teacher, Teacher *const english_teacher, Teacher *const polish_teacher,
-          Teacher *const history_teacher, Teacher *const biology_teacher, Teacher *const physics_teacher,
-          Teacher *const chemistry_teacher, Teacher *const geography_teacher, Teacher *const computer_science_teacher,
-          Teacher *const physical_education_teacher, Teacher *const super_vising_teacher);
+    Class(const int id, Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
+        Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
+        Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
+        Teacher &super_vising_teacher);
 
     Class(const Class &other);
 
