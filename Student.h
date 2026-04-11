@@ -25,6 +25,7 @@ private:
     void initGrades();
 
 public:
+    Student();
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
         const time_t birth_date)
         : Person(id, first_name, last_name, email, birth_date) {
@@ -32,15 +33,12 @@ public:
     }
 
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-        const int &day, const int &month, const int &year)
-        : Person(id, first_name, last_name, email, day, month, year) {
-        initGrades();
-    }
+        const int &day, const int &month, const int &year);
 
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-        const time_t birth_date, const int math_grade, const int english_grade, const int polish_grade,
-        const int history_grade, const int biology_grade, const int physics_grade, const int chemistry_grade,
-        const int geography_grade, const int computer_science_grade, const int physical_education_grade)
+            const time_t birth_date, const int math_grade, const int english_grade, const int polish_grade,
+            const int history_grade, const int biology_grade, const int physics_grade, const int chemistry_grade,
+            const int geography_grade, const int computer_science_grade, const int physical_education_grade)
         : Person(id, first_name, last_name, email, birth_date),
           mathGrade(math_grade),
           englishGrade(english_grade),
