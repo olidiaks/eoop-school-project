@@ -28,6 +28,34 @@ void Teacher::set_salary(const int salary) {
     this->salary = salary;
 }
 
+Teacher::Teacher(const Teacher &other): Person(other),
+                                        salary(other.salary),
+                                        subject(other.subject) {
+}
+
+Teacher::Teacher(Teacher &&other) noexcept: Person(std::move(other)),
+                                            salary(other.salary),
+                                            subject(std::move(other.subject)) {
+}
+
+Teacher & Teacher::operator=(const Teacher &other) {
+    if (this == &other)
+        return *this;
+    Person::operator =(other);
+    salary = other.salary;
+    subject = other.subject;
+    return *this;
+}
+
+Teacher & Teacher::operator=(Teacher &&other) noexcept {
+    if (this == &other)
+        return *this;
+    Person::operator =(std::move(other));
+    salary = other.salary;
+    subject = std::move(other.subject);
+    return *this;
+}
+
 std::ostream & operator<<(std::ostream &os, const Teacher &obj) {
     return os
            << static_cast<const Person &>(obj)
@@ -39,4 +67,8 @@ bool operator==(const Teacher &lhs, const Teacher &rhs) {
     return static_cast<const Person &>(lhs) == static_cast<const Person &>(rhs)
            && lhs.salary == rhs.salary
            && lhs.subject == rhs.subject;
+}
+
+bool operator!=(const Teacher &lhs, const Teacher &rhs) {
+    return !(lhs == rhs);
 }
