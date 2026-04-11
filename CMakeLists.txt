@@ -11,4 +11,6 @@ add_executable(Project main.cpp
         Teacher.cpp
         Teacher.h
         School.cpp
-        School.h)
+        School.h
+        Person.cpp
+        Person.h)
