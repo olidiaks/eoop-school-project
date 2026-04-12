@@ -25,6 +25,7 @@ private:
     std::list<Teacher> physicalEducationTeachers;
     std::list<Teacher> superVisingTeachers;
     std::list<Class> classes;
+    std::string name;
     [[nodiscard]] std::string print() const;
 
 public:
@@ -34,7 +35,8 @@ public:
         const std::list<Teacher> &biology_teachers, const std::list<Teacher> &physics_teachers,
         const std::list<Teacher> &chemistry_teachers, const std::list<Teacher> &geography_teachers,
         const std::list<Teacher> &computer_science_teachers, const std::list<Teacher> &physical_education_teachers,
-        const std::list<Teacher> &super_vising_teachers, const std::list<Class> &classes);
+        const std::list<Teacher> &super_vising_teachers, const std::list<Class> &classes,
+        const std::string &school_name);
 
     School(const School &other);
 
@@ -102,6 +104,10 @@ public:
     void set_classes(const std::list<Class> &classes);
 
     [[nodiscard]] float get_average_students_grades_of_teacher(const int &id) const;
+
+    [[nodiscard]] std::string get_name() const;
+
+    void set_name(const std::string &name);
 };
 
 

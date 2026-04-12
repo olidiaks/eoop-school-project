@@ -4,6 +4,8 @@
 
 #include "School.h"
 
+#include <algorithm>
+
 std::string School::print() const {
     throw std::runtime_error("Not implemented");
 }
@@ -27,50 +29,55 @@ School::School(const std::list<Teacher> &math_teachers, const std::list<Teacher>
                const std::list<Teacher> &polish_teachers, const std::list<Teacher> &history_teachers,
                const std::list<Teacher> &biology_teachers, const std::list<Teacher> &physics_teachers,
                const std::list<Teacher> &chemistry_teachers, const std::list<Teacher> &geography_teachers,
-               const std::list<Teacher> &computer_science_teachers, const std::list<Teacher> &physical_education_teachers,
-               const std::list<Teacher> &super_vising_teachers, const std::list<Class> &classes): mathTeachers(math_teachers),
-                                                                                                  englishTeachers(english_teachers),
-                                                                                                  polishTeachers(polish_teachers),
-                                                                                                  historyTeachers(history_teachers),
-                                                                                                  biologyTeachers(biology_teachers),
-                                                                                                  physicsTeachers(physics_teachers),
-                                                                                                  chemistryTeachers(chemistry_teachers),
-                                                                                                  geographyTeachers(geography_teachers),
-                                                                                                  computerScienceTeachers(computer_science_teachers),
-                                                                                                  physicalEducationTeachers(physical_education_teachers),
-                                                                                                  superVisingTeachers(super_vising_teachers),
-                                                                                                  classes(classes) {
+               const std::list<Teacher> &computer_science_teachers,
+               const std::list<Teacher> &physical_education_teachers,
+               const std::list<Teacher> &super_vising_teachers, const std::list<Class> &classes,
+               const std::string &school_name) : mathTeachers(math_teachers),
+                                                 englishTeachers(english_teachers),
+                                                 polishTeachers(polish_teachers),
+                                                 historyTeachers(history_teachers),
+                                                 biologyTeachers(biology_teachers),
+                                                 physicsTeachers(physics_teachers),
+                                                 chemistryTeachers(chemistry_teachers),
+                                                 geographyTeachers(geography_teachers),
+                                                 computerScienceTeachers(computer_science_teachers),
+                                                 physicalEducationTeachers(physical_education_teachers),
+                                                 superVisingTeachers(super_vising_teachers),
+                                                 name(school_name),
+                                                 classes(classes) {
 }
 
-School::School(const School &other): mathTeachers(other.mathTeachers),
-                                     englishTeachers(other.englishTeachers),
-                                     polishTeachers(other.polishTeachers),
-                                     historyTeachers(other.historyTeachers),
-                                     biologyTeachers(other.biologyTeachers),
-                                     physicsTeachers(other.physicsTeachers),
-                                     chemistryTeachers(other.chemistryTeachers),
-                                     geographyTeachers(other.geographyTeachers),
-                                     computerScienceTeachers(other.computerScienceTeachers),
-                                     physicalEducationTeachers(other.physicalEducationTeachers),
-                                     superVisingTeachers(other.superVisingTeachers),
-                                     classes(other.classes) {
+School::School(const School &other) : mathTeachers(other.mathTeachers),
+                                      englishTeachers(other.englishTeachers),
+                                      polishTeachers(other.polishTeachers),
+                                      historyTeachers(other.historyTeachers),
+                                      biologyTeachers(other.biologyTeachers),
+                                      physicsTeachers(other.physicsTeachers),
+                                      chemistryTeachers(other.chemistryTeachers),
+                                      geographyTeachers(other.geographyTeachers),
+                                      computerScienceTeachers(other.computerScienceTeachers),
+                                      physicalEducationTeachers(other.physicalEducationTeachers),
+                                      superVisingTeachers(other.superVisingTeachers),
+                                      name(other.name),
+                                      classes(other.classes) {
 }
 
-School::School(School &&other) noexcept: mathTeachers(std::move(other.mathTeachers)),
-                                         englishTeachers(std::move(other.englishTeachers)),
-                                         polishTeachers(std::move(other.polishTeachers)),
-                                         historyTeachers(std::move(other.historyTeachers)),
-                                         biologyTeachers(std::move(other.biologyTeachers)),
-                                         physicsTeachers(std::move(other.physicsTeachers)),
-                                         chemistryTeachers(std::move(other.chemistryTeachers)),
-                                         geographyTeachers(std::move(other.geographyTeachers)),
-                                         computerScienceTeachers(std::move(other.computerScienceTeachers)),
-                                         physicalEducationTeachers(std::move(other.physicalEducationTeachers)),
-                                         superVisingTeachers(std::move(other.superVisingTeachers)),
-                                         classes(std::move(other.classes)) {
+School::School(School &&other) noexcept : mathTeachers(std::move(other.mathTeachers)),
+                                          englishTeachers(std::move(other.englishTeachers)),
+                                          polishTeachers(std::move(other.polishTeachers)),
+                                          historyTeachers(std::move(other.historyTeachers)),
+                                          biologyTeachers(std::move(other.biologyTeachers)),
+                                          physicsTeachers(std::move(other.physicsTeachers)),
+                                          chemistryTeachers(std::move(other.chemistryTeachers)),
+                                          geographyTeachers(std::move(other.geographyTeachers)),
+                                          computerScienceTeachers(std::move(other.computerScienceTeachers)),
+                                          physicalEducationTeachers(std::move(other.physicalEducationTeachers)),
+                                          superVisingTeachers(std::move(other.superVisingTeachers)),
+                                          name(other.name),
+                                          classes(std::move(other.classes)) {
 }
 
-School & School::operator=(const School &other) {
+School &School::operator=(const School &other) {
     if (this == &other)
         return *this;
     mathTeachers = other.mathTeachers;
@@ -85,10 +92,11 @@ School & School::operator=(const School &other) {
     physicalEducationTeachers = other.physicalEducationTeachers;
     superVisingTeachers = other.superVisingTeachers;
     classes = other.classes;
+    name = other.name;
     return *this;
 }
 
-School & School::operator=(School &&other) noexcept {
+School &School::operator=(School &&other) noexcept {
     if (this == &other)
         return *this;
     mathTeachers = std::move(other.mathTeachers);
@@ -103,6 +111,7 @@ School & School::operator=(School &&other) noexcept {
     physicalEducationTeachers = std::move(other.physicalEducationTeachers);
     superVisingTeachers = std::move(other.superVisingTeachers);
     classes = std::move(other.classes);
+    name = std::move(other.name);
     return *this;
 }
 
@@ -118,14 +127,15 @@ bool operator==(const School &lhs, const School &rhs) {
            && lhs.computerScienceTeachers == rhs.computerScienceTeachers
            && lhs.physicalEducationTeachers == rhs.physicalEducationTeachers
            && lhs.superVisingTeachers == rhs.superVisingTeachers
-           && lhs.classes == rhs.classes;
+           && lhs.classes == rhs.classes
+           && lhs.name == rhs.name;
 }
 
 bool operator!=(const School &lhs, const School &rhs) {
     return !(lhs == rhs);
 }
 
-std::ostream & operator<<(std::ostream &os, const School &obj) {
+std::ostream &operator<<(std::ostream &os, const School &obj) {
     return os
            << obj.print();
 }
@@ -144,6 +154,7 @@ void swap(School &lhs, School &rhs) noexcept {
     swap(lhs.physicalEducationTeachers, rhs.physicalEducationTeachers);
     swap(lhs.superVisingTeachers, rhs.superVisingTeachers);
     swap(lhs.classes, rhs.classes);
+    swap(lhs.name, rhs.name);
 }
 
 std::list<Teacher> School::get_math_teachers() const {
@@ -243,4 +254,13 @@ void School::set_classes(const std::list<Class> &classes) {
 }
 
 float School::get_average_students_grades_of_teacher(const int &id) const {
+    throw std::runtime_error("Not implemented");
+}
+
+std::string School::get_name() const {
+    return name;
+}
+
+void School::set_name(const std::string &name) {
+    this->name = name;
 }
