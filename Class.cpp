@@ -229,6 +229,14 @@ int Class::get_id() const {
     return id;
 }
 
+int Class::get_average_grade() const {
+    throw std::runtime_error("Method not implemented");
+}
+
+int Class::get_average_grade_from_subject(const std::string &subject) const {
+    throw std::runtime_error("Method not implemented");
+}
+
 
 bool operator==(const Class &lhs, const Class &rhs) {
     throw std::runtime_error("Method not implemented");

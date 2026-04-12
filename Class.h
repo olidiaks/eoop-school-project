@@ -117,6 +117,10 @@ public:
     void set_super_vising_teacher(const Teacher &super_vising_teacher);
 
     [[nodiscard]] int get_id() const;
+
+    [[nodiscard]] int get_average_grade() const;
+
+    [[nodiscard]] int get_average_grade_from_subject(const std::string &subject) const;
 };
 
 
