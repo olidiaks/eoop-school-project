@@ -118,9 +118,9 @@ public:
 
     [[nodiscard]] int get_id() const;
 
-    [[nodiscard]] int get_average_grade() const;
+    [[nodiscard]] float get_average_grade() const;
 
-    [[nodiscard]] int get_average_grade_from_subject(const std::string &subject) const;
+    [[nodiscard]] float get_average_grade_from_subject(const std::string &subject) const;
 };
 
 
