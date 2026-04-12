@@ -241,3 +241,6 @@ std::list<Class> School::get_classes() const {
 void School::set_classes(const std::list<Class> &classes) {
     this->classes = classes;
 }
+
+float School::get_average_students_grades_of_teacher(const int &id) const {
+}

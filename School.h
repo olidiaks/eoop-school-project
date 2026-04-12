@@ -100,6 +100,8 @@ public:
     [[nodiscard]] std::list<Class> get_classes() const;
 
     void set_classes(const std::list<Class> &classes);
+
+    [[nodiscard]] float get_average_students_grades_of_teacher(const int &id) const;
 };
 
 
