@@ -24,13 +24,17 @@ Each class should need to have teachers to teach subjects like:
 - Geography
 - Computer Science
 - Physical Education
-- Supervising teacher\
+- Supervising teacher
+
 Each teacher can only teach one subject because each subject is so complex that noone would be able to teach two subjects and do it correctly.
 Each subject only should be though by the same teacher because changing teacher breaks the continuity of present knowledge and way of teaching.
 Also, because it’s so hard, any teacher won’t be able to teach another subject than already taught. 
 Each teacher can’t teach more than five classes at the same time. 
 Of course, teachers and students need to be able to communicate somehow.
 Communication in this school is done via email.
-Each student should have one final numerical grade from which subject which will be 
+Each student should have one final numerical grade from each subject, which will be the final grade as required by law.
+Also, for rankings school need to be able to know what the average grade in each class is.
+What average grade has each teacher, and what’s the average grade school?
 
-Also, school needs to be able to present spending on each class, and teacher. 
+
+Also, school needs to be able to present spending on each class, and teacher.
