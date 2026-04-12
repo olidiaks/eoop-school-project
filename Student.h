@@ -12,16 +12,16 @@
 
 class Student : public Person {
 private:
-    int mathGrade;
-    int englishGrade;
-    int polishGrade;
-    int historyGrade;
-    int biologyGrade;
-    int physicsGrade;
-    int chemistryGrade;
-    int geographyGrade;
-    int computerScienceGrade;
-    int physicalEducationGrade;
+    float mathGrade;
+    float englishGrade;
+    float polishGrade;
+    float historyGrade;
+    float biologyGrade;
+    float physicsGrade;
+    float chemistryGrade;
+    float geographyGrade;
+    float computerScienceGrade;
+    float physicalEducationGrade;
     void initGrades();
 
 public:
@@ -35,80 +35,70 @@ public:
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
         const int &day, const int &month, const int &year);
 
-    Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-            const time_t birth_date, const int math_grade, const int english_grade, const int polish_grade,
-            const int history_grade, const int biology_grade, const int physics_grade, const int chemistry_grade,
-            const int geography_grade, const int computer_science_grade, const int physical_education_grade)
-        : Person(id, first_name, last_name, email, birth_date),
-          mathGrade(math_grade),
-          englishGrade(english_grade),
-          polishGrade(polish_grade),
-          historyGrade(history_grade),
-          biologyGrade(biology_grade),
-          physicsGrade(physics_grade),
-          chemistryGrade(chemistry_grade),
-          geographyGrade(geography_grade),
-          computerScienceGrade(computer_science_grade),
-          physicalEducationGrade(physical_education_grade) {
-    }
+
+
+    Student(const float math_grade, const float english_grade, const float polish_grade, const float history_grade,
+        const float biology_grade, const float physics_grade, const float chemistry_grade, const float geography_grade,
+        const float computer_science_grade, const float physical_education_grade);
 
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-        const int &day, const int &month, const int &year, const int math_grade, const int english_grade,
-        const int polish_grade, const int history_grade, const int biology_grade, const int physics_grade,
-        const int chemistry_grade, const int geography_grade, const int computer_science_grade,
-        const int physical_education_grade)
-        : Person(id, first_name, last_name, email, day, month, year),
-          mathGrade(math_grade),
-          englishGrade(english_grade),
-          polishGrade(polish_grade),
-          historyGrade(history_grade),
-          biologyGrade(biology_grade),
-          physicsGrade(physics_grade),
-          chemistryGrade(chemistry_grade),
-          geographyGrade(geography_grade),
-          computerScienceGrade(computer_science_grade),
-          physicalEducationGrade(physical_education_grade) {
-    }
+            const time_t birth_date, const float math_grade, const float english_grade, const float polish_grade,
+            const float history_grade, const float biology_grade, const float physics_grade, const float chemistry_grade,
+            const float geography_grade, const float computer_science_grade, const float physical_education_grade);
 
-    [[nodiscard]] int get_math_grade() const;
+    Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+            const int &day, const int &month, const int &year, const float math_grade, const float english_grade,
+            const float polish_grade, const float history_grade, const float biology_grade, const float physics_grade,
+            const float chemistry_grade, const float geography_grade, const float computer_science_grade,
+            const float physical_education_grade);
 
-    void set_math_grade(const int math_grade);
+    Student(const Person &other, const float math_grade, const float english_grade, const float polish_grade,
+            const float history_grade, const float biology_grade, const float physics_grade, const float chemistry_grade,
+            const float geography_grade, const float computer_science_grade, const float physical_education_grade);
 
-    [[nodiscard]] int get_english_grade() const;
+    Student(Person &&other, const float math_grade, const float english_grade, const float polish_grade,
+            const float history_grade, const float biology_grade, const float physics_grade, const float chemistry_grade,
+            const float geography_grade, const float computer_science_grade, const float physical_education_grade);
 
-    void set_english_grade(const int english_grade);
+    [[nodiscard]] float get_math_grade() const;
 
-    [[nodiscard]] int get_polish_grade() const;
+    void set_math_grade(const float math_grade);
 
-    void set_polish_grade(const int polish_grade);
+    [[nodiscard]] float get_english_grade() const;
 
-    [[nodiscard]] int get_history_grade() const;
+    void set_english_grade(const float english_grade);
 
-    void set_history_grade(const int history_grade);
+    [[nodiscard]] float get_polish_grade() const;
 
-    [[nodiscard]] int get_biology_grade() const;
+    void set_polish_grade(const float polish_grade);
 
-    void set_biology_grade(const int biology_grade);
+    [[nodiscard]] float get_history_grade() const;
 
-    [[nodiscard]] int get_physics_grade() const;
+    void set_history_grade(const float history_grade);
 
-    void set_physics_grade(const int physics_grade);
+    [[nodiscard]] float get_biology_grade() const;
 
-    [[nodiscard]] int get_chemistry_grade() const;
+    void set_biology_grade(const float biology_grade);
 
-    void set_chemistry_grade(const int chemistry_grade);
+    [[nodiscard]] float get_physics_grade() const;
 
-    [[nodiscard]] int get_geography_grade() const;
+    void set_physics_grade(const float physics_grade);
 
-    void set_geography_grade(const int geography_grade);
+    [[nodiscard]] float get_chemistry_grade() const;
 
-    [[nodiscard]] int get_computer_science_grade() const;
+    void set_chemistry_grade(const float chemistry_grade);
 
-    void set_computer_science_grade(const int computer_science_grade);
+    [[nodiscard]] float get_geography_grade() const;
 
-    [[nodiscard]] int get_physical_education_grade() const;
+    void set_geography_grade(const float geography_grade);
 
-    void set_physical_education_grade(const int physical_education_grade);
+    [[nodiscard]] float get_computer_science_grade() const;
+
+    void set_computer_science_grade(const float computer_science_grade);
+
+    [[nodiscard]] float get_physical_education_grade() const;
+
+    void set_physical_education_grade(const float physical_education_grade);
 
     friend std::ostream & operator<<(std::ostream &os, const Student &obj);
 
@@ -124,7 +114,7 @@ public:
 
     Student & operator=(Student &&other) noexcept;
 
-    int get_average_grade() const;
+    [[nodiscard]] float get_average_grade() const;
 
 };
 
