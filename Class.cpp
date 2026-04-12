@@ -261,8 +261,6 @@ bool operator!=(const Class &lhs, const Class &rhs) {
 }
 
 std::ostream & operator<<(std::ostream &os, const Class &obj) {
-    //TODO: Print students also.
-    throw std::runtime_error("Method not implemented");
     return os
            << "id: " << obj.id
            << " numberOfStudents: " << obj.numberOfStudents
