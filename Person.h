@@ -38,6 +38,11 @@ public:
 
     [[nodiscard]] int get_age() const;
 
+    [[nodiscard]] std::string get_email() const;
+
+    void set_email(const std::string &email);
+
+
     friend bool operator==(const Person &lhs, const Person &rhs);
 
     friend bool operator!=(const Person &lhs, const Person &rhs);

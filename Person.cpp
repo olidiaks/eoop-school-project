@@ -51,6 +51,14 @@ time_t Person::get_birth_date() const {
 int Person::get_age() const {
 }
 
+std::string Person::get_email() const {
+    return email;
+}
+
+void Person::set_email(const std::string &email) {
+    this->email = email;
+}
+
 Person::Person(const Person &other): id(other.id),
                                      firstName(other.firstName),
                                      lastName(other.lastName),
@@ -86,6 +94,7 @@ Person & Person::operator=(Person &&other) noexcept {
     birthDate = other.birthDate;
     return *this;
 }
+
 
 bool operator==(const Person &lhs, const Person &rhs) {
     return lhs.id == rhs.id
