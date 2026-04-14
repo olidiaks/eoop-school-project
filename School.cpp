@@ -73,8 +73,8 @@ School::School(School &&other) noexcept : mathTeachers(std::move(other.mathTeach
                                           computerScienceTeachers(std::move(other.computerScienceTeachers)),
                                           physicalEducationTeachers(std::move(other.physicalEducationTeachers)),
                                           superVisingTeachers(std::move(other.superVisingTeachers)),
-                                          name(other.name),
-                                          classes(std::move(other.classes)) {
+                                          classes(std::move(other.classes)),
+                                          name(other.name) {
 }
 
 School &School::operator=(const School &other) {
