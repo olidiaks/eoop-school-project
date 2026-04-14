@@ -3,6 +3,15 @@ project(Project)
 
 set(CMAKE_CXX_STANDARD 26)
 
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG main
+)
+FetchContent_MakeAvailable(googletest)
+
+
 add_executable(Project main.cpp
         Class.cpp
         Class.h
@@ -13,4 +22,8 @@ add_executable(Project main.cpp
         School.cpp
         School.h
         Person.cpp
-        Person.h)
+        Person.h
+)
+
+add_executable(test-person Person.test.cpp Person.cpp Person.h)
+target_link_libraries(test-person PUBLIC gtest_main)
