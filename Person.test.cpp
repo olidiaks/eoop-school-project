@@ -94,7 +94,7 @@ TEST(person_test_suite_1, person_test_get_age) {
     int month = birth_tm->tm_mon;
 
     Person p(12, "Frank", "Miller", "frank@example.com", day, month, year);
-    
+
     // This is expected to fail as get_age() is not yet implemented
     ASSERT_EQ(p.get_age(), 20);
 }
