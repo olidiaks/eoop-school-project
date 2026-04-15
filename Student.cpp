@@ -176,6 +176,12 @@ Student::Student() : Person(){
 
 }
 
+Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+    const time_t birth_date, Class *class_attended): Person(id, first_name, last_name, email, birth_date) {
+    initGrades();
+    this->class_attended = class_attended;
+}
+
 std::ostream & operator<<(std::ostream &os, const Student &obj) {
     return os
            << static_cast<const Person &>(obj)
