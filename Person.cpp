@@ -22,6 +22,7 @@ Person::Person(const int &id, const std::string &first_name, const std::string &
 }
 
 Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email, const int &day, const int &month, const int &year) {
+    throw std::runtime_error("Not implemented yet.");
 }
 
 std::string Person::get_first_name() const {
