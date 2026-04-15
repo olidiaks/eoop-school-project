@@ -87,7 +87,7 @@ TEST(person_test_suite_1, person_test_get_birth_date) {
 
 TEST(person_test_suite_1, person_test_get_age) {
     // Current implementation of get_age() is empty, this test might fail or behave unpredictably
-    Person p(12, "Frank", "Miller", "frank@example.com", 0); 
+    Person p(12, "Frank", "Miller", "frank@example.com", 0);
     // Since it's not implemented, we can't really assert much yet, but let's see if it runs.
     // For a person born at time 0, age should be current_year - 1970 approximately.
     // But since it's not implemented, I'll just call it for now or assert something that will likely fail if implemented correctly.
