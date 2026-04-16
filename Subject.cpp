@@ -86,7 +86,7 @@ std::ostream &operator<<(std::ostream &os, const Subject &obj) {
            << "id: " << obj.id
            << " name: " << obj.name
            << " teacher: " << obj.teacher
-           << " assigments: " << obj.assigments;
+           << " assigments: " << obj.assigments.size();
 }
 
 void swap(Subject &lhs, Subject &rhs) noexcept {
