@@ -22,8 +22,16 @@ Person::Person(const int &id, const std::string &first_name, const std::string &
 }
 
 Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-               const int &day, const int &month, const int &year) {
-    throw std::runtime_error("Not implemented yet.");
+               const int &day, const int &month, const int &year) : id(id), firstName(first_name), lastName(last_name),
+                                                                    email(email) {
+    tm time;
+    time.tm_mday = day;
+    time.tm_mon = month - 1;
+    time.tm_year = year - 1900;
+    time.tm_hour = 0;
+    time.tm_min = 0;
+    time.tm_sec = 0;
+    birthDate = mktime(&time);
 }
 
 std::string Person::get_first_name() const {
@@ -51,6 +59,10 @@ time_t Person::get_birth_date() const {
 }
 
 int Person::get_age() const {
+    time_t diff_in_sec = time(nullptr) - birthDate;
+    tm *birth_time_struct = localtime(&diff_in_sec);
+    int year = birth_time_struct->tm_year - 1970;
+    return year;
 }
 
 int Person::get_day_of_birth() const {
