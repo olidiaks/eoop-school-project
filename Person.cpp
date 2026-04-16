@@ -14,14 +14,15 @@ Person::Person() {
 }
 
 Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-    const time_t birth_date): id(id),
-                              firstName(first_name),
-                              lastName(last_name),
-                              email(email),
-                              birthDate(birth_date) {
+               const time_t birth_date) : id(id),
+                                          firstName(first_name),
+                                          lastName(last_name),
+                                          email(email),
+                                          birthDate(birth_date) {
 }
 
-Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email, const int &day, const int &month, const int &year) {
+Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+               const int &day, const int &month, const int &year) {
     throw std::runtime_error("Not implemented yet.");
 }
 
@@ -72,21 +73,21 @@ void Person::set_email(const std::string &email) {
     this->email = email;
 }
 
-Person::Person(const Person &other): id(other.id),
-                                     firstName(other.firstName),
-                                     lastName(other.lastName),
-                                     email(other.email),
-                                     birthDate(other.birthDate) {
+Person::Person(const Person &other) : id(other.id),
+                                      firstName(other.firstName),
+                                      lastName(other.lastName),
+                                      email(other.email),
+                                      birthDate(other.birthDate) {
 }
 
-Person::Person(Person &&other) noexcept: id(other.id),
-                                         firstName(std::move(other.firstName)),
-                                         lastName(std::move(other.lastName)),
-                                         email(std::move(other.email)),
-                                         birthDate(other.birthDate) {
+Person::Person(Person &&other) noexcept : id(other.id),
+                                          firstName(std::move(other.firstName)),
+                                          lastName(std::move(other.lastName)),
+                                          email(std::move(other.email)),
+                                          birthDate(other.birthDate) {
 }
 
-Person & Person::operator=(const Person &other) {
+Person &Person::operator=(const Person &other) {
     if (this == &other)
         return *this;
     id = other.id;
@@ -97,7 +98,7 @@ Person & Person::operator=(const Person &other) {
     return *this;
 }
 
-Person & Person::operator=(Person &&other) noexcept {
+Person &Person::operator=(Person &&other) noexcept {
     if (this == &other)
         return *this;
     id = other.id;
@@ -121,11 +122,14 @@ bool operator!=(const Person &lhs, const Person &rhs) {
     return !(lhs == rhs);
 }
 
-std::ostream & operator<<(std::ostream &os, const Person &obj) {
+std::ostream &operator<<(std::ostream &os, const Person &obj) {
     return os
            << "id: " << obj.id
            << " firstName: " << obj.firstName
            << " lastName: " << obj.lastName
            << " email: " << obj.email
-           << " age: " << obj.get_age();
+           << " age: " << obj.get_age()
+           << "Date of birth: " << obj.get_day_of_birth()
+           << "." << obj.get_month_of_birth()
+           << "." << obj.get_year_of_birth();
 }
