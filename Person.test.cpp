@@ -118,3 +118,25 @@ TEST(person_test_suite_1, person_test_inequality_operator) {
     EXPECT_FALSE(p1 != p2);
     EXPECT_TRUE(p1 != p3);
 }
+
+TEST(person_test_suite_1, person_test_copy_assignment) {
+    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p2;
+    p2 = p1;
+    EXPECT_EQ(p2.get_id(), 1);
+    EXPECT_EQ(p2.get_first_name(), "John");
+    EXPECT_EQ(p2.get_last_name(), "Doe");
+    EXPECT_EQ(p2.get_email(), "john.doe@example.com");
+    EXPECT_EQ(p2.get_birth_date(), 1000);
+}
+
+TEST(person_test_suite_1, person_test_move_assignment) {
+    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p2;
+    p2 = std::move(p1);
+    EXPECT_EQ(p2.get_id(), 1);
+    EXPECT_EQ(p2.get_first_name(), "John");
+    EXPECT_EQ(p2.get_last_name(), "Doe");
+    EXPECT_EQ(p2.get_email(), "john.doe@example.com");
+    EXPECT_EQ(p2.get_birth_date(), 1000);
+}
