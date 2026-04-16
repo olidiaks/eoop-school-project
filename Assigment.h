@@ -46,7 +46,7 @@ public:
 
     [[nodiscard]] int get_grade() const;
 
-    void set_grade(const int grade);
+    void set_grade(const int &grade);
 };
 
 

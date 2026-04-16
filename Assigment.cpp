@@ -66,7 +66,7 @@ int Assigment::get_grade() const {
     return grade;
 }
 
-void Assigment::set_grade(const int grade) {
+void Assigment::set_grade(const int &grade) {
     this->grade = grade;
 }
 
