@@ -157,17 +157,13 @@ TEST(person_test_suite_1, person_test_move_assignment) {
 }
 
 TEST(person_test_suite_1, person_test_output_operator) {
-    // Using a fixed time_t that corresponds to a known date.
-    // 1000 is Thu Jan  1 00:16:40 1970 UTC.
-    // We use the object's own getters to avoid timezone issues in the test.
-    Person p(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p(1, "John", "Doe", "john.doe@example.com", 23, 5, 2025);
     std::stringstream ss;
     ss << p;
 
     std::stringstream expected;
     expected << "id: 1 firstName: John lastName: Doe email: john.doe@example.com age: " << p.get_age()
-            << "Date of birth: " << p.get_day_of_birth() << "." << p.get_month_of_birth() << "." << p.
-            get_year_of_birth();
+            << "Date of birth: 23.05.2025";
 
     EXPECT_EQ(ss.str(), expected.str());
 }
