@@ -123,13 +123,20 @@ bool operator!=(const Person &lhs, const Person &rhs) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Person &obj) {
+    std::string day = obj.get_day_of_birth() < 10
+                          ? "0" + std::to_string(obj.get_day_of_birth())
+                          : std::to_string(obj.get_day_of_birth());
+    std::string month = obj.get_month_of_birth() < 10
+                            ? "0" + std::to_string(obj.get_month_of_birth())
+                            : std::to_string(obj.get_month_of_birth());
+
     return os
            << "id: " << obj.id
            << " firstName: " << obj.firstName
            << " lastName: " << obj.lastName
            << " email: " << obj.email
            << " age: " << obj.get_age()
-           << "Date of birth: " << obj.get_day_of_birth()
-           << "." << obj.get_month_of_birth()
+           << "Date of birth: " << day
+           << "." << month
            << "." << obj.get_year_of_birth();
 }
