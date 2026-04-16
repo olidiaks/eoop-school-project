@@ -4,6 +4,7 @@
 
 #ifndef PROJECT_CLASS_H
 #define PROJECT_CLASS_H
+#include <list>
 #include <ostream>
 
 #include "Student.h"
@@ -25,7 +26,8 @@ private:
     Teacher &computerScienceTeacher;
     Teacher &physicalEducationTeacher;
     Teacher &superVisingTeacher;
-    Student students[25];
+    std::list<Student> students;
+
     std::ostream & list_students(std::ostream &os);
 
 public:
