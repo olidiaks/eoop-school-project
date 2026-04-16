@@ -35,3 +35,4 @@ add_executable(Assigment-test Assigment.test.cpp Assigment.cpp Assigment.h)
 target_link_libraries(Assigment-test PUBLIC gtest_main)
 add_executable(Subject-test Subject.cpp Subject.h
         Subject.test.cpp)
+target_link_libraries(Subject-test PUBLIC gtest_main)
