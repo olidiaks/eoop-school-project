@@ -98,3 +98,23 @@ TEST(person_test_suite_1, person_test_get_age) {
     // This is expected to fail as get_age() is not yet implemented
     ASSERT_EQ(p.get_age(), 20);
 }
+
+TEST(person_test_suite_1, person_test_equality_operator) {
+    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p2(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p3(2, "John", "Doe", "john.doe@example.com", 1000);
+    Person p4(1, "Jane", "Doe", "john.doe@example.com", 1000);
+
+    EXPECT_TRUE(p1 == p2);
+    EXPECT_FALSE(p1 == p3);
+    EXPECT_FALSE(p1 == p4);
+}
+
+TEST(person_test_suite_1, person_test_inequality_operator) {
+    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p2(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p3(2, "John", "Doe", "john.doe@example.com", 1000);
+
+    EXPECT_FALSE(p1 != p2);
+    EXPECT_TRUE(p1 != p3);
+}
