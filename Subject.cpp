@@ -52,3 +52,19 @@ bool operator==(const Subject &lhs, const Subject &rhs) {
 bool operator!=(const Subject &lhs, const Subject &rhs) {
     return !(lhs == rhs);
 }
+
+std::ostream &operator<<(std::ostream &os, const Subject &obj) {
+    return os
+           << "id: " << obj.id
+           << " name: " << obj.name
+           << " teacher: " << obj.teacher
+           << " assigments: " << obj.assigments;
+}
+
+void swap(Subject &lhs, Subject &rhs) noexcept {
+    using std::swap;
+    swap(lhs.id, rhs.id);
+    swap(lhs.name, rhs.name);
+    swap(lhs.teacher, rhs.teacher);
+    swap(lhs.assigments, rhs.assigments);
+}

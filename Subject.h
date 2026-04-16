@@ -5,6 +5,7 @@
 #ifndef PROJECT_SUBJECT_H
 #define PROJECT_SUBJECT_H
 #include <list>
+#include <ostream>
 #include <string>
 
 #include "Assigment.h"
@@ -34,6 +35,10 @@ public:
     friend bool operator==(const Subject &lhs, const Subject &rhs);
 
     friend bool operator!=(const Subject &lhs, const Subject &rhs);
+
+    friend std::ostream &operator<<(std::ostream &os, const Subject &obj);
+
+    friend void swap(Subject &lhs, Subject &rhs) noexcept;
 };
 
 
