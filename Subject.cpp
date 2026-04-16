@@ -42,6 +42,34 @@ Subject &Subject::operator=(Subject &&other) noexcept {
     return *this;
 }
 
+int Subject::get_id() const {
+    return id;
+}
+
+std::string Subject::get_name() const {
+    return name;
+}
+
+void Subject::set_name(const std::string &name) {
+    this->name = name;
+}
+
+Teacher Subject::get_teacher() const {
+    return teacher;
+}
+
+void Subject::set_teacher(const Teacher &teacher) {
+    this->teacher = teacher;
+}
+
+std::list<Assigment> Subject::get_assigments() const {
+    return assigments;
+}
+
+void Subject::set_assigments(const std::list<Assigment> &assigments) {
+    this->assigments = assigments;
+}
+
 bool operator==(const Subject &lhs, const Subject &rhs) {
     return lhs.id == rhs.id
            && lhs.name == rhs.name

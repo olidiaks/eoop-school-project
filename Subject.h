@@ -39,6 +39,20 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Subject &obj);
 
     friend void swap(Subject &lhs, Subject &rhs) noexcept;
+
+    [[nodiscard]] int get_id() const;
+
+    [[nodiscard]] std::string get_name() const;
+
+    void set_name(const std::string &name);
+
+    [[nodiscard]] Teacher get_teacher() const;
+
+    void set_teacher(const Teacher &teacher);
+
+    [[nodiscard]] std::list<Assigment> get_assigments() const;
+
+    void set_assigments(const std::list<Assigment> &assigments);
 };
 
 
