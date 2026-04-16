@@ -38,6 +38,12 @@ public:
 
     [[nodiscard]] int get_age() const;
 
+    [[nodiscard]] int get_day_of_birth() const;
+
+    [[nodiscard]] int get_month_of_birth() const;
+
+    [[nodiscard]] int get_year_of_birth() const;
+
     [[nodiscard]] std::string get_email() const;
 
     void set_email(const std::string &email);

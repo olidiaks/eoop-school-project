@@ -52,6 +52,18 @@ time_t Person::get_birth_date() const {
 int Person::get_age() const {
 }
 
+int Person::get_day_of_birth() const {
+    return localtime(&birthDate)->tm_mday;
+}
+
+int Person::get_month_of_birth() const {
+    return localtime(&birthDate)->tm_mon + 1;
+}
+
+int Person::get_year_of_birth() const {
+    return localtime(&birthDate)->tm_year + 1900;
+}
+
 std::string Person::get_email() const {
     return email;
 }
@@ -115,5 +127,5 @@ std::ostream & operator<<(std::ostream &os, const Person &obj) {
            << " firstName: " << obj.firstName
            << " lastName: " << obj.lastName
            << " email: " << obj.email
-           << " birthDate: " << obj.birthDate;
+           << " age: " << obj.get_age();
 }
