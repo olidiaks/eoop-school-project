@@ -23,7 +23,11 @@ add_executable(Project main.cpp
         School.h
         Person.cpp
         Person.h
+        Assigment.cpp
+        Assigment.h
 )
 
 add_executable(test-person Person.test.cpp Person.cpp Person.h)
 target_link_libraries(test-person PUBLIC gtest_main)
+add_executable(Assigment-test Assigment.test.cpp Assigment.cpp Assigment.h)
+target_link_libraries(Assigment-test PUBLIC gtest_main)
