@@ -86,6 +86,20 @@ TEST(person_test_suite_1, person_test_get_birth_date) {
     ASSERT_EQ(p.get_birth_date(), birth);
 }
 
+TEST(person_test_suite_1, person_test_get_birth_date_components) {
+    struct tm timeinfo = {0};
+    timeinfo.tm_year = 2000 - 1900;
+    timeinfo.tm_mon = 5 - 1; // May
+    timeinfo.tm_mday = 15;
+    time_t birth = mktime(&timeinfo);
+
+    Person p(1, "John", "Doe", "john.doe@example.com", birth);
+
+    EXPECT_EQ(p.get_day_of_birth(), 15);
+    EXPECT_EQ(p.get_month_of_birth(), 5);
+    EXPECT_EQ(p.get_year_of_birth(), 2000);
+}
+
 TEST(person_test_suite_1, person_test_get_age) {
     // Setting birth date to 20 years ago
     time_t now = time(nullptr);
