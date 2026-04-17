@@ -23,7 +23,6 @@ private:
     float geographyGrade;
     float computerScienceGrade;
     float physicalEducationGrade;
-    Class &class_attended;
 
     void initGrades();
 
