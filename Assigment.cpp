@@ -4,6 +4,8 @@
 
 #include "Assigment.h"
 
+int Assigment::count = 0;
+
 
 Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject): name(name),
     description(description),
@@ -117,3 +119,4 @@ void swap(Assigment &lhs, Assigment &rhs) noexcept {
     swap(lhs.subject, rhs.subject);
     swap(lhs.grade, rhs.grade);
 }
+
