@@ -4,46 +4,72 @@
 
 #include "Assigment.h"
 
-Assigment::Assigment(const int id, const std::string &name, const std::string &description, const int grade) : id(id),
-    name(name),
+
+Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject): name(name),
     description(description),
-    grade(grade) {
+    subject(subject) {
+    id = ++count;
+    grade = 0;
 }
 
-Assigment::Assigment(const Assigment &other) : id(other.id),
-                                               name(other.name),
-                                               description(other.description),
-                                               grade(other.grade) {
+Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject,
+                     const int grade):                                        name(name),
+                                       description(description),
+                                       subject(subject),
+                                       grade(grade) {
+    id = ++count;
 }
 
-Assigment::Assigment(Assigment &&other) noexcept : id(other.id),
-                                                   name(std::move(other.name)),
-                                                   description(std::move(other.description)),
-                                                   grade(other.grade) {
+Assigment::Assigment(const Assigment &other): id(other.id),
+                                              name(other.name),
+                                              description(other.description),
+                                              subject(other.subject),
+                                              grade(other.grade) {
 }
 
-Assigment &Assigment::operator=(const Assigment &other) {
+Assigment::Assigment(Assigment &&other) noexcept: id(other.id),
+                                                  name(std::move(other.name)),
+                                                  description(std::move(other.description)),
+                                                  subject(std::move(other.subject)),
+                                                  grade(other.grade) {
+}
+
+Assigment & Assigment::operator=(const Assigment &other) {
     if (this == &other)
         return *this;
     id = other.id;
     name = other.name;
     description = other.description;
+    subject = other.subject;
     grade = other.grade;
     return *this;
 }
 
-Assigment &Assigment::operator=(Assigment &&other) noexcept {
+Assigment & Assigment::operator=(Assigment &&other) noexcept {
     if (this == &other)
         return *this;
     id = other.id;
     name = std::move(other.name);
     description = std::move(other.description);
+    subject = std::move(other.subject);
     grade = other.grade;
     return *this;
 }
 
 int Assigment::get_id() const {
     return id;
+}
+
+void Assigment::set_grade(const int grade) {
+    this->grade = grade;
+}
+
+int Assigment::get_grade() const {
+    return grade;
+}
+
+std::string Assigment::get_subject() const {
+    return subject;
 }
 
 std::string Assigment::get_name() const {
@@ -62,18 +88,11 @@ void Assigment::set_description(const std::string &description) {
     this->description = description;
 }
 
-int Assigment::get_grade() const {
-    return grade;
-}
-
-void Assigment::set_grade(const int &grade) {
-    this->grade = grade;
-}
-
 bool operator==(const Assigment &lhs, const Assigment &rhs) {
     return lhs.id == rhs.id
            && lhs.name == rhs.name
            && lhs.description == rhs.description
+           && lhs.subject == rhs.subject
            && lhs.grade == rhs.grade;
 }
 
@@ -81,11 +100,12 @@ bool operator!=(const Assigment &lhs, const Assigment &rhs) {
     return !(lhs == rhs);
 }
 
-std::ostream &operator<<(std::ostream &os, const Assigment &obj) {
+std::ostream & operator<<(std::ostream &os, const Assigment &obj) {
     return os
            << "id: " << obj.id
            << " name: " << obj.name
            << " description: " << obj.description
+           << " subject: " << obj.subject
            << " grade: " << obj.grade;
 }
 
@@ -94,5 +114,6 @@ void swap(Assigment &lhs, Assigment &rhs) noexcept {
     swap(lhs.id, rhs.id);
     swap(lhs.name, rhs.name);
     swap(lhs.description, rhs.description);
+    swap(lhs.subject, rhs.subject);
     swap(lhs.grade, rhs.grade);
 }

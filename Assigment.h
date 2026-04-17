@@ -13,28 +13,31 @@ private:
     int id;
     std::string name;
     std::string description;
+    std::string subject;
     int grade;
+    static int count;
 
 public:
-    [[nodiscard]] Assigment(const int id, const std::string &name, const std::string &description, const int grade);
+    Assigment(const std::string &name, const std::string &description, const std::string &subject);
+
+    Assigment(const std::string &name, const std::string &description, const std::string &subject,
+              const int grade);
 
     Assigment(const Assigment &other);
 
     Assigment(Assigment &&other) noexcept;
 
-    Assigment &operator=(const Assigment &other);
+    Assigment & operator=(const Assigment &other);
 
-    Assigment &operator=(Assigment &&other) noexcept;
-
-    friend bool operator==(const Assigment &lhs, const Assigment &rhs);
-
-    friend bool operator!=(const Assigment &lhs, const Assigment &rhs);
-
-    friend std::ostream &operator<<(std::ostream &os, const Assigment &obj);
-
-    friend void swap(Assigment &lhs, Assigment &rhs) noexcept;
+    Assigment & operator=(Assigment &&other) noexcept;
 
     [[nodiscard]] int get_id() const;
+
+    void set_grade(const int grade);
+
+    [[nodiscard]] int get_grade() const;
+
+    [[nodiscard]] std::string get_subject() const;
 
     [[nodiscard]] std::string get_name() const;
 
@@ -44,9 +47,14 @@ public:
 
     void set_description(const std::string &description);
 
-    [[nodiscard]] int get_grade() const;
+    friend bool operator==(const Assigment &lhs, const Assigment &rhs);
 
-    void set_grade(const int &grade);
+    friend bool operator!=(const Assigment &lhs, const Assigment &rhs);
+
+    friend std::ostream & operator<<(std::ostream &os, const Assigment &obj);
+
+    friend void swap(Assigment &lhs, Assigment &rhs) noexcept;
+
 };
 
 
