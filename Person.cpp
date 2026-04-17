@@ -4,10 +4,10 @@
 
 #include "Person.h"
 
-int Person::count = 0;
+int Person::counter = 0;
 
 Person::Person() {
-    id = ++count;
+    id = ++counter;
     firstName = "";
     lastName = "";
     email = "";
@@ -20,7 +20,7 @@ Person::Person(const std::string &first_name, const std::string &last_name, cons
                                           lastName(last_name),
                                           email(email),
                                           birthDate(birth_date) {
-    id = ++count;
+    id = ++counter;
 }
 
 Person::Person(const std::string &first_name, const std::string &last_name, const std::string &email,
@@ -34,7 +34,7 @@ Person::Person(const std::string &first_name, const std::string &last_name, cons
     time.tm_min = 0;
     time.tm_sec = 0;
     birthDate = mktime(&time);
-    id = ++count;
+    id = ++counter;
 }
 
 std::string Person::get_first_name() const {

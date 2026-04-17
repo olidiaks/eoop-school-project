@@ -15,7 +15,7 @@ private:
     std::string lastName;
     std::string email;
     time_t birthDate;
-    static int count;
+    static int counter;
 
 public:
     Person();
