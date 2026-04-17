@@ -46,7 +46,7 @@ public:
 
     [[nondiscard]] float get_average_grade_from_biology() const;
 
-    [[nondiscard]] float get_average_grade_from_phisics() const;
+    [[nondiscard]] float get_average_grade_from_physics() const;
 
     [[nondiscard]] float get_average_grade_from_chemistry() const;
 

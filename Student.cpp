@@ -33,33 +33,42 @@ float Student::get_average_grade() const {
 }
 
 float Student::get_average_grade_from_math() const {
-    return get_average_;
+    return get_average_grades_from_subject(mathAssignments);
 }
 
 float Student::get_average_grade_from_english() const {
+    return get_average_grades_from_subject(englishAssignments);
 }
 
 float Student::get_average_grade_from_polish() const {
+    return get_average_grades_from_subject(polishAssignments);
 }
 
 float Student::get_average_grade_from_history() const {
+    return get_average_grades_from_subject(historyAssignments);
 }
 
 float Student::get_average_grade_from_biology() const {
+    return get_average_grades_from_subject(biologyAssignments);
 }
 
-float Student::get_average_grade_from_phisics() const {
+float Student::get_average_grade_from_physics() const {
+    return get_average_grades_from_subject(physicsAssignments);
 }
 
 float Student::get_average_grade_from_chemistry() const {
+    return get_average_grades_from_subject(chemistryAssignments);
 }
 
 float Student::get_average_grade_from_geography() const {
+    return get_average_grades_from_subject(geographyAssignments);
 }
 
 float Student::get_average_grade_from_computer_science() const {
+    return get_average_grades_from_subject(computerScienceAssignments);
 }
 
 float Student::get_average_grade_from_physical_education() const {
+    return get_average_grades_from_subject(physicalEducationAssignments);
 }
 
