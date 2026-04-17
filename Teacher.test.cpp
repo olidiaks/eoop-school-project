@@ -86,7 +86,8 @@ TEST(teacher_test_suite, teacher_test_equality_operator) {
     Teacher t2("John", "Smith", "john@school.com", 1000, 5000, "Math");
     Teacher t3("Jane", "Smith", "jane@school.com", 1000, 5000, "Math");
 
-    EXPECT_TRUE(t1 == t2);
+    EXPECT_TRUE(t1 == t1);
+    EXPECT_FALSE(t1 == t2);
     EXPECT_FALSE(t1 == t3);
 }
 
