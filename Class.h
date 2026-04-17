@@ -26,7 +26,7 @@ private:
     Teacher &computerScienceTeacher;
     Teacher &physicalEducationTeacher;
     Teacher &superVisingTeacher;
-    std::list<Student> students;
+    std::pmr::list<Student> students;
 
     std::ostream & list_students(std::ostream &os);
 
