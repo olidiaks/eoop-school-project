@@ -10,25 +10,25 @@ void Student::initGrades() {
 
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-                 const int &day, const int &month, const int &year,
-                 const Class &class_attended) : Person(id, first_name, last_name, email, day, month, year) {
+                 const int &day, const int &month, const int &year
+) : Person(id, first_name, last_name, email, day, month, year) {
     initGrades();
 }
 
 Student::Student(const float math_grade, const float english_grade, const float polish_grade, const float history_grade,
                  const float biology_grade, const float physics_grade, const float chemistry_grade,
                  const float geography_grade,
-                 const float computer_science_grade, const float physical_education_grade,
-                 const Class &class_attended) : mathGrade(math_grade),
-                                                englishGrade(english_grade),
-                                                polishGrade(polish_grade),
-                                                historyGrade(history_grade),
-                                                biologyGrade(biology_grade),
-                                                physicsGrade(physics_grade),
-                                                chemistryGrade(chemistry_grade),
-                                                geographyGrade(geography_grade),
-                                                computerScienceGrade(computer_science_grade),
-                                                physicalEducationGrade(physical_education_grade) {
+                 const float computer_science_grade, const float physical_education_grade
+) : mathGrade(math_grade),
+    englishGrade(english_grade),
+    polishGrade(polish_grade),
+    historyGrade(history_grade),
+    biologyGrade(biology_grade),
+    physicsGrade(physics_grade),
+    chemistryGrade(chemistry_grade),
+    geographyGrade(geography_grade),
+    computerScienceGrade(computer_science_grade),
+    physicalEducationGrade(physical_education_grade) {
 }
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
@@ -36,18 +36,18 @@ Student::Student(const int &id, const std::string &first_name, const std::string
                  const float history_grade, const float biology_grade, const float physics_grade,
                  const float chemistry_grade,
                  const float geography_grade, const float computer_science_grade,
-                 const float physical_education_grade, const Class &class_attended) : Person(id, first_name, last_name,
-        email, birth_date),
-    mathGrade(math_grade),
-    englishGrade(english_grade),
-    polishGrade(polish_grade),
-    historyGrade(history_grade),
-    biologyGrade(biology_grade),
-    physicsGrade(physics_grade),
-    chemistryGrade(chemistry_grade),
-    geographyGrade(geography_grade),
-    computerScienceGrade(computer_science_grade),
-    physicalEducationGrade(physical_education_grade) {
+                 const float physical_education_grade) : Person(id, first_name, last_name,
+                                                                email, birth_date),
+                                                         mathGrade(math_grade),
+                                                         englishGrade(english_grade),
+                                                         polishGrade(polish_grade),
+                                                         historyGrade(history_grade),
+                                                         biologyGrade(biology_grade),
+                                                         physicsGrade(physics_grade),
+                                                         chemistryGrade(chemistry_grade),
+                                                         geographyGrade(geography_grade),
+                                                         computerScienceGrade(computer_science_grade),
+                                                         physicalEducationGrade(physical_education_grade) {
 }
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
@@ -55,52 +55,52 @@ Student::Student(const int &id, const std::string &first_name, const std::string
                  const float polish_grade, const float history_grade, const float biology_grade,
                  const float physics_grade,
                  const float chemistry_grade, const float geography_grade, const float computer_science_grade,
-                 const float physical_education_grade, const Class &class_attended) : Person(id, first_name, last_name,
-        email, day, month, year),
-    mathGrade(math_grade),
-    englishGrade(english_grade),
-    polishGrade(polish_grade),
-    historyGrade(history_grade),
-    biologyGrade(biology_grade),
-    physicsGrade(physics_grade),
-    chemistryGrade(chemistry_grade),
-    geographyGrade(geography_grade),
-    computerScienceGrade(computer_science_grade),
-    physicalEducationGrade(physical_education_grade) {
+                 const float physical_education_grade) : Person(id, first_name, last_name,
+                                                                email, day, month, year),
+                                                         mathGrade(math_grade),
+                                                         englishGrade(english_grade),
+                                                         polishGrade(polish_grade),
+                                                         historyGrade(history_grade),
+                                                         biologyGrade(biology_grade),
+                                                         physicsGrade(physics_grade),
+                                                         chemistryGrade(chemistry_grade),
+                                                         geographyGrade(geography_grade),
+                                                         computerScienceGrade(computer_science_grade),
+                                                         physicalEducationGrade(physical_education_grade) {
 }
 
 Student::Student(const Person &other, const float math_grade, const float english_grade, const float polish_grade,
                  const float history_grade, const float biology_grade, const float physics_grade,
                  const float chemistry_grade,
                  const float geography_grade, const float computer_science_grade,
-                 const float physical_education_grade, const Class &class_attended) : Person(other),
-    mathGrade(math_grade),
-    englishGrade(english_grade),
-    polishGrade(polish_grade),
-    historyGrade(history_grade),
-    biologyGrade(biology_grade),
-    physicsGrade(physics_grade),
-    chemistryGrade(chemistry_grade),
-    geographyGrade(geography_grade),
-    computerScienceGrade(computer_science_grade),
-    physicalEducationGrade(physical_education_grade) {
+                 const float physical_education_grade) : Person(other),
+                                                         mathGrade(math_grade),
+                                                         englishGrade(english_grade),
+                                                         polishGrade(polish_grade),
+                                                         historyGrade(history_grade),
+                                                         biologyGrade(biology_grade),
+                                                         physicsGrade(physics_grade),
+                                                         chemistryGrade(chemistry_grade),
+                                                         geographyGrade(geography_grade),
+                                                         computerScienceGrade(computer_science_grade),
+                                                         physicalEducationGrade(physical_education_grade) {
 }
 
 Student::Student(Person &&other, const float math_grade, const float english_grade, const float polish_grade,
                  const float history_grade, const float biology_grade, const float physics_grade,
                  const float chemistry_grade,
                  const float geography_grade, const float computer_science_grade,
-                 const float physical_education_grade, const Class &class_attended) : Person(other),
-    mathGrade(math_grade),
-    englishGrade(english_grade),
-    polishGrade(polish_grade),
-    historyGrade(history_grade),
-    biologyGrade(biology_grade),
-    physicsGrade(physics_grade),
-    chemistryGrade(chemistry_grade),
-    geographyGrade(geography_grade),
-    computerScienceGrade(computer_science_grade),
-    physicalEducationGrade(physical_education_grade) {
+                 const float physical_education_grade) : Person(other),
+                                                         mathGrade(math_grade),
+                                                         englishGrade(english_grade),
+                                                         polishGrade(polish_grade),
+                                                         historyGrade(history_grade),
+                                                         biologyGrade(biology_grade),
+                                                         physicsGrade(physics_grade),
+                                                         chemistryGrade(chemistry_grade),
+                                                         geographyGrade(geography_grade),
+                                                         computerScienceGrade(computer_science_grade),
+                                                         physicalEducationGrade(physical_education_grade) {
 }
 
 float Student::get_math_grade() const {
@@ -185,8 +185,8 @@ void Student::set_physical_education_grade(const float physical_education_grade)
 
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-                 const time_t birth_date,
-                 const Class &class_attended) : Person(id, first_name, last_name, email, birth_date) {
+                 const time_t birth_date
+) : Person(id, first_name, last_name, email, birth_date) {
     initGrades();
 }
 
