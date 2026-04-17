@@ -25,9 +25,7 @@ private:
         std::list<Assigment> computerScienceAssignments;
         std::list<Assigment> physicalEducationAssignments;
 
-    void initGrades();
-
-public:
+    public:
     Student(const std::string &first_name, const std::string &last_name, const std::string &email,
             const time_t birth_date);
 
