@@ -25,8 +25,6 @@ add_executable(Project main.cpp
         Person.h
         Assigment.cpp
         Assigment.h
-        Subject.cpp
-        Subject.h
 )
 
 add_executable(test-person Person.test.cpp Person.cpp Person.h)
