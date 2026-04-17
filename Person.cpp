@@ -4,25 +4,27 @@
 
 #include "Person.h"
 
+int Person::count = 0;
 
 Person::Person() {
-    id = -1;
+    id = ++count;
     firstName = "";
     lastName = "";
     email = "";
     birthDate = 0;
 }
 
-Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-               const time_t birth_date) : id(id),
+Person::Person(const std::string &first_name, const std::string &last_name, const std::string &email,
+               const time_t birth_date) :
                                           firstName(first_name),
                                           lastName(last_name),
                                           email(email),
                                           birthDate(birth_date) {
+    id = ++count;
 }
 
-Person::Person(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-               const int &day, const int &month, const int &year) : id(id), firstName(first_name), lastName(last_name),
+Person::Person(const std::string &first_name, const std::string &last_name, const std::string &email,
+               const int &day, const int &month, const int &year) : firstName(first_name), lastName(last_name),
                                                                     email(email) {
     tm time;
     time.tm_mday = day;
@@ -32,6 +34,7 @@ Person::Person(const int &id, const std::string &first_name, const std::string &
     time.tm_min = 0;
     time.tm_sec = 0;
     birthDate = mktime(&time);
+    id = ++count;
 }
 
 std::string Person::get_first_name() const {
