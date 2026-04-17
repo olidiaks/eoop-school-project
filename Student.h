@@ -28,10 +28,10 @@ private:
     void initGrades();
 
 public:
-    Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+    Student(const std::string &first_name, const std::string &last_name, const std::string &email,
             const time_t birth_date);
 
-    Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+    Student(const std::string &first_name, const std::string &last_name, const std::string &email,
             const int &day, const int &month, const int &year);
 
         [[nodiscard]] float get_average_grade() const;

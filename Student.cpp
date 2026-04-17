@@ -9,15 +9,15 @@ void Student::initGrades() {
 }
 
 
-Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+Student::Student(const std::string &first_name, const std::string &last_name, const std::string &email,
                  const int &day, const int &month, const int &year
-) : Person(id, first_name, last_name, email, day, month, year) {
+) : Person(first_name, last_name, email, day, month, year) {
     initGrades();
 }
 
-Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+Student::Student(const std::string &first_name, const std::string &last_name, const std::string &email,
                  const time_t birth_date
-) : Person(id, first_name, last_name, email, birth_date) {
+) : Person(first_name, last_name, email, birth_date) {
     initGrades();
 }
 
