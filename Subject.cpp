@@ -4,9 +4,12 @@
 
 #include "Subject.h"
 
-Subject::Subject(const int id, const std::string &name, Teacher &teacher) : id(id),
+int Subject::counter = 0;
+
+Subject::Subject(const std::string &name, Teacher &teacher) :
                                                                             name(name),
                                                                             teacher(teacher) {
+    id = ++counter;
     assigments.clear();
 }
 

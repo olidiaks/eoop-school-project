@@ -18,9 +18,10 @@ private:
     std::string name;
     Teacher &teacher;
     std::list<Assigment> assigments;
+    static int counter;
 
 public:
-    Subject(const int id, const std::string &name, Teacher &teacher);
+    Subject(const std::string &name, Teacher &teacher);
 
     ~Subject() = default;
 
