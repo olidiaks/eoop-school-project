@@ -6,14 +6,14 @@
 
 #include <iostream>
 
-Teacher::Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-                 const time_t birth_date, const int salary, const std::string &subject): Person(id, first_name, last_name, email, birth_date),
+Teacher::Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
+                 const time_t birth_date, const int salary, const std::string &subject): Person(first_name, last_name, email, birth_date),
                                                                                          salary(salary),
                                                                                          subject(subject) {
 }
 
-Teacher::Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-    const int &day, const int &month, const int &year, const int salary, const std::string &subject): Person(id, first_name, last_name, email, day, month, year),
+Teacher::Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
+    const int &day, const int &month, const int &year, const int salary, const std::string &subject): Person(first_name, last_name, email, day, month, year),
     salary(salary),
     subject(subject) {
 }

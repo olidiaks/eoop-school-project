@@ -22,10 +22,10 @@ public:
 
     friend bool operator!=(const Teacher &lhs, const Teacher &rhs);
 
-    Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+    Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
             const time_t birth_date, const int salary, const std::string &subject);
 
-    Teacher(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+    Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
             const int &day, const int &month, const int &year, const int salary, const std::string &subject);
 
     [[nodiscard]] std::string get_subject() const;
