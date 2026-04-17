@@ -7,7 +7,7 @@
 int Person::counter = 0;
 
 Person::Person() {
-    id = ++counter;
+    id = -1
     firstName = "";
     lastName = "";
     email = "";
