@@ -26,7 +26,7 @@ Person::Person(const std::string &first_name, const std::string &last_name, cons
 Person::Person(const std::string &first_name, const std::string &last_name, const std::string &email,
                const int &day, const int &month, const int &year) : firstName(first_name), lastName(last_name),
                                                                     email(email) {
-    tm time;
+    tm time = {0};
     time.tm_mday = day;
     time.tm_mon = month - 1;
     time.tm_year = year - 1900;
