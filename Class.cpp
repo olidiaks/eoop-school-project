@@ -242,7 +242,6 @@ float Class::get_average_grade_from_subject(const std::string &subject) const {
 
 
 bool operator==(const Class &lhs, const Class &rhs) {
-    throw std::runtime_error("Method not implemented");
     for (const auto &student : lhs.students) {
         bool is_equal = false;
         for (const auto &other_student : rhs.students) {
