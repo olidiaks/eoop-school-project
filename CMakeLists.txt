@@ -13,8 +13,6 @@ FetchContent_MakeAvailable(googletest)
 
 
 add_executable(Project main.cpp
-        Class.cpp
-        Class.h
         Student.cpp
         Student.h
         Teacher.cpp
@@ -25,6 +23,8 @@ add_executable(Project main.cpp
         Person.h
         Assigment.cpp
         Assigment.h
+        Class.cpp
+        Class.h
 )
 
 add_executable(test-person Person.test.cpp Person.cpp Person.h)
