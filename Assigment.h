@@ -15,7 +15,7 @@ private:
     std::string description;
     std::string subject;
     int grade;
-    static int count;
+    static int counter;
 
 public:
     Assigment(const std::string &name, const std::string &description, const std::string &subject);

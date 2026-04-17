@@ -4,13 +4,13 @@
 
 #include "Assigment.h"
 
-int Assigment::count = 0;
+int Assigment::counter = 0;
 
 
 Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject): name(name),
     description(description),
     subject(subject) {
-    id = ++count;
+    id = ++counter;
     grade = 0;
 }
 
@@ -19,7 +19,7 @@ Assigment::Assigment(const std::string &name, const std::string &description, co
                                        description(description),
                                        subject(subject),
                                        grade(grade) {
-    id = ++count;
+    id = ++counter;
 }
 
 Assigment::Assigment(const Assigment &other): id(other.id),
