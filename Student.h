@@ -7,7 +7,6 @@
 
 #include <ostream>
 
-#include "Class.h"
 #include "Person.h"
 
 
