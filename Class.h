@@ -27,11 +27,12 @@ private:
     Teacher &physicalEducationTeacher;
     Teacher &superVisingTeacher;
     std::list<Student> students;
+    static int counter;
 
     std::ostream & list_students(std::ostream &os);
 
 public:
-    Class(const int id, Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
+    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
         Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
         Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
         Teacher &super_vising_teacher);

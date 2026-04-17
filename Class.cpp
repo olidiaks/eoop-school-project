@@ -6,15 +6,17 @@
 
 #include <iostream>
 
+int Class::counter = 0;
+
 std::ostream & Class::list_students(std::ostream &os) {
     throw std::runtime_error("Method not implemented");
     return os;
 }
 
-Class::Class(const int id, Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
+Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
     Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
     Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
-    Teacher &super_vising_teacher): id(id),
+    Teacher &super_vising_teacher):
                                     mathTeacher(math_teacher),
                                     englishTeacher(english_teacher),
                                     polishTeacher(polish_teacher),
@@ -26,6 +28,7 @@ Class::Class(const int id, Teacher &math_teacher, Teacher &english_teacher, Teac
                                     computerScienceTeacher(computer_science_teacher),
                                     physicalEducationTeacher(physical_education_teacher),
                                     superVisingTeacher(super_vising_teacher) {
+    id = ++counter;
     numberOfStudents = 0;
 }
 
@@ -240,7 +243,17 @@ float Class::get_average_grade_from_subject(const std::string &subject) const {
 
 bool operator==(const Class &lhs, const Class &rhs) {
     throw std::runtime_error("Method not implemented");
-    //TODO: add comperasion if students are the same
+    for (const auto &student : lhs.students) {
+        bool is_equal = false;
+        for (const auto &other_student : rhs.students) {
+            if (student == other_student) {
+                is_equal = true;
+            }
+        }
+        if (!is_equal) {
+            return false;
+        }
+    }
     return lhs.id == rhs.id
            && lhs.numberOfStudents == rhs.numberOfStudents
            && lhs.mathTeacher == rhs.mathTeacher
