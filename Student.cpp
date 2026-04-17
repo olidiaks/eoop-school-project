@@ -10,28 +10,36 @@ void Student::initGrades() {
 
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-                 const int &day, const int &month, const int &year): Person(id, first_name, last_name, email, day, month, year) {
+                 const int &day, const int &month, const int &year,
+                 const Class &class_attended) : Person(id, first_name, last_name, email, day, month, year),
+                                                class_attended(class_attended) {
     initGrades();
 }
 
 Student::Student(const float math_grade, const float english_grade, const float polish_grade, const float history_grade,
-    const float biology_grade, const float physics_grade, const float chemistry_grade, const float geography_grade,
-    const float computer_science_grade, const float physical_education_grade): mathGrade(math_grade),
-                                                                               englishGrade(english_grade),
-                                                                               polishGrade(polish_grade),
-                                                                               historyGrade(history_grade),
-                                                                               biologyGrade(biology_grade),
-                                                                               physicsGrade(physics_grade),
-                                                                               chemistryGrade(chemistry_grade),
-                                                                               geographyGrade(geography_grade),
-                                                                               computerScienceGrade(computer_science_grade),
-                                                                               physicalEducationGrade(physical_education_grade) {
+                 const float biology_grade, const float physics_grade, const float chemistry_grade,
+                 const float geography_grade,
+                 const float computer_science_grade, const float physical_education_grade,
+                 const Class &class_attended) : mathGrade(math_grade),
+                                                englishGrade(english_grade),
+                                                polishGrade(polish_grade),
+                                                historyGrade(history_grade),
+                                                biologyGrade(biology_grade),
+                                                physicsGrade(physics_grade),
+                                                chemistryGrade(chemistry_grade),
+                                                geographyGrade(geography_grade),
+                                                computerScienceGrade(computer_science_grade),
+                                                physicalEducationGrade(physical_education_grade),
+                                                class_attended(class_attended) {
 }
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-    const time_t birth_date, const float math_grade, const float english_grade, const float polish_grade,
-    const float history_grade, const float biology_grade, const float physics_grade, const float chemistry_grade,
-    const float geography_grade, const float computer_science_grade, const float physical_education_grade): Person(id, first_name, last_name, email, birth_date),
+                 const time_t birth_date, const float math_grade, const float english_grade, const float polish_grade,
+                 const float history_grade, const float biology_grade, const float physics_grade,
+                 const float chemistry_grade,
+                 const float geography_grade, const float computer_science_grade,
+                 const float physical_education_grade, const Class &class_attended) : Person(id, first_name, last_name,
+        email, birth_date),
     mathGrade(math_grade),
     englishGrade(english_grade),
     polishGrade(polish_grade),
@@ -41,29 +49,34 @@ Student::Student(const int &id, const std::string &first_name, const std::string
     chemistryGrade(chemistry_grade),
     geographyGrade(geography_grade),
     computerScienceGrade(computer_science_grade),
-    physicalEducationGrade(physical_education_grade) {
+    physicalEducationGrade(physical_education_grade),
+    class_attended(class_attended) {
 }
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-    const int &day, const int &month, const int &year, const float math_grade, const float english_grade,
-    const float polish_grade, const float history_grade, const float biology_grade, const float physics_grade,
-    const float chemistry_grade, const float geography_grade, const float computer_science_grade,
-    const float physical_education_grade): Person(id, first_name, last_name, email, day, month, year),
-                                           mathGrade(math_grade),
-                                           englishGrade(english_grade),
-                                           polishGrade(polish_grade),
-                                           historyGrade(history_grade),
-                                           biologyGrade(biology_grade),
-                                           physicsGrade(physics_grade),
-                                           chemistryGrade(chemistry_grade),
-                                           geographyGrade(geography_grade),
-                                           computerScienceGrade(computer_science_grade),
-                                           physicalEducationGrade(physical_education_grade) {
+                 const int &day, const int &month, const int &year, const float math_grade, const float english_grade,
+                 const float polish_grade, const float history_grade, const float biology_grade,
+                 const float physics_grade,
+                 const float chemistry_grade, const float geography_grade, const float computer_science_grade,
+                 const float physical_education_grade, const Class &class_attended) : Person(id, first_name, last_name,
+        email, day, month, year),
+    mathGrade(math_grade),
+    englishGrade(english_grade),
+    polishGrade(polish_grade),
+    historyGrade(history_grade),
+    biologyGrade(biology_grade),
+    physicsGrade(physics_grade),
+    chemistryGrade(chemistry_grade),
+    geographyGrade(geography_grade),
+    computerScienceGrade(computer_science_grade),
+    physicalEducationGrade(physical_education_grade), class_attended(class_attended) {
 }
 
 Student::Student(const Person &other, const float math_grade, const float english_grade, const float polish_grade,
-    const float history_grade, const float biology_grade, const float physics_grade, const float chemistry_grade,
-    const float geography_grade, const float computer_science_grade, const float physical_education_grade): Person(other),
+                 const float history_grade, const float biology_grade, const float physics_grade,
+                 const float chemistry_grade,
+                 const float geography_grade, const float computer_science_grade,
+                 const float physical_education_grade, const Class &class_attended) : Person(other),
     mathGrade(math_grade),
     englishGrade(english_grade),
     polishGrade(polish_grade),
@@ -73,12 +86,14 @@ Student::Student(const Person &other, const float math_grade, const float englis
     chemistryGrade(chemistry_grade),
     geographyGrade(geography_grade),
     computerScienceGrade(computer_science_grade),
-    physicalEducationGrade(physical_education_grade) {
+    physicalEducationGrade(physical_education_grade), class_attended(class_attended) {
 }
 
 Student::Student(Person &&other, const float math_grade, const float english_grade, const float polish_grade,
-    const float history_grade, const float biology_grade, const float physics_grade, const float chemistry_grade,
-    const float geography_grade, const float computer_science_grade, const float physical_education_grade): Person(other),
+                 const float history_grade, const float biology_grade, const float physics_grade,
+                 const float chemistry_grade,
+                 const float geography_grade, const float computer_science_grade,
+                 const float physical_education_grade, const Class &class_attended) : Person(other),
     mathGrade(math_grade),
     englishGrade(english_grade),
     polishGrade(polish_grade),
@@ -88,7 +103,7 @@ Student::Student(Person &&other, const float math_grade, const float english_gra
     chemistryGrade(chemistry_grade),
     geographyGrade(geography_grade),
     computerScienceGrade(computer_science_grade),
-    physicalEducationGrade(physical_education_grade) {
+    physicalEducationGrade(physical_education_grade), class_attended(class_attended) {
 }
 
 float Student::get_math_grade() const {
@@ -171,19 +186,14 @@ void Student::set_physical_education_grade(const float physical_education_grade)
     physicalEducationGrade = physical_education_grade;
 }
 
-Student::Student() : Person(){
-    initGrades();
-
-}
 
 Student::Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
                  const time_t birth_date,
-                 Class *class_attended) : Person(id, first_name, last_name, email, birth_date) {
+                 const Class &class_attended) : Person(id, first_name, last_name, email, birth_date), class_attended(class_attended) {
     initGrades();
-    this->class_attended = class_attended;
 }
 
-std::ostream & operator<<(std::ostream &os, const Student &obj) {
+std::ostream &operator<<(std::ostream &os, const Student &obj) {
     return os
            << static_cast<const Person &>(obj)
            << " mathGrade: " << obj.mathGrade
@@ -216,33 +226,35 @@ bool operator!=(const Student &lhs, const Student &rhs) {
     return !(lhs == rhs);
 }
 
-Student::Student(const Student &other): Person(other),
-                                        mathGrade(other.mathGrade),
-                                        englishGrade(other.englishGrade),
-                                        polishGrade(other.polishGrade),
-                                        historyGrade(other.historyGrade),
-                                        biologyGrade(other.biologyGrade),
-                                        physicsGrade(other.physicsGrade),
-                                        chemistryGrade(other.chemistryGrade),
-                                        geographyGrade(other.geographyGrade),
-                                        computerScienceGrade(other.computerScienceGrade),
-                                        physicalEducationGrade(other.physicalEducationGrade) {
+Student::Student(const Student &other) : Person(other),
+                                         mathGrade(other.mathGrade),
+                                         englishGrade(other.englishGrade),
+                                         polishGrade(other.polishGrade),
+                                         historyGrade(other.historyGrade),
+                                         biologyGrade(other.biologyGrade),
+                                         physicsGrade(other.physicsGrade),
+                                         chemistryGrade(other.chemistryGrade),
+                                         geographyGrade(other.geographyGrade),
+                                         computerScienceGrade(other.computerScienceGrade),
+                                         physicalEducationGrade(other.physicalEducationGrade),
+class_attended(other.class_attended){
 }
 
-Student::Student(Student &&other) noexcept: Person(std::move(other)),
-                                            mathGrade(other.mathGrade),
-                                            englishGrade(other.englishGrade),
-                                            polishGrade(other.polishGrade),
-                                            historyGrade(other.historyGrade),
-                                            biologyGrade(other.biologyGrade),
-                                            physicsGrade(other.physicsGrade),
-                                            chemistryGrade(other.chemistryGrade),
-                                            geographyGrade(other.geographyGrade),
-                                            computerScienceGrade(other.computerScienceGrade),
-                                            physicalEducationGrade(other.physicalEducationGrade) {
+Student::Student(Student &&other) noexcept : Person(std::move(other)),
+                                             mathGrade(other.mathGrade),
+                                             englishGrade(other.englishGrade),
+                                             polishGrade(other.polishGrade),
+                                             historyGrade(other.historyGrade),
+                                             biologyGrade(other.biologyGrade),
+                                             physicsGrade(other.physicsGrade),
+                                             chemistryGrade(other.chemistryGrade),
+                                             geographyGrade(other.geographyGrade),
+                                             computerScienceGrade(other.computerScienceGrade),
+                                             physicalEducationGrade(other.physicalEducationGrade),
+class_attended(other.class_attended){
 }
 
-Student & Student::operator=(const Student &other) {
+Student &Student::operator=(const Student &other) {
     if (this == &other)
         return *this;
     Person::operator =(other);
@@ -259,7 +271,7 @@ Student & Student::operator=(const Student &other) {
     return *this;
 }
 
-Student & Student::operator=(Student &&other) noexcept {
+Student &Student::operator=(Student &&other) noexcept {
     if (this == &other)
         return *this;
     Person::operator =(std::move(other));

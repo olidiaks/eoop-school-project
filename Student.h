@@ -23,46 +23,45 @@ private:
     float geographyGrade;
     float computerScienceGrade;
     float physicalEducationGrade;
-    Class *class_attended;
+    Class &class_attended;
 
     void initGrades();
 
 public:
-    Student();
+    Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
+            const time_t birth_date, const Class &class_attended);
 
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-            const time_t birth_date, Class *class_attended);
-
-    Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
-            const int &day, const int &month, const int &year);
+            const int &day, const int &month, const int &year, const Class &class_attended);
 
 
     Student(const float math_grade, const float english_grade, const float polish_grade, const float history_grade,
             const float biology_grade, const float physics_grade, const float chemistry_grade,
             const float geography_grade,
-            const float computer_science_grade, const float physical_education_grade);
+            const float computer_science_grade, const float physical_education_grade, const Class &class_attended);
 
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
             const time_t birth_date, const float math_grade, const float english_grade, const float polish_grade,
             const float history_grade, const float biology_grade, const float physics_grade,
             const float chemistry_grade,
-            const float geography_grade, const float computer_science_grade, const float physical_education_grade);
+            const float geography_grade, const float computer_science_grade, const float physical_education_grade,
+            const Class &class_attended);
 
     Student(const int &id, const std::string &first_name, const std::string &last_name, const std::string &email,
             const int &day, const int &month, const int &year, const float math_grade, const float english_grade,
             const float polish_grade, const float history_grade, const float biology_grade, const float physics_grade,
             const float chemistry_grade, const float geography_grade, const float computer_science_grade,
-            const float physical_education_grade);
+            const float physical_education_grade, const Class &class_attended);
 
     Student(const Person &other, const float math_grade, const float english_grade, const float polish_grade,
             const float history_grade, const float biology_grade, const float physics_grade,
             const float chemistry_grade,
-            const float geography_grade, const float computer_science_grade, const float physical_education_grade);
+            const float geography_grade, const float computer_science_grade, const float physical_education_grade, const Class &class_attended);
 
     Student(Person &&other, const float math_grade, const float english_grade, const float polish_grade,
             const float history_grade, const float biology_grade, const float physics_grade,
             const float chemistry_grade,
-            const float geography_grade, const float computer_science_grade, const float physical_education_grade);
+            const float geography_grade, const float computer_science_grade, const float physical_education_grade, const Class &class_attended);
 
     [[nodiscard]] float get_math_grade() const;
 
