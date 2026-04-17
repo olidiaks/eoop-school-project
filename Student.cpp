@@ -15,7 +15,7 @@ float Student::get_average_grades_from_subject(const std::list<Assigment> &assig
     float sum = 0;
     int count = 0;
 
-    for (auto &assignment : assignments) {
+    for (auto &assignment: assignments) {
         sum += assignment.get_grade();
         count++;
     }
@@ -29,7 +29,50 @@ Student::Student(const std::string &first_name, const std::string &last_name, co
 }
 
 float Student::get_average_grade() const {
-    throw std::runtime_error("Not implemented");
+    int count = 0;
+    float sum = 0;
+    for (auto &assignment: mathAssignments) {
+        sum += assignment.get_grade();
+        count++;
+    }
+
+    for (auto &assigment: englishAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: polishAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: historyAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: biologyAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: physicsAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: chemistryAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: geographyAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: computerScienceAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    for (auto &assigment: physicalEducationAssignments) {
+        sum += assigment.get_grade();
+        count++;
+    }
+    return sum / count;
 }
 
 float Student::get_average_grade_from_math() const {
@@ -71,4 +114,3 @@ float Student::get_average_grade_from_computer_science() const {
 float Student::get_average_grade_from_physical_education() const {
     return get_average_grades_from_subject(physicalEducationAssignments);
 }
-
