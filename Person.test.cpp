@@ -18,8 +18,7 @@ TEST(person_test_suite_1, person_test_default_constructor) {
 
 TEST(person_test_suite_1, person_test_parameterized_constructor_with_time_t) {
     time_t now = time(nullptr);
-    Person p(1, "John", "Doe", "john.doe@example.com", now);
-    ASSERT_EQ(p.get_id(), 1);
+    Person p("John", "Doe", "john.doe@example.com", now);
     ASSERT_EQ(p.get_first_name(), "John");
     ASSERT_EQ(p.get_last_name(), "Doe");
     ASSERT_EQ(p.get_email(), "john.doe@example.com");
@@ -27,8 +26,7 @@ TEST(person_test_suite_1, person_test_parameterized_constructor_with_time_t) {
 }
 
 TEST(person_test_suite_1, person_test_parameterized_constructor_with_date) {
-    Person p(2, "Jane", "Smith", "jane.smith@example.com", 15, 4, 1990);
-    ASSERT_EQ(p.get_id(), 2);
+    Person p("Jane", "Smith", "jane.smith@example.com", 15, 4, 1990);
     ASSERT_EQ(p.get_first_name(), "Jane");
     ASSERT_EQ(p.get_last_name(), "Smith");
     ASSERT_EQ(p.get_email(), "jane.smith@example.com");
@@ -38,9 +36,8 @@ TEST(person_test_suite_1, person_test_parameterized_constructor_with_date) {
 }
 
 TEST(person_test_suite_1, person_test_copy_constructor) {
-    Person p1(3, "Alice", "Brown", "alice@example.com", 123456789);
+    Person p1("Alice", "Brown", "alice@example.com", 123456789);
     Person p2(p1);
-    ASSERT_EQ(p2.get_id(), 3);
     ASSERT_EQ(p2.get_first_name(), "Alice");
     ASSERT_EQ(p2.get_last_name(), "Brown");
     ASSERT_EQ(p2.get_email(), "alice@example.com");
@@ -48,9 +45,8 @@ TEST(person_test_suite_1, person_test_copy_constructor) {
 }
 
 TEST(person_test_suite_1, person_test_move_constructor) {
-    Person p1(4, "Bob", "White", "bob@example.com", 987654321);
+    Person p1("Bob", "White", "bob@example.com", 987654321);
     Person p2(std::move(p1));
-    ASSERT_EQ(p2.get_id(), 4);
     ASSERT_EQ(p2.get_first_name(), "Bob");
     ASSERT_EQ(p2.get_last_name(), "White");
     ASSERT_EQ(p2.get_email(), "bob@example.com");
@@ -75,14 +71,9 @@ TEST(person_test_suite_1, person_test_set_get_email) {
     ASSERT_EQ(p.get_email(), "charlie.black@example.com");
 }
 
-TEST(person_test_suite_1, person_test_get_id) {
-    Person p(10, "Dave", "Jones", "dave@example.com", 100);
-    ASSERT_EQ(p.get_id(), 10);
-}
-
 TEST(person_test_suite_1, person_test_get_birth_date) {
     time_t birth = 500000000;
-    Person p(11, "Eve", "Green", "eve@example.com", birth);
+    Person p("Eve", "Green", "eve@example.com", birth);
     ASSERT_EQ(p.get_birth_date(), birth);
 }
 
@@ -93,7 +84,7 @@ TEST(person_test_suite_1, person_test_get_birth_date_components) {
     timeinfo.tm_mday = 15;
     time_t birth = mktime(&timeinfo);
 
-    Person p(1, "John", "Doe", "john.doe@example.com", birth);
+    Person p("John", "Doe", "john.doe@example.com", birth);
 
     EXPECT_EQ(p.get_day_of_birth(), 15);
     EXPECT_EQ(p.get_month_of_birth(), 5);
@@ -108,17 +99,17 @@ TEST(person_test_suite_1, person_test_get_age) {
     int day = birth_tm->tm_mday;
     int month = birth_tm->tm_mon;
 
-    Person p(12, "Frank", "Miller", "frank@example.com", day, month, year);
+    Person p("Frank", "Miller", "frank@example.com", day, month, year);
 
     // This is expected to fail as get_age() is not yet implemented
     ASSERT_EQ(p.get_age(), 20);
 }
 
 TEST(person_test_suite_1, person_test_equality_operator) {
-    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
-    Person p2(1, "John", "Doe", "john.doe@example.com", 1000);
-    Person p3(2, "John", "Doe", "john.doe@example.com", 1000);
-    Person p4(1, "Jane", "Doe", "john.doe@example.com", 1000);
+    Person p1("John", "Doe", "john.doe@example.com", 1000);
+    Person p2(p1);
+    Person p3("John", "Doe", "john.doe@example.com", 1000);
+    Person p4("Jane", "Doe", "john.doe@example.com", 1000);
 
     EXPECT_TRUE(p1 == p2);
     EXPECT_FALSE(p1 == p3);
@@ -126,19 +117,19 @@ TEST(person_test_suite_1, person_test_equality_operator) {
 }
 
 TEST(person_test_suite_1, person_test_inequality_operator) {
-    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
-    Person p2(1, "John", "Doe", "john.doe@example.com", 1000);
-    Person p3(2, "John", "Doe", "john.doe@example.com", 1000);
+    Person p1("John", "Doe", "john.doe@example.com", 1000);
+    Person p2(p1);
+    Person p3("John", "Doe", "john.doe@example.com", 1000);
 
     EXPECT_FALSE(p1 != p2);
     EXPECT_TRUE(p1 != p3);
 }
 
 TEST(person_test_suite_1, person_test_copy_assignment) {
-    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p1("John", "Doe", "john.doe@example.com", 1000);
     Person p2;
     p2 = p1;
-    EXPECT_EQ(p2.get_id(), 1);
+    EXPECT_EQ(p2.get_id(), p1.get_id());
     EXPECT_EQ(p2.get_first_name(), "John");
     EXPECT_EQ(p2.get_last_name(), "Doe");
     EXPECT_EQ(p2.get_email(), "john.doe@example.com");
@@ -146,10 +137,10 @@ TEST(person_test_suite_1, person_test_copy_assignment) {
 }
 
 TEST(person_test_suite_1, person_test_move_assignment) {
-    Person p1(1, "John", "Doe", "john.doe@example.com", 1000);
+    Person p1("John", "Doe", "john.doe@example.com", 1000);
     Person p2;
     p2 = std::move(p1);
-    EXPECT_EQ(p2.get_id(), 1);
+    EXPECT_EQ(p2.get_id(), p1.get_id());
     EXPECT_EQ(p2.get_first_name(), "John");
     EXPECT_EQ(p2.get_last_name(), "Doe");
     EXPECT_EQ(p2.get_email(), "john.doe@example.com");
@@ -157,12 +148,12 @@ TEST(person_test_suite_1, person_test_move_assignment) {
 }
 
 TEST(person_test_suite_1, person_test_output_operator) {
-    Person p(1, "John", "Doe", "john.doe@example.com", 23, 5, 2025);
+    Person p("John", "Doe", "john.doe@example.com", 23, 5, 2025);
     std::stringstream ss;
     ss << p;
 
     std::stringstream expected;
-    expected << "id: 1 firstName: John lastName: Doe email: john.doe@example.com age: " << p.get_age()
+    expected << "id: "<< p.get_id() << " firstName: John lastName: Doe email: john.doe@example.com age: " << p.get_age()
             << "Date of birth: 23.05.2025";
 
     EXPECT_EQ(ss.str(), expected.str());
