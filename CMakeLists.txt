@@ -34,3 +34,5 @@ target_link_libraries(Assigment-test PUBLIC gtest_main)
 add_executable(Subject-test Subject.cpp Subject.h
         Subject.test.cpp)
 target_link_libraries(Subject-test PUBLIC gtest_main)
+add_executable(Teacher-test Teacher.test.cpp Teacher.cpp Teacher.h Person.cpp Person.h)
+target_link_libraries(Teacher-test PUBLIC gtest_main)
