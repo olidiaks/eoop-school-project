@@ -55,6 +55,8 @@ public:
     [[nondiscard]] float get_average_grade_from_computer_science() const;
 
     [[nondiscard]] float get_average_grade_from_physical_education() const;
+
+    void add_assignment(const std::string &subject, const std::string &name, const std::string &description);
 };
 
 #endif //PROJECT_STUDENT_H

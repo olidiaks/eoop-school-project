@@ -114,3 +114,7 @@ float Student::get_average_grade_from_computer_science() const {
 float Student::get_average_grade_from_physical_education() const {
     return get_average_grades_from_subject(physicalEducationAssignments);
 }
+
+void Student::add_assignment(const std::string &subject, const std::string &name, const std::string &description) {
+    
+}
