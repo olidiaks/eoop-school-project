@@ -74,8 +74,7 @@ bool operator==(const Assigment &lhs, const Assigment &rhs) {
     return lhs.id == rhs.id
            && lhs.name == rhs.name
            && lhs.description == rhs.description
-           && lhs.subject == rhs.subject
-           && lhs.grade == rhs.grade;
+           && lhs.subject == rhs.subject;
 }
 
 bool operator!=(const Assigment &lhs, const Assigment &rhs) {
@@ -87,8 +86,7 @@ std::ostream & operator<<(std::ostream &os, const Assigment &obj) {
            << "id: " << obj.id
            << " name: " << obj.name
            << " description: " << obj.description
-           << " subject: " << obj.subject
-           << " grade: " << obj.grade;
+           << " subject: " << obj.subject;
 }
 
 void swap(Assigment &lhs, Assigment &rhs) noexcept {
@@ -97,6 +95,5 @@ void swap(Assigment &lhs, Assigment &rhs) noexcept {
     swap(lhs.name, rhs.name);
     swap(lhs.description, rhs.description);
     swap(lhs.subject, rhs.subject);
-    swap(lhs.grade, rhs.grade);
 }
 
