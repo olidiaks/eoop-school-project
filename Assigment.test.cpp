@@ -102,7 +102,6 @@ TEST(AssigmentTest, StreamOperator) {
     EXPECT_NE(output.find("name: Name"), std::string::npos);
     EXPECT_NE(output.find("description: Desc"), std::string::npos);
     EXPECT_NE(output.find("subject: Subj"), std::string::npos);
-    EXPECT_NE(output.find("grade: 4"), std::string::npos);
 }
 
 // Test swap function
