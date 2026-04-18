@@ -27,6 +27,7 @@ add_executable(Project main.cpp
         Class.h
         Assigment_graded.cpp
         Assigment_graded.h
+        Assigment_graded.h
 )
 
 add_executable(test-person Person.test.cpp Person.cpp Person.h)
@@ -38,5 +39,5 @@ add_executable(Subject-test Subject.cpp Subject.h
 target_link_libraries(Subject-test PUBLIC gtest_main)
 add_executable(Teacher-test Teacher.test.cpp Teacher.cpp Teacher.h Person.cpp Person.h)
 target_link_libraries(Teacher-test PUBLIC gtest_main)
-add_executable(Assigment-graded-test Assigment_graded.test.cpp Assigment_graded.cpp Assigment_graded.h, Assigment.cpp, Assigment.h)
+add_executable(Assigment-graded-test Assigment_graded.test.cpp Assigment_graded.cpp Assigment_graded.h, Assigment.cpp Assigment.h)
 target_link_libraries(Assigment-graded-test PUBLIC gtest_main)
