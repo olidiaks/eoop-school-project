@@ -28,11 +28,26 @@ Assigment_graded::Assigment_graded(Assigment_graded &&other) noexcept : assigmen
                                                                         is_graded(other.is_graded) {
 }
 
-Assigment_graded &Assigment_graded::operator=(Assigment_graded other) {
-    using std::swap;
-    swap(*this, other);
+Assigment_graded & Assigment_graded::operator=(const Assigment_graded &other) {
+    if (this == &other)
+        return *this;
+    id = other.id;
+    assigment = other.assigment;
+    grade = other.grade;
+    is_graded = other.is_graded;
     return *this;
 }
+
+Assigment_graded & Assigment_graded::operator=(Assigment_graded &&other) noexcept {
+    if (this == &other)
+        return *this;
+    id = other.id;
+    assigment = other.assigment;
+    grade = other.grade;
+    is_graded = other.is_graded;
+    return *this;
+}
+
 
 int Assigment_graded::get_grade() const {
     return grade;
@@ -69,10 +84,3 @@ std::ostream &operator<<(std::ostream &os, const Assigment_graded &obj) {
            << " assigment: " << obj.assigment;
 }
 
-void swap(Assigment_graded &lhs, Assigment_graded &rhs) noexcept {
-    using std::swap;
-    swap(lhs.id, rhs.id);
-    swap(lhs.assigment, rhs.assigment);
-    swap(lhs.grade, rhs.grade);
-    swap(lhs.is_graded, rhs.is_graded);
-}

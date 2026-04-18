@@ -11,38 +11,38 @@
 
 class Assigment_graded {
 private:
-static int counter;
+    static int counter;
     int id;
     Assigment &assigment;
     int grade;
     bool is_graded;
 
 public:
-explicit Assigment_graded(Assigment &assigment);
+    explicit Assigment_graded(Assigment &assigment);
 
-Assigment_graded(Assigment &assigment, const int grade);
+    Assigment_graded(Assigment &assigment, const int grade);
 
-Assigment_graded(const Assigment_graded &other);
+    Assigment_graded(const Assigment_graded &other);
 
-Assigment_graded(Assigment_graded &&other) noexcept;
+    Assigment_graded(Assigment_graded &&other) noexcept;
 
-Assigment_graded & operator=(Assigment_graded other);
+    Assigment_graded & operator=(const Assigment_graded &other);
 
-[[nodiscard]] int get_grade() const;
+    Assigment_graded & operator=(Assigment_graded &&other) noexcept;
 
-void set_grade(const int grade);
+    [[nodiscard]] int get_grade() const;
 
-[[nodiscard]] Assigment get_assigment() const;
+    void set_grade(const int grade);
 
-[[nodiscard]] int get_id() const;
+    [[nodiscard]] Assigment get_assigment() const;
 
-friend bool operator==(const Assigment_graded &lhs, const Assigment_graded &rhs);
+    [[nodiscard]] int get_id() const;
 
-friend bool operator!=(const Assigment_graded &lhs, const Assigment_graded &rhs);
+    friend bool operator==(const Assigment_graded &lhs, const Assigment_graded &rhs);
 
-friend std::ostream & operator<<(std::ostream &os, const Assigment_graded &obj);
+    friend bool operator!=(const Assigment_graded &lhs, const Assigment_graded &rhs);
 
-friend void swap(Assigment_graded &lhs, Assigment_graded &rhs) noexcept;
+    friend std::ostream & operator<<(std::ostream &os, const Assigment_graded &obj);
 };
 
 
