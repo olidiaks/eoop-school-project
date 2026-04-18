@@ -7,7 +7,7 @@
 
 
 
-class Assigemnt_graded {
+class Assigment_graded {
 
 };
 
