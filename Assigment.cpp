@@ -11,29 +11,19 @@ Assigment::Assigment(const std::string &name, const std::string &description, co
     description(description),
     subject(subject) {
     id = ++counter;
-    grade = 0;
 }
 
-Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject,
-                     const int grade):                                        name(name),
-                                       description(description),
-                                       subject(subject),
-                                       grade(grade) {
-    id = ++counter;
-}
 
 Assigment::Assigment(const Assigment &other): id(other.id),
                                               name(other.name),
                                               description(other.description),
-                                              subject(other.subject),
-                                              grade(other.grade) {
+                                              subject(other.subject) {
 }
 
 Assigment::Assigment(Assigment &&other) noexcept: id(other.id),
                                                   name(std::move(other.name)),
                                                   description(std::move(other.description)),
-                                                  subject(std::move(other.subject)),
-                                                  grade(other.grade) {
+                                                  subject(std::move(other.subject)) {
 }
 
 Assigment & Assigment::operator=(const Assigment &other) {
@@ -43,7 +33,6 @@ Assigment & Assigment::operator=(const Assigment &other) {
     name = other.name;
     description = other.description;
     subject = other.subject;
-    grade = other.grade;
     return *this;
 }
 
@@ -54,20 +43,11 @@ Assigment & Assigment::operator=(Assigment &&other) noexcept {
     name = std::move(other.name);
     description = std::move(other.description);
     subject = std::move(other.subject);
-    grade = other.grade;
     return *this;
 }
 
 int Assigment::get_id() const {
     return id;
-}
-
-void Assigment::set_grade(const int grade) {
-    this->grade = grade;
-}
-
-int Assigment::get_grade() const {
-    return grade;
 }
 
 std::string Assigment::get_subject() const {

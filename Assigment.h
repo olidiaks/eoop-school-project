@@ -14,14 +14,10 @@ private:
     std::string name;
     std::string description;
     std::string subject;
-    int grade;
     static int counter;
 
 public:
     Assigment(const std::string &name, const std::string &description, const std::string &subject);
-
-    Assigment(const std::string &name, const std::string &description, const std::string &subject,
-              const int grade);
 
     Assigment(const Assigment &other);
 
@@ -32,10 +28,6 @@ public:
     Assigment & operator=(Assigment &&other) noexcept;
 
     [[nodiscard]] int get_id() const;
-
-    void set_grade(const int grade);
-
-    [[nodiscard]] int get_grade() const;
 
     [[nodiscard]] std::string get_subject() const;
 
