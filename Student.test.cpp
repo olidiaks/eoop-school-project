@@ -99,6 +99,10 @@ TEST_F(StudentTest, TotalAverageGrade) {
     student.add_assignment(Subject::History, Assigment("H2", "D2", "History"), 2);
     // Total (5+3+2+2)/4 = 12/4 = 3.0
     EXPECT_FLOAT_EQ(student.get_average_grade(), 3.0f);
+
+    student.add_assignment(Subject::Math, Assigment("M3", "D3", "Math"), 4);
+    // Total (12+4)/5 = 16/5 = 3.2
+    EXPECT_FLOAT_EQ(student.get_average_grade(), 3.2f);
 }
 
 TEST_F(StudentTest, GetAllAssignments) {
