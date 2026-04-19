@@ -40,3 +40,5 @@ add_executable(Teacher-test Teacher.test.cpp Teacher.cpp Teacher.h Person.cpp Pe
 target_link_libraries(Teacher-test PUBLIC gtest_main)
 add_executable(Assigment-graded-test Assigment_graded.test.cpp Assigment_graded.cpp Assigment_graded.h Assigment.cpp Assigment.h)
 target_link_libraries(Assigment-graded-test PUBLIC gtest_main)
+add_executable(Student-test Student.test.cpp Student.cpp Student.h Person.cpp Person.h Assigment_graded.cpp Assigment_graded.h Assigment.cpp Assigment.h)
+target_link_libraries(Student-test PUBLIC gtest_main)
