@@ -53,7 +53,7 @@ Student::Student(const std::string &first_name, const std::string &last_name, co
 
 float Student::get_average_grade() const {
     int count = 0;
-    float sum = 0;
+    int sum = 0;
     for (auto &assignment: mathAssignments) {
         sum += assignment.get_grade();
         count++;
