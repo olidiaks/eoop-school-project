@@ -65,7 +65,7 @@ float Student::get_average_grade() const {
             count++;
         }
     }
-    return sum / count;
+    return (float)sum / count;
 }
 
 float Student::get_average_grade_from_math() const {
