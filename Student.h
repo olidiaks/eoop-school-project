@@ -9,23 +9,39 @@
 #include <ostream>
 
 #include "Assigment.h"
+#include "Assigment_graded.h"
 #include "Person.h"
 
 
+enum class Subject {
+    Math,
+    English,
+    Polish,
+    History,
+    Biology,
+    Physics,
+    Chemistry,
+    Geography,
+    ComputerScience,
+    PhysicalEducation
+};
+
+const char *to_string(Subject e);
+
 class Student : public Person {
 private:
-    std::list<Assigment> mathAssignments;
-    std::list<Assigment> englishAssignments;
-    std::list<Assigment> polishAssignments;
-    std::list<Assigment> historyAssignments;
-    std::list<Assigment> biologyAssignments;
-    std::list<Assigment> physicsAssignments;
-    std::list<Assigment> chemistryAssignments;
-    std::list<Assigment> geographyAssignments;
-    std::list<Assigment> computerScienceAssignments;
-    std::list<Assigment> physicalEducationAssignments;
+    std::list<Assigment_graded> mathAssignments;
+    std::list<Assigment_graded> englishAssignments;
+    std::list<Assigment_graded> polishAssignments;
+    std::list<Assigment_graded> historyAssignments;
+    std::list<Assigment_graded> biologyAssignments;
+    std::list<Assigment_graded> physicsAssignments;
+    std::list<Assigment_graded> chemistryAssignments;
+    std::list<Assigment_graded> geographyAssignments;
+    std::list<Assigment_graded> computerScienceAssignments;
+    std::list<Assigment_graded> physicalEducationAssignments;
 
-    [[nodiscard]] static float get_average_grades_from_subject(const std::list<Assigment> &assignments);
+    [[nodiscard]] static float get_average_grades_from_subject(const std::list<Assigment_graded> &assignments);
 
 public:
     Student(const std::string &first_name, const std::string &last_name, const std::string &email,
@@ -56,7 +72,16 @@ public:
 
     [[nondiscard]] float get_average_grade_from_physical_education() const;
 
-    void add_assignment(const std::string &subject, const std::string &name, const std::string &description);
+    void add_assignment(const Subject &subject, const Assigment &assigment);
+
+    void add_assignment(const Subject &subject, const std::string &name, const std::string &description);
+
+    void add_assignment(const Subject &subject, const Assigment &assigment, int grade);
+
+    void add_assignment(const Subject &subject, const Assigment_graded &assigment);
+
+    void add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade);
+
 };
 
 #endif //PROJECT_STUDENT_H

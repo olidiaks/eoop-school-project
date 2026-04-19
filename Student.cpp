@@ -4,6 +4,8 @@
 
 #include "Student.h"
 
+#include "cmake-build-debug/_deps/googletest-src/googlemock/include/gmock/gmock-actions.h"
+
 
 Student::Student(const std::string &first_name, const std::string &last_name, const std::string &email,
                  const int &day, const int &month, const int &year
@@ -11,7 +13,23 @@ Student::Student(const std::string &first_name, const std::string &last_name, co
 }
 
 
-float Student::get_average_grades_from_subject(const std::list<Assigment> &assignments) {
+const char *to_string(Subject e) {
+    switch (e) {
+        case Subject::Math: return "Math";
+        case Subject::English: return "English";
+        case Subject::Polish: return "Polish";
+        case Subject::History: return "History";
+        case Subject::Biology: return "Biology";
+        case Subject::Physics: return "Physics";
+        case Subject::Chemistry: return "Chemistry";
+        case Subject::Geography: return "Geography";
+        case Subject::ComputerScience: return "ComputerScience";
+        case Subject::PhysicalEducation: return "PhysicalEducation";
+        default: return "unknown";
+    }
+}
+
+float Student::get_average_grades_from_subject(const std::list<Assigment_graded> &assignments) {
     float sum = 0;
     int count = 0;
 
@@ -115,6 +133,54 @@ float Student::get_average_grade_from_physical_education() const {
     return get_average_grades_from_subject(physicalEducationAssignments);
 }
 
-void Student::add_assignment(const std::string &subject, const std::string &name, const std::string &description) {
-    
+void Student::add_assignment(const Subject &subject, const Assigment &assigment) {
+    add_assignment(subject, Assigment_graded(assigment));
+}
+
+void Student::add_assignment(const Subject &subject, const std::string &name, const std::string &description) {
+    add_assignment(subject, Assigment(name, description, to_string(subject)));
+}
+
+void Student::add_assignment(const Subject &subject, const Assigment &assigment, const int grade) {
+    add_assignment(subject, Assigment_graded(assigment, grade));
+}
+
+void Student::add_assignment(const Subject &subject, const Assigment_graded &assigment) {
+    switch (subject) {
+        case Subject::Math:
+            mathAssignments.push_back(assigment);
+            break;
+        case Subject::English:
+            englishAssignments.push_back(assigment);
+            break;
+        case Subject::Polish:
+            polishAssignments.push_back(assigment);
+            break;
+        case Subject::History:
+            historyAssignments.push_back(assigment);
+            break;
+        case Subject::Biology:
+            biologyAssignments.push_back(assigment);
+            break;
+        case Subject::Physics:
+            physicsAssignments.push_back(assigment);
+            break;
+        case Subject::Chemistry:
+            chemistryAssignments.push_back(assigment);
+            break;
+        case Subject::Geography:
+            geographyAssignments.push_back(assigment);
+            break;
+        case Subject::ComputerScience:
+            computerScienceAssignments.push_back(assigment);
+            break;
+        case Subject::PhysicalEducation:
+            physicalEducationAssignments.push_back(assigment);
+            break;
+    }
+}
+
+void Student::add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade) {
+    assigment_graded.set_grade(grade);
+    add_assignment(subject, assigment_graded);
 }
