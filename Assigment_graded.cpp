@@ -31,21 +31,13 @@ Assigment_graded::Assigment_graded(Assigment_graded &&other) noexcept : assigmen
 Assigment_graded & Assigment_graded::operator=(const Assigment_graded &other) {
     if (this == &other)
         return *this;
-    id = other.id;
-    assigment = other.assigment;
-    grade = other.grade;
-    is_graded = other.is_graded;
-    return *this;
+    return *new Assigment_graded(other.assigment, other.grade);
 }
 
 Assigment_graded & Assigment_graded::operator=(Assigment_graded &&other) noexcept {
     if (this == &other)
         return *this;
-    id = other.id;
-    assigment = other.assigment;
-    grade = other.grade;
-    is_graded = other.is_graded;
-    return *this;
+    return *new Assigment_graded(other.assigment, other.grade);
 }
 
 
