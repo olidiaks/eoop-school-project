@@ -18,7 +18,7 @@ private:
     bool is_graded;
 
 public:
-    explicit Assigment_graded(Assigment &assigment);
+    Assigment_graded(Assigment &assigment);
 
     Assigment_graded(Assigment &assigment, const int grade);
 
