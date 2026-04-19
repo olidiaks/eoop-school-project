@@ -13,14 +13,14 @@ class Assigment_graded {
 private:
     static int counter;
     int id;
-    Assigment &assigment;
+    const Assigment &assigment;
     int grade;
     bool is_graded;
 
 public:
-    Assigment_graded(Assigment &assigment);
+    Assigment_graded(const Assigment &assigment);
 
-    Assigment_graded(Assigment &assigment, const int grade);
+    Assigment_graded(const Assigment &assigment, const int grade);
 
     Assigment_graded(const Assigment_graded &other);
 

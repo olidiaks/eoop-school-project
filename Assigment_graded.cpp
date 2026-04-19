@@ -6,13 +6,13 @@
 
 int Assigment_graded::counter = 0;
 
-Assigment_graded::Assigment_graded(Assigment &assigment) : assigment(assigment) {
+Assigment_graded::Assigment_graded(const Assigment &assigment) : assigment(assigment) {
     grade = 0;
     id = ++counter;
     is_graded = false;
 }
 
-Assigment_graded::Assigment_graded(Assigment &assigment, const int grade) : assigment(assigment),
+Assigment_graded::Assigment_graded(const Assigment &assigment, const int grade) : assigment(assigment),
                                                                             grade(grade) {
     is_graded = true;
     id = ++counter;
