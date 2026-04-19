@@ -4,8 +4,6 @@
 
 #include "Student.h"
 
-#include "cmake-build-debug/_deps/googletest-src/googlemock/include/gmock/gmock-actions.h"
-
 
 Student::Student(const std::string &first_name, const std::string &last_name, const std::string &email,
                  const int &day, const int &month, const int &year
@@ -27,6 +25,13 @@ const char *to_string(Subject e) {
         case Subject::PhysicalEducation: return "PhysicalEducation";
         default: return "unknown";
     }
+}
+
+std::ostream & operator<<(std::ostream &os, const std::list<Assigment_graded> &assignment_list) {
+    for (auto &assignment: assignment_list) {
+        os << assignment << "\n";
+    }
+    return os;
 }
 
 float Student::get_average_grades_from_subject(const std::list<Assigment_graded> &assignments) {
@@ -241,4 +246,51 @@ bool operator==(const Student &lhs, const Student &rhs) {
 
 bool operator!=(const Student &lhs, const Student &rhs) {
     return !(lhs == rhs);
+}
+
+std::ostream & stream_assignments(std::ostream &os, const Subject &subject, const Student &obj) {
+    os << "Subject: " << to_string(subject) << "\n";
+    const std::list<Assigment_graded> *assignments = nullptr;
+    switch (subject) {
+        case Subject::Math:
+            assignments = &(obj.mathAssignments);
+            break;
+        case Subject::English:
+            assignments = &(obj.englishAssignments);
+            break;
+        case Subject::Polish:
+            assignments = &(obj.polishAssignments);
+            break;
+        case Subject::History:
+            assignments = &(obj.historyAssignments);
+            break;
+        case Subject::Biology:
+            assignments = &(obj.biologyAssignments);
+            break;
+        case Subject::Physics:
+            assignments = &(obj.physicsAssignments);
+            break;
+        case Subject::Chemistry:
+            assignments = &(obj.chemistryAssignments);
+            break;
+        case Subject::Geography:
+            assignments = &(obj.geographyAssignments);
+            break;
+        case Subject::ComputerScience:
+            assignments = &(obj.computerScienceAssignments);
+            break;
+        case Subject::PhysicalEducation:
+            assignments = &(obj.physicalEducationAssignments);
+            break;
+    }
+
+    if (assignments == nullptr) {
+        throw std::runtime_error("Imposible error");
+    }
+    for (auto &assignment: *assignments) {
+        os << assignment << "\n";
+    }
+    return os;
+
+
 }

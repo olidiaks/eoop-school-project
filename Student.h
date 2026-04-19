@@ -28,6 +28,8 @@ enum class Subject {
 
 const char *to_string(Subject e);
 
+std::ostream & operator<<(std::ostream & os, const std::list<Assigment_graded> & assignment_list);
+
 class Student : public Person {
 private:
     std::list<Assigment_graded> mathAssignments;
@@ -121,6 +123,7 @@ public:
                << " physicalEducationAssignments: " << obj.physicalEducationAssignments;
     }
 
+    friend std::ostream & stream_assignments(std::ostream & os, const Subject &subject, const Student &obj);
 };
 
 #endif //PROJECT_STUDENT_H
