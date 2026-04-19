@@ -224,3 +224,21 @@ std::list<Assigment_graded> Student::get_computer_science_assignments() const {
 std::list<Assigment_graded> Student::get_physical_education_assignments() const {
     return physicalEducationAssignments;
 }
+
+bool operator==(const Student &lhs, const Student &rhs) {
+    return static_cast<const Person &>(lhs) == static_cast<const Person &>(rhs)
+           && lhs.mathAssignments == rhs.mathAssignments
+           && lhs.englishAssignments == rhs.englishAssignments
+           && lhs.polishAssignments == rhs.polishAssignments
+           && lhs.historyAssignments == rhs.historyAssignments
+           && lhs.biologyAssignments == rhs.biologyAssignments
+           && lhs.physicsAssignments == rhs.physicsAssignments
+           && lhs.chemistryAssignments == rhs.chemistryAssignments
+           && lhs.geographyAssignments == rhs.geographyAssignments
+           && lhs.computerScienceAssignments == rhs.computerScienceAssignments
+           && lhs.physicalEducationAssignments == rhs.physicalEducationAssignments;
+}
+
+bool operator!=(const Student &lhs, const Student &rhs) {
+    return !(lhs == rhs);
+}

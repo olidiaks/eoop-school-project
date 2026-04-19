@@ -102,7 +102,9 @@ public:
 
     [[nodiscard]] std::list<Assigment_graded> get_physical_education_assignments() const;
 
+    friend bool operator==(const Student &lhs, const Student &rhs);
 
+    friend bool operator!=(const Student &lhs, const Student &rhs);
 };
 
 #endif //PROJECT_STUDENT_H
