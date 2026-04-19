@@ -13,7 +13,7 @@ class Assigment_graded {
 private:
     static int counter;
     int id;
-    const Assigment &assigment;
+    Assigment assigment;
     int grade;
     bool is_graded;
 

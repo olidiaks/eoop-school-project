@@ -23,7 +23,7 @@ Assigment_graded::Assigment_graded(const Assigment_graded &other) : assigment(ot
                                                                     is_graded(other.is_graded) {
 }
 
-Assigment_graded::Assigment_graded(Assigment_graded &&other) noexcept : assigment(other.assigment),
+Assigment_graded::Assigment_graded(Assigment_graded &&other) noexcept : assigment(std::move(other.assigment)),
                                                                         grade(other.grade), id(other.id),
                                                                         is_graded(other.is_graded) {
 }
