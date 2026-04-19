@@ -27,7 +27,7 @@ const char *to_string(Subject e) {
     }
 }
 
-std::ostream & operator<<(std::ostream &os, const std::list<Assigment_graded> &assignment_list) {
+std::ostream &operator<<(std::ostream &os, const std::list<Assigment_graded> &assignment_list) {
     for (auto &assignment: assignment_list) {
         os << assignment << "\n";
     }
@@ -54,46 +54,16 @@ Student::Student(const std::string &first_name, const std::string &last_name, co
 float Student::get_average_grade() const {
     int count = 0;
     int sum = 0;
-    for (auto &assignment: mathAssignments) {
-        sum += assignment.get_grade();
-        count++;
-    }
 
-    for (auto &assigment: englishAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: polishAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: historyAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: biologyAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: physicsAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: chemistryAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: geographyAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: computerScienceAssignments) {
-        sum += assigment.get_grade();
-        count++;
-    }
-    for (auto &assigment: physicalEducationAssignments) {
-        sum += assigment.get_grade();
-        count++;
+    for (auto &assignments: {
+             mathAssignments, englishAssignments, polishAssignments, historyAssignments, biologyAssignments,
+             physicsAssignments, chemistryAssignments, geographyAssignments, computerScienceAssignments,
+             physicalEducationAssignments
+         }) {
+        for (auto &assignment: assignments) {
+            sum += assignment.get_grade();
+            count++;
+        }
     }
     return sum / count;
 }
@@ -190,43 +160,43 @@ void Student::add_assignment(const Subject &subject, Assigment_graded &assigment
     add_assignment(subject, assigment_graded);
 }
 
-const std::list<Assigment_graded> & Student::get_math_assignments() const {
+const std::list<Assigment_graded> &Student::get_math_assignments() const {
     return mathAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_english_assignments() const {
+const std::list<Assigment_graded> &Student::get_english_assignments() const {
     return englishAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_polish_assignments() const {
+const std::list<Assigment_graded> &Student::get_polish_assignments() const {
     return polishAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_history_assignments() const {
+const std::list<Assigment_graded> &Student::get_history_assignments() const {
     return historyAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_biology_assignments() const {
+const std::list<Assigment_graded> &Student::get_biology_assignments() const {
     return biologyAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_physics_assignments() const {
+const std::list<Assigment_graded> &Student::get_physics_assignments() const {
     return physicsAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_chemistry_assignments() const {
+const std::list<Assigment_graded> &Student::get_chemistry_assignments() const {
     return chemistryAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_geography_assignments() const {
+const std::list<Assigment_graded> &Student::get_geography_assignments() const {
     return geographyAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_computer_science_assignments() const {
+const std::list<Assigment_graded> &Student::get_computer_science_assignments() const {
     return computerScienceAssignments;
 }
 
-const std::list<Assigment_graded> & Student::get_physical_education_assignments() const {
+const std::list<Assigment_graded> &Student::get_physical_education_assignments() const {
     return physicalEducationAssignments;
 }
 
@@ -248,7 +218,7 @@ bool operator!=(const Student &lhs, const Student &rhs) {
     return !(lhs == rhs);
 }
 
-std::ostream & stream_assignments(std::ostream &os, const Subject &subject, const Student &obj) {
+std::ostream &stream_assignments(std::ostream &os, const Subject &subject, const Student &obj) {
     os << "Subject: " << to_string(subject) << "\n";
     const std::list<Assigment_graded> *assignments = nullptr;
     switch (subject) {
@@ -291,6 +261,4 @@ std::ostream & stream_assignments(std::ostream &os, const Subject &subject, cons
         os << assignment << "\n";
     }
     return os;
-
-
 }
