@@ -184,3 +184,43 @@ void Student::add_assignment(const Subject &subject, Assigment_graded &assigment
     assigment_graded.set_grade(grade);
     add_assignment(subject, assigment_graded);
 }
+
+std::list<Assigment_graded> Student::get_math_assignments() const {
+    return mathAssignments;
+}
+
+std::list<Assigment_graded> Student::get_english_assignments() const {
+    return englishAssignments;
+}
+
+std::list<Assigment_graded> Student::get_polish_assignments() const {
+    return polishAssignments;
+}
+
+std::list<Assigment_graded> Student::get_history_assignments() const {
+    return historyAssignments;
+}
+
+std::list<Assigment_graded> Student::get_biology_assignments() const {
+    return biologyAssignments;
+}
+
+std::list<Assigment_graded> Student::get_physics_assignments() const {
+    return physicsAssignments;
+}
+
+std::list<Assigment_graded> Student::get_chemistry_assignments() const {
+    return chemistryAssignments;
+}
+
+std::list<Assigment_graded> Student::get_geography_assignments() const {
+    return geographyAssignments;
+}
+
+std::list<Assigment_graded> Student::get_computer_science_assignments() const {
+    return computerScienceAssignments;
+}
+
+std::list<Assigment_graded> Student::get_physical_education_assignments() const {
+    return physicalEducationAssignments;
+}

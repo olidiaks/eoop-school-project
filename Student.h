@@ -82,6 +82,27 @@ public:
 
     void add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade);
 
+    [[nodiscard]] std::list<Assigment_graded> get_math_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_english_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_polish_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_history_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_biology_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_physics_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_chemistry_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_geography_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_computer_science_assignments() const;
+
+    [[nodiscard]] std::list<Assigment_graded> get_physical_education_assignments() const;
+
+
 };
 
 #endif //PROJECT_STUDENT_H
