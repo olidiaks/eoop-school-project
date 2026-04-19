@@ -54,25 +54,25 @@ public:
 
     [[nodiscard]] float get_average_grade() const;
 
-    [[nondiscard]] float get_average_grade_from_math() const;
+    [[nodiscard]] float get_average_grade_from_math() const;
 
-    [[nondiscard]] float get_average_grade_from_english() const;
+    [[nodiscard]] float get_average_grade_from_english() const;
 
-    [[nondiscard]] float get_average_grade_from_polish() const;
+    [[nodiscard]] float get_average_grade_from_polish() const;
 
-    [[nondiscard]] float get_average_grade_from_history() const;
+    [[nodiscard]] float get_average_grade_from_history() const;
 
-    [[nondiscard]] float get_average_grade_from_biology() const;
+    [[nodiscard]] float get_average_grade_from_biology() const;
 
-    [[nondiscard]] float get_average_grade_from_physics() const;
+    [[nodiscard]] float get_average_grade_from_physics() const;
 
-    [[nondiscard]] float get_average_grade_from_chemistry() const;
+    [[nodiscard]] float get_average_grade_from_chemistry() const;
 
-    [[nondiscard]] float get_average_grade_from_geography() const;
+    [[nodiscard]] float get_average_grade_from_geography() const;
 
-    [[nondiscard]] float get_average_grade_from_computer_science() const;
+    [[nodiscard]] float get_average_grade_from_computer_science() const;
 
-    [[nondiscard]] float get_average_grade_from_physical_education() const;
+    [[nodiscard]] float get_average_grade_from_physical_education() const;
 
     void add_assignment(const Subject &subject, const Assigment &assigment);
 
