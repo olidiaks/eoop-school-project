@@ -68,6 +68,54 @@ float Student::get_average_grade() const {
     return (float)sum / count;
 }
 
+const std::list<Assigment_graded> &Student::get_assignments_from_subject(const Subject &subject) const {
+    switch (subject) {
+        case Subject::Math:
+            return mathAssignments;
+            break;
+        case Subject::English:
+            return englishAssignments;
+            break;
+        case Subject::Polish:
+            return polishAssignments;
+            break;
+        case Subject::History:
+            return historyAssignments;
+            break;
+        case Subject::Biology:
+            return biologyAssignments;
+            break;
+        case Subject::Physics:
+            return physicsAssignments;
+            break;
+        case Subject::Chemistry:
+            return chemistryAssignments;
+            break;
+        case Subject::Geography:
+            return geographyAssignments;
+            break;
+        case Subject::ComputerScience:
+            return computerScienceAssignments;
+            break;
+        case Subject::PhysicalEducation:
+            return physicalEducationAssignments;
+            break;
+    }
+
+}
+
+int Student::get_sum_of_grades_from_students_subjects(const Subject &subject) const {
+    int sum = 0;
+    for (auto &assignment: get_assignments_from_subject(subject)) {
+        sum += assignment.get_grade();
+    }
+    return sum;
+}
+
+int Student::get_count_of_grades_from_students_subjects(const Subject &subject) const {
+    return get_assignments_from_subject(subject).size();
+}
+
 float Student::get_average_grade_from_math() const {
     return get_average_grades_from_subject(mathAssignments);
 }

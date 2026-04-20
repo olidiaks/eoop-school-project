@@ -6,6 +6,7 @@
 #define PROJECT_STUDENT_H
 
 #include <list>
+#include <vector>
 #include <ostream>
 
 #include "Assigment.h"
@@ -53,6 +54,12 @@ public:
             const int &day, const int &month, const int &year);
 
     [[nodiscard]] float get_average_grade() const;
+
+    [[nodiscard]] const std::list<Assigment_graded> &get_assignments_from_subject(const Subject &subject) const;
+
+    [[nodiscard]] int get_sum_of_grades_from_students_subjects(const Subject &subject) const;
+
+    int get_count_of_grades_from_students_subjects(const Subject &subject) const;
 
     [[nodiscard]] float get_average_grade_from_math() const;
 
