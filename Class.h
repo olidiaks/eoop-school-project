@@ -58,7 +58,7 @@ public:
 
     void print_teachers() const;
 
-    Student & get_student(const int &id) const;
+    const Student &get_student(const int &id) const;
 
     [[nodiscard]] int get_students_avarage_grade() const;
 

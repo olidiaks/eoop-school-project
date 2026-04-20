@@ -136,8 +136,12 @@ void Class::print_teachers() const {
     throw std::runtime_error("Method not implemented");
 }
 
-Student &Class::get_student(const int &id) const {
-    throw std::runtime_error("Method not implemented");
+const Student & Class::get_student(const int &id) const {
+    int student_index = find_student_index(id);
+    if (student_index == -1) {
+        throw std::runtime_error("Student with id " + std::to_string(id) + " not found");
+    }
+    return students.at(student_index);
 }
 
 int Class::get_students_avarage_grade() const {
