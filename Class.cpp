@@ -29,11 +29,9 @@ Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_te
                                     physicalEducationTeacher(physical_education_teacher),
                                     superVisingTeacher(super_vising_teacher) {
     id = ++counter;
-    numberOfStudents = 0;
 }
 
 Class::Class(const Class &other): id(other.id),
-                                  numberOfStudents(other.numberOfStudents),
                                   mathTeacher(other.mathTeacher),
                                   englishTeacher(other.englishTeacher),
                                   polishTeacher(other.polishTeacher),
@@ -48,7 +46,6 @@ Class::Class(const Class &other): id(other.id),
 }
 
 Class::Class(Class &&other) noexcept: id(other.id),
-                                      numberOfStudents(other.numberOfStudents),
                                       mathTeacher(other.mathTeacher),
                                       englishTeacher(other.englishTeacher),
                                       polishTeacher(other.polishTeacher),
@@ -66,7 +63,6 @@ Class & Class::operator=(const Class &other) {
     if (this == &other)
         return *this;
     id = other.id;
-    numberOfStudents = other.numberOfStudents;
     mathTeacher = other.mathTeacher;
     englishTeacher = other.englishTeacher;
     polishTeacher = other.polishTeacher;
@@ -85,7 +81,6 @@ Class & Class::operator=(Class &&other) noexcept {
     if (this == &other)
         return *this;
     id = other.id;
-    numberOfStudents = other.numberOfStudents;
     mathTeacher = other.mathTeacher;
     englishTeacher = other.englishTeacher;
     polishTeacher = other.polishTeacher;
@@ -100,8 +95,13 @@ Class & Class::operator=(Class &&other) noexcept {
     return *this;
 }
 
-void Class::add_student(Student student) {
-    throw std::runtime_error("Method not implemented");
+void Class::add_student(const Student &student) {
+    students.push_back(student);
+}
+
+void Class::add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
+    const int &day, const int &month, const int &year) {
+    students.emplace_back(first_name, last_name, email, day, month, year);
 }
 
 bool Class::remove_student(const int &id) const {
@@ -137,7 +137,6 @@ int Class::get_number_of_students() const {
 }
 
 void Class::set_number_of_students(const int number_of_students) {
-    numberOfStudents = number_of_students;
 }
 
 Teacher Class::get_math_teacher() const {

@@ -4,7 +4,7 @@
 
 #ifndef PROJECT_CLASS_H
 #define PROJECT_CLASS_H
-#include <list>
+#include <vector>
 #include <ostream>
 
 #include "Student.h"
@@ -14,7 +14,6 @@
 class Class {
 private:
     int id;
-    int numberOfStudents;
     Teacher &mathTeacher;
     Teacher &englishTeacher;
     Teacher &polishTeacher;
@@ -26,7 +25,7 @@ private:
     Teacher &computerScienceTeacher;
     Teacher &physicalEducationTeacher;
     Teacher &superVisingTeacher;
-    std::list<Student> students;
+    std::vector<Student> students;
     static int counter;
 
     std::ostream & list_students(std::ostream &os);
@@ -45,7 +44,10 @@ public:
 
     Class & operator=(Class &&other) noexcept;
 
-    void add_student(Student student);
+    void add_student(const Student &student);
+
+    void add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
+            const int &day, const int &month, const int &year);
 
     bool remove_student(const int &id) const;
 
