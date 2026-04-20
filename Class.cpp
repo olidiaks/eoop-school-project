@@ -8,14 +8,14 @@
 
 int Class::counter = 0;
 
-std::ostream & Class::list_students(std::ostream &os) {
+std::ostream &Class::list_students(std::ostream &os) {
     throw std::runtime_error("Method not implemented");
     return os;
 }
 
 int Class::find_student_index(const int &id) const {
     int i = 0;
-    for (auto student : students) {
+    for (const auto &student: students) {
         if (student.get_id() == id) {
             return i;
         }
@@ -28,50 +28,49 @@ int Class::find_student_index(const int &id) const {
 Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
              Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
              Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
-             Teacher &super_vising_teacher):
-                                    mathTeacher(math_teacher),
-                                    englishTeacher(english_teacher),
-                                    polishTeacher(polish_teacher),
-                                    historyTeacher(history_teacher),
-                                    biologyTeacher(biology_teacher),
-                                    physicsTeacher(physics_teacher),
-                                    chemistryTeacher(chemistry_teacher),
-                                    geographyTeacher(geography_teacher),
-                                    computerScienceTeacher(computer_science_teacher),
-                                    physicalEducationTeacher(physical_education_teacher),
-                                    superVisingTeacher(super_vising_teacher) {
+             Teacher &super_vising_teacher) : mathTeacher(math_teacher),
+                                              englishTeacher(english_teacher),
+                                              polishTeacher(polish_teacher),
+                                              historyTeacher(history_teacher),
+                                              biologyTeacher(biology_teacher),
+                                              physicsTeacher(physics_teacher),
+                                              chemistryTeacher(chemistry_teacher),
+                                              geographyTeacher(geography_teacher),
+                                              computerScienceTeacher(computer_science_teacher),
+                                              physicalEducationTeacher(physical_education_teacher),
+                                              superVisingTeacher(super_vising_teacher) {
     id = ++counter;
 }
 
-Class::Class(const Class &other): id(other.id),
-                                  mathTeacher(other.mathTeacher),
-                                  englishTeacher(other.englishTeacher),
-                                  polishTeacher(other.polishTeacher),
-                                  historyTeacher(other.historyTeacher),
-                                  biologyTeacher(other.biologyTeacher),
-                                  physicsTeacher(other.physicsTeacher),
-                                  chemistryTeacher(other.chemistryTeacher),
-                                  geographyTeacher(other.geographyTeacher),
-                                  computerScienceTeacher(other.computerScienceTeacher),
-                                  physicalEducationTeacher(other.physicalEducationTeacher),
-                                  superVisingTeacher(other.superVisingTeacher) {
+Class::Class(const Class &other) : id(other.id),
+                                   mathTeacher(other.mathTeacher),
+                                   englishTeacher(other.englishTeacher),
+                                   polishTeacher(other.polishTeacher),
+                                   historyTeacher(other.historyTeacher),
+                                   biologyTeacher(other.biologyTeacher),
+                                   physicsTeacher(other.physicsTeacher),
+                                   chemistryTeacher(other.chemistryTeacher),
+                                   geographyTeacher(other.geographyTeacher),
+                                   computerScienceTeacher(other.computerScienceTeacher),
+                                   physicalEducationTeacher(other.physicalEducationTeacher),
+                                   superVisingTeacher(other.superVisingTeacher) {
 }
 
-Class::Class(Class &&other) noexcept: id(other.id),
-                                      mathTeacher(other.mathTeacher),
-                                      englishTeacher(other.englishTeacher),
-                                      polishTeacher(other.polishTeacher),
-                                      historyTeacher(other.historyTeacher),
-                                      biologyTeacher(other.biologyTeacher),
-                                      physicsTeacher(other.physicsTeacher),
-                                      chemistryTeacher(other.chemistryTeacher),
-                                      geographyTeacher(other.geographyTeacher),
-                                      computerScienceTeacher(other.computerScienceTeacher),
-                                      physicalEducationTeacher(other.physicalEducationTeacher),
-                                      superVisingTeacher(other.superVisingTeacher) {
+Class::Class(Class &&other) noexcept : id(other.id),
+                                       mathTeacher(other.mathTeacher),
+                                       englishTeacher(other.englishTeacher),
+                                       polishTeacher(other.polishTeacher),
+                                       historyTeacher(other.historyTeacher),
+                                       biologyTeacher(other.biologyTeacher),
+                                       physicsTeacher(other.physicsTeacher),
+                                       chemistryTeacher(other.chemistryTeacher),
+                                       geographyTeacher(other.geographyTeacher),
+                                       computerScienceTeacher(other.computerScienceTeacher),
+                                       physicalEducationTeacher(other.physicalEducationTeacher),
+                                       superVisingTeacher(other.superVisingTeacher) {
 }
 
-Class & Class::operator=(const Class &other) {
+Class &Class::operator=(const Class &other) {
     if (this == &other)
         return *this;
     id = other.id;
@@ -89,7 +88,7 @@ Class & Class::operator=(const Class &other) {
     return *this;
 }
 
-Class & Class::operator=(Class &&other) noexcept {
+Class &Class::operator=(Class &&other) noexcept {
     if (this == &other)
         return *this;
     id = other.id;
@@ -112,13 +111,16 @@ void Class::add_student(const Student &student) {
 }
 
 void Class::add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
-    const int &day, const int &month, const int &year) {
+                        const int &day, const int &month, const int &year) {
     students.emplace_back(first_name, last_name, email, day, month, year);
 }
 
 bool Class::remove_student(const int &id) {
-
-    students.erase();
+    int student_index = find_student_index(id);
+    if (student_index == -1) {
+        return false;
+    }
+    students.erase(students.begin() + student_index);
 }
 
 bool Class::is_student_in_class(const int &id) const {
@@ -129,7 +131,7 @@ void Class::print_students() const {
     throw std::runtime_error("Method not implemented");
 }
 
-std::string & Class::format_students() const {
+std::string &Class::format_students() const {
     throw std::runtime_error("Method not implemented");
 }
 
@@ -137,7 +139,7 @@ void Class::print_teachers() const {
     throw std::runtime_error("Method not implemented");
 }
 
-Student & Class::get_student(const int &id) const {
+Student &Class::get_student(const int &id) const {
     throw std::runtime_error("Method not implemented");
 }
 
@@ -247,9 +249,9 @@ float Class::get_average_grade_from_subject(const std::string &subject) const {
 
 
 bool operator==(const Class &lhs, const Class &rhs) {
-    for (const auto &student : lhs.students) {
+    for (const auto &student: lhs.students) {
         bool is_equal = false;
-        for (const auto &other_student : rhs.students) {
+        for (const auto &other_student: rhs.students) {
             if (student == other_student) {
                 is_equal = true;
             }
@@ -276,7 +278,7 @@ bool operator!=(const Class &lhs, const Class &rhs) {
     return !(lhs == rhs);
 }
 
-std::ostream & operator<<(std::ostream &os, const Class &obj) {
+std::ostream &operator<<(std::ostream &os, const Class &obj) {
     return os
            << "id: " << obj.id
            << " mathTeacher: " << obj.mathTeacher
@@ -290,7 +292,7 @@ std::ostream & operator<<(std::ostream &os, const Class &obj) {
            << " computerScienceTeacher: " << obj.computerScienceTeacher
            << " physicalEducationTeacher: " << obj.physicalEducationTeacher
            << " superVisingTeacher: " << obj.superVisingTeacher
-            << " students: " << obj.format_students();
+           << " students: " << obj.format_students();
 }
 
 void swap(Class &lhs, Class &rhs) noexcept {
@@ -310,7 +312,7 @@ void swap(Class &lhs, Class &rhs) noexcept {
     swap(lhs.students, rhs.students);
 }
 
-std::istream & operator>>(std::istream &is, Class &obj) {
+std::istream &operator>>(std::istream &is, Class &obj) {
     throw std::runtime_error("Method not implemented");
     return is;
 }
