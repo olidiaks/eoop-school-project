@@ -28,7 +28,6 @@ private:
     std::vector<Student> students;
     static int counter;
 
-    std::ostream & list_students(std::ostream &os);
     int find_student_index(const int &id) const;
 
 public:

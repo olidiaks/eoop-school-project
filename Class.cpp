@@ -8,11 +8,6 @@
 
 int Class::counter = 0;
 
-std::ostream &Class::list_students(std::ostream &os) {
-    throw std::runtime_error("Method not implemented");
-    return os;
-}
-
 int Class::find_student_index(const int &id) const {
     int i = 0;
     for (const auto &student: students) {
