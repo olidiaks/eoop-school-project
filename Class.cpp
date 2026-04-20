@@ -129,7 +129,7 @@ bool Class::is_student_in_class(const int &id) const {
 }
 
 void Class::print_students() const {
-    throw std::runtime_error("Method not implemented");
+    std::cout << students << std::endl;
 }
 
 void Class::print_teachers() const {
