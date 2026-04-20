@@ -139,7 +139,7 @@ const Student & Class::get_student(const int &id) const {
     return students.at(student_index);
 }
 
-int Class::get_students_avarage_grade() const {
+int Class::get_avarage_grade_of_class_from_subject() const {
     throw std::runtime_error("Method not implemented");
 }
 

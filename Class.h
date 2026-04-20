@@ -59,7 +59,7 @@ public:
 
     const Student &get_student(const int &id) const;
 
-    [[nodiscard]] int get_students_avarage_grade() const;
+    [[nodiscard]] int get_avarage_grade_of_class_from_subject() const;
 
     friend bool operator==(const Class &lhs, const Class &rhs);
 
