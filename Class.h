@@ -29,6 +29,7 @@ private:
     static int counter;
 
     std::ostream & list_students(std::ostream &os);
+    int find_student_index(const int &id) const;
 
 public:
     Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
@@ -49,7 +50,7 @@ public:
     void add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
             const int &day, const int &month, const int &year);
 
-    bool remove_student(const int &id) const;
+    bool remove_student(const int &id);
 
     [[nodiscard]] bool is_student_in_class(const int &id) const;
 

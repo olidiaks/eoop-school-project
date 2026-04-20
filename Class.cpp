@@ -13,10 +13,22 @@ std::ostream & Class::list_students(std::ostream &os) {
     return os;
 }
 
+int Class::find_student_index(const int &id) const {
+    int i = 0;
+    for (auto student : students) {
+        if (student.get_id() == id) {
+            return i;
+        }
+        i++;
+    }
+
+    return -1;
+}
+
 Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
-    Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
-    Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
-    Teacher &super_vising_teacher):
+             Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
+             Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
+             Teacher &super_vising_teacher):
                                     mathTeacher(math_teacher),
                                     englishTeacher(english_teacher),
                                     polishTeacher(polish_teacher),
@@ -104,8 +116,9 @@ void Class::add_student(const std::string &first_name, const std::string &last_n
     students.emplace_back(first_name, last_name, email, day, month, year);
 }
 
-bool Class::remove_student(const int &id) const {
-    throw std::runtime_error("Method not implemented");
+bool Class::remove_student(const int &id) {
+
+    students.erase();
 }
 
 bool Class::is_student_in_class(const int &id) const {
