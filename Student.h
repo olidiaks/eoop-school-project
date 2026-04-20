@@ -108,20 +108,7 @@ public:
 
     friend bool operator!=(const Student &lhs, const Student &rhs);
 
-    friend std::ostream & operator<<(std::ostream &os, const Student &obj) {
-        return os
-               << static_cast<const Person &>(obj)
-               << " mathAssignments: " << obj.mathAssignments
-               << " englishAssignments: " << obj.englishAssignments
-               << " polishAssignments: " << obj.polishAssignments
-               << " historyAssignments: " << obj.historyAssignments
-               << " biologyAssignments: " << obj.biologyAssignments
-               << " physicsAssignments: " << obj.physicsAssignments
-               << " chemistryAssignments: " << obj.chemistryAssignments
-               << " geographyAssignments: " << obj.geographyAssignments
-               << " computerScienceAssignments: " << obj.computerScienceAssignments
-               << " physicalEducationAssignments: " << obj.physicalEducationAssignments;
-    }
+    friend std::ostream & operator<<(std::ostream &os, const Student &obj);
 
     friend std::ostream & stream_assignments(std::ostream & os, const Subject &subject, const Student &obj);
 };
