@@ -56,7 +56,7 @@ public:
 
     void print_students() const;
 
-    std::string & format_students () const;
+    std::string & format_students (std::ostream &result) const;
 
     void print_teachers() const;
 
@@ -125,6 +125,7 @@ public:
     [[nodiscard]] float get_average_grade_from_subject(const std::string &subject) const;
 };
 
+std::ostream & operator<<(std::ostream & os, const std::vector<Student> & students);
 
 
 

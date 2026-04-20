@@ -121,6 +121,7 @@ bool Class::remove_student(const int &id) {
         return false;
     }
     students.erase(students.begin() + student_index);
+    return true;
 }
 
 bool Class::is_student_in_class(const int &id) const {
@@ -131,8 +132,13 @@ void Class::print_students() const {
     throw std::runtime_error("Method not implemented");
 }
 
-std::string &Class::format_students() const {
+std::string &Class::format_students(std::ostream &result) const {
+
+
     throw std::runtime_error("Method not implemented");
+    for (const auto &student : students) {
+        result <<student << std::endl;
+    }
 }
 
 void Class::print_teachers() const {
@@ -278,6 +284,14 @@ bool operator!=(const Class &lhs, const Class &rhs) {
     return !(lhs == rhs);
 }
 
+
+std::ostream & operator<<(std::ostream &os, const std::vector<Student> &students) {
+    for (const Student &student: students) {
+        os<<student<<std::endl;
+    }
+    return os;
+}
+
 std::ostream &operator<<(std::ostream &os, const Class &obj) {
     return os
            << "id: " << obj.id
@@ -292,7 +306,7 @@ std::ostream &operator<<(std::ostream &os, const Class &obj) {
            << " computerScienceTeacher: " << obj.computerScienceTeacher
            << " physicalEducationTeacher: " << obj.physicalEducationTeacher
            << " superVisingTeacher: " << obj.superVisingTeacher
-           << " students: " << obj.format_students();
+           << " students: " << obj.students;
 }
 
 void swap(Class &lhs, Class &rhs) noexcept {
