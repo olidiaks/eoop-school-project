@@ -132,13 +132,6 @@ int Class::get_students_avarage_grade() const {
     throw std::runtime_error("Method not implemented");
 }
 
-int Class::get_number_of_students() const {
-    return numberOfStudents;
-}
-
-void Class::set_number_of_students(const int number_of_students) {
-}
-
 Teacher Class::get_math_teacher() const {
     return mathTeacher;
 }
@@ -253,7 +246,6 @@ bool operator==(const Class &lhs, const Class &rhs) {
         }
     }
     return lhs.id == rhs.id
-           && lhs.numberOfStudents == rhs.numberOfStudents
            && lhs.mathTeacher == rhs.mathTeacher
            && lhs.englishTeacher == rhs.englishTeacher
            && lhs.polishTeacher == rhs.polishTeacher
@@ -274,7 +266,6 @@ bool operator!=(const Class &lhs, const Class &rhs) {
 std::ostream & operator<<(std::ostream &os, const Class &obj) {
     return os
            << "id: " << obj.id
-           << " numberOfStudents: " << obj.numberOfStudents
            << " mathTeacher: " << obj.mathTeacher
            << " englishTeacher: " << obj.englishTeacher
            << " polishTeacher: " << obj.polishTeacher
@@ -292,7 +283,6 @@ std::ostream & operator<<(std::ostream &os, const Class &obj) {
 void swap(Class &lhs, Class &rhs) noexcept {
     using std::swap;
     swap(lhs.id, rhs.id);
-    swap(lhs.numberOfStudents, rhs.numberOfStudents);
     swap(lhs.mathTeacher, rhs.mathTeacher);
     swap(lhs.englishTeacher, rhs.englishTeacher);
     swap(lhs.polishTeacher, rhs.polishTeacher);

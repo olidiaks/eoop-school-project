@@ -73,10 +73,6 @@ public:
 
     friend std::istream & operator>>(std::istream &is, Class &obj);
 
-    [[nodiscard]] int get_number_of_students() const;
-
-    void set_number_of_students(const int number_of_students);
-
     [[nodiscard]] Teacher get_math_teacher() const;
 
     void set_math_teacher(const Teacher &math_teacher);
