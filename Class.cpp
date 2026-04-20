@@ -131,7 +131,7 @@ void Class::print_teachers() const {
     throw std::runtime_error("Method not implemented");
 }
 
-const Student & Class::get_student(const int &id) const {
+const Student &Class::get_student(const int &id) const {
     int student_index = find_student_index(id);
     if (student_index == -1) {
         throw std::runtime_error("Student with id " + std::to_string(id) + " not found");
@@ -139,8 +139,19 @@ const Student & Class::get_student(const int &id) const {
     return students.at(student_index);
 }
 
-int Class::get_avarage_grade_of_class_from_subject() const {
-    throw std::runtime_error("Method not implemented");
+int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const {
+    int sum = 0;
+    int count = 0;
+    for (const auto &student: students) {
+        sum += student.get_sum_of_grades_from_students_subjects(subject);
+        count += student.get_count_of_grades_from_students_subjects(subject);
+    }
+
+    if (count == 0) {
+        return 0;
+    }
+    
+    return sum / count;
 }
 
 Teacher Class::get_math_teacher() const {
@@ -275,9 +286,9 @@ bool operator!=(const Class &lhs, const Class &rhs) {
 }
 
 
-std::ostream & operator<<(std::ostream &os, const std::vector<Student> &students) {
+std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students) {
     for (const Student &student: students) {
-        os<<student<<std::endl;
+        os << student << std::endl;
     }
     return os;
 }
