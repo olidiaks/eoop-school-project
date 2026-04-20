@@ -132,15 +132,6 @@ void Class::print_students() const {
     throw std::runtime_error("Method not implemented");
 }
 
-std::string &Class::format_students(std::ostream &result) const {
-
-
-    throw std::runtime_error("Method not implemented");
-    for (const auto &student : students) {
-        result <<student << std::endl;
-    }
-}
-
 void Class::print_teachers() const {
     throw std::runtime_error("Method not implemented");
 }

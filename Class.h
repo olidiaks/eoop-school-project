@@ -56,8 +56,6 @@ public:
 
     void print_students() const;
 
-    std::string & format_students (std::ostream &result) const;
-
     void print_teachers() const;
 
     Student & get_student(const int &id) const;
