@@ -124,7 +124,7 @@ bool Class::remove_student(const int &id) {
 }
 
 bool Class::is_student_in_class(const int &id) const {
-    throw std::runtime_error("Method not implemented");
+    return find_student_index(id) != -1;
 }
 
 void Class::print_students() const {
