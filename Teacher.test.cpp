@@ -13,22 +13,22 @@ TEST(teacher_test_suite, teacher_test_default_constructor) {
     EXPECT_EQ(t.get_last_name(), "");
     EXPECT_EQ(t.get_email(), "");
     EXPECT_EQ(t.get_salary(), 0);
-    EXPECT_EQ(t.get_subject(), "");
+    EXPECT_EQ(t.get_subject(), Subject::None);
 }
 
 TEST(teacher_test_suite, teacher_test_parameterized_constructor_with_time_t) {
     time_t now = time(nullptr);
-    Teacher t("John", "Smith", "john.smith@school.com", now, 5000, "Math");
+    Teacher t("John", "Smith", "john.smith@school.com", now, 5000, Subject::Math);
     EXPECT_EQ(t.get_first_name(), "John");
     EXPECT_EQ(t.get_last_name(), "Smith");
     EXPECT_EQ(t.get_email(), "john.smith@school.com");
     EXPECT_EQ(t.get_birth_date(), now);
     EXPECT_EQ(t.get_salary(), 5000);
-    EXPECT_EQ(t.get_subject(), "Math");
+    EXPECT_EQ(t.get_subject(), Subject::Math);
 }
 
 TEST(teacher_test_suite, teacher_test_parameterized_constructor_with_date) {
-    Teacher t("Jane", "Doe", "jane.doe@school.com", 1, 1, 1980, 6000, "Physics");
+    Teacher t("Jane", "Doe", "jane.doe@school.com", 1, 1, 1980, 6000, Subject::Physics);
     EXPECT_EQ(t.get_first_name(), "Jane");
     EXPECT_EQ(t.get_last_name(), "Doe");
     EXPECT_EQ(t.get_email(), "jane.doe@school.com");
@@ -36,7 +36,7 @@ TEST(teacher_test_suite, teacher_test_parameterized_constructor_with_date) {
     EXPECT_EQ(t.get_month_of_birth(), 1);
     EXPECT_EQ(t.get_day_of_birth(), 1);
     EXPECT_EQ(t.get_salary(), 6000);
-    EXPECT_EQ(t.get_subject(), "Physics");
+    EXPECT_EQ(t.get_subject(), Subject::Physics);
 }
 
 TEST(teacher_test_suite, teacher_test_set_salary) {
@@ -46,45 +46,45 @@ TEST(teacher_test_suite, teacher_test_set_salary) {
 }
 
 TEST(teacher_test_suite, teacher_test_copy_constructor) {
-    Teacher t1("Alice", "Brown", "alice@school.com", 123456789, 5500, "Biology");
+    Teacher t1("Alice", "Brown", "alice@school.com", 123456789, 5500, Subject::Biology);
     Teacher t2(t1);
     EXPECT_EQ(t2.get_first_name(), "Alice");
     EXPECT_EQ(t2.get_salary(), 5500);
-    EXPECT_EQ(t2.get_subject(), "Biology");
+    EXPECT_EQ(t2.get_subject(), Subject::Biology);
     EXPECT_EQ(t2, t1);
 }
 
 TEST(teacher_test_suite, teacher_test_move_constructor) {
-    Teacher t1("Bob", "White", "bob@school.com", 987654321, 4500, "History");
+    Teacher t1("Bob", "White", "bob@school.com", 987654321, 4500, Subject::History);
     Teacher t2(std::move(t1));
     EXPECT_EQ(t2.get_first_name(), "Bob");
     EXPECT_EQ(t2.get_salary(), 4500);
-    EXPECT_EQ(t2.get_subject(), "History");
+    EXPECT_EQ(t2.get_subject(), Subject::History);
 }
 
 TEST(teacher_test_suite, teacher_test_copy_assignment) {
-    Teacher t1("Charlie", "Black", "charlie@school.com", 1000, 4000, "Art");
+    Teacher t1("Charlie", "Black", "charlie@school.com", 1000, 4000, Subject::History);
     Teacher t2;
     t2 = t1;
     EXPECT_EQ(t2.get_first_name(), "Charlie");
     EXPECT_EQ(t2.get_salary(), 4000);
-    EXPECT_EQ(t2.get_subject(), "Art");
+    EXPECT_EQ(t2.get_subject(), Subject::History);
     EXPECT_EQ(t2, t1);
 }
 
 TEST(teacher_test_suite, teacher_test_move_assignment) {
-    Teacher t1("David", "Green", "david@school.com", 2000, 4200, "Music");
+    Teacher t1("David", "Green", "david@school.com", 2000, 4200, Subject::History);
     Teacher t2;
     t2 = std::move(t1);
     EXPECT_EQ(t2.get_first_name(), "David");
     EXPECT_EQ(t2.get_salary(), 4200);
-    EXPECT_EQ(t2.get_subject(), "Music");
+    EXPECT_EQ(t2.get_subject(), Subject::History);
 }
 
 TEST(teacher_test_suite, teacher_test_equality_operator) {
-    Teacher t1("John", "Smith", "john@school.com", 1000, 5000, "Math");
-    Teacher t2("John", "Smith", "john@school.com", 1000, 5000, "Math");
-    Teacher t3("Jane", "Smith", "jane@school.com", 1000, 5000, "Math");
+    Teacher t1("John", "Smith", "john@school.com", 1000, 5000, Subject::Math);
+    Teacher t2("John", "Smith", "john@school.com", 1000, 5000, Subject::Math);
+    Teacher t3("Jane", "Smith", "jane@school.com", 1000, 5000, Subject::Math);
 
     EXPECT_TRUE(t1 == t1);
     EXPECT_FALSE(t1 == t2);
@@ -92,15 +92,15 @@ TEST(teacher_test_suite, teacher_test_equality_operator) {
 }
 
 TEST(teacher_test_suite, teacher_test_inequality_operator) {
-    Teacher t1("John", "Smith", "john@school.com", 1000, 5000, "Math");
-    Teacher t2("Jane", "Smith", "jane@school.com", 1000, 5000, "Math");
+    Teacher t1("John", "Smith", "john@school.com", 1000, 5000, Subject::Math);
+    Teacher t2("Jane", "Smith", "jane@school.com", 1000, 5000, Subject::Math);
 
     EXPECT_TRUE(t1 != t2);
     EXPECT_FALSE(t1 != t1);
 }
 
 TEST(teacher_test_suite, teacher_test_output_operator) {
-    Teacher t("John", "Doe", "john@school.com", 15, 4, 1990, 5000, "Math");
+    Teacher t("John", "Doe", "john@school.com", 15, 4, 1990, 5000, Subject::Math);
     std::stringstream ss;
     ss << t;
 
