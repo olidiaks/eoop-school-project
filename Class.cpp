@@ -128,7 +128,18 @@ void Class::print_students() const {
 }
 
 void Class::print_teachers() const {
-    throw std::runtime_error("Method not implemented");
+    std::cout << " mathTeacher: " << mathTeacher
+            << " englishTeacher: " << englishTeacher
+            << " polishTeacher: " << polishTeacher
+            << " historyTeacher: " << historyTeacher
+            << " biologyTeacher: " << biologyTeacher
+            << " physicsTeacher: " << physicsTeacher
+            << " chemistryTeacher: " << chemistryTeacher
+            << " geographyTeacher: " << geographyTeacher
+            << " computerScienceTeacher: " << computerScienceTeacher
+            << " physicalEducationTeacher: " << physicalEducationTeacher
+            << " superVisingTeacher: " << superVisingTeacher
+            << " students: " << students << std::endl;
 }
 
 const Student &Class::get_student(const int &id) const {
