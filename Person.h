@@ -28,10 +28,12 @@ private:
 
 public:
     /**
-     * @brief Default constructor initializing a Person with placeholder values.
-     * 
-     * Sets the ID to -1 and leaves strings empty. The birth date is set to 0 (Epoch start).
-     * This constructor does NOT increment the global ID counter.
+     * @brief Constructs a default instance of the Person class.
+     *
+     * Initializes the Person object with default values for all properties.
+     * The ID is set to -1, names and email are set to empty strings, and the birth date is initialized to 0.
+     *
+     * @return A fully constructed Person object with default property values.
      */
     Person();
 
