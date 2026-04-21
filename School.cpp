@@ -309,3 +309,12 @@ void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher 
                          chemistry_teacher, geography_teacher, computer_science_teacher, physical_education_teacher,
                          super_vising_teacher, students, letter, is_graduated);
 }
+
+void School::remove_class(int year, char letter) {
+    auto it = std::ranges::find_if(classes, [year, letter](const Class &c) {
+        return c.get_year() == year && c.get_letter() == letter;
+    });
+    if (it != classes.end()) {
+        classes.erase(it);
+    }
+}

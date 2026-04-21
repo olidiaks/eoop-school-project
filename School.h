@@ -131,6 +131,8 @@ public:
                     Teacher &geography_teacher,  Teacher &computer_science_teacher,  Teacher &physical_education_teacher,
                     Teacher &super_vising_teacher, char letter,  std::vector<Student> &students, bool is_graduated);
 
+    void remove_class(int year, char letter);
+
 };
 
 
