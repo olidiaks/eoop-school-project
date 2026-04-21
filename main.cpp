@@ -34,7 +34,7 @@ std::vector<Student> generateStudentSquad(int classNum, char classLetter) {
     for (int i = 0; i < 20; ++i) {
         std::string fn = firstNames[(classNum * 20 + i) % 30];
         std::string ln = lastNames[(classNum * 20 + i) % 20];
-        std::string email = fn + "." + ln + std::to_string(classNum) + classLetter + "@academy.edu";
+        std::string email = fn + "." + ln + std::to_string(classNum + 1) + classLetter + "@academy.edu";
         squad.emplace_back(fn, ln, email, 1 + (i % 28), 1 + (i % 12), 2012);
     }
     return squad;
@@ -49,9 +49,29 @@ void printClassStudents(const std::string& className, const std::vector<Student>
     }
 }
 
+// Global random engine for grading
+std::mt19937 g_rng(1337);
+
+void performIndividualGrading(Class& c, Subject sub, const std::string& name, const std::string& desc) {
+    Assigment task(name, desc, to_string(sub));
+    std::cout << "\n    >>> Grading Session: '" << name << "' (" << to_string(sub) << ") <<<" << std::endl;
+    std::cout << "    " << std::left << std::setw(25) << "STUDENT NAME" << " | " << "GRADE" << std::endl;
+    std::cout << "    ------------------------------------------" << std::endl;
+    
+    std::uniform_int_distribution<int> dist(2, 5); // Grades from 2 to 5
+    
+    for (auto& student : c.get_students()) {
+        int grade = dist(g_rng);
+        student.add_assignment(sub, task, grade);
+        std::cout << "    " << std::left << std::setw(25) << (student.get_first_name() + " " + student.get_last_name())
+                  << " |   " << grade << std::endl;
+    }
+}
+
 int main() {
     std::cout << "============================================================================" << std::endl;
-    std::cout << "          WELCOME TO THE GRAND ACADEMY OF EXCELLENCE SIMULATION             " << std::endl;
+    std::cout
+    << "          WELCOME TO THE GRAND ACADEMY OF EXCELLENCE SIMULATION             " << std::endl;
     std::cout << "============================================================================" << std::endl;
 
     /* --- PROLOGUE: THE FACULTY --- */
@@ -69,113 +89,91 @@ int main() {
     Teacher tPE("Usain", "Bolt", "fastest.man@academy.edu", 21, 8, 1986, 9500, Subject::PhysicalEducation);
     Teacher tSuper("Socrates", "Athens", "the.gadfly@academy.edu", 1, 1, 1900, 8000, Subject::None);
 
-    std::cout << "The faculty has been hired. The starting budget for salaries is significant." << std::endl;
-    std::cout << "Einstein starts at $" << tMath.get_salary() << ", Lovelace at $" << tCS.get_salary() << "." << std::endl;
+    std::cout << "The faculty has been hired. Starting salaries:" << std::endl;
+    std::cout << "  Einstein: $" << tMath.get_salary() << " | Lovelace: $" << tCS.get_salary() << std::endl;
 
     /* --- YEAR 1: THE SPARK --- */
     std::cout << "\n>>> YEAR 1: THE SPARK (Foundations of Logic) <<<" << std::endl;
-    std::cout << "In the first year, 100 students arrive, full of hope and terror." << std::endl;
-    
     School theAcademy;
     theAcademy.set_name("The Grand Academy");
 
     char letters[] = {'A', 'B', 'C', 'D', 'E'};
-    std::vector<std::vector<Student>> allStudentSquads;
     std::vector<Class> academyClasses;
 
     for (int i = 0; i < 5; ++i) {
         std::vector<Student> squad = generateStudentSquad(i, letters[i]);
-        allStudentSquads.push_back(squad);
         Class newClass(tMath, tEng, tPol, tHis, tBio, tPhy, tChe, tGeo, tCS, tPE, tSuper, squad, 1, letters[i]);
         academyClasses.push_back(newClass);
-        
-        std::string className = "Class 1";
-        className += letters[i];
-        printClassStudents(className, squad);
+        printClassStudents("Class 1" + std::string(1, letters[i]), squad);
     }
 
-    std::cout << "\nEinstein and Lovelace take the lead. The students struggle with early calculus." << std::endl;
+    std::cout << "\nEinstein and Lovelace take the lead. Performing individual grading..." << std::endl;
     for (auto& c : academyClasses) {
-        c.add_assignment(Subject::Math, Assigment("Calculus I", "The math of change.", "Math"), 5);
-        c.add_assignment(Subject::ComputerScience, Assigment("Logic Gates", "0s and 1s.", "ComputerScience"), 4);
+        std::cout << "\n[CLASS 1" << c.get_letter() << " LEDGER]" << std::endl;
+        performIndividualGrading(c, Subject::Math, "Calculus Basics", "Derivatives and Integrals.");
+        performIndividualGrading(c, Subject::ComputerScience, "Logic Circuits", "AND, OR, NOT gates.");
     }
 
-    std::cout << "\n[PROMOTION] End of Year 1: The Board is impressed by the logic results." << std::endl;
+    std::cout << "\n[PROMOTION] Year 1: Einstein and Lovelace receive raises." << std::endl;
     tMath.set_salary(tMath.get_salary() + 1000);
     tCS.set_salary(tCS.get_salary() + 1500);
-    std::cout << "  Einstein's salary is now $" << tMath.get_salary() << std::endl;
-    std::cout << "  Lovelace's salary is now $" << tCS.get_salary() << " (Highest Raise!)" << std::endl;
-
     wait_for_user("Moving to Year 2...");
 
     /* --- YEAR 2: THE NATURAL WORLD --- */
     std::cout << "\n>>> YEAR 2: THE NATURAL WORLD (Life and Matter) <<<" << std::endl;
     for (auto& c : academyClasses) c.new_school_year();
 
-    std::cout << "Darwin takes the students to the Galapagos on a virtual voyage." << std::endl;
-    std::cout << "Marie Curie demonstrates the beauty of the atom, while keeping the classroom safe." << std::endl;
-    
+    std::cout << "Darwin and Curie begin their specialized curriculum." << std::endl;
     for (auto& c : academyClasses) {
-        std::cout << "  Class 2" << c.get_letter() << " is discovering the secrets of DNA and the Periodic Table." << std::endl;
-        c.add_assignment(Subject::Biology, Assigment("Natural Selection", "Survival of the fittest.", "Biology"), 5);
-        c.add_assignment(Subject::Chemistry, Assigment("Radioactivity", "Polonium and Radium.", "Chemistry"), 5);
+        std::cout << "\n[CLASS 2" << c.get_letter() << " LEDGER]" << std::endl;
+        performIndividualGrading(c, Subject::Biology, "Natural Selection", "Survival of the fittest.");
+        performIndividualGrading(c, Subject::Chemistry, "Radioactive Decay", "Half-life calculations.");
     }
 
-    std::cout << "\n[PROMOTION] End of Year 2: Natural sciences are flourishing." << std::endl;
+    std::cout << "\n[PROMOTION] Year 2: Darwin and Curie receive raises." << std::endl;
     tBio.set_salary(tBio.get_salary() + 1200);
     tChe.set_salary(tChe.get_salary() + 1200);
-    std::cout << "  Darwin's salary is now $" << tBio.get_salary() << std::endl;
-    std::cout << "  Curie's salary is now $" << tChe.get_salary() << std::endl;
-
     wait_for_user("Moving to Year 3...");
 
     /* --- YEAR 3: THE HUMAN SOUL --- */
     std::cout << "\n>>> YEAR 3: THE HUMAN SOUL (Literature and Time) <<<" << std::endl;
     for (auto& c : academyClasses) c.new_school_year();
 
-    std::cout << "Shakespeare demands a tragedy from every student. Mickiewicz recites epics." << std::endl;
-    std::cout << "Herodotus tells tales of ancient wars that feel modern." << std::endl;
-    
+    std::cout << "Shakespeare, Mickiewicz, and Herodotus explore the depths of humanity." << std::endl;
     for (auto& c : academyClasses) {
-        std::cout << "  Class 3" << c.get_letter() << " is diving into the complexities of human nature." << std::endl;
-        c.add_assignment(Subject::English, Assigment("Hamlet Deep-Dive", "To be or not to be.", "English"), 4);
-        c.add_assignment(Subject::History, Assigment("The Peloponnesian War", "Power and Pride.", "History"), 4);
-        c.add_assignment(Subject::Polish, Assigment("Pan Tadeusz", "National Identity.", "Polish"), 5);
+        std::cout << "\n[CLASS 3" << c.get_letter() << " LEDGER]" << std::endl;
+        performIndividualGrading(c, Subject::English, "Hamlet Analysis", "To be or not to be.");
+        performIndividualGrading(c, Subject::History, "Peloponnesian War", "Conflict of empires.");
+        performIndividualGrading(c, Subject::Polish, "Epic Poetry", "Pan Tadeusz study.");
     }
 
-    std::cout << "\n[PROMOTION] End of Year 3: The students have found their voices." << std::endl;
+    std::cout << "\n[PROMOTION] Year 3: The humanities faculty receive raises." << std::endl;
     tEng.set_salary(tEng.get_salary() + 1000);
     tPol.set_salary(tPol.get_salary() + 1000);
     tHis.set_salary(tHis.get_salary() + 1000);
-    std::cout << "  Shakespeare's salary: $" << tEng.get_salary() << " | Mickiewicz: $" << tPol.get_salary() << " | Herodotus: $" << tHis.get_salary() << std::endl;
-
     wait_for_user("Moving to Year 4...");
 
     /* --- YEAR 4: THE UNIVERSAL LAWS --- */
     std::cout << "\n>>> YEAR 4: THE UNIVERSAL LAWS (Final Frontiers) <<<" << std::endl;
     for (auto& c : academyClasses) c.new_school_year();
 
-    std::cout << "Newton finally explains the apple. Humboldt maps the entire Academy grounds." << std::endl;
-    std::cout << "Usain Bolt prepares the students for the physical rigors of the outside world." << std::endl;
-
+    std::cout << "Newton, Humboldt, and Bolt prepare the students for the real world." << std::endl;
     for (auto& c : academyClasses) {
-        std::cout << "  Class 4" << c.get_letter() << " is finalizing their portfolios." << std::endl;
-        c.add_assignment(Subject::Physics, Assigment("Principia Mathematica", "Laws of Motion.", "Physics"), 5);
-        c.add_assignment(Subject::Geography, Assigment("The Cosmos", "Mapping the world.", "Geography"), 4);
-        c.add_assignment(Subject::PhysicalEducation, Assigment("The 100m Dash", "Speed of lightning.", "PhysicalEducation"), 5);
+        std::cout << "\n[CLASS 4" << c.get_letter() << " LEDGER]" << std::endl;
+        performIndividualGrading(c, Subject::Physics, "Laws of Motion", "F = ma.");
+        performIndividualGrading(c, Subject::Geography, "Global Mapping", "The Earth as a system.");
+        performIndividualGrading(c, Subject::PhysicalEducation, "Endurance Test", "The Marathon.");
     }
 
-    std::cout << "\n[PROMOTION] End of Year 4: The final faculty rewards." << std::endl;
+    std::cout << "\n[PROMOTION] Year 4: The physics and PE faculty receive final raises." << std::endl;
     tPhy.set_salary(tPhy.get_salary() + 2000);
     tGeo.set_salary(tGeo.get_salary() + 1000);
     tPE.set_salary(tPE.get_salary() + 500);
-    std::cout << "  Newton's final salary: $" << tPhy.get_salary() << " (Gravity pay-off!)" << std::endl;
-
     wait_for_user("Proceed to Graduation Day...");
 
     /* --- EPILOGUE: THE GRAND GRADUATION --- */
     std::cout << "\n>>> THE GRAND GRADUATION CEREMONY <<<" << std::endl;
-    for (auto& c : academyClasses) c.new_school_year(); // Trigger Year 5 (Graduation)
+    for (auto& c : academyClasses) c.new_school_year();
 
     std::cout << "============================================================================" << std::endl;
     std::cout << "                       FINAL ACADEMIC RECORD BOOK                           " << std::endl;
@@ -184,20 +182,14 @@ int main() {
     for (const auto& c : academyClasses) {
         std::cout << "\n>>> CLASS " << c.get_letter() << " GRADUATION REPORT <<<" << std::endl;
         std::cout << "  Final Class GPA: " << std::fixed << std::setprecision(2) << const_cast<Class&>(c).get_average_grade_of_class() << std::endl;
-        std::cout << "  Math Excellence: " << c.get_average_grade_of_clas_from_subject(Subject::Math) << " / 5.0" << std::endl;
-        std::cout << "  Logic & CS:      " << c.get_average_grade_of_clas_from_subject(Subject::ComputerScience) << " / 5.0" << std::endl;
-        std::cout << "  Humanities:      " << (c.get_average_grade_of_clas_from_subject(Subject::English) + c.get_average_grade_of_clas_from_subject(Subject::History)) / 2.0 << " / 5.0" << std::endl;
-        std::cout << "  Status:          " << (c.is_is_class_graduated() ? "OFFICIALLY GRADUATED" : "PENDING") << std::endl;
+        std::cout << "  Status:          OFFICIALLY GRADUATED" << std::endl;
         std::cout << "  ------------------------------------------------------------------------" << std::endl;
     }
 
-    std::cout << "\n[!] BREAKING: 100 Legends leave the Academy." << std::endl;
-    std::cout << "The Board of Trustees is pleased to announce that the school will continue." << std::endl;
-
     std::cout << "\n--- Final Faculty Financial Audit ---" << std::endl;
-    std::cout << "Total Salary for Einstein: $" << tMath.get_salary() << " (Started at $15000)" << std::endl;
-    std::cout << "Total Salary for Lovelace: $" << tCS.get_salary() << " (Started at $16000)" << std::endl;
-    std::cout << "Total Salary for Newton:   $" << tPhy.get_salary() << " (Started at $14000)" << std::endl;
+    std::cout << "Einstein Final Salary: $" << tMath.get_salary() << std::endl;
+    std::cout << "Lovelace Final Salary: $" << tCS.get_salary() << std::endl;
+    std::cout << "Newton Final Salary:   $" << tPhy.get_salary() << std::endl;
 
     std::cout << "\n============================================================================" << std::endl;
     std::cout << "                END OF THE GRAND ACADEMY SIMULATION                         " << std::endl;
