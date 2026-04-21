@@ -355,3 +355,41 @@ void School::hire_teacher(Teacher &teacher) {
             break;
     }
 }
+
+void School::hire_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
+    const int &day, const int &month, const int &year, const int salary, const Subject &subject) {
+    switch (subject) {
+        case Subject::None:
+            break;
+        case Subject::Math:
+            mathTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::English:
+            englishTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::Polish:
+            polishTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::History:
+            historyTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::Biology:
+            biologyTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::Physics:
+            physicsTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::Chemistry:
+            chemistryTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::Geography:
+            geographyTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::ComputerScience:
+            computerScienceTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+        case Subject::PhysicalEducation:
+            physicalEducationTeachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
+            break;
+    }
+}
