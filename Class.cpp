@@ -23,7 +23,27 @@ int Class::find_student_index(const int &id) const {
 Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
              Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
              Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
-             Teacher &super_vising_teacher) : mathTeacher(math_teacher),
+             Teacher &super_vising_teacher, int year, char letter) : mathTeacher(math_teacher),
+                                                                     englishTeacher(english_teacher),
+                                                                     polishTeacher(polish_teacher),
+                                                                     historyTeacher(history_teacher),
+                                                                     biologyTeacher(biology_teacher),
+                                                                     physicsTeacher(physics_teacher),
+                                                                     chemistryTeacher(chemistry_teacher),
+                                                                     geographyTeacher(geography_teacher),
+                                                                     computerScienceTeacher(computer_science_teacher),
+                                                                     physicalEducationTeacher(
+                                                                         physical_education_teacher),
+                                                                     superVisingTeacher(super_vising_teacher),
+                                                                     year(year), letter(letter),
+                                                                     isClassGraduated(false) {
+    id = ++counter;
+}
+
+Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
+             Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
+             Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
+             const bool is_class_graduated) : mathTeacher(math_teacher),
                                               englishTeacher(english_teacher),
                                               polishTeacher(polish_teacher),
                                               historyTeacher(history_teacher),
@@ -33,8 +53,28 @@ Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_te
                                               geographyTeacher(geography_teacher),
                                               computerScienceTeacher(computer_science_teacher),
                                               physicalEducationTeacher(physical_education_teacher),
-                                              superVisingTeacher(super_vising_teacher) {
+                                              superVisingTeacher(super_vising_teacher),
+                                              isClassGraduated(is_class_graduated), year(-1), letter('\0') {
+}
+
+Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
+             Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
+             Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
+             const char letter) : mathTeacher(math_teacher),
+                                  englishTeacher(english_teacher),
+                                  polishTeacher(polish_teacher),
+                                  historyTeacher(history_teacher),
+                                  biologyTeacher(biology_teacher),
+                                  physicsTeacher(physics_teacher),
+                                  chemistryTeacher(chemistry_teacher),
+                                  geographyTeacher(geography_teacher),
+                                  computerScienceTeacher(computer_science_teacher),
+                                  physicalEducationTeacher(physical_education_teacher),
+                                  superVisingTeacher(super_vising_teacher),
+                                  letter(letter) {
     id = ++counter;
+    year = 1;
+    isClassGraduated = false;
 }
 
 Class::Class(const Class &other) : id(other.id),
@@ -49,7 +89,8 @@ Class::Class(const Class &other) : id(other.id),
                                    computerScienceTeacher(other.computerScienceTeacher),
                                    physicalEducationTeacher(other.physicalEducationTeacher),
                                    superVisingTeacher(other.superVisingTeacher),
-                                   students(other.students) {
+                                   students(other.students), isClassGraduated(other.isClassGraduated), year(other.year),
+                                   letter(other.letter) {
 }
 
 Class::Class(Class &&other) noexcept : id(other.id),
@@ -64,7 +105,8 @@ Class::Class(Class &&other) noexcept : id(other.id),
                                        computerScienceTeacher(other.computerScienceTeacher),
                                        physicalEducationTeacher(other.physicalEducationTeacher),
                                        superVisingTeacher(other.superVisingTeacher),
-                                       students(std::move(other.students)) {
+                                       students(std::move(other.students)), isClassGraduated(other.isClassGraduated),
+                                       year(other.year), letter(other.letter) {
 }
 
 Class &Class::operator=(const Class &other) {
@@ -83,6 +125,9 @@ Class &Class::operator=(const Class &other) {
     physicalEducationTeacher = other.physicalEducationTeacher;
     superVisingTeacher = other.superVisingTeacher;
     students = other.students;
+    isClassGraduated = other.isClassGraduated;
+    year = other.year;
+    letter = other.letter;
     return *this;
 }
 
@@ -102,7 +147,22 @@ Class &Class::operator=(Class &&other) noexcept {
     physicalEducationTeacher = other.physicalEducationTeacher;
     superVisingTeacher = other.superVisingTeacher;
     students = std::move(other.students);
+    isClassGraduated = other.isClassGraduated;
+    year = other.year;
+    letter = other.letter;
     return *this;
+}
+
+bool Class::is_is_class_graduated() const {
+    return isClassGraduated;
+}
+
+int Class::get_year() const {
+    return year;
+}
+
+char Class::get_letter() const {
+    return letter;
 }
 
 void Class::add_student(const Student &student) {
@@ -142,8 +202,7 @@ void Class::print_teachers() const {
             << " geographyTeacher: " << geographyTeacher
             << " computerScienceTeacher: " << computerScienceTeacher
             << " physicalEducationTeacher: " << physicalEducationTeacher
-            << " superVisingTeacher: " << superVisingTeacher
-            << " students: " << students << std::endl;
+            << " superVisingTeacher: " << superVisingTeacher << std::endl;
 }
 
 const Student &Class::get_student(const int &id) const {
@@ -362,7 +421,10 @@ bool operator==(const Class &lhs, const Class &rhs) {
            && lhs.geographyTeacher == rhs.geographyTeacher
            && lhs.computerScienceTeacher == rhs.computerScienceTeacher
            && lhs.physicalEducationTeacher == rhs.physicalEducationTeacher
-           && lhs.superVisingTeacher == rhs.superVisingTeacher;
+           && lhs.superVisingTeacher == rhs.superVisingTeacher
+           && lhs.isClassGraduated == rhs.isClassGraduated
+           && lhs.year == rhs.year
+           && lhs.letter == rhs.letter;;
 }
 
 bool operator!=(const Class &lhs, const Class &rhs) {
@@ -380,6 +442,9 @@ std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students)
 std::ostream &operator<<(std::ostream &os, const Class &obj) {
     return os
            << "id: " << obj.id
+           << " year: " << obj.year
+           << " letter: " << obj.letter
+           << " isClassGraduated: " << obj.isClassGraduated
            << " mathTeacher: " << obj.mathTeacher
            << " englishTeacher: " << obj.englishTeacher
            << " polishTeacher: " << obj.polishTeacher
@@ -409,4 +474,7 @@ void swap(Class &lhs, Class &rhs) noexcept {
     swap(lhs.physicalEducationTeacher, rhs.physicalEducationTeacher);
     swap(lhs.superVisingTeacher, rhs.superVisingTeacher);
     swap(lhs.students, rhs.students);
+    swap(lhs.isClassGraduated, rhs.isClassGraduated);
+    swap(lhs.year, rhs.year);
+    swap(lhs.letter, rhs.letter);
 }

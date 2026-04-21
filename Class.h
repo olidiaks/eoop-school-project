@@ -28,13 +28,27 @@ private:
     std::vector<Student> students;
     static int counter;
 
+    bool isClassGraduated;
+    int year;
+    char letter;
+
     int find_student_index(const int &id) const;
 
 public:
     Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
         Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
         Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
-        Teacher &super_vising_teacher);
+        Teacher &super_vising_teacher, int year, char letter);
+
+    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
+        Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
+        Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
+        bool is_class_graduated);
+
+    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
+        Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
+        Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
+        const char letter);
 
     Class(const Class &other);
 
@@ -43,6 +57,12 @@ public:
     Class & operator=(const Class &other);
 
     Class & operator=(Class &&other) noexcept;
+
+    [[nodiscard]] bool is_is_class_graduated() const;
+
+    [[nodiscard]] int get_year() const;
+
+    [[nodiscard]] char get_letter() const;
 
     void add_student(const Student &student);
 
