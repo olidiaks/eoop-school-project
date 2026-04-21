@@ -10,11 +10,11 @@ std::string School::print() const {
     throw std::runtime_error("Not implemented");
 }
 
-Teacher & School::find_teacher(int id) {
-    std::list<Teacher>* all_lists[] = {
+Teacher &School::find_teacher(int id) {
+    std::list<Teacher> *all_lists[] = {
         &mathTeachers, &englishTeachers, &polishTeachers, &historyTeachers,
-         &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
-         &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
+        &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
+        &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
     };
 
     for (auto &i: all_lists) {
@@ -26,11 +26,11 @@ Teacher & School::find_teacher(int id) {
     }
 }
 
-Teacher & School::find_teacher(const std::string &first_name, const std::string &last_name) {
-    std::list<Teacher>* all_lists[] = {
+Teacher &School::find_teacher(const std::string &first_name, const std::string &last_name) {
+    std::list<Teacher> *all_lists[] = {
         &mathTeachers, &englishTeachers, &polishTeachers, &historyTeachers,
-         &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
-         &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
+        &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
+        &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
     };
 
     for (auto &i: all_lists) {
@@ -389,7 +389,7 @@ void School::hire_teacher(Teacher &teacher) {
 }
 
 void School::hire_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
-    const int &day, const int &month, const int &year, const int salary, const Subject &subject) {
+                          const int &day, const int &month, const int &year, const int salary, const Subject &subject) {
     switch (subject) {
         case Subject::None:
             break;
@@ -427,6 +427,6 @@ void School::hire_teacher(const std::string &first_name, const std::string &last
 }
 
 void School::fire_teacher(const int &id) {
-
+    Teacher p;
+    swap(find_teacher(id), p);
 }
-
