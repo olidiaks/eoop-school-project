@@ -10,6 +10,22 @@ std::string School::print() const {
     throw std::runtime_error("Not implemented");
 }
 
+Teacher & School::find_teacher(int id) {
+    std::list<Teacher>* all_lists[] = {
+        &mathTeachers, &englishTeachers, &polishTeachers, &historyTeachers,
+         &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
+         &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
+    };
+
+    for (auto &i: all_lists) {
+        for (Teacher &j: *i) {
+            if (j.get_id() == id) {
+                return j;
+            }
+        }
+    }
+}
+
 School::School() {
     mathTeachers = {};
     englishTeachers = {};

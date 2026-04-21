@@ -28,6 +28,8 @@ private:
     std::string name;
 
     [[nodiscard]] std::string print() const;
+    [[nodiscard]] Teacher & find_teacher(int id);
+    [[nodiscard]] Teacher & find_teacher(const std::string &first_name, const std::string &last_name);
 
 public:
     School();
@@ -138,8 +140,7 @@ public:
     void hire_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
             const int &day, const int &month, const int &year, const int salary, const Subject &subject);
 
-    static void swap_teachers(Teacher &teacher1, Teacher &teacher2);
-
+    void fire_teacher(const int &id);
 };
 
 
