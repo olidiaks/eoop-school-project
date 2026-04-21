@@ -150,7 +150,7 @@ int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const 
     if (count == 0) {
         return 0;
     }
-    
+
     return sum / count;
 }
 
@@ -252,6 +252,53 @@ float Class::get_average_grade() const {
 
 float Class::get_average_grade_from_subject(const std::string &subject) const {
     throw std::runtime_error("Method not implemented");
+}
+
+unsigned long Class::get_count_of_students() const {
+    return students.size();
+}
+
+int Class::get_sum_of_grades_from_subject(const Subject &subject) const {
+    int sum = 0;
+
+    for (const auto &student: students) {
+        sum += student.get_sum_of_grades_from_students_subjects(subject);
+    }
+
+    return sum;
+}
+
+int Class::get_count_of_grades_from_subject(const Subject &subject) const {
+    int count = 0;
+
+    for (const auto &student: students) {
+        count += student.get_count_of_grades_from_students_subjects(subject);
+    }
+
+    return count;
+}
+
+float Class::get_average_grade_of_class() {
+    int count = 0;
+    int sum = 0;
+
+    constexpr std::array<Subject, 10> subjects = {
+        Subject::Biology, Subject::Chemistry, Subject::ComputerScience, Subject::English, Subject::Geography,
+        Subject::History, Subject::Math, Subject::Physics, Subject::PhysicalEducation, Subject::Polish
+    };
+
+    for (const auto &student: students) {
+        for (const auto &subject: subjects) {
+            sum += student.get_sum_of_grades_from_students_subjects(subject);
+            count += student.get_count_of_grades_from_students_subjects(subject);
+        }
+    }
+
+    if (count == 0) {
+        return 0;
+    }
+
+    return sum / count;
 }
 
 

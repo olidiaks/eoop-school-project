@@ -120,6 +120,14 @@ public:
     [[nodiscard]] float get_average_grade() const;
 
     [[nodiscard]] float get_average_grade_from_subject(const std::string &subject) const;
+
+    [[nodiscard]] unsigned long get_count_of_students() const;
+
+    [[nodiscard]] int get_sum_of_grades_from_subject(const Subject &subject) const;
+
+    [[nodiscard]] int get_count_of_grades_from_subject(const Subject &subject) const;
+
+    [[nodiscard]] float get_average_grade_of_class();
 };
 
 std::ostream & operator<<(std::ostream & os, const std::vector<Student> & students);
