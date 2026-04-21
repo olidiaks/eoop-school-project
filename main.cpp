@@ -10,7 +10,7 @@
 #include "Assigment.h"
 
 // Helper to add a bit of "theatrical" delay to the story
-void pause() {
+void wait_for_user() {
     std::cout << "\n[Press Enter to continue the story...]" << std::endl;
     std::cin.get();
 }
@@ -83,10 +83,10 @@ int main() {
     class1A.add_assignment(Subject::Math, Assigment("General Relativity Basics", "...", "Math"), 5);
     
     std::cout << "Shakespeare assigns a sonnet." << std::endl;
-    class1A.add_assignment(Subject::English, "Modern Sonnet", "Write about a smartphone in iambic pentameter.", 4);
+    class1A.add_assignment(Subject::English, Assigment("Modern Sonnet", "Write about a smartphone in iambic pentameter.", "English"), 4);
 
     std::cout << "Year 1 Results: Average Grade = " << class1A.get_average_grade_of_class() << std::endl;
-    pause();
+    wait_for_user();
 
     /* --- CHAPTER 4: YEAR 2 - THE CHALLENGE --- */
     // As they entered Year 2, the workload doubled. Curie introduced them to Radium (safely!).
@@ -96,13 +96,13 @@ int main() {
     std::cout << "Class 1A is now Class 2A. The students look older and slightly more tired." << std::endl;
 
     std::cout << "Marie Curie sets up a Lab Experiment." << std::endl;
-    class1A.add_assignment(Subject::Chemistry, "Isotope Identification", "Find the stable ones.", 5);
+    class1A.add_assignment(Subject::Chemistry, Assigment("Isotope Identification", "Find the stable ones.", "Chemistry"), 5);
 
     std::cout << "Ada Lovelace challenges them with the Analytical Engine." << std::endl;
-    class1A.add_assignment(Subject::ComputerScience, "Babbage Loops", "Calculate Bernoulli numbers.", 5);
+    class1A.add_assignment(Subject::ComputerScience, Assigment("Babbage Loops", "Calculate Bernoulli numbers.", "ComputerScience"), 5);
 
     std::cout << "Class 2A is excelling under the pressure!" << std::endl;
-    pause();
+    wait_for_user();
 
     /* --- CHAPTER 5: YEAR 3 - THE DEPTHS --- */
     // Year 3 brought deep philosophical questions from Socrates and History from Herodotus.
@@ -111,13 +111,13 @@ int main() {
     class1A.new_school_year(); // Moves to Year 3
     
     std::cout << "Herodotus asks for a 50-page report on the Greco-Persian Wars." << std::endl;
-    class1A.add_assignment(Subject::History, "The Persian Wars", "Fact or Fiction?", 3); // Tough grading this year!
+    class1A.add_assignment(Subject::History, Assigment("The Persian Wars", "Fact or Fiction?", "History"), 3); // Tough grading this year!
 
     std::cout << "Biology with Darwin: The Galapagos Trip." << std::endl;
-    class1A.add_assignment(Subject::Biology, "Beak Variation Study", "Observation of finches.", 4);
+    class1A.add_assignment(Subject::Biology, Assigment("Beak Variation Study", "Observation of finches.", "Biology"), 4);
 
     std::cout << "Current Academic Standing: " << class1A.get_average_grade_of_class() << std::endl;
-    pause();
+    wait_for_user();
 
     /* --- CHAPTER 6: YEAR 4 - THE FINAL STRETCH --- */
     // The final year. The students are preparing for the real world.
@@ -126,12 +126,12 @@ int main() {
     class1A.new_school_year(); // Moves to Year 4
     
     std::cout << "Newton teaches 'Final Laws of Motion'." << std::endl;
-    class1A.add_assignment(Subject::Physics, "Universal Gravitation", "Calculate the moon's orbit.", 5);
+    class1A.add_assignment(Subject::Physics, Assigment("Universal Gravitation", "Calculate the moon's orbit.", "Physics"), 5);
 
     std::cout << "The students are studying day and night..." << std::endl;
     std::cout << "Tesla is particularly good at Physics, as expected." << std::endl;
     
-    pause();
+    wait_for_user();
 
     /* --- CHAPTER 7: GRADUATION --- */
     // The moment has arrived. After 4 years of hard work, the students are ready to leave.
