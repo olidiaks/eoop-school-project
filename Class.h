@@ -152,6 +152,8 @@ public:
     void add_assignment(const Subject &subject, const Assigment_graded &assigment);
 
     void add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade);
+
+    void new_school_year();
 };
 
 std::ostream & operator<<(std::ostream & os, const std::vector<Student> & students);

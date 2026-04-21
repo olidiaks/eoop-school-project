@@ -397,6 +397,13 @@ void Class::add_assignment(const Subject &subject, Assigment_graded &assigment_g
     }
 }
 
+void Class::new_school_year() {
+    if (year++ == 5) {
+        year = -1;
+        isClassGraduated = true;
+    }
+}
+
 
 bool operator==(const Class &lhs, const Class &rhs) {
     for (const auto &student: lhs.students) {
