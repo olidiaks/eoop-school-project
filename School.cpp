@@ -266,7 +266,46 @@ void School::set_name(const std::string &name) {
 }
 
 void School::new_school_year() {
-    for (auto &i : classes) {
+    for (auto &i: classes) {
         i.new_school_year();
     }
+}
+
+void School::add_class(const Class &class_to_add) {
+    classes.push_back(class_to_add);
+}
+
+void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
+                       Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
+                       Teacher &chemistry_teacher, Teacher &geography_teacher, Teacher &computer_science_teacher,
+                       Teacher &physical_education_teacher, Teacher &super_vising_teacher, int year, char letter,
+                       const std::vector<Student> &students) {
+    classes.emplace_back(math_teacher, english_teacher, polish_teacher, history_teacher, biology_teacher,
+                         physics_teacher,
+                         chemistry_teacher, geography_teacher, computer_science_teacher, physical_education_teacher,
+                         super_vising_teacher, students, year, letter);
+}
+
+void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
+                       Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
+                       Teacher &chemistry_teacher, Teacher &geography_teacher, Teacher &computer_science_teacher,
+                       Teacher &physical_education_teacher, Teacher &super_vising_teacher, char letter,
+                       std::vector<Student> &students) {
+    classes.emplace_back(math_teacher, english_teacher, polish_teacher, history_teacher, biology_teacher,
+                         physics_teacher,
+                         chemistry_teacher, geography_teacher, computer_science_teacher, physical_education_teacher,
+                         super_vising_teacher,
+                         students, letter);
+}
+
+void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
+                       Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
+                       Teacher &chemistry_teacher,
+                       Teacher &geography_teacher, Teacher &computer_science_teacher,
+                       Teacher &physical_education_teacher,
+                       Teacher &super_vising_teacher, char letter, std::vector<Student> &students, bool is_graduated) {
+    classes.emplace_back(math_teacher, english_teacher, polish_teacher, history_teacher, biology_teacher,
+                         physics_teacher,
+                         chemistry_teacher, geography_teacher, computer_science_teacher, physical_education_teacher,
+                         super_vising_teacher, students, letter, is_graduated);
 }
