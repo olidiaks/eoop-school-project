@@ -27,6 +27,8 @@ add_executable(Project main.cpp
         Class.h
         Assigment_graded.cpp
         Assigment_graded.h
+        Subject.cpp
+        Subject.h
 )
 
 add_executable(test-person Person.test.cpp Person.cpp Person.h)

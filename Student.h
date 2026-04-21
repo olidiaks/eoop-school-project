@@ -6,29 +6,17 @@
 #define PROJECT_STUDENT_H
 
 #include <list>
-#include <vector>
 #include <ostream>
 
 #include "Assigment.h"
 #include "Assigment_graded.h"
 #include "Person.h"
+#include "Subject.h"
 
 
-enum class Subject {
-    None,
-    Math,
-    English,
-    Polish,
-    History,
-    Biology,
-    Physics,
-    Chemistry,
-    Geography,
-    ComputerScience,
-    PhysicalEducation,
-};
 
-const char *to_string(Subject e);
+
+
 
 std::ostream & operator<<(std::ostream & os, const std::list<Assigment_graded> & assignment_list);
 
@@ -121,6 +109,6 @@ public:
     friend std::ostream & stream_assignments(std::ostream & os, const Subject &subject, const Student &obj);
 };
 
-std::ostream & operator<<(std::ostream &os, Subject subject);
+
 
 #endif //PROJECT_STUDENT_H
