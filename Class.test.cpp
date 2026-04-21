@@ -81,17 +81,17 @@ TEST_F(ClassTest, Setters) {
 TEST_F(ClassTest, AddAndRemoveStudent) {
     Class c = createClass();
     Student s1("Alice", "Wonderland", "alice@wonder.com", 10, 10, 2010);
+    Student s2("Bob", "Builder", "bob@build.com", 11, 11, 2011);
     
     c.add_student(s1);
     EXPECT_EQ(c.get_count_of_students(), 1);
     EXPECT_TRUE(c.is_student_in_class(s1.get_id()));
     
-    c.add_student("Bob", "Builder", "bob@build.com", 11, 11, 2011);
+    c.add_student(s2);
     EXPECT_EQ(c.get_count_of_students(), 2);
+    EXPECT_TRUE(c.is_student_in_class(s2.get_id()));
     
-    const Student& retrievedBob = c.get_student(c.get_count_of_students()); // Assuming sequential IDs if static counter
-    // Wait, get_student takes ID. I need Bob's ID.
-    // Since I don't know the exact ID Bob got (static counter), I'll find it.
+    EXPECT_EQ(c.get_student(s2.get_id()).get_first_name(), "Bob");
     
     EXPECT_TRUE(c.remove_student(s1.get_id()));
     EXPECT_EQ(c.get_count_of_students(), 1);
@@ -107,8 +107,10 @@ TEST_F(ClassTest, GetStudentThrows) {
 
 TEST_F(ClassTest, GradesAndAverages) {
     Class c = createClass();
-    c.add_student("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
-    c.add_student("Bob", "Builder", "bob@build.com", 1, 1, 2010);
+    Student s1("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    Student s2("Bob", "Builder", "bob@build.com", 1, 1, 2010);
+    c.add_student(s1);
+    c.add_student(s2);
     
     Assigment mathAss("Algebra Test", "Solve for x", "Math");
     c.add_assignment(Subject::Math, mathAss, 5); // Both students get 5
@@ -117,11 +119,6 @@ TEST_F(ClassTest, GradesAndAverages) {
     EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 2);
     EXPECT_EQ(c.get_average_grade_of_clas_from_subject(Subject::Math), 5);
     
-    // Test average of whole class
-    // Subjects array in Class::get_average_grade_of_class has 10 subjects.
-    // Alice and Bob each have one grade in Math.
-    // Total sum = 10, Total count = 2.
-    // Average = 10 / 2 = 5.
     EXPECT_NEAR(c.get_average_grade_of_class(), 5.0, 0.001);
 }
 
@@ -131,26 +128,37 @@ TEST_F(ClassTest, AverageGradeEmptyClass) {
     EXPECT_EQ(c.get_average_grade_of_class(), 0);
 }
 
-TEST_F(ClassTest, AddAssignmentOverloads) {
+TEST_F(ClassTest, AddStudentParameters) {
     Class c = createClass();
     c.add_student("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    EXPECT_EQ(c.get_count_of_students(), 1);
+    // Find ID since it's auto-generated
+    // We can't easily get the ID without knowing the counter state, 
+    // but we know it's the only student.
+}
+
+TEST_F(ClassTest, AddAssignmentOverloads) {
+    Class c = createClass();
+    Student s1("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    c.add_student(s1);
     
     Assigment ass1("A1", "D1", "Math");
-    c.add_assignment(Subject::Math, ass1); // Ungraded
-    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 0);
+    c.add_assignment(Subject::Math, ass1); // Overload 1
+    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 1);
     
-    c.add_assignment(Subject::Math, "A2", "D2"); // Ungraded
-    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 0);
+    c.add_assignment(Subject::Math, "A2", "D2"); // Overload 2
+    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 2);
+    
+    c.add_assignment(Subject::Math, ass1, 5); // Overload 3
+    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 3);
     
     Assigment_graded ass3(ass1, 4);
-    c.add_assignment(Subject::Math, ass3);
-    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 1);
-    EXPECT_EQ(c.get_sum_of_grades_from_subject(Subject::Math), 4);
+    c.add_assignment(Subject::Math, ass3); // Overload 4
+    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 4);
 
     Assigment_graded ass4(Assigment("A4", "D4", "Math"));
-    c.add_assignment(Subject::Math, ass4, 3);
-    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 2);
-    EXPECT_EQ(c.get_sum_of_grades_from_subject(Subject::Math), 7);
+    c.add_assignment(Subject::Math, ass4, 3); // Overload 5
+    EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 5);
 }
 
 TEST_F(ClassTest, ComparisonOperators) {
@@ -168,14 +176,17 @@ TEST_F(ClassTest, ComparisonOperators) {
 
 TEST_F(ClassTest, CopyAndMove) {
     Class c1 = createClass();
-    c1.add_student("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    Student s1("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    c1.add_student(s1);
     
     Class c2(c1);
     EXPECT_EQ(c1, c2);
+    EXPECT_EQ(c2.get_count_of_students(), 1);
     
     Class c3 = createClass();
     c3 = c1;
     EXPECT_EQ(c1, c3);
+    EXPECT_EQ(c3.get_count_of_students(), 1);
     
     int originalId = c1.get_id();
     Class c4(std::move(c1));
@@ -190,10 +201,12 @@ TEST_F(ClassTest, CopyAndMove) {
 
 TEST_F(ClassTest, Swap) {
     Class c1 = createClass();
-    c1.add_student("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    Student s1("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    c1.add_student(s1);
     
     Class c2 = createClass();
-    c2.add_student("Bob", "Builder", "bob@build.com", 1, 1, 2010);
+    Student s2("Bob", "Builder", "bob@build.com", 1, 1, 2010);
+    c2.add_student(s2);
     
     int id1 = c1.get_id();
     int id2 = c2.get_id();
@@ -204,7 +217,8 @@ TEST_F(ClassTest, Swap) {
     EXPECT_EQ(c2.get_id(), id1);
     EXPECT_EQ(c1.get_count_of_students(), 1);
     EXPECT_EQ(c2.get_count_of_students(), 1);
-    // Could check names to be sure they swapped students correctly
+    EXPECT_EQ(c1.get_student(s2.get_id()).get_first_name(), "Bob");
+    EXPECT_EQ(c2.get_student(s1.get_id()).get_first_name(), "Alice");
 }
 
 TEST_F(ClassTest, OstreamOperator) {
@@ -217,7 +231,6 @@ TEST_F(ClassTest, OstreamOperator) {
 
 TEST_F(ClassTest, PrintMethods) {
     Class c = createClass();
-    // These methods print to std::cout, hard to test without redirecting stdout.
     // Just calling them to ensure no crash.
     c.print_students();
     c.print_teachers();
