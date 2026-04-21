@@ -1,0 +1,16 @@
+compilation_database_dir: build/
+query_driver: "gcc"
+diagrams:
+  my_massive_project:
+    type: class
+    glob:
+      - src/**/*.cpp
+      - include/**/*.h
+      - src/**/*.h
+      - src/**/*.hpp
+      - ./*.cpp
+      - ./*.h
+    exclude:
+        paths:
+          - ./*.test.cpp
+          - gtest
