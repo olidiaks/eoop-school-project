@@ -246,14 +246,6 @@ int Class::get_id() const {
     return id;
 }
 
-float Class::get_average_grade() const {
-    throw std::runtime_error("Method not implemented");
-}
-
-float Class::get_average_grade_from_subject(const std::string &subject) const {
-    throw std::runtime_error("Method not implemented");
-}
-
 unsigned long Class::get_count_of_students() const {
     return students.size();
 }

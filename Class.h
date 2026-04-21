@@ -115,10 +115,6 @@ public:
 
     [[nodiscard]] int get_id() const;
 
-    [[nodiscard]] float get_average_grade() const;
-
-    [[nodiscard]] float get_average_grade_from_subject(const std::string &subject) const;
-
     [[nodiscard]] unsigned long get_count_of_students() const;
 
     [[nodiscard]] int get_sum_of_grades_from_subject(const Subject &subject) const;
