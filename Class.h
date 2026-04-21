@@ -11,6 +11,10 @@
 #include "Teacher.h"
 
 
+/**
+ * @class Class
+ * @brief Manages a classroom, its students, teachers, and assignments.
+ */
 class Class {
 private:
     int id;
@@ -32,8 +36,40 @@ private:
     int year;
     char letter;
 
+    /**
+     * @brief Finds the index of a student in the class by their unique ID.
+     *
+     * This method iterates through the list of students, comparing the provided ID
+     * with the IDs of the students in the class. If a matching ID is found, the
+     * index of that student is returned. Otherwise, the method returns -1.
+     *
+     * @param id The unique identifier of the student to find.
+     * @return The index of the student in the list if found, or -1 if no student
+     *         with the given ID exists.
+     */
     int find_student_index(const int &id) const;
 
+    /**
+     * @brief Constructs a Class object with a full set of teachers, year, and letter designation.
+     *
+     * Initializes the Class object with the provided teachers for different subjects,
+     * along with the academic year and letter designation. Also assigns a unique ID
+     * to the class and initializes it as not graduated.
+     *
+     * @param math_teacher The teacher responsible for mathematics.
+     * @param english_teacher The teacher responsible for English.
+     * @param polish_teacher The teacher responsible for Polish.
+     * @param history_teacher The teacher responsible for history.
+     * @param biology_teacher The teacher responsible for biology.
+     * @param physics_teacher The teacher responsible for physics.
+     * @param chemistry_teacher The teacher responsible for chemistry.
+     * @param geography_teacher The teacher responsible for geography.
+     * @param computer_science_teacher The teacher responsible for computer science.
+     * @param physical_education_teacher The teacher responsible for physical education.
+     * @param super_vising_teacher The teacher assigned as the supervising teacher for the class.
+     * @param year The year the class belongs to.
+     * @param letter The letter designation of the class.
+     */
 public:
     Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
         Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
