@@ -393,3 +393,7 @@ void School::hire_teacher(const std::string &first_name, const std::string &last
             break;
     }
 }
+
+void School::swap_teachers(Teacher &teacher1, Teacher &teacher2) {
+    swap(teacher1, teacher2);
+}
