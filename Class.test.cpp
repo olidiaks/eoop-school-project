@@ -4,17 +4,17 @@
 
 class ClassTest : public ::testing::Test {
 protected:
-    Teacher mathTeacher{"John", "Doe", "john@math.com", 1, 1, 1980, 5000, "Math"};
-    Teacher englishTeacher{"Jane", "Smith", "jane@english.com", 2, 2, 1981, 5100, "English"};
-    Teacher polishTeacher{"Adam", "Mickiewicz", "adam@polish.com", 3, 3, 1982, 5200, "Polish"};
-    Teacher historyTeacher{"Herodotus", "History", "hero@history.com", 4, 4, 1983, 5300, "History"};
-    Teacher biologyTeacher{"Charles", "Darwin", "charles@biology.com", 5, 5, 1984, 5400, "Biology"};
-    Teacher physicsTeacher{"Albert", "Einstein", "albert@physics.com", 6, 6, 1985, 5500, "Physics"};
-    Teacher chemistryTeacher{"Marie", "Curie", "marie@chemistry.com", 7, 7, 1986, 5600, "Chemistry"};
-    Teacher geographyTeacher{"Marco", "Polo", "marco@geography.com", 8, 8, 1987, 5700, "Geography"};
-    Teacher computerScienceTeacher{"Alan", "Turing", "alan@cs.com", 9, 9, 1988, 5800, "ComputerScience"};
-    Teacher physicalEducationTeacher{"Usain", "Bolt", "usain@pe.com", 10, 10, 1989, 5900, "PE"};
-    Teacher superVisingTeacher{"Master", "Shifu", "shifu@super.com", 11, 11, 1990, 6000, "Supervising"};
+    Teacher mathTeacher{"John", "Doe", "john@math.com", 1, 1, 1980, 5000, Subject::Math};
+    Teacher englishTeacher{"Jane", "Smith", "jane@english.com", 2, 2, 1981, 5100, Subject::Math};
+    Teacher polishTeacher{"Adam", "Mickiewicz", "adam@polish.com", 3, 3, 1982, 5200, Subject::Math};
+    Teacher historyTeacher{"Herodotus", "History", "hero@history.com", 4, 4, 1983, 5300, Subject::Math};
+    Teacher biologyTeacher{"Charles", "Darwin", "charles@biology.com", 5, 5, 1984, 5400, Subject::Math};
+    Teacher physicsTeacher{"Albert", "Einstein", "albert@physics.com", 6, 6, 1985, 5500, Subject::Math};
+    Teacher chemistryTeacher{"Marie", "Curie", "marie@chemistry.com", 7, 7, 1986, 5600, Subject::Math};
+    Teacher geographyTeacher{"Marco", "Polo", "marco@geography.com", 8, 8, 1987, 5700, Subject::Math};
+    Teacher computerScienceTeacher{"Alan", "Turing", "alan@cs.com", 9, 9, 1988, 5800, Subject::Math};
+    Teacher physicalEducationTeacher{"Usain", "Bolt", "usain@pe.com", 10, 10, 1989, 5900, Subject::Math};
+    Teacher superVisingTeacher{"Master", "Shifu", "shifu@super.com", 11, 11, 1990, 6000, Subject::Math};
 
     Class createClass(int year = 1, char letter = 'A') {
         return Class(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
@@ -116,7 +116,7 @@ TEST_F(ClassTest, NewSchoolYear) {
 
 TEST_F(ClassTest, Setters) {
     Class c = createClass();
-    Teacher newTeacher{"New", "Teacher", "new@teacher.com", 1, 1, 1990, 6000, "NewSubject"};
+    Teacher newTeacher{"New", "Teacher", "new@teacher.com", 1, 1, 1990, 6000, Subject::Math};
     
     c.set_math_teacher(newTeacher);
     EXPECT_EQ(c.get_math_teacher(), newTeacher);
