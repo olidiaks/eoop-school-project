@@ -43,6 +43,45 @@ TEST_F(ClassTest, ConstructorAndGetters) {
     EXPECT_FALSE(c.is_is_class_graduated());
 }
 
+TEST_F(ClassTest, ConstructorWithStudents) {
+    std::vector<Student> students;
+    students.emplace_back("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    students.emplace_back("Bob", "Builder", "bob@build.com", 1, 1, 2010);
+    
+    // Test constructor: (Teachers..., const std::vector<Student>&, int year, char letter)
+    Class c1(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
+             physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
+             physicalEducationTeacher, superVisingTeacher, students, 3, 'X');
+    
+    EXPECT_EQ(c1.get_count_of_students(), 2);
+    EXPECT_EQ(c1.get_year(), 3);
+    EXPECT_EQ(c1.get_letter(), 'X');
+    EXPECT_TRUE(c1.is_student_in_class(students[0].get_id()));
+    EXPECT_TRUE(c1.is_student_in_class(students[1].get_id()));
+
+    // Test constructor: (Teachers..., const std::vector<Student>&, char letter)
+    Class c2(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
+             physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
+             physicalEducationTeacher, superVisingTeacher, students, 'Y');
+    
+    EXPECT_EQ(c2.get_count_of_students(), 2);
+    EXPECT_EQ(c2.get_year(), 1); // Default year for this constructor
+    EXPECT_EQ(c2.get_letter(), 'Y');
+}
+
+TEST_F(ClassTest, ConstructorWithStudentsNonConst) {
+    std::vector<Student> students;
+    students.emplace_back("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
+    
+    // Test constructor: (Teachers..., std::vector<Student>& students, char letter)
+    Class c(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
+            physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
+            physicalEducationTeacher, superVisingTeacher, students, 'Z');
+    
+    EXPECT_EQ(c.get_count_of_students(), 1);
+    EXPECT_EQ(c.get_letter(), 'Z');
+}
+
 TEST_F(ClassTest, AlternativeConstructors) {
     Class cGraduated(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
                      physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
