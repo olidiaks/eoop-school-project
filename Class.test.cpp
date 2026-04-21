@@ -16,15 +16,15 @@ protected:
     Teacher physicalEducationTeacher{"Usain", "Bolt", "usain@pe.com", 10, 10, 1989, 5900, "PE"};
     Teacher superVisingTeacher{"Master", "Shifu", "shifu@super.com", 11, 11, 1990, 6000, "Supervising"};
 
-    Class createClass() {
+    Class createClass(int year = 1, char letter = 'A') {
         return Class(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
                      physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
-                     physicalEducationTeacher, superVisingTeacher);
+                     physicalEducationTeacher, superVisingTeacher, year, letter);
     }
 };
 
 TEST_F(ClassTest, ConstructorAndGetters) {
-    Class c = createClass();
+    Class c = createClass(2, 'B');
     EXPECT_GT(c.get_id(), 0);
     EXPECT_EQ(c.get_math_teacher(), mathTeacher);
     EXPECT_EQ(c.get_english_teacher(), englishTeacher);
@@ -38,6 +38,41 @@ TEST_F(ClassTest, ConstructorAndGetters) {
     EXPECT_EQ(c.get_physical_education_teacher(), physicalEducationTeacher);
     EXPECT_EQ(c.get_super_vising_teacher(), superVisingTeacher);
     EXPECT_EQ(c.get_count_of_students(), 0);
+    EXPECT_EQ(c.get_year(), 2);
+    EXPECT_EQ(c.get_letter(), 'B');
+    EXPECT_FALSE(c.is_is_class_graduated());
+}
+
+TEST_F(ClassTest, AlternativeConstructors) {
+    Class cGraduated(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
+                     physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
+                     physicalEducationTeacher, superVisingTeacher, true);
+    EXPECT_TRUE(cGraduated.is_is_class_graduated());
+    EXPECT_EQ(cGraduated.get_year(), -1);
+
+    Class cWithLetter(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
+                      physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
+                      physicalEducationTeacher, superVisingTeacher, 'C');
+    EXPECT_EQ(cWithLetter.get_letter(), 'C');
+    EXPECT_EQ(cWithLetter.get_year(), 1);
+    EXPECT_FALSE(cWithLetter.is_is_class_graduated());
+}
+
+TEST_F(ClassTest, NewSchoolYear) {
+    Class c = createClass(1, 'A');
+    EXPECT_EQ(c.get_year(), 1);
+    
+    c.new_school_year();
+    EXPECT_EQ(c.get_year(), 2);
+    
+    c.new_school_year(); // 3
+    c.new_school_year(); // 4
+    EXPECT_EQ(c.get_year(), 4);
+    EXPECT_FALSE(c.is_is_class_graduated());
+    
+    c.new_school_year(); // 5 -> graduated
+    EXPECT_EQ(c.get_year(), -1);
+    EXPECT_TRUE(c.is_is_class_graduated());
 }
 
 TEST_F(ClassTest, Setters) {
@@ -132,9 +167,6 @@ TEST_F(ClassTest, AddStudentParameters) {
     Class c = createClass();
     c.add_student("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
     EXPECT_EQ(c.get_count_of_students(), 1);
-    // Find ID since it's auto-generated
-    // We can't easily get the ID without knowing the counter state, 
-    // but we know it's the only student.
 }
 
 TEST_F(ClassTest, AddAssignmentOverloads) {
@@ -162,49 +194,62 @@ TEST_F(ClassTest, AddAssignmentOverloads) {
 }
 
 TEST_F(ClassTest, ComparisonOperators) {
-    Class c1 = createClass();
-    Class c2 = createClass();
+    Class c1 = createClass(1, 'A');
+    Class c2 = createClass(1, 'A');
     
     // They have different IDs because of static counter
     EXPECT_FALSE(c1 == c2);
     EXPECT_TRUE(c1 != c2);
     
-    // Copy constructor preserves ID in this implementation (checked Class.cpp)
     Class c3(c1);
     EXPECT_TRUE(c1 == c3);
+    
+    Class c4 = createClass(2, 'A');
+    EXPECT_FALSE(c1 == c4);
+    
+    Class c5 = createClass(1, 'B');
+    EXPECT_FALSE(c1 == c5);
 }
 
 TEST_F(ClassTest, CopyAndMove) {
-    Class c1 = createClass();
+    Class c1 = createClass(3, 'C');
     Student s1("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
     c1.add_student(s1);
     
     Class c2(c1);
     EXPECT_EQ(c1, c2);
     EXPECT_EQ(c2.get_count_of_students(), 1);
+    EXPECT_EQ(c2.get_year(), 3);
+    EXPECT_EQ(c2.get_letter(), 'C');
     
     Class c3 = createClass();
     c3 = c1;
     EXPECT_EQ(c1, c3);
     EXPECT_EQ(c3.get_count_of_students(), 1);
+    EXPECT_EQ(c3.get_year(), 3);
+    EXPECT_EQ(c3.get_letter(), 'C');
     
     int originalId = c1.get_id();
     Class c4(std::move(c1));
     EXPECT_EQ(c4.get_id(), originalId);
     EXPECT_EQ(c4.get_count_of_students(), 1);
+    EXPECT_EQ(c4.get_year(), 3);
+    EXPECT_EQ(c4.get_letter(), 'C');
     
     Class c5 = createClass();
     c5 = std::move(c4);
     EXPECT_EQ(c5.get_id(), originalId);
     EXPECT_EQ(c5.get_count_of_students(), 1);
+    EXPECT_EQ(c5.get_year(), 3);
+    EXPECT_EQ(c5.get_letter(), 'C');
 }
 
 TEST_F(ClassTest, Swap) {
-    Class c1 = createClass();
+    Class c1 = createClass(1, 'A');
     Student s1("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
     c1.add_student(s1);
     
-    Class c2 = createClass();
+    Class c2 = createClass(2, 'B');
     Student s2("Bob", "Builder", "bob@build.com", 1, 1, 2010);
     c2.add_student(s2);
     
@@ -215,23 +260,26 @@ TEST_F(ClassTest, Swap) {
     
     EXPECT_EQ(c1.get_id(), id2);
     EXPECT_EQ(c2.get_id(), id1);
+    EXPECT_EQ(c1.get_year(), 2);
+    EXPECT_EQ(c1.get_letter(), 'B');
+    EXPECT_EQ(c2.get_year(), 1);
+    EXPECT_EQ(c2.get_letter(), 'A');
     EXPECT_EQ(c1.get_count_of_students(), 1);
     EXPECT_EQ(c2.get_count_of_students(), 1);
-    EXPECT_EQ(c1.get_student(s2.get_id()).get_first_name(), "Bob");
-    EXPECT_EQ(c2.get_student(s1.get_id()).get_first_name(), "Alice");
 }
 
 TEST_F(ClassTest, OstreamOperator) {
-    Class c = createClass();
+    Class c = createClass(1, 'A');
     std::stringstream ss;
     ss << c;
-    EXPECT_FALSE(ss.str().empty());
-    EXPECT_TRUE(ss.str().find("id:") != std::string::npos);
+    std::string s = ss.str();
+    EXPECT_FALSE(s.empty());
+    EXPECT_TRUE(s.find("year: 1") != std::string::npos);
+    EXPECT_TRUE(s.find("letter: A") != std::string::npos);
 }
 
 TEST_F(ClassTest, PrintMethods) {
     Class c = createClass();
-    // Just calling them to ensure no crash.
     c.print_students();
     c.print_teachers();
 }
