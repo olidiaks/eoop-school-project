@@ -69,8 +69,6 @@ public:
 
     friend void swap(Class &lhs, Class &rhs) noexcept;
 
-    friend std::istream & operator>>(std::istream &is, Class &obj);
-
     [[nodiscard]] Teacher get_math_teacher() const;
 
     void set_math_teacher(const Teacher &math_teacher);

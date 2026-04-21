@@ -403,8 +403,3 @@ void swap(Class &lhs, Class &rhs) noexcept {
     swap(lhs.superVisingTeacher, rhs.superVisingTeacher);
     swap(lhs.students, rhs.students);
 }
-
-std::istream &operator>>(std::istream &is, Class &obj) {
-    throw std::runtime_error("Method not implemented");
-    return is;
-}
