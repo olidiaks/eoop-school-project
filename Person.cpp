@@ -1,6 +1,9 @@
-//
-// Created by olidiaks on 4/11/26.
-//
+/**
+ * @file Person.cpp
+ * @brief Implementation file for the Person class.
+ * @author olidiaks
+ * @date 4/11/26
+ */
 
 #include "Person.h"
 
