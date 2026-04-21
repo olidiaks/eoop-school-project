@@ -50,7 +50,6 @@ public:
 
     friend bool operator!=(const School &lhs, const School &rhs);
 
-
     friend std::ostream & operator<<(std::ostream &os, const School &obj);
 
     friend void swap(School &lhs, School &rhs) noexcept;
