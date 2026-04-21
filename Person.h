@@ -1,6 +1,6 @@
 /**
  * @file Person.h
- * @brief Header file for the Person class.
+ * @brief Header file for the Person class, providing a robust representation of an individual's personal data.
  * @author olidiaks
  * @date 4/11/26
  */
@@ -12,163 +12,187 @@
 
 /**
  * @class Person
- * @brief Represents a person with personal information like name, email, and birth date.
+ * @brief Represents an individual with properties such as ID, name, email, and birth date.
+ *
+ * Provides functionalities for setting and retrieving personal information,
+ * calculating age, formatting birth dates, and comparing Person objects.
  */
 class Person {
 private:
-    int id; ///< Unique identifier for the person.
-    std::string firstName; ///< First name of the person.
-    std::string lastName; ///< Last name of the person.
-    std::string email; ///< Email address of the person.
-    time_t birthDate; ///< Birth date of the person.
-    static int counter; ///< Static counter to generate unique IDs.
+    int id; ///< A unique integer identifier assigned to each person upon creation. Defaults to -1 if uninitialized.
+    std::string firstName; ///< The given name of the individual.
+    std::string lastName; ///< The family name or surname of the individual.
+    std::string email; ///< The primary contact email address.
+    time_t birthDate; ///< The person's date of birth, stored as seconds since the Unix Epoch (Jan 1, 1970).
+    static int counter; ///< A shared static counter used to ensure each Person instance receives a unique, incrementing ID.
 
 public:
     /**
-     * @brief Default constructor. Initializes an empty person.
+     * @brief Default constructor initializing a Person with placeholder values.
+     * 
+     * Sets the ID to -1 and leaves strings empty. The birth date is set to 0 (Epoch start).
+     * This constructor does NOT increment the global ID counter.
      */
     Person();
 
     /**
-     * @brief Constructor with birth date as time_t.
-     * @param first_name First name of the person.
-     * @param last_name Last name of the person.
-     * @param email Email address of the person.
-     * @param birth_date Birth date of the person as time_t.
+     * @brief Specialized constructor using a pre-calculated time_t value for the birth date.
+     * 
+     * @param first_name The individual's first name.
+     * @param last_name The individual's last name.
+     * @param email The individual's contact email.
+     * @param birth_date A time_t value representing the exact moment of birth.
+     * 
+     * This constructor increments the static `counter` and assigns the new value to the person's `id`.
      */
     Person(const std::string &first_name, const std::string &last_name, const std::string &email,
            const time_t birth_date);
 
     /**
-     * @brief Constructor with birth date components.
-     * @param first_name First name of the person.
-     * @param last_name Last name of the person.
-     * @param email Email address of the person.
-     * @param day Day of birth.
-     * @param month Month of birth (1-12).
-     * @param year Year of birth.
+     * @brief Overloaded constructor for initialization using human-readable date components.
+     * 
+     * Internally converts the day, month, and year into a `time_t` value using the `tm` structure.
+     * 
+     * @param first_name The individual's first name.
+     * @param last_name The individual's last name.
+     * @param email The individual's contact email.
+     * @param day Calendar day (1-31).
+     * @param month Calendar month (1-12).
+     * @param year Calendar year (e.g., 1995).
+     * 
+     * Like other parameterized constructors, this increments the global ID counter.
      */
     Person(const std::string &first_name, const std::string &last_name, const std::string &email, const int &day, const int &month, const int &year);
 
     /**
-     * @brief Gets the first name of the person.
-     * @return The first name.
+     * @brief Retrieves the stored first name.
+     * @return A string containing the person's first name.
      */
     [[nodiscard]] std::string get_first_name() const;
 
     /**
-     * @brief Sets the first name of the person.
-     * @param first_name The new first name.
+     * @brief Updates the person's first name.
+     * @param first_name The new first name to be assigned.
      */
     void set_first_name(const std::string &first_name);
 
     /**
-     * @brief Gets the last name of the person.
-     * @return The last name.
+     * @brief Retrieves the stored last name.
+     * @return A string containing the person's last name.
      */
     [[nodiscard]] std::string get_last_name() const;
 
     /**
-     * @brief Sets the last name of the person.
-     * @param last_name The new last name.
+     * @brief Updates the person's last name.
+     * @param last_name The new last name to be assigned.
      */
     void set_last_name(const std::string &last_name);
 
     /**
-     * @brief Gets the unique ID of the person.
-     * @return The ID.
+     * @brief Retrieves the unique system identifier for this person.
+     * @return An integer representing the unique ID.
      */
     [[nodiscard]] int get_id() const;
 
     /**
-     * @brief Gets the birth date of the person.
-     * @return The birth date as time_t.
+     * @brief Retrieves the full birth date as a time_t value.
+     * @return The birth date in seconds since the Epoch.
      */
     [[nodiscard]] time_t get_birth_date() const;
 
     /**
-     * @brief Calculates the current age of the person.
-     * @return The age in years.
+     * @brief Calculates the person's current age based on the system time.
+     * 
+     * The method calculates the difference between the current time and the birth date,
+     * then extracts the year component from the resulting duration.
+     * 
+     * @return The number of full years elapsed since the birth date.
      */
     [[nodiscard]] int get_age() const;
 
     /**
-     * @brief Gets the day of birth.
-     * @return The day of the month.
+     * @brief Extracts the day component from the birth date.
+     * @return The day of the month (1-31).
      */
     [[nodiscard]] int get_day_of_birth() const;
 
     /**
-     * @brief Gets the month of birth.
-     * @return The month (1-12).
+     * @brief Extracts the month component from the birth date.
+     * @return The month of the year as an integer (1-12).
      */
     [[nodiscard]] int get_month_of_birth() const;
 
     /**
-     * @brief Gets the year of birth.
-     * @return The year.
+     * @brief Extracts the year component from the birth date.
+     * @return The four-digit birth year (e.g., 2026).
      */
     [[nodiscard]] int get_year_of_birth() const;
 
     /**
-     * @brief Gets the email address of the person.
-     * @return The email address.
+     * @brief Retrieves the person's email address.
+     * @return A string representing the email address.
      */
     [[nodiscard]] std::string get_email() const;
 
     /**
-     * @brief Sets the email address of the person.
-     * @param email The new email address.
+     * @brief Updates the person's email address.
+     * @param email The new email string to validate and store.
      */
     void set_email(const std::string &email);
 
     /**
-     * @brief Equality operator.
-     * @param lhs Left-hand side person.
-     * @param rhs Right-hand side person.
-     * @return True if persons are identical.
+     * @brief Checks if two Person instances are identical across all fields.
+     * 
+     * @param lhs The first person to compare.
+     * @param rhs The second person to compare.
+     * @return True if ID, name, email, and birth date all match.
      */
     friend bool operator==(const Person &lhs, const Person &rhs);
 
     /**
-     * @brief Inequality operator.
-     * @param lhs Left-hand side person.
-     * @param rhs Right-hand side person.
-     * @return True if persons are different.
+     * @brief Checks if two Person instances differ in any field.
+     * 
+     * @param lhs The first person to compare.
+     * @param rhs The second person to compare.
+     * @return True if any attribute differs between the two objects.
      */
     friend bool operator!=(const Person &lhs, const Person &rhs);
 
     /**
-     * @brief Output stream operator.
-     * @param os The output stream.
-     * @param obj The person to output.
-     * @return Reference to the output stream.
+     * @brief Formats the Person's information for output to a stream.
+     * 
+     * Generates a string including the ID, full name, email, age, and a 
+     * formatted DD.MM.YYYY birth date.
+     * 
+     * @param os The output stream (e.g., std::cout or a file stream).
+     * @param obj The Person instance to be serialized.
+     * @return A reference to the modified output stream.
      */
     friend std::ostream & operator<<(std::ostream &os, const Person &obj);
 
     /**
-     * @brief Copy constructor.
-     * @param other The person to copy from.
+     * @brief Copy constructor creating a new Person as a clone of an existing one.
+     * @param other The source Person instance to copy data from.
      */
     Person(const Person &other);
 
     /**
-     * @brief Move constructor.
-     * @param other The person to move from.
+     * @brief Move constructor for efficient transfer of resources.
+     * @param other The temporary Person instance whose resources will be moved.
      */
     Person(Person &&other) noexcept;
 
     /**
-     * @brief Copy assignment operator.
-     * @param other The person to copy from.
-     * @return Reference to this person.
+     * @brief Copy assignment operator replacing current data with a copy of another instance.
+     * @param other The source Person to copy from.
+     * @return A reference to this updated instance.
      */
     Person & operator=(const Person &other);
 
     /**
-     * @brief Move assignment operator.
-     * @param other The person to move from.
-     * @return Reference to this person.
+     * @brief Move assignment operator transferring ownership of resources from another instance.
+     * @param other The source Person instance to move from.
+     * @return A reference to this updated instance.
      */
     Person & operator=(Person &&other) noexcept;
 };
