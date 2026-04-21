@@ -44,6 +44,8 @@ public:
     Teacher & operator=(Teacher &&other) noexcept;
 
     Teacher();
+
+    friend void swap(Teacher &lhs, Teacher &rhs) noexcept;
 };
 
 

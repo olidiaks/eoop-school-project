@@ -80,3 +80,10 @@ bool operator==(const Teacher &lhs, const Teacher &rhs) {
 bool operator!=(const Teacher &lhs, const Teacher &rhs) {
     return !(lhs == rhs);
 }
+
+void swap(Teacher &lhs, Teacher &rhs) noexcept {
+    using std::swap;
+    swap(static_cast<Person &>(lhs), static_cast<Person &>(rhs));
+    swap(lhs.salary, rhs.salary);
+    swap(lhs.subject, rhs.subject);
+}
