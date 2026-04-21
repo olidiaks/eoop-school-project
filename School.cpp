@@ -26,6 +26,22 @@ Teacher & School::find_teacher(int id) {
     }
 }
 
+Teacher & School::find_teacher(const std::string &first_name, const std::string &last_name) {
+    std::list<Teacher>* all_lists[] = {
+        &mathTeachers, &englishTeachers, &polishTeachers, &historyTeachers,
+         &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
+         &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
+    };
+
+    for (auto &i: all_lists) {
+        for (Teacher &j: *i) {
+            if (j.get_first_name() == first_name && j.get_last_name() == last_name) {
+                return j;
+            }
+        }
+    }
+}
+
 School::School() {
     mathTeachers = {};
     englishTeachers = {};
@@ -410,6 +426,7 @@ void School::hire_teacher(const std::string &first_name, const std::string &last
     }
 }
 
-void School::swap_teachers(Teacher &teacher1, Teacher &teacher2) {
-    swap(teacher1, teacher2);
+void School::fire_teacher(const int &id) {
+
 }
+
