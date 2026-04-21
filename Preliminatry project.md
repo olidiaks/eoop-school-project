@@ -39,6 +39,8 @@ What average grade has each teacher, and what’s the average grade school?
 
 Also, school needs to be able to present spending on each class, and teacher.
 
+![my_massive_project.svg](my_massive_project.svg)
+
 Assigemn.h
 ```c++
 //
