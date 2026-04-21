@@ -8,12 +8,13 @@
 #include <string>
 
 #include "Person.h"
+#include "Student.h"
 
 
 class Teacher : public Person {
 private:
     int salary;
-    std::string subject;
+    Subject subject;
 
 public:
     friend std::ostream & operator<<(std::ostream &os, const Teacher &obj);
@@ -23,12 +24,12 @@ public:
     friend bool operator!=(const Teacher &lhs, const Teacher &rhs);
 
     Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
-            const time_t birth_date, const int salary, const std::string &subject);
+            const time_t birth_date, const int salary, const Subject &subject);
 
     Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
-            const int &day, const int &month, const int &year, const int salary, const std::string &subject);
+            const int &day, const int &month, const int &year, const int salary, const Subject &subject);
 
-    [[nodiscard]] std::string get_subject() const;
+    [[nodiscard]] const Subject & get_subject() const;
 
     [[nodiscard]] int get_salary() const;
 
@@ -44,6 +45,7 @@ public:
 
     Teacher();
 };
+
 
 
 #endif //PROJECT_TEACHER_H

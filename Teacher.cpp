@@ -7,18 +7,18 @@
 #include <iostream>
 
 Teacher::Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
-                 const time_t birth_date, const int salary, const std::string &subject): Person(first_name, last_name, email, birth_date),
+                 const time_t birth_date, const int salary, const Subject &subject): Person(first_name, last_name, email, birth_date),
                                                                                          salary(salary),
                                                                                          subject(subject) {
 }
 
 Teacher::Teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
-    const int &day, const int &month, const int &year, const int salary, const std::string &subject): Person(first_name, last_name, email, day, month, year),
+    const int &day, const int &month, const int &year, const int salary, const Subject &subject): Person(first_name, last_name, email, day, month, year),
     salary(salary),
     subject(subject) {
 }
 
-std::string Teacher::get_subject() const {
+const Subject &Teacher::get_subject() const {
     return subject;
 }
 
@@ -60,8 +60,9 @@ Teacher & Teacher::operator=(Teacher &&other) noexcept {
 
 Teacher::Teacher() : Person(){
     salary = 0;
-    subject = "";
+    subject = Subject::None;
 }
+
 
 std::ostream & operator<<(std::ostream &os, const Teacher &obj) {
     return os
