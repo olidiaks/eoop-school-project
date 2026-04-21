@@ -15,6 +15,7 @@
 
 
 enum class Subject {
+    None,
     Math,
     English,
     Polish,
@@ -24,7 +25,7 @@ enum class Subject {
     Chemistry,
     Geography,
     ComputerScience,
-    PhysicalEducation
+    PhysicalEducation,
 };
 
 const char *to_string(Subject e);
@@ -119,5 +120,7 @@ public:
 
     friend std::ostream & stream_assignments(std::ostream & os, const Subject &subject, const Student &obj);
 };
+
+std::ostream & operator<<(std::ostream &os, Subject subject);
 
 #endif //PROJECT_STUDENT_H

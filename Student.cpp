@@ -65,7 +65,7 @@ float Student::get_average_grade() const {
             count++;
         }
     }
-    return (float)sum / count;
+    return (float) sum / count;
 }
 
 const std::list<Assigment_graded> &Student::get_assignments_from_subject(const Subject &subject) const {
@@ -101,7 +101,6 @@ const std::list<Assigment_graded> &Student::get_assignments_from_subject(const S
             return physicalEducationAssignments;
             break;
     }
-
 }
 
 int Student::get_sum_of_grades_from_students_subjects(const Subject &subject) const {
@@ -248,6 +247,10 @@ const std::list<Assigment_graded> &Student::get_physical_education_assignments()
     return physicalEducationAssignments;
 }
 
+std::ostream &operator<<(std::ostream &os, Subject subject) {
+    return os << to_string(subject);
+}
+
 bool operator==(const Student &lhs, const Student &rhs) {
     return static_cast<const Person &>(lhs) == static_cast<const Person &>(rhs)
            && lhs.mathAssignments == rhs.mathAssignments
@@ -266,7 +269,7 @@ bool operator!=(const Student &lhs, const Student &rhs) {
     return !(lhs == rhs);
 }
 
-std::ostream & operator<<(std::ostream &os, const Student &obj) {
+std::ostream &operator<<(std::ostream &os, const Student &obj) {
     return os
            << static_cast<const Person &>(obj)
            << " mathAssignments: " << obj.mathAssignments
