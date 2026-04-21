@@ -141,6 +141,7 @@ public:
             const int &day, const int &month, const int &year, const int salary, const Subject &subject);
 
     void fire_teacher(const int &id);
+    void fire_teacher(const std::string & firstname, const std::string & lastname);
 };
 
 

@@ -430,3 +430,8 @@ void School::fire_teacher(const int &id) {
     Teacher p;
     swap(find_teacher(id), p);
 }
+
+void School::fire_teacher(const std::string &firstname, const std::string &lastname) {
+    Teacher p;
+    swap(find_teacher(firstname, lastname), p);
+}
