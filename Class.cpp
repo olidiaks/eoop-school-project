@@ -173,6 +173,25 @@ Class::Class( Teacher &math_teacher,  Teacher &english_teacher,  Teacher &polish
     this->letter = letter;
 }
 
+Class::Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
+    Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
+    Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
+    const std::vector<Student> &students, bool is_class_graduated, char letter) : id(++counter), mathTeacher(math_teacher),
+    englishTeacher(english_teacher),
+    polishTeacher(polish_teacher),
+    historyTeacher(history_teacher),
+        biologyTeacher(biology_teacher),
+    physicsTeacher(physics_teacher),
+    chemistryTeacher(chemistry_teacher),
+    geographyTeacher(geography_teacher),
+    computerScienceTeacher(computer_science_teacher),
+    physicalEducationTeacher(physical_education_teacher),
+    superVisingTeacher(super_vising_teacher),
+    students(students),
+    isClassGraduated(is_class_graduated), year(0),
+    letter(letter) {
+}
+
 Class &Class::operator=(const Class &other) {
     if (this == &other)
         return *this;

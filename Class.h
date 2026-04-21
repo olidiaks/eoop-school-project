@@ -67,6 +67,11 @@ public:
     Class( Teacher & math_teacher,  Teacher & english_teacher,  Teacher & polish_teacher,  Teacher & history_teacher,  Teacher & biology_teacher,  Teacher & physics_teacher,  Teacher & chemistry_teacher,
            Teacher & geography_teacher,  Teacher & computer_science_teacher,  Teacher & physical_education_teacher,  Teacher & super_vising_teacher,  std::vector<Student> & students, char letter);
 
+    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
+        Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
+        Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
+        const std::vector<Student> &students, bool is_class_graduated, char letter);
+
     Class & operator=(const Class &other);
 
     Class & operator=(Class &&other) noexcept;
