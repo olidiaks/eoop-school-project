@@ -24,6 +24,7 @@ Teacher &School::find_teacher(int id) {
             }
         }
     }
+    throw std::runtime_error("Teacher not found");
 }
 
 Teacher &School::find_teacher(const std::string &first_name, const std::string &last_name) {
@@ -40,6 +41,7 @@ Teacher &School::find_teacher(const std::string &first_name, const std::string &
             }
         }
     }
+    throw std::runtime_error("Teacher not found");
 }
 
 School::School() {
