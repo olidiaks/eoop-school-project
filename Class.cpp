@@ -48,7 +48,8 @@ Class::Class(const Class &other) : id(other.id),
                                    geographyTeacher(other.geographyTeacher),
                                    computerScienceTeacher(other.computerScienceTeacher),
                                    physicalEducationTeacher(other.physicalEducationTeacher),
-                                   superVisingTeacher(other.superVisingTeacher) {
+                                   superVisingTeacher(other.superVisingTeacher),
+                                   students(other.students) {
 }
 
 Class::Class(Class &&other) noexcept : id(other.id),
@@ -62,7 +63,8 @@ Class::Class(Class &&other) noexcept : id(other.id),
                                        geographyTeacher(other.geographyTeacher),
                                        computerScienceTeacher(other.computerScienceTeacher),
                                        physicalEducationTeacher(other.physicalEducationTeacher),
-                                       superVisingTeacher(other.superVisingTeacher) {
+                                       superVisingTeacher(other.superVisingTeacher),
+                                       students(std::move(other.students)) {
 }
 
 Class &Class::operator=(const Class &other) {
@@ -80,6 +82,7 @@ Class &Class::operator=(const Class &other) {
     computerScienceTeacher = other.computerScienceTeacher;
     physicalEducationTeacher = other.physicalEducationTeacher;
     superVisingTeacher = other.superVisingTeacher;
+    students = other.students;
     return *this;
 }
 
@@ -98,6 +101,7 @@ Class &Class::operator=(Class &&other) noexcept {
     computerScienceTeacher = other.computerScienceTeacher;
     physicalEducationTeacher = other.physicalEducationTeacher;
     superVisingTeacher = other.superVisingTeacher;
+    students = std::move(other.students);
     return *this;
 }
 
