@@ -398,7 +398,7 @@ void Class::add_assignment(const Subject &subject, Assigment_graded &assigment_g
 }
 
 void Class::new_school_year() {
-    if (year++ == 5) {
+    if (++year == 5) {
         year = -1;
         isClassGraduated = true;
     }
