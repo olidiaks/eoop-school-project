@@ -133,6 +133,10 @@ public:
 
     void remove_class(int year, char letter);
 
+    void hire_teacher(Teacher &teacher);
+    void hire_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
+            const int &day, const int &month, const int &year, const int salary, const std::string &subject);
+
 };
 
 
