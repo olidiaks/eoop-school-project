@@ -301,6 +301,36 @@ float Class::get_average_grade_of_class() {
     return sum / count;
 }
 
+void Class::add_assignment(const Subject &subject, const Assigment &assigment) {
+    for (auto &student: students) {
+        student.add_assignment(subject, assigment);
+    }
+}
+
+void Class::add_assignment(const Subject &subject, const std::string &name, const std::string &description) {
+    for (auto &student: students) {
+        student.add_assignment(subject, name, description);
+    }
+}
+
+void Class::add_assignment(const Subject &subject, const Assigment &assigment, int grade) {
+    for (auto &student: students) {
+        student.add_assignment(subject, assigment, grade);
+    }
+}
+
+void Class::add_assignment(const Subject &subject, const Assigment_graded &assigment) {
+    for (auto &student: students) {
+        student.add_assignment(subject, assigment);
+    }
+}
+
+void Class::add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade) {
+    for (auto &student: students) {
+        student.add_assignment(subject, assigment_graded, grade);
+    }
+}
+
 
 bool operator==(const Class &lhs, const Class &rhs) {
     for (const auto &student: lhs.students) {

@@ -128,6 +128,16 @@ public:
     [[nodiscard]] int get_count_of_grades_from_subject(const Subject &subject) const;
 
     [[nodiscard]] float get_average_grade_of_class();
+
+    void add_assignment(const Subject &subject, const Assigment &assigment);
+
+    void add_assignment(const Subject &subject, const std::string &name, const std::string &description);
+
+    void add_assignment(const Subject &subject, const Assigment &assigment, int grade);
+
+    void add_assignment(const Subject &subject, const Assigment_graded &assigment);
+
+    void add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade);
 };
 
 std::ostream & operator<<(std::ostream & os, const std::vector<Student> & students);
