@@ -145,6 +145,55 @@ TEST_F(SchoolTest, EqualityOperators) {
     EXPECT_TRUE(s1 != s2);
 }
 
+TEST_F(SchoolTest, HireAllSubjects) {
+    Subject subjects[] = {
+        Subject::Math, Subject::English, Subject::Polish, Subject::History,
+        Subject::Biology, Subject::Physics, Subject::Chemistry, Subject::Geography,
+        Subject::ComputerScience, Subject::PhysicalEducation
+    };
+    
+    for (auto s : subjects) {
+        school.hire_teacher("First", "Last", "email@test.com", 1, 1, 1990, 5000, s);
+    }
+    
+    EXPECT_EQ(school.get_math_teachers().size(), 1);
+    EXPECT_EQ(school.get_english_teachers().size(), 1);
+    EXPECT_EQ(school.get_polish_teachers().size(), 1);
+    EXPECT_EQ(school.get_history_teachers().size(), 1);
+    EXPECT_EQ(school.get_biology_teachers().size(), 1);
+    EXPECT_EQ(school.get_physics_teachers().size(), 1);
+    EXPECT_EQ(school.get_chemistry_teachers().size(), 1);
+    EXPECT_EQ(school.get_geography_teachers().size(), 1);
+    EXPECT_EQ(school.get_computer_science_teachers().size(), 1);
+    EXPECT_EQ(school.get_physical_education_teachers().size(), 1);
+}
+
+TEST_F(SchoolTest, AddClassOverloads) {
+    Teacher t = createTeacher("T", "T", Subject::Math);
+    std::vector<Student> students = createStudents(1);
+    
+    // Test overload with letter and students (defaults year)
+    school.add_class(t, t, t, t, t, t, t, t, t, t, t, 'B', students);
+    EXPECT_EQ(school.get_classes().size(), 1);
+    EXPECT_EQ(school.get_classes().back().get_letter(), 'B');
+    
+    // Test overload with graduation status
+    school.add_class(t, t, t, t, t, t, t, t, t, t, t, 'C', students, true);
+    EXPECT_EQ(school.get_classes().size(), 2);
+    EXPECT_TRUE(school.get_classes().back().is_is_class_graduated());
+}
+
+TEST_F(SchoolTest, SwapFunction) {
+    School s1, s2;
+    s1.set_name("School1");
+    s2.set_name("School2");
+    
+    swap(s1, s2);
+    
+    EXPECT_EQ(s1.get_name(), "School2");
+    EXPECT_EQ(s2.get_name(), "School1");
+}
+
 TEST_F(SchoolTest, NotImplementedMethods) {
     EXPECT_THROW(school.get_average_students_grades_of_teacher(1), std::runtime_error);
     // School::print is private, but operator<< calls it
