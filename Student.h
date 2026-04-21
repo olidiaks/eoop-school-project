@@ -14,10 +14,6 @@
 #include "Subject.h"
 
 
-
-
-
-
 std::ostream & operator<<(std::ostream & os, const std::list<Assigment_graded> & assignment_list);
 
 class Student : public Person {
@@ -48,7 +44,7 @@ public:
 
     [[nodiscard]] int get_sum_of_grades_from_students_subjects(const Subject &subject) const;
 
-    int get_count_of_grades_from_students_subjects(const Subject &subject) const;
+    [[nodiscard]] int get_count_of_grades_from_students_subjects(const Subject &subject) const;
 
     [[nodiscard]] float get_average_grade_from_math() const;
 
