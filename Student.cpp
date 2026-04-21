@@ -86,6 +86,9 @@ const std::list<Assigment_graded> &Student::get_assignments_from_subject(const S
         case Subject::PhysicalEducation:
             return physicalEducationAssignments;
             break;
+        default:
+            static const std::list<Assigment_graded> empty;
+            return empty;
     }
 }
 
