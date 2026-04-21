@@ -296,6 +296,10 @@ const Student &Class::get_student(const int &id) const {
     return students.at(student_index);
 }
 
+std::vector<Student> &Class::get_students() {
+    return students;
+}
+
 int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const {
     int sum = 0;
     int count = 0;

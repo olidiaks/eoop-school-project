@@ -97,6 +97,8 @@ public:
 
     const Student &get_student(const int &id) const;
 
+    std::vector<Student> &get_students();
+
     [[nodiscard]] int get_average_grade_of_clas_from_subject(const Subject &subject) const;
 
     friend bool operator==(const Class &lhs, const Class &rhs);
