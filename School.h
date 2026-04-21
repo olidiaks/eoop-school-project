@@ -107,6 +107,8 @@ public:
     [[nodiscard]] std::string get_name() const;
 
     void set_name(const std::string &name);
+
+    void new_school_year();
 };
 
 

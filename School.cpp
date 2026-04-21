@@ -264,3 +264,9 @@ std::string School::get_name() const {
 void School::set_name(const std::string &name) {
     this->name = name;
 }
+
+void School::new_school_year() {
+    for (auto &i : classes) {
+        i.new_school_year();
+    }
+}
