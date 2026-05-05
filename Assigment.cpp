@@ -70,15 +70,15 @@ void Assigment::set_description(const std::string &description) {
     this->description = description;
 }
 
-bool operator==(const Assigment &lhs, const Assigment &rhs) {
-    return lhs.id == rhs.id
-           && lhs.name == rhs.name
-           && lhs.description == rhs.description
-           && lhs.subject == rhs.subject;
+bool Assigment::operator==(const Assigment &rhs) const {
+    return id == rhs.id
+           && name == rhs.name
+           && description == rhs.description
+           && subject == rhs.subject;
 }
 
-bool operator!=(const Assigment &lhs, const Assigment &rhs) {
-    return !(lhs == rhs);
+bool Assigment::operator!=(const Assigment &rhs) const {
+    return !(*this == rhs);
 }
 
 std::ostream & operator<<(std::ostream &os, const Assigment &obj) {

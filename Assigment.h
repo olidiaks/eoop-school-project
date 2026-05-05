@@ -179,7 +179,7 @@ public:
      * @param rhs The second Assignment object to compare.
      * @return True if both Assignment objects are equal; otherwise, false.
      */
-    friend bool operator==(const Assigment &lhs, const Assigment &rhs);
+    bool operator==(const Assigment &rhs) const;
 
     /**
      * @brief Compares two Assignment objects for inequality.
@@ -191,7 +191,7 @@ public:
      * @param rhs The right-hand side Assignment object to compare.
      * @return True if the two Assignment objects are not equal, otherwise false.
      */
-    friend bool operator!=(const Assigment &lhs, const Assigment &rhs);
+    bool operator!=(const Assigment &rhs) const;
 
     /**
      * @class Operator
