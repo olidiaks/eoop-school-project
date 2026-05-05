@@ -149,24 +149,24 @@ School &School::operator=(School &&other) noexcept {
     return *this;
 }
 
-bool operator==(const School &lhs, const School &rhs) {
-    return lhs.mathTeachers == rhs.mathTeachers
-           && lhs.englishTeachers == rhs.englishTeachers
-           && lhs.polishTeachers == rhs.polishTeachers
-           && lhs.historyTeachers == rhs.historyTeachers
-           && lhs.biologyTeachers == rhs.biologyTeachers
-           && lhs.physicsTeachers == rhs.physicsTeachers
-           && lhs.chemistryTeachers == rhs.chemistryTeachers
-           && lhs.geographyTeachers == rhs.geographyTeachers
-           && lhs.computerScienceTeachers == rhs.computerScienceTeachers
-           && lhs.physicalEducationTeachers == rhs.physicalEducationTeachers
-           && lhs.superVisingTeachers == rhs.superVisingTeachers
-           && lhs.classes == rhs.classes
-           && lhs.name == rhs.name;
+bool School::operator==(const School &rhs) const{
+    return mathTeachers == rhs.mathTeachers
+           && englishTeachers == rhs.englishTeachers
+           && polishTeachers == rhs.polishTeachers
+           && historyTeachers == rhs.historyTeachers
+           && biologyTeachers == rhs.biologyTeachers
+           && physicsTeachers == rhs.physicsTeachers
+           && chemistryTeachers == rhs.chemistryTeachers
+           && geographyTeachers == rhs.geographyTeachers
+           && computerScienceTeachers == rhs.computerScienceTeachers
+           && physicalEducationTeachers == rhs.physicalEducationTeachers
+           && superVisingTeachers == rhs.superVisingTeachers
+           && classes == rhs.classes
+           && name == rhs.name;
 }
 
-bool operator!=(const School &lhs, const School &rhs) {
-    return !(lhs == rhs);
+bool School::operator!=(const School &rhs) const {
+    return !(*this == rhs);
 }
 
 std::ostream &operator<<(std::ostream &os, const School &obj) {

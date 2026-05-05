@@ -151,7 +151,7 @@ public:
      * @param rhs The second School instance to compare.
      * @return true if all corresponding members of the two School instances are equal, false otherwise.
      */
-    friend bool operator==(const School &lhs, const School &rhs);
+    bool operator==(const School &rhs) const;
 
     /**
      * @brief Compares two School objects for inequality.
@@ -160,7 +160,7 @@ public:
      * @param rhs The second School object to compare.
      * @return True if the School objects are not equal, false otherwise.
      */
-    friend bool operator!=(const School &lhs, const School &rhs);
+    bool operator!=(const School &rhs) const;
 
     /**
      * @brief Outputs the string representation of a School object to the specified output stream.
