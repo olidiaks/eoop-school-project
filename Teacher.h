@@ -217,5 +217,13 @@ public:
 };
 
 
+/**
+ * The operator allows for << to happen on a list of Teachers.
+ * @param os A reference to the output stream on the left side of the operator.
+ * @param Teacher A reference to a list of teachers to be outputed
+ * @return ostream with Teachers.
+ */
+std::ostream & operator<<(std::ostream &os, const std::list<Teacher> & Teacher);
+
 
 #endif //PROJECT_TEACHER_H

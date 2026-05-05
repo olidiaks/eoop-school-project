@@ -63,6 +63,13 @@ Teacher::Teacher() : Person(){
     subject = Subject::None;
 }
 
+std::ostream & operator<<(std::ostream &os, const std::list<Teacher> &Teacher) {
+    for (const auto &teacher: Teacher) {
+        os << teacher << std::endl;
+    }
+    return os;
+}
+
 
 std::ostream & operator<<(std::ostream &os, const Teacher &obj) {
     return os
