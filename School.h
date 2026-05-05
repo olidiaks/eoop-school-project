@@ -31,17 +31,6 @@ private:
     std::string name;
 
     /**
-     * @brief Generates a string representation of the School instance.
-     *
-     * This method provides a detailed description of the School object, including its teachers,
-     * classes, and other relevant properties.
-     *
-     * @return A string containing a formatted representation of the School.
-     * @throw std::runtime_error if the method is not implemented.
-     */
-    [[nodiscard]] std::string print() const;
-
-    /**
      * @brief Finds and returns a reference to a teacher with the specified ID.
      *
      * Searches through all available teacher lists categorized by subject areas.
@@ -169,7 +158,7 @@ public:
      * @param obj The School object to be converted to a string and written to the output stream.
      * @return A reference to the output stream after the School object's string representation is written.
      */
-    friend std::ostream &operator<<(std::ostream &os, const School &obj);
+ friend std::ostream & operator<<(std::ostream &os, const School &obj);
 
     /**
      * @brief Exchanges the contents of two School objects.

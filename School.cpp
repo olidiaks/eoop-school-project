@@ -6,10 +6,6 @@
 
 #include <algorithm>
 
-std::string School::print() const {
-    throw std::runtime_error("Not implemented");
-}
-
 Teacher &School::find_teacher(int id) {
     std::list<Teacher> *all_lists[] = {
         &mathTeachers, &englishTeachers, &polishTeachers, &historyTeachers,
@@ -169,9 +165,21 @@ bool School::operator!=(const School &rhs) const {
     return !(*this == rhs);
 }
 
-std::ostream &operator<<(std::ostream &os, const School &obj) {
+std::ostream & operator<<(std::ostream &os, const School &obj) {
     return os
-           << obj.print();
+           << "mathTeachers: " << obj.mathTeachers
+           << " englishTeachers: " << obj.englishTeachers
+           << " polishTeachers: " << obj.polishTeachers
+           << " historyTeachers: " << obj.historyTeachers
+           << " biologyTeachers: " << obj.biologyTeachers
+           << " physicsTeachers: " << obj.physicsTeachers
+           << " chemistryTeachers: " << obj.chemistryTeachers
+           << " geographyTeachers: " << obj.geographyTeachers
+           << " computerScienceTeachers: " << obj.computerScienceTeachers
+           << " physicalEducationTeachers: " << obj.physicalEducationTeachers
+           << " superVisingTeachers: " << obj.superVisingTeachers
+           << " classes: " << obj.classes
+           << " name: " << obj.name;
 }
 
 void swap(School &lhs, School &rhs) noexcept {
