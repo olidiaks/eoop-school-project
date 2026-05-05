@@ -40,7 +40,7 @@ TEST_F(ClassTest, ConstructorAndGetters) {
     EXPECT_EQ(c.get_count_of_students(), 0);
     EXPECT_EQ(c.get_year(), 2);
     EXPECT_EQ(c.get_letter(), 'B');
-    EXPECT_FALSE(c.is_is_class_graduated());
+    EXPECT_FALSE(c.is_class_graduated());
 }
 
 TEST_F(ClassTest, ConstructorWithStudents) {
@@ -86,7 +86,7 @@ TEST_F(ClassTest, AlternativeConstructors) {
     Class cGraduated(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
                      physicsTeacher, chemistryTeacher, geographyTeacher, computerScienceTeacher,
                      physicalEducationTeacher, superVisingTeacher, true);
-    EXPECT_TRUE(cGraduated.is_is_class_graduated());
+    EXPECT_TRUE(cGraduated.is_class_graduated());
     EXPECT_EQ(cGraduated.get_year(), -1);
 
     Class cWithLetter(mathTeacher, englishTeacher, polishTeacher, historyTeacher, biologyTeacher,
@@ -94,7 +94,7 @@ TEST_F(ClassTest, AlternativeConstructors) {
                       physicalEducationTeacher, superVisingTeacher, 'C');
     EXPECT_EQ(cWithLetter.get_letter(), 'C');
     EXPECT_EQ(cWithLetter.get_year(), 1);
-    EXPECT_FALSE(cWithLetter.is_is_class_graduated());
+    EXPECT_FALSE(cWithLetter.is_class_graduated());
 }
 
 TEST_F(ClassTest, NewSchoolYear) {
@@ -107,11 +107,11 @@ TEST_F(ClassTest, NewSchoolYear) {
     c.new_school_year(); // 3
     c.new_school_year(); // 4
     EXPECT_EQ(c.get_year(), 4);
-    EXPECT_FALSE(c.is_is_class_graduated());
+    EXPECT_FALSE(c.is_class_graduated());
     
     c.new_school_year(); // 5 -> graduated
     EXPECT_EQ(c.get_year(), -1);
-    EXPECT_TRUE(c.is_is_class_graduated());
+    EXPECT_TRUE(c.is_class_graduated());
 }
 
 TEST_F(ClassTest, Setters) {

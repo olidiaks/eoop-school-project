@@ -236,7 +236,7 @@ Class &Class::operator=(Class &&other) noexcept {
     return *this;
 }
 
-bool Class::is_is_class_graduated() const {
+bool Class::is_class_graduated() const {
     return isClassGraduated;
 }
 

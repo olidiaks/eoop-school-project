@@ -258,7 +258,7 @@ public:
      * @brief Checks if the class has graduated.
      * @return True if the class has graduated, false otherwise.
      */
-    [[nodiscard]] bool is_is_class_graduated() const;
+    [[nodiscard]] bool is_class_graduated() const;
 
     /**
      * @brief Retrieves the year associated with the class.

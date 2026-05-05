@@ -180,7 +180,7 @@ TEST_F(SchoolTest, AddClassOverloads) {
     // Test overload with graduation status
     school.add_class(t, t, t, t, t, t, t, t, t, t, t, 'C', students, true);
     EXPECT_EQ(school.get_classes().size(), 2);
-    EXPECT_TRUE(school.get_classes().back().is_is_class_graduated());
+    EXPECT_TRUE(school.get_classes().back().is_class_graduated());
 }
 
 TEST_F(SchoolTest, SwapFunction) {
