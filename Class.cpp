@@ -315,6 +315,43 @@ int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const 
     return sum / count;
 }
 
+bool Class::operator==(const Class &rhs) const {
+
+    bool is_equal = id == rhs.id
+           && mathTeacher == rhs.mathTeacher
+           && englishTeacher == rhs.englishTeacher
+           && polishTeacher == rhs.polishTeacher
+           && historyTeacher == rhs.historyTeacher
+           && biologyTeacher == rhs.biologyTeacher
+           && physicsTeacher == rhs.physicsTeacher
+           && chemistryTeacher == rhs.chemistryTeacher
+           && geographyTeacher == rhs.geographyTeacher
+           && computerScienceTeacher == rhs.computerScienceTeacher
+           && physicalEducationTeacher == rhs.physicalEducationTeacher
+           && superVisingTeacher == rhs.superVisingTeacher
+           && isClassGraduated == rhs.isClassGraduated
+           && year == rhs.year
+           && letter == rhs.letter;;;
+
+    if (!is_equal) {
+        return false;
+    }
+
+    for (const auto &student: students) {
+        bool are_students_equal = false;
+        for (const auto &other_student: rhs.students) {
+            if (student == other_student) {
+                are_students_equal = true;
+            }
+        }
+        if (!are_students_equal) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 Teacher Class::get_math_teacher() const {
     return mathTeacher;
 }
@@ -492,37 +529,9 @@ void Class::new_school_year() {
 }
 
 
-bool operator==(const Class &lhs, const Class &rhs) {
-    for (const auto &student: lhs.students) {
-        bool is_equal = false;
-        for (const auto &other_student: rhs.students) {
-            if (student == other_student) {
-                is_equal = true;
-            }
-        }
-        if (!is_equal) {
-            return false;
-        }
-    }
-    return lhs.id == rhs.id
-           && lhs.mathTeacher == rhs.mathTeacher
-           && lhs.englishTeacher == rhs.englishTeacher
-           && lhs.polishTeacher == rhs.polishTeacher
-           && lhs.historyTeacher == rhs.historyTeacher
-           && lhs.biologyTeacher == rhs.biologyTeacher
-           && lhs.physicsTeacher == rhs.physicsTeacher
-           && lhs.chemistryTeacher == rhs.chemistryTeacher
-           && lhs.geographyTeacher == rhs.geographyTeacher
-           && lhs.computerScienceTeacher == rhs.computerScienceTeacher
-           && lhs.physicalEducationTeacher == rhs.physicalEducationTeacher
-           && lhs.superVisingTeacher == rhs.superVisingTeacher
-           && lhs.isClassGraduated == rhs.isClassGraduated
-           && lhs.year == rhs.year
-           && lhs.letter == rhs.letter;;
-}
 
-bool operator!=(const Class &lhs, const Class &rhs) {
-    return !(lhs == rhs);
+bool Class::operator!=(const Class &rhs) const {
+    return !(*this == rhs);
 }
 
 

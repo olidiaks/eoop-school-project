@@ -355,7 +355,7 @@ public:
      * @param rhs The second Class object to compare.
      * @return true if the two Class objects are equivalent; false otherwise.
      */
-    friend bool operator==(const Class &lhs, const Class &rhs);
+      bool operator==(const Class &rhs) const;
 
     /**
      * @brief Compares two Class objects for inequality.
@@ -367,7 +367,7 @@ public:
      * @param rhs The second Class object to compare.
      * @return True if the objects are not equal, otherwise false.
      */
-    friend bool operator!=(const Class &lhs, const Class &rhs);
+    bool operator!=(const Class &rhs) const;
 
     /**
      * @brief Overloads the stream insertion operator to output the details of a Class object.
