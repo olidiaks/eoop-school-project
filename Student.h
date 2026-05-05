@@ -310,7 +310,7 @@ public:
      * @return true if all corresponding data members of the two Student objects
      *         are equal; otherwise, false.
      */
-    friend bool operator==(const Student &lhs, const Student &rhs);
+    bool operator==(const Student &rhs) const;
 
     /**
      * Compares two Student objects to determine if they are not equal.
@@ -319,7 +319,7 @@ public:
      * @param rhs The second Student object to compare.
      * @return True if the two Student objects are not equal, otherwise false.
      */
-    friend bool operator!=(const Student &lhs, const Student &rhs);
+    bool operator!=(const Student &rhs) const;
 
     /**
      * Overloads the operator to perform a specific operation between two objects.

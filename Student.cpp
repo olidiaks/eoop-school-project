@@ -236,22 +236,22 @@ const std::list<Assigment_graded> &Student::get_physical_education_assignments()
     return physicalEducationAssignments;
 }
 
-bool operator==(const Student &lhs, const Student &rhs) {
-    return static_cast<const Person &>(lhs) == static_cast<const Person &>(rhs)
-           && lhs.mathAssignments == rhs.mathAssignments
-           && lhs.englishAssignments == rhs.englishAssignments
-           && lhs.polishAssignments == rhs.polishAssignments
-           && lhs.historyAssignments == rhs.historyAssignments
-           && lhs.biologyAssignments == rhs.biologyAssignments
-           && lhs.physicsAssignments == rhs.physicsAssignments
-           && lhs.chemistryAssignments == rhs.chemistryAssignments
-           && lhs.geographyAssignments == rhs.geographyAssignments
-           && lhs.computerScienceAssignments == rhs.computerScienceAssignments
-           && lhs.physicalEducationAssignments == rhs.physicalEducationAssignments;
+bool Student::operator==(const Student &rhs) const {
+    return static_cast<const Person &>(*this) == static_cast<const Person &>(rhs)
+           && mathAssignments == rhs.mathAssignments
+           && englishAssignments == rhs.englishAssignments
+           && polishAssignments == rhs.polishAssignments
+           && historyAssignments == rhs.historyAssignments
+           && biologyAssignments == rhs.biologyAssignments
+           && physicsAssignments == rhs.physicsAssignments
+           && chemistryAssignments == rhs.chemistryAssignments
+           && geographyAssignments == rhs.geographyAssignments
+           && computerScienceAssignments == rhs.computerScienceAssignments
+           && physicalEducationAssignments == rhs.physicalEducationAssignments;
 }
 
-bool operator!=(const Student &lhs, const Student &rhs) {
-    return !(lhs == rhs);
+bool Student::operator!=(const Student &rhs) const {
+    return !(*this == rhs);
 }
 
 std::ostream &operator<<(std::ostream &os, const Student &obj) {
