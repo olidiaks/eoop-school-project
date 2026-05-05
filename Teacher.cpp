@@ -71,14 +71,14 @@ std::ostream & operator<<(std::ostream &os, const Teacher &obj) {
            << " subject: " << obj.subject;
 }
 
-bool operator==(const Teacher &lhs, const Teacher &rhs) {
-    return static_cast<const Person &>(lhs) == static_cast<const Person &>(rhs)
-           && lhs.salary == rhs.salary
-           && lhs.subject == rhs.subject;
+bool Teacher::operator==(const Teacher &rhs) const {
+    return static_cast<const Person &>(*this) == static_cast<const Person &>(rhs)
+           && salary == rhs.salary
+           && subject == rhs.subject;
 }
 
-bool operator!=(const Teacher &lhs, const Teacher &rhs) {
-    return !(lhs == rhs);
+bool Teacher::operator!=(const Teacher &rhs) const {
+    return !(*this == rhs);
 }
 
 void swap(Teacher &lhs, Teacher &rhs) noexcept {

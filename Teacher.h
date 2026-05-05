@@ -58,7 +58,7 @@ public:
      * @param rhs The right-hand side Teacher object to be compared.
      * @return true if the two Teacher objects are equal; false otherwise.
      */
-    friend bool operator==(const Teacher &lhs, const Teacher &rhs);
+    bool operator==(const Teacher &rhs) const;
 
     /**
      * Compares two Teacher objects for inequality.
@@ -70,7 +70,7 @@ public:
      * @param rhs The right-hand side Teacher object to be compared.
      * @return true if the two Teacher objects are not equal; false otherwise.
      */
-    friend bool operator!=(const Teacher &lhs, const Teacher &rhs);
+    bool operator!=(const Teacher &rhs) const;
 
     /**
      * Constructs a Teacher object with the specified details.
