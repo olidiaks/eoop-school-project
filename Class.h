@@ -614,6 +614,18 @@ public:
  */
 std::ostream & operator<<(std::ostream & os, const std::vector<Student> & students);
 
+/**
+ * @brief Overloads an operator to define custom behavior for a specific operation.
+ *
+ * This method writes the details of each class in the given list to the specified
+ * output stream, with each student's details separated by a newline.
+ *
+ * @param os The output stream to write to.
+ * @param classes A list containing the Classes to output.
+ * @return A reference to the output stream after the students have been written to it.
+ */
+std::ostream & operator<<(std::ostream & os, const std::list<Class> & classes);
+
 
 
 #endif //PROJECT_CLASS_H

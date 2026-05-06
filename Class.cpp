@@ -542,6 +542,13 @@ std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students)
     return os;
 }
 
+std::ostream & operator<<(std::ostream &os, const std::list<Class> &classes) {
+    for (const Class &class_ : classes) {
+        os << class_ << std::endl;
+    }
+    return os;
+}
+
 std::ostream &operator<<(std::ostream &os, const Class &obj) {
     return os
            << "id: " << obj.id
