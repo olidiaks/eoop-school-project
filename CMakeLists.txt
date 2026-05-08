@@ -25,8 +25,6 @@ add_executable(Project main.cpp
         Assignment.h
         Class.cpp
         Class.h
-        Assigment_graded.cpp
-        Assigment_graded.h
         Subject.cpp
         Subject.h
 )
@@ -37,11 +35,9 @@ add_executable(Assigment-test Assigment.test.cpp Assignment.cpp Assignment.h)
 target_link_libraries(Assigment-test PUBLIC gtest_main)
 add_executable(Teacher-test Teacher.test.cpp Teacher.cpp Teacher.h Person.cpp Person.h)
 target_link_libraries(Teacher-test PUBLIC gtest_main)
-add_executable(Assigment-graded-test Assigment_graded.test.cpp Assigment_graded.cpp Assigment_graded.h Assignment.cpp Assignment.h)
-target_link_libraries(Assigment-graded-test PUBLIC gtest_main)
-add_executable(Student-test Student.test.cpp Student.cpp Student.h Person.cpp Person.h Assigment_graded.cpp Assigment_graded.h Assignment.cpp Assignment.h)
+add_executable(Student-test Student.test.cpp Student.cpp Student.h Person.cpp Person.h Assignment.cpp Assignment.h)
 target_link_libraries(Student-test PUBLIC gtest_main)
-add_executable(class-test Class.test.cpp Class.cpp Class.h Student.cpp Student.h Teacher.cpp Teacher.h Person.cpp Person.h Assignment.cpp Assignment.h Assigment_graded.cpp Assigment_graded.h)
+add_executable(class-test Class.test.cpp Class.cpp Class.h Student.cpp Student.h Teacher.cpp Teacher.h Person.cpp Person.h Assignment.cpp Assignment.h)
 target_link_libraries(class-test PUBLIC gtest_main)
-add_executable(school-test School.test.cpp School.cpp School.h Class.cpp Class.h Student.cpp Student.h Teacher.cpp Teacher.h Person.cpp Person.h Assignment.cpp Assignment.h Assigment_graded.cpp Assigment_graded.h Subject.cpp Subject.h)
+add_executable(school-test School.test.cpp School.cpp School.h Class.cpp Class.h Student.cpp Student.h Teacher.cpp Teacher.h Person.cpp Person.h Assignment.cpp Assignment.h Subject.cpp Subject.h)
 target_link_libraries(school-test PUBLIC gtest_main)
