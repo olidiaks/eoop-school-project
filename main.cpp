@@ -9,7 +9,7 @@
 #include "Student.h"
 #include "Class.h"
 #include "Subject.h"
-#include "Assigment.h"
+#include "Assignment.h"
 
 // Helper to manage the flow of the presentation
 void wait_for_user(const std::string& message = "Press Enter to continue...") {
@@ -53,7 +53,7 @@ void printClassStudents(const std::string& className, const std::vector<Student>
 std::mt19937 g_rng(1337);
 
 void performIndividualGrading(Class& c, Subject sub, const std::string& name, const std::string& desc) {
-    Assigment task(name, desc, to_string(sub));
+    Assignment task(name, desc, to_string(sub));
     std::cout << "\n    >>> Grading Session: '" << name << "' (" << to_string(sub) << ") <<<" << std::endl;
     std::cout << "    " << std::left << std::setw(25) << "STUDENT NAME" << " | " << "GRADE" << std::endl;
     std::cout << "    ------------------------------------------" << std::endl;

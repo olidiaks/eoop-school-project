@@ -2,21 +2,21 @@
 // Created by olidiaks on 4/16/26.
 //
 
-#include "Assigment.h"
+#include "Assignment.h"
 
 #include <algorithm>
 
-int Assigment::counter = 0;
+int Assignment::counter = 0;
 
 
-Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject): name(name),
+Assignment::Assignment(const std::string &name, const std::string &description, const std::string &subject): name(name),
     description(description),
     subject(subject) {
     id = ++counter;
     grade = 0;
 }
 
-Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject,
+Assignment::Assignment(const std::string &name, const std::string &description, const std::string &subject,
     const int grade): name(name),
                       description(description),
                       subject(subject),
@@ -26,21 +26,21 @@ Assigment::Assigment(const std::string &name, const std::string &description, co
 
 
 
-Assigment::Assigment(const Assigment &other): id(other.id),
+Assignment::Assignment(const Assignment &other): id(other.id),
                                               name(other.name),
                                               description(other.description),
                                               subject(other.subject),
                                               grade(other.grade)  {
 }
 
-Assigment::Assigment(Assigment &&other) noexcept: id(other.id),
+Assignment::Assignment(Assignment &&other) noexcept: id(other.id),
                                                   name(std::move(other.name)),
                                                   description(std::move(other.description)),
                                                   subject(std::move(other.subject)),
                                                     grade(other.grade){
 }
 
-Assigment & Assigment::operator=(const Assigment &other) {
+Assignment & Assignment::operator=(const Assignment &other) {
     if (this == &other)
         return *this;
     id = other.id;
@@ -51,7 +51,7 @@ Assigment & Assigment::operator=(const Assigment &other) {
     return *this;
 }
 
-Assigment & Assigment::operator=(Assigment &&other) noexcept {
+Assignment & Assignment::operator=(Assignment &&other) noexcept {
     if (this == &other)
         return *this;
     id = other.id;
@@ -62,58 +62,58 @@ Assigment & Assigment::operator=(Assigment &&other) noexcept {
     return *this;
 }
 
-int Assigment::get_id() const {
+int Assignment::get_id() const {
     return id;
 }
 
-std::string Assigment::get_subject() const {
+std::string Assignment::get_subject() const {
     return subject;
 }
 
-std::string Assigment::get_name() const {
+std::string Assignment::get_name() const {
     return name;
 }
 
-void Assigment::set_name(const std::string &name) {
+void Assignment::set_name(const std::string &name) {
     this->name = name;
 }
 
-std::string Assigment::get_description() const {
+std::string Assignment::get_description() const {
     return description;
 }
 
-void Assigment::set_description(const std::string &description) {
+void Assignment::set_description(const std::string &description) {
     this->description = description;
 }
 
-int Assigment::get_grade() const {
+int Assignment::get_grade() const {
     return grade;
 }
 
-void Assigment::set_grade(const int grade) {
+void Assignment::set_grade(const int grade) {
     this->grade = grade;
 }
 
-void Assigment::remove_grade() {
+void Assignment::remove_grade() {
     this->grade = 0;
 }
 
-bool Assigment::is_assigment_graded() const {
+bool Assignment::is_assigment_graded() const {
     return !this->grade;
 }
 
-bool Assigment::operator==(const Assigment &rhs) const {
+bool Assignment::operator==(const Assignment &rhs) const {
     return id == rhs.id
            && name == rhs.name
            && description == rhs.description
            && subject == rhs.subject;
 }
 
-bool Assigment::operator!=(const Assigment &rhs) const {
+bool Assignment::operator!=(const Assignment &rhs) const {
     return !(*this == rhs);
 }
 
-std::ostream & operator<<(std::ostream &os, const Assigment &obj) {
+std::ostream & operator<<(std::ostream &os, const Assignment &obj) {
     return os
            << "id: " << obj.id
            << " name: " << obj.name
@@ -122,7 +122,7 @@ std::ostream & operator<<(std::ostream &os, const Assigment &obj) {
            << " grade: " << obj.grade;
 }
 
-void swap(Assigment &lhs, Assigment &rhs) noexcept {
+void swap(Assignment &lhs, Assignment &rhs) noexcept {
     using std::swap;
     swap(lhs.id, rhs.id);
     swap(lhs.name, rhs.name);

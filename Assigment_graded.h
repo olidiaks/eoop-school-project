@@ -6,7 +6,7 @@
 #define EOOP_SCHOOL_PROJECT_ASSIGEMNT_GRADED_H
 #include <ostream>
 
-#include "Assigment.h"
+#include "Assignment.h"
 
 
 /**
@@ -27,7 +27,7 @@ class Assigment_graded {
 private:
     static int counter;
     int id;
-    Assigment assigment;
+    Assignment assigment;
     int grade;
     bool is_graded;
 
@@ -41,7 +41,7 @@ private:
      * @param assignment The assignment object to be used for initializing the graded assignment.
      */
 public:
-    Assigment_graded(const Assigment &assigment);
+    Assigment_graded(const Assignment &assigment);
 
     /**
      * @brief Constructs an Assignment_graded object with the provided assignment and grade.
@@ -53,7 +53,7 @@ public:
      * @param assignment The assignment associated with the grade.
      * @param grade The grade achieved for the assignment.
      */
-    Assigment_graded(const Assigment &assigment, const int grade);
+    Assigment_graded(const Assignment &assigment, const int grade);
 
     /**
      * @brief Copy constructor for the Assignment_graded class.
@@ -152,7 +152,7 @@ public:
      *         The returned object is marked as [[nodiscard]] to indicate that the caller
      *         should not discard the result.
      */
-    [[nodiscard]] Assigment get_assigment() const;
+    [[nodiscard]] Assignment get_assigment() const;
 
     /**
      * @brief Retrieves the unique identifier of the instance.

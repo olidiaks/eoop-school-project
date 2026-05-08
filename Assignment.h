@@ -18,7 +18,7 @@
  *
  * @param other The Assigment object to swap contents with.
  */
-class Assigment {
+class Assignment {
 private:
     int id;
     std::string name;
@@ -41,7 +41,7 @@ public:
      * @param subject The subject associated with the assignment.
      * @return A new instance of the Assigment class.
      */
-    Assigment(const std::string &name, const std::string &description, const std::string &subject);
+    Assignment(const std::string &name, const std::string &description, const std::string &subject);
 
     /**
      * @brief Constructs a new Assigment object with the specified attributes.
@@ -54,7 +54,7 @@ public:
      * @param subject The subject associated with the assignment.
      * @param grade The grade associated with the assignment.
      */
-    Assigment(const std::string &name, const std::string &description, const std::string &subject, const int grade);
+    Assignment(const std::string &name, const std::string &description, const std::string &subject, const int grade);
 
     /**
      * @brief Copy constructor for the Assigment class.
@@ -67,7 +67,7 @@ public:
      * @param other The Assigment object to copy from.
      * @return A new Assigment instance with the same attribute values as the provided object.
      */
-    Assigment(const Assigment &other);
+    Assignment(const Assignment &other);
 
     /**
      * @class Assignment
@@ -81,7 +81,7 @@ public:
      * This class is designed to support features that allow for tracking, evaluating, and managing
      * the lifecycle of an assignment, from creation to completion.
      */
-    Assigment(Assigment &&other) noexcept;
+    Assignment(Assignment &&other) noexcept;
 
     /**
      * @brief Copy assignment operator for the Assigment class.
@@ -97,7 +97,7 @@ public:
      * @param other The Assigment object to copy from.
      * @return A reference to this Assigment object, with updated attribute values.
      */
-    Assigment & operator=(const Assigment &other);
+    Assignment & operator=(const Assignment &other);
 
     /**
      * @brief Move assignment operator for the Assigment class.
@@ -116,7 +116,7 @@ public:
      * @param other The Assigment object to move from.
      * @return A reference to this Assigment object, with updated attribute values.
      */
-    Assigment & operator=(Assigment &&other) noexcept;
+    Assignment & operator=(Assignment &&other) noexcept;
 
     /**
      * @brief Retrieves the unique identifier of the assignment.
@@ -232,7 +232,7 @@ public:
      * @param rhs The second Assignment object to compare.
      * @return True if both Assignment objects are equal; otherwise, false.
      */
-    bool operator==(const Assigment &rhs) const;
+    bool operator==(const Assignment &rhs) const;
 
     /**
      * @brief Compares two Assignment objects for inequality.
@@ -244,7 +244,7 @@ public:
      * @param rhs The right-hand side Assignment object to compare.
      * @return True if the two Assignment objects are not equal, otherwise false.
      */
-    bool operator!=(const Assigment &rhs) const;
+    bool operator!=(const Assignment &rhs) const;
 
     /**
      * @class Operator
@@ -258,7 +258,7 @@ public:
      * necessary encapsulation and abstraction. The class may also support extended or overloaded
      * functionality for different types of operations.
      */
-    friend std::ostream & operator<<(std::ostream &os, const Assigment &obj);
+    friend std::ostream & operator<<(std::ostream &os, const Assignment &obj);
 
     /**
      * @brief Exchanges the contents of two Assignment objects.
@@ -273,7 +273,7 @@ public:
      * @param lhs Reference to the first Assignment object to be swapped.
      * @param rhs Reference to the second Assignment object to be swapped.
      */
-    friend void swap(Assigment &lhs, Assigment &rhs) noexcept;
+    friend void swap(Assignment &lhs, Assignment &rhs) noexcept;
 
 };
 

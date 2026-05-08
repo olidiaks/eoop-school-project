@@ -4,11 +4,11 @@
 
 #include <gtest/gtest.h>
 #include <sstream>
-#include "Assigment.h"
+#include "Assignment.h"
 
 // Test constructors
 TEST(AssigmentTest, ConstructorWithoutGrade) {
-    Assigment a("Test Name", "Test Description", "Test Subject");
+    Assignment a("Test Name", "Test Description", "Test Subject");
     EXPECT_EQ(a.get_name(), "Test Name");
     EXPECT_EQ(a.get_description(), "Test Description");
     EXPECT_EQ(a.get_subject(), "Test Subject");
@@ -16,7 +16,7 @@ TEST(AssigmentTest, ConstructorWithoutGrade) {
 }
 
 TEST(AssigmentTest, ConstructorWithGrade) {
-    Assigment a("Math HW", "Calculus problems", "Math");
+    Assignment a("Math HW", "Calculus problems", "Math");
     EXPECT_EQ(a.get_name(), "Math HW");
     EXPECT_EQ(a.get_description(), "Calculus problems");
     EXPECT_EQ(a.get_subject(), "Math");
@@ -24,7 +24,7 @@ TEST(AssigmentTest, ConstructorWithGrade) {
 
 // Test setters and getters
 TEST(AssigmentTest, SettersAndGetters) {
-    Assigment a("Name", "Desc", "Subj");
+    Assignment a("Name", "Desc", "Subj");
     a.set_name("New Name");
     a.set_description("New Desc");
 
@@ -34,8 +34,8 @@ TEST(AssigmentTest, SettersAndGetters) {
 
 // Test copy constructor
 TEST(AssigmentTest, CopyConstructor) {
-    Assigment a1("Name", "Desc", "Subj");
-    Assigment a2(a1);
+    Assignment a1("Name", "Desc", "Subj");
+    Assignment a2(a1);
     
     EXPECT_EQ(a1.get_id(), a2.get_id());
     EXPECT_EQ(a1.get_name(), a2.get_name());
@@ -46,9 +46,9 @@ TEST(AssigmentTest, CopyConstructor) {
 
 // Test move constructor
 TEST(AssigmentTest, MoveConstructor) {
-    Assigment a1("Name", "Desc", "Subj");
+    Assignment a1("Name", "Desc", "Subj");
     int original_id = a1.get_id();
-    Assigment a2(std::move(a1));
+    Assignment a2(std::move(a1));
     
     EXPECT_EQ(a2.get_id(), original_id);
     EXPECT_EQ(a2.get_name(), "Name");
@@ -56,8 +56,8 @@ TEST(AssigmentTest, MoveConstructor) {
 
 // Test copy assignment operator
 TEST(AssigmentTest, CopyAssignment) {
-    Assigment a1("Name1", "Desc1", "Subj1");
-    Assigment a2("Name2", "Desc2", "Subj2");
+    Assignment a1("Name1", "Desc1", "Subj1");
+    Assignment a2("Name2", "Desc2", "Subj2");
     a2 = a1;
     
     EXPECT_EQ(a1.get_id(), a2.get_id());
@@ -67,9 +67,9 @@ TEST(AssigmentTest, CopyAssignment) {
 
 // Test move assignment operator
 TEST(AssigmentTest, MoveAssignment) {
-    Assigment a1("Name1", "Desc1", "Subj1");
+    Assignment a1("Name1", "Desc1", "Subj1");
     int original_id = a1.get_id();
-    Assigment a2("Name2", "Desc2", "Subj2");
+    Assignment a2("Name2", "Desc2", "Subj2");
     a2 = std::move(a1);
     
     EXPECT_EQ(a2.get_id(), original_id);
@@ -78,21 +78,21 @@ TEST(AssigmentTest, MoveAssignment) {
 
 // Test equality and inequality operators
 TEST(AssigmentTest, EqualityOperators) {
-    Assigment a1("Name", "Desc", "Subj");
-    Assigment a2("Name", "Desc", "Subj");
+    Assignment a1("Name", "Desc", "Subj");
+    Assignment a2("Name", "Desc", "Subj");
     // These should have different IDs, thus they are not equal
     
     EXPECT_NE(a1, a2);
     EXPECT_TRUE(a1 != a2);
     
-    Assigment a3(a1);
+    Assignment a3(a1);
     EXPECT_EQ(a1, a3);
     EXPECT_FALSE(a1 != a3);
 }
 
 // Test output stream operator
 TEST(AssigmentTest, StreamOperator) {
-    Assigment a("Name", "Desc", "Subj");
+    Assignment a("Name", "Desc", "Subj");
     std::stringstream ss;
     ss << a;
     std::string output = ss.str();
@@ -106,11 +106,11 @@ TEST(AssigmentTest, StreamOperator) {
 
 // Test swap function
 TEST(AssigmentTest, SwapFunction) {
-    Assigment a1("Name1", "Desc1", "Subj1");
-    Assigment a2("Name2", "Desc2", "Subj2");
+    Assignment a1("Name1", "Desc1", "Subj1");
+    Assignment a2("Name2", "Desc2", "Subj2");
     
-    Assigment a1_copy(a1);
-    Assigment a2_copy(a2);
+    Assignment a1_copy(a1);
+    Assignment a2_copy(a2);
     
     swap(a1, a2);
     
@@ -120,7 +120,7 @@ TEST(AssigmentTest, SwapFunction) {
 
 // Test ID incrementation
 TEST(AssigmentTest, IdIncrementation) {
-    Assigment a1("a", "b", "c");
-    Assigment a2("d", "e", "f");
+    Assignment a1("a", "b", "c");
+    Assignment a2("d", "e", "f");
     EXPECT_EQ(a2.get_id(), a1.get_id() + 1);
 }

@@ -8,7 +8,7 @@
 
 class AssigmentGradedTest : public ::testing::Test {
 protected:
-    Assigment common_assigment{"Test Name", "Test Description", "Test Subject"};
+    Assignment common_assigment{"Test Name", "Test Description", "Test Subject"};
 };
 
 // Test constructors
@@ -51,7 +51,7 @@ TEST_F(AssigmentGradedTest, MoveConstructor) {
 // Test assignment operator
 TEST_F(AssigmentGradedTest, AssignmentOperator) {
     Assigment_graded ag1(common_assigment, 5);
-    Assigment other_assigment{"Other", "Desc", "Subj"};
+    Assignment other_assigment{"Other", "Desc", "Subj"};
     Assigment_graded ag2(other_assigment, 2);
 
     ag2 = ag1;

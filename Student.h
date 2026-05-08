@@ -8,7 +8,7 @@
 #include <list>
 #include <ostream>
 
-#include "Assigment.h"
+#include "Assignment.h"
 #include "Assigment_graded.h"
 #include "Person.h"
 #include "Subject.h"
@@ -195,7 +195,7 @@ public:
      * @param subject The subject associated with the assignment.
      * @param assigment The assignment to be added for the student.
      */
-    void add_assignment(const Subject &subject, const Assigment &assigment);
+    void add_assignment(const Subject &subject, const Assignment &assigment);
 
     /**
      * Adds an assignment to the student for a specific subject.
@@ -213,7 +213,7 @@ public:
      * @param assigment The assignment being added to the student's record.
      * @param grade The grade assigned to the specified assignment.
      */
-    void add_assignment(const Subject &subject, const Assigment &assigment, int grade);
+    void add_assignment(const Subject &subject, const Assignment &assigment, int grade);
 
     /**
      * Adds a graded assignment to the collection of assignments for the specified subject.

@@ -31,7 +31,7 @@ TEST_F(StudentTest, ConstructorAndInheritance) {
 }
 
 TEST_F(StudentTest, AddAssignment_Object) {
-    Assigment a("HW1", "Desc1", "Math");
+    Assignment a("HW1", "Desc1", "Math");
     student.add_assignment(Subject::Math, a);
     
     const auto& math = student.get_math_assignments();
@@ -50,7 +50,7 @@ TEST_F(StudentTest, AddAssignment_NameDescription) {
 }
 
 TEST_F(StudentTest, AddAssignment_WithGrade) {
-    Assigment a("Test1", "History quiz", "History");
+    Assignment a("Test1", "History quiz", "History");
     student.add_assignment(Subject::History, a, 5);
     
     const auto& history = student.get_history_assignments();
@@ -59,7 +59,7 @@ TEST_F(StudentTest, AddAssignment_WithGrade) {
 }
 
 TEST_F(StudentTest, AddAssignment_GradedObject) {
-    Assigment a("Lab1", "Biology lab", "Biology");
+    Assignment a("Lab1", "Biology lab", "Biology");
     Assigment_graded ag(a, 4);
     student.add_assignment(Subject::Biology, ag);
     
@@ -69,7 +69,7 @@ TEST_F(StudentTest, AddAssignment_GradedObject) {
 }
 
 TEST_F(StudentTest, AddAssignment_GradedObjectWithNewGrade) {
-    Assigment a("Prob1", "Physics problems", "Physics");
+    Assignment a("Prob1", "Physics problems", "Physics");
     Assigment_graded ag(a, 2);
     student.add_assignment(Subject::Physics, ag, 5);
     
@@ -79,28 +79,28 @@ TEST_F(StudentTest, AddAssignment_GradedObjectWithNewGrade) {
 }
 
 TEST_F(StudentTest, AverageGradePerSubject) {
-    student.add_assignment(Subject::Math, Assigment("M1", "D1", "Math"), 5);
-    student.add_assignment(Subject::Math, Assigment("M2", "D2", "Math"), 3);
+    student.add_assignment(Subject::Math, Assignment("M1", "D1", "Math"), 5);
+    student.add_assignment(Subject::Math, Assignment("M2", "D2", "Math"), 3);
     EXPECT_FLOAT_EQ(student.get_average_grade_from_math(), 4.0f);
 
-    student.add_assignment(Subject::Polish, Assigment("P1", "D1", "Polish"), 2);
-    student.add_assignment(Subject::Polish, Assigment("P2", "D2", "Polish"), 4);
-    student.add_assignment(Subject::Polish, Assigment("P3", "D3", "Polish"), 6);
+    student.add_assignment(Subject::Polish, Assignment("P1", "D1", "Polish"), 2);
+    student.add_assignment(Subject::Polish, Assignment("P2", "D2", "Polish"), 4);
+    student.add_assignment(Subject::Polish, Assignment("P3", "D3", "Polish"), 6);
     EXPECT_FLOAT_EQ(student.get_average_grade_from_polish(), 4.0f);
 }
 
 TEST_F(StudentTest, TotalAverageGrade) {
-    student.add_assignment(Subject::Math, Assigment("M1", "D1", "Math"), 5); 
-    student.add_assignment(Subject::English, Assigment("E1", "D1", "English"), 3); 
+    student.add_assignment(Subject::Math, Assignment("M1", "D1", "Math"), 5); 
+    student.add_assignment(Subject::English, Assignment("E1", "D1", "English"), 3); 
     // Total (5+3)/2 = 4.0
     EXPECT_FLOAT_EQ(student.get_average_grade(), 4.0f);
 
-    student.add_assignment(Subject::History, Assigment("H1", "D1", "History"), 2);
-    student.add_assignment(Subject::History, Assigment("H2", "D2", "History"), 2);
+    student.add_assignment(Subject::History, Assignment("H1", "D1", "History"), 2);
+    student.add_assignment(Subject::History, Assignment("H2", "D2", "History"), 2);
     // Total (5+3+2+2)/4 = 12/4 = 3.0
     EXPECT_FLOAT_EQ(student.get_average_grade(), 3.0f);
 
-    student.add_assignment(Subject::Math, Assigment("M3", "D3", "Math"), 4);
+    student.add_assignment(Subject::Math, Assignment("M3", "D3", "Math"), 4);
     // Total (12+4)/5 = 16/5 = 3.2
     EXPECT_FLOAT_EQ(student.get_average_grade(), 3.2f);
 }
@@ -130,7 +130,7 @@ TEST_F(StudentTest, EqualityOperators) {
 }
 
 TEST_F(StudentTest, StreamOperator) {
-    student.add_assignment(Subject::Math, Assigment("M1", "D1", "Math"), 5);
+    student.add_assignment(Subject::Math, Assignment("M1", "D1", "Math"), 5);
     std::stringstream ss;
     ss << student;
     std::string output = ss.str();
@@ -141,7 +141,7 @@ TEST_F(StudentTest, StreamOperator) {
 }
 
 TEST_F(StudentTest, StreamAssignments) {
-    student.add_assignment(Subject::Math, Assigment("M1", "D1", "Math"), 5);
+    student.add_assignment(Subject::Math, Assignment("M1", "D1", "Math"), 5);
     std::stringstream ss;
     stream_assignments(ss, Subject::Math, student);
     std::string output = ss.str();

@@ -186,7 +186,7 @@ TEST_F(ClassTest, GradesAndAverages) {
     c.add_student(s1);
     c.add_student(s2);
     
-    Assigment mathAss("Algebra Test", "Solve for x", "Math");
+    Assignment mathAss("Algebra Test", "Solve for x", "Math");
     c.add_assignment(Subject::Math, mathAss, 5); // Both students get 5
     
     EXPECT_EQ(c.get_sum_of_grades_from_subject(Subject::Math), 10);
@@ -213,7 +213,7 @@ TEST_F(ClassTest, AddAssignmentOverloads) {
     Student s1("Alice", "Wonder", "alice@wonder.com", 1, 1, 2010);
     c.add_student(s1);
     
-    Assigment ass1("A1", "D1", "Math");
+    Assignment ass1("A1", "D1", "Math");
     c.add_assignment(Subject::Math, ass1); // Overload 1
     EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 1);
     
@@ -227,7 +227,7 @@ TEST_F(ClassTest, AddAssignmentOverloads) {
     c.add_assignment(Subject::Math, ass3); // Overload 4
     EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 4);
 
-    Assigment_graded ass4(Assigment("A4", "D4", "Math"));
+    Assigment_graded ass4(Assignment("A4", "D4", "Math"));
     c.add_assignment(Subject::Math, ass4, 3); // Overload 5
     EXPECT_EQ(c.get_count_of_grades_from_subject(Subject::Math), 5);
 }

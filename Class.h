@@ -560,7 +560,7 @@ public:
      * @param subject The subject associated with the assignment.
      * @param assigment The assignment to be added for the subject.
      */
-    void add_assignment(const Subject &subject, const Assigment &assigment);
+    void add_assignment(const Subject &subject, const Assignment &assigment);
 
     /**
      * @brief Adds a new assignment to all students in the class.
@@ -576,7 +576,7 @@ public:
      * @param assignment The assignment to be assigned to each student.
      * @param grade The grade to be associated with the assignment.
      */
-    void add_assignment(const Subject &subject, const Assigment &assigment, int grade);
+    void add_assignment(const Subject &subject, const Assignment &assigment, int grade);
 
     /**
      * @brief Adds a graded assignment for all students in the class.

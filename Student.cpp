@@ -144,15 +144,15 @@ float Student::get_average_grade_from_physical_education() const {
     return get_average_grades_from_subject(physicalEducationAssignments);
 }
 
-void Student::add_assignment(const Subject &subject, const Assigment &assigment) {
+void Student::add_assignment(const Subject &subject, const Assignment &assigment) {
     add_assignment(subject, Assigment_graded(assigment));
 }
 
 void Student::add_assignment(const Subject &subject, const std::string &name, const std::string &description) {
-    add_assignment(subject, Assigment(name, description, to_string(subject)));
+    add_assignment(subject, Assignment(name, description, to_string(subject)));
 }
 
-void Student::add_assignment(const Subject &subject, const Assigment &assigment, const int grade) {
+void Student::add_assignment(const Subject &subject, const Assignment &assigment, const int grade) {
     add_assignment(subject, Assigment_graded(assigment, grade));
 }
 
