@@ -11,8 +11,6 @@ Student::Student(const std::string &first_name, const std::string &last_name, co
 }
 
 
-
-
 std::ostream &operator<<(std::ostream &os, const std::list<Assignment> &assignment_list) {
     for (auto &assignment: assignment_list) {
         os << assignment << "\n";
@@ -149,7 +147,7 @@ void Student::add_assignment(const Subject &subject, const std::string &name, co
 }
 
 void Student::add_assignment(const Subject &subject, const std::string &name, const std::string &description,
-    int grade) {
+                             int grade) {
     add_assignment(subject, Assignment(name, description, to_string(subject), grade));
 }
 
@@ -254,6 +252,11 @@ bool Student::operator==(const Student &rhs) const {
 bool Student::operator!=(const Student &rhs) const {
     return !(*this == rhs);
 }
+
+const std::vector<Assignment> & Student::get_assignments_from_subject_vector(const Subject &subject) const {
+    return assignments.at(subject);
+}
+
 
 std::ostream &operator<<(std::ostream &os, const Student &obj) {
     return os

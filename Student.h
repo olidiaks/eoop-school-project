@@ -6,7 +6,9 @@
 #define PROJECT_STUDENT_H
 
 #include <list>
+#include <map>
 #include <ostream>
+#include <vector>
 
 #include "Assignment.h"
 #include "Person.h"
@@ -43,6 +45,8 @@ private:
     std::list<Assignment> geographyAssignments;
     std::list<Assignment> computerScienceAssignments;
     std::list<Assignment> physicalEducationAssignments;
+
+    std::map<Subject, std::vector<Assignment>> assignments;
 
     /**
      * Computes the average grade from a list of graded assignments.
@@ -315,6 +319,8 @@ public:
      * @return A reference to the output stream after streaming the assignments.
      */
     friend std::ostream & stream_assignments(std::ostream & os, const Subject &subject, const Student &obj);
+
+    [[nodiscard]] const std::vector<Assignment> & get_assignments_from_subject_vector(const Subject &subject) const;
 };
 
 
