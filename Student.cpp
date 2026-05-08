@@ -95,16 +95,10 @@ const std::vector<Assignment> & Student::get_assignments_from_subject(const Subj
 }
 
 std::ostream &operator<<(std::ostream &os, const Student &obj) {
-    return os
-           << static_cast<const Person &>(obj)
-           << " mathAssignments: " << obj.mathAssignments
-           << " englishAssignments: " << obj.englishAssignments
-           << " polishAssignments: " << obj.polishAssignments
-           << " historyAssignments: " << obj.historyAssignments
-           << " biologyAssignments: " << obj.biologyAssignments
-           << " physicsAssignments: " << obj.physicsAssignments
-           << " chemistryAssignments: " << obj.chemistryAssignments
-           << " geographyAssignments: " << obj.geographyAssignments
-           << " computerScienceAssignments: " << obj.computerScienceAssignments
-           << " physicalEducationAssignments: " << obj.physicalEducationAssignments;
+    os
+           << static_cast<const Person &>(obj);
+           for (const auto &[subject, assignments] : obj.assignments) {
+               os << " " << to_string(subject) << " assignments: " << assignments << std::endl;
+           }
+    return os;
 }
