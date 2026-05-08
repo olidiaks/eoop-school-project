@@ -13,15 +13,15 @@ Student::Student(const std::string &first_name, const std::string &last_name, co
 
 
 
-std::ostream &operator<<(std::ostream &os, const std::list<Assigment_graded> &assignment_list) {
+std::ostream &operator<<(std::ostream &os, const std::list<Assignment> &assignment_list) {
     for (auto &assignment: assignment_list) {
         os << assignment << "\n";
     }
     return os;
 }
 
-float Student::get_average_grades_from_subject(const std::list<Assigment_graded> &assignments) {
-    float sum = 0;
+float Student::get_average_grades_from_subject(const std::list<Assignment> &assignments) {
+    int sum = 0;
     int count = 0;
 
     for (auto &assignment: assignments) {
@@ -51,10 +51,10 @@ float Student::get_average_grade() const {
             count++;
         }
     }
-    return (float) sum / count;
+    return sum / count;
 }
 
-const std::list<Assigment_graded> &Student::get_assignments_from_subject(const Subject &subject) const {
+const std::list<Assignment> &Student::get_assignments_from_subject(const Subject &subject) const {
     switch (subject) {
         case Subject::Math:
             return mathAssignments;
@@ -87,7 +87,7 @@ const std::list<Assigment_graded> &Student::get_assignments_from_subject(const S
             return physicalEducationAssignments;
             break;
         default:
-            static const std::list<Assigment_graded> empty;
+            static const std::list<Assignment> empty;
             return empty;
     }
 }
@@ -144,19 +144,16 @@ float Student::get_average_grade_from_physical_education() const {
     return get_average_grades_from_subject(physicalEducationAssignments);
 }
 
-void Student::add_assignment(const Subject &subject, const Assignment &assigment) {
-    add_assignment(subject, Assigment_graded(assigment));
-}
-
 void Student::add_assignment(const Subject &subject, const std::string &name, const std::string &description) {
     add_assignment(subject, Assignment(name, description, to_string(subject)));
 }
 
-void Student::add_assignment(const Subject &subject, const Assignment &assigment, const int grade) {
-    add_assignment(subject, Assigment_graded(assigment, grade));
+void Student::add_assignment(const Subject &subject, const std::string &name, const std::string &description,
+    int grade) {
+    add_assignment(subject, Assignment(name, description, to_string(subject), grade));
 }
 
-void Student::add_assignment(const Subject &subject, const Assigment_graded &assigment) {
+void Student::add_assignment(const Subject &subject, const Assignment &assigment) {
     switch (subject) {
         case Subject::Math:
             mathAssignments.push_back(assigment);
@@ -188,51 +185,49 @@ void Student::add_assignment(const Subject &subject, const Assigment_graded &ass
         case Subject::PhysicalEducation:
             physicalEducationAssignments.push_back(assigment);
             break;
+        case Subject::None:
+            break;
     }
 }
 
-void Student::add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade) {
-    assigment_graded.set_grade(grade);
-    add_assignment(subject, assigment_graded);
-}
 
-const std::list<Assigment_graded> &Student::get_math_assignments() const {
+const std::list<Assignment> &Student::get_math_assignments() const {
     return mathAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_english_assignments() const {
+const std::list<Assignment> &Student::get_english_assignments() const {
     return englishAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_polish_assignments() const {
+const std::list<Assignment> &Student::get_polish_assignments() const {
     return polishAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_history_assignments() const {
+const std::list<Assignment> &Student::get_history_assignments() const {
     return historyAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_biology_assignments() const {
+const std::list<Assignment> &Student::get_biology_assignments() const {
     return biologyAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_physics_assignments() const {
+const std::list<Assignment> &Student::get_physics_assignments() const {
     return physicsAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_chemistry_assignments() const {
+const std::list<Assignment> &Student::get_chemistry_assignments() const {
     return chemistryAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_geography_assignments() const {
+const std::list<Assignment> &Student::get_geography_assignments() const {
     return geographyAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_computer_science_assignments() const {
+const std::list<Assignment> &Student::get_computer_science_assignments() const {
     return computerScienceAssignments;
 }
 
-const std::list<Assigment_graded> &Student::get_physical_education_assignments() const {
+const std::list<Assignment> &Student::get_physical_education_assignments() const {
     return physicalEducationAssignments;
 }
 
@@ -271,7 +266,7 @@ std::ostream &operator<<(std::ostream &os, const Student &obj) {
 
 std::ostream &stream_assignments(std::ostream &os, const Subject &subject, const Student &obj) {
     os << "Subject: " << to_string(subject) << "\n";
-    const std::list<Assigment_graded> *assignments = nullptr;
+    const std::list<Assignment> *assignments = nullptr;
     switch (subject) {
         case Subject::Math:
             assignments = &(obj.mathAssignments);
@@ -302,6 +297,8 @@ std::ostream &stream_assignments(std::ostream &os, const Subject &subject, const
             break;
         case Subject::PhysicalEducation:
             assignments = &(obj.physicalEducationAssignments);
+            break;
+        case Subject::None:
             break;
     }
 

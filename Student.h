@@ -9,7 +9,6 @@
 #include <ostream>
 
 #include "Assignment.h"
-#include "Assigment_graded.h"
 #include "Person.h"
 #include "Subject.h"
 
@@ -20,7 +19,7 @@
  * @param other The object to be used in the operation with the current instance.
  * @return A new object representing the result of the operation.
  */
-std::ostream & operator<<(std::ostream & os, const std::list<Assigment_graded> & assignment_list);
+std::ostream & operator<<(std::ostream & os, const std::list<Assignment> & assignment_list);
 
 /**
  * Represents a student with associated attributes and behaviors.
@@ -34,16 +33,16 @@ std::ostream & operator<<(std::ostream & os, const std::list<Assigment_graded> &
  */
 class Student : public Person {
 private:
-    std::list<Assigment_graded> mathAssignments;
-    std::list<Assigment_graded> englishAssignments;
-    std::list<Assigment_graded> polishAssignments;
-    std::list<Assigment_graded> historyAssignments;
-    std::list<Assigment_graded> biologyAssignments;
-    std::list<Assigment_graded> physicsAssignments;
-    std::list<Assigment_graded> chemistryAssignments;
-    std::list<Assigment_graded> geographyAssignments;
-    std::list<Assigment_graded> computerScienceAssignments;
-    std::list<Assigment_graded> physicalEducationAssignments;
+    std::list<Assignment> mathAssignments;
+    std::list<Assignment> englishAssignments;
+    std::list<Assignment> polishAssignments;
+    std::list<Assignment> historyAssignments;
+    std::list<Assignment> biologyAssignments;
+    std::list<Assignment> physicsAssignments;
+    std::list<Assignment> chemistryAssignments;
+    std::list<Assignment> geographyAssignments;
+    std::list<Assignment> computerScienceAssignments;
+    std::list<Assignment> physicalEducationAssignments;
 
     /**
      * Computes the average grade from a list of graded assignments.
@@ -51,7 +50,7 @@ private:
      * @param assignments A list of graded assignments, each containing grade information.
      * @return The calculated average grade as a floating-point value.
      */
-    [[nodiscard]] static float get_average_grades_from_subject(const std::list<Assigment_graded> &assignments);
+    [[nodiscard]] static float get_average_grades_from_subject(const std::list<Assignment> &assignments);
 
     /**
      * Constructs a Student object with the given personal details.
@@ -95,7 +94,7 @@ public:
      *         with the specified subject. If the subject has no assignments,
      *         an empty list is returned.
      */
-    [[nodiscard]] const std::list<Assigment_graded> &get_assignments_from_subject(const Subject &subject) const;
+    [[nodiscard]] const std::list<Assignment> &get_assignments_from_subject(const Subject &subject) const;
 
     /**
      * Computes the sum of all grades obtained by the student in the specified subject.
@@ -206,101 +205,77 @@ public:
      */
     void add_assignment(const Subject &subject, const std::string &name, const std::string &description);
 
-    /**
-     * Adds an assignment to the student's record with an associated grade.
-     *
-     * @param subject The subject to which the assignment belongs.
-     * @param assigment The assignment being added to the student's record.
-     * @param grade The grade assigned to the specified assignment.
-     */
-    void add_assignment(const Subject &subject, const Assignment &assigment, int grade);
-
-    /**
-     * Adds a graded assignment to the collection of assignments for the specified subject.
-     *
-     * @param subject The subject associated with the assignment to add.
-     * @param assigment The graded assignment to be added to the relevant subject's collection.
-     */
-    void add_assignment(const Subject &subject, const Assigment_graded &assigment);
-
-    /**
-     * Adds a graded assignment to the student's record for a specific subject.
-     *
-     * @param subject The subject to which the assignment belongs.
-     * @param assigment_graded A reference to the graded assignment to be added.
-     * @param grade The grade to be assigned to the given assignment.
-     */
-    void add_assignment(const Subject &subject, Assigment_graded &assigment_graded, const int grade);
+    void add_assignment(const Subject &subject, const std::string &name, const std::string &description, int grade);
 
     /**
      * Retrieves the list of math assignments associated with the student.
      *
      * @return A constant reference to the list of graded math assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_math_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_math_assignments() const;
 
     /**
      * Retrieves the list of graded English assignments associated with the student.
      *
      * @return A constant reference to a list containing the graded English assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_english_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_english_assignments() const;
 
     /**
      * Retrieves a reference to the list of graded Polish assignments associated with the student.
      *
      * @return A constant reference to the list of graded Polish assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_polish_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_polish_assignments() const;
 
     /**
      * Retrieves the list of graded history assignments associated with the student.
      *
      * @return A constant reference to the list of graded history assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_history_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_history_assignments() const;
 
     /**
      * Retrieves the list of graded biology assignments for the student.
      *
      * @return A constant reference to the list of graded biology assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_biology_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_biology_assignments() const;
 
     /**
      * Retrieves the list of graded physics assignments associated with the student.
      *
      * @return A constant reference to the list of graded physics assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_physics_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_physics_assignments() const;
 
     /**
      * Retrieves the list of graded chemistry assignments for the student.
      *
      * @return A constant reference to the list of graded chemistry assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_chemistry_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_chemistry_assignments() const;
 
     /**
      * Retrieves the list of geography assignments associated with the student.
      *
      * @return A constant reference to a list of graded assignments for geography.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_geography_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_geography_assignments() const;
 
     /**
      * Retrieves the list of graded computer science assignments associated with the student.
      *
      * @return A constant reference to the list of graded computer science assignments.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_computer_science_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_computer_science_assignments() const;
 
     /**
      * Retrieves the list of graded assignments for the physical education subject.
      *
      * @return A constant reference to a list of graded assignments specific to physical education.
      */
-    [[nodiscard]] const std::list<Assigment_graded> & get_physical_education_assignments() const;
+    [[nodiscard]] const std::list<Assignment> & get_physical_education_assignments() const;
 
     /**
      * Compares two Student objects for equality.
