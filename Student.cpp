@@ -194,7 +194,6 @@ void Student::add_assignment(const Subject &subject, const Assignment &assignmen
     add_assignment(subject, graded_assignment);
 }
 
-
 const std::list<Assignment> &Student::get_math_assignments() const {
     return mathAssignments;
 }
@@ -256,7 +255,6 @@ bool Student::operator!=(const Student &rhs) const {
 const std::vector<Assignment> & Student::get_assignments_from_subject_vector(const Subject &subject) const {
     return assignments.at(subject);
 }
-
 
 std::ostream &operator<<(std::ostream &os, const Student &obj) {
     return os
