@@ -11,7 +11,7 @@ Student::Student(const std::string &first_name, const std::string &last_name, co
 }
 
 
-std::ostream &operator<<(std::ostream &os, const std::list<Assignment> &assignment_list) {
+std::ostream &operator<<(std::ostream &os, const std::vector<Assignment> &assignment_list) {
     for (auto &assignment: assignment_list) {
         os << assignment << "\n";
     }
@@ -39,55 +39,13 @@ float Student::get_average_grade() const {
     int count = 0;
     int sum = 0;
 
-    for (auto &assignments: {
-             mathAssignments, englishAssignments, polishAssignments, historyAssignments, biologyAssignments,
-             physicsAssignments, chemistryAssignments, geographyAssignments, computerScienceAssignments,
-             physicalEducationAssignments
-         }) {
-        for (auto &assignment: assignments) {
+    for (auto &subject_and_assignment: assignments) {
+        for (auto &assignment : subject_and_assignment.second) {
             sum += assignment.get_grade();
             count++;
         }
     }
     return sum / count;
-}
-
-const std::list<Assignment> &Student::get_assignments_from_subject(const Subject &subject) const {
-    switch (subject) {
-        case Subject::Math:
-            return mathAssignments;
-            break;
-        case Subject::English:
-            return englishAssignments;
-            break;
-        case Subject::Polish:
-            return polishAssignments;
-            break;
-        case Subject::History:
-            return historyAssignments;
-            break;
-        case Subject::Biology:
-            return biologyAssignments;
-            break;
-        case Subject::Physics:
-            return physicsAssignments;
-            break;
-        case Subject::Chemistry:
-            return chemistryAssignments;
-            break;
-        case Subject::Geography:
-            return geographyAssignments;
-            break;
-        case Subject::ComputerScience:
-            return computerScienceAssignments;
-            break;
-        case Subject::PhysicalEducation:
-            return physicalEducationAssignments;
-            break;
-        default:
-            static const std::list<Assignment> empty;
-            return empty;
-    }
 }
 
 int Student::get_sum_of_grades_from_students_subjects(const Subject &subject) const {
@@ -102,45 +60,7 @@ int Student::get_count_of_grades_from_students_subjects(const Subject &subject) 
     return get_assignments_from_subject(subject).size();
 }
 
-float Student::get_average_grade_from_math() const {
-    return get_average_grades_from_subject(mathAssignments);
-}
 
-float Student::get_average_grade_from_english() const {
-    return get_average_grades_from_subject(englishAssignments);
-}
-
-float Student::get_average_grade_from_polish() const {
-    return get_average_grades_from_subject(polishAssignments);
-}
-
-float Student::get_average_grade_from_history() const {
-    return get_average_grades_from_subject(historyAssignments);
-}
-
-float Student::get_average_grade_from_biology() const {
-    return get_average_grades_from_subject(biologyAssignments);
-}
-
-float Student::get_average_grade_from_physics() const {
-    return get_average_grades_from_subject(physicsAssignments);
-}
-
-float Student::get_average_grade_from_chemistry() const {
-    return get_average_grades_from_subject(chemistryAssignments);
-}
-
-float Student::get_average_grade_from_geography() const {
-    return get_average_grades_from_subject(geographyAssignments);
-}
-
-float Student::get_average_grade_from_computer_science() const {
-    return get_average_grades_from_subject(computerScienceAssignments);
-}
-
-float Student::get_average_grade_from_physical_education() const {
-    return get_average_grades_from_subject(physicalEducationAssignments);
-}
 
 void Student::add_assignment(const Subject &subject, const std::string &name, const std::string &description) {
     add_assignment(subject, Assignment(name, description, to_string(subject)));
@@ -152,40 +72,7 @@ void Student::add_assignment(const Subject &subject, const std::string &name, co
 }
 
 void Student::add_assignment(const Subject &subject, const Assignment &assigment) {
-    switch (subject) {
-        case Subject::Math:
-            mathAssignments.push_back(assigment);
-            break;
-        case Subject::English:
-            englishAssignments.push_back(assigment);
-            break;
-        case Subject::Polish:
-            polishAssignments.push_back(assigment);
-            break;
-        case Subject::History:
-            historyAssignments.push_back(assigment);
-            break;
-        case Subject::Biology:
-            biologyAssignments.push_back(assigment);
-            break;
-        case Subject::Physics:
-            physicsAssignments.push_back(assigment);
-            break;
-        case Subject::Chemistry:
-            chemistryAssignments.push_back(assigment);
-            break;
-        case Subject::Geography:
-            geographyAssignments.push_back(assigment);
-            break;
-        case Subject::ComputerScience:
-            computerScienceAssignments.push_back(assigment);
-            break;
-        case Subject::PhysicalEducation:
-            physicalEducationAssignments.push_back(assigment);
-            break;
-        case Subject::None:
-            break;
-    }
+    assignments.at(subject).emplace_back(assigment);
 }
 
 void Student::add_assignment(const Subject &subject, const Assignment &assignment, int grade) {
@@ -194,65 +81,16 @@ void Student::add_assignment(const Subject &subject, const Assignment &assignmen
     add_assignment(subject, graded_assignment);
 }
 
-const std::list<Assignment> &Student::get_math_assignments() const {
-    return mathAssignments;
-}
-
-const std::list<Assignment> &Student::get_english_assignments() const {
-    return englishAssignments;
-}
-
-const std::list<Assignment> &Student::get_polish_assignments() const {
-    return polishAssignments;
-}
-
-const std::list<Assignment> &Student::get_history_assignments() const {
-    return historyAssignments;
-}
-
-const std::list<Assignment> &Student::get_biology_assignments() const {
-    return biologyAssignments;
-}
-
-const std::list<Assignment> &Student::get_physics_assignments() const {
-    return physicsAssignments;
-}
-
-const std::list<Assignment> &Student::get_chemistry_assignments() const {
-    return chemistryAssignments;
-}
-
-const std::list<Assignment> &Student::get_geography_assignments() const {
-    return geographyAssignments;
-}
-
-const std::list<Assignment> &Student::get_computer_science_assignments() const {
-    return computerScienceAssignments;
-}
-
-const std::list<Assignment> &Student::get_physical_education_assignments() const {
-    return physicalEducationAssignments;
-}
-
 bool Student::operator==(const Student &rhs) const {
     return static_cast<const Person &>(*this) == static_cast<const Person &>(rhs)
-           && mathAssignments == rhs.mathAssignments
-           && englishAssignments == rhs.englishAssignments
-           && polishAssignments == rhs.polishAssignments
-           && historyAssignments == rhs.historyAssignments
-           && biologyAssignments == rhs.biologyAssignments
-           && physicsAssignments == rhs.physicsAssignments
-           && chemistryAssignments == rhs.chemistryAssignments
-           && geographyAssignments == rhs.geographyAssignments
-           && computerScienceAssignments == rhs.computerScienceAssignments
-           && physicalEducationAssignments == rhs.physicalEducationAssignments;
+           && assignments == rhs.assignments;
 }
 
 bool Student::operator!=(const Student &rhs) const {
     return !(*this == rhs);
 }
 
-const std::vector<Assignment> & Student::get_assignments_from_subject_vector(const Subject &subject) const {
+const std::vector<Assignment> & Student::get_assignments_from_subject(const Subject &subject) const {
     return assignments.at(subject);
 }
 
@@ -269,51 +107,4 @@ std::ostream &operator<<(std::ostream &os, const Student &obj) {
            << " geographyAssignments: " << obj.geographyAssignments
            << " computerScienceAssignments: " << obj.computerScienceAssignments
            << " physicalEducationAssignments: " << obj.physicalEducationAssignments;
-}
-
-std::ostream &stream_assignments(std::ostream &os, const Subject &subject, const Student &obj) {
-    os << "Subject: " << to_string(subject) << "\n";
-    const std::list<Assignment> *assignments = nullptr;
-    switch (subject) {
-        case Subject::Math:
-            assignments = &(obj.mathAssignments);
-            break;
-        case Subject::English:
-            assignments = &(obj.englishAssignments);
-            break;
-        case Subject::Polish:
-            assignments = &(obj.polishAssignments);
-            break;
-        case Subject::History:
-            assignments = &(obj.historyAssignments);
-            break;
-        case Subject::Biology:
-            assignments = &(obj.biologyAssignments);
-            break;
-        case Subject::Physics:
-            assignments = &(obj.physicsAssignments);
-            break;
-        case Subject::Chemistry:
-            assignments = &(obj.chemistryAssignments);
-            break;
-        case Subject::Geography:
-            assignments = &(obj.geographyAssignments);
-            break;
-        case Subject::ComputerScience:
-            assignments = &(obj.computerScienceAssignments);
-            break;
-        case Subject::PhysicalEducation:
-            assignments = &(obj.physicalEducationAssignments);
-            break;
-        case Subject::None:
-            break;
-    }
-
-    if (assignments == nullptr) {
-        throw std::runtime_error("Imposible error");
-    }
-    for (auto &assignment: *assignments) {
-        os << assignment << "\n";
-    }
-    return os;
 }

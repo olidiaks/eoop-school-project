@@ -21,7 +21,7 @@
  * @param other The object to be used in the operation with the current instance.
  * @return A new object representing the result of the operation.
  */
-std::ostream & operator<<(std::ostream & os, const std::list<Assignment> & assignment_list);
+std::ostream & operator<<(std::ostream & os, const std::vector<Assignment> & assignment_list);
 
 /**
  * Represents a student with associated attributes and behaviors.
@@ -35,17 +35,6 @@ std::ostream & operator<<(std::ostream & os, const std::list<Assignment> & assig
  */
 class Student : public Person {
 private:
-    std::list<Assignment> mathAssignments;
-    std::list<Assignment> englishAssignments;
-    std::list<Assignment> polishAssignments;
-    std::list<Assignment> historyAssignments;
-    std::list<Assignment> biologyAssignments;
-    std::list<Assignment> physicsAssignments;
-    std::list<Assignment> chemistryAssignments;
-    std::list<Assignment> geographyAssignments;
-    std::list<Assignment> computerScienceAssignments;
-    std::list<Assignment> physicalEducationAssignments;
-
     std::map<Subject, std::vector<Assignment>> assignments;
 
     /**
@@ -89,16 +78,6 @@ public:
      *         the mean of all graded assignments across all subjects.
      */
     [[nodiscard]] float get_average_grade() const;
-
-    /**
-     * Retrieves the list of graded assignments for a specific subject.
-     *
-     * @param subject The subject for which the assignments are to be retrieved.
-     * @return A constant reference to the list of graded assignments associated
-     *         with the specified subject. If the subject has no assignments,
-     *         an empty list is returned.
-     */
-    [[nodiscard]] const std::list<Assignment> &get_assignments_from_subject(const Subject &subject) const;
 
     /**
      * Computes the sum of all grades obtained by the student in the specified subject.
@@ -214,76 +193,6 @@ public:
     void add_assignment(const Subject &subject, const std::string &name, const std::string &description, int grade);
 
     /**
-     * Retrieves the list of math assignments associated with the student.
-     *
-     * @return A constant reference to the list of graded math assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_math_assignments() const;
-
-    /**
-     * Retrieves the list of graded English assignments associated with the student.
-     *
-     * @return A constant reference to a list containing the graded English assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_english_assignments() const;
-
-    /**
-     * Retrieves a reference to the list of graded Polish assignments associated with the student.
-     *
-     * @return A constant reference to the list of graded Polish assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_polish_assignments() const;
-
-    /**
-     * Retrieves the list of graded history assignments associated with the student.
-     *
-     * @return A constant reference to the list of graded history assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_history_assignments() const;
-
-    /**
-     * Retrieves the list of graded biology assignments for the student.
-     *
-     * @return A constant reference to the list of graded biology assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_biology_assignments() const;
-
-    /**
-     * Retrieves the list of graded physics assignments associated with the student.
-     *
-     * @return A constant reference to the list of graded physics assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_physics_assignments() const;
-
-    /**
-     * Retrieves the list of graded chemistry assignments for the student.
-     *
-     * @return A constant reference to the list of graded chemistry assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_chemistry_assignments() const;
-
-    /**
-     * Retrieves the list of geography assignments associated with the student.
-     *
-     * @return A constant reference to a list of graded assignments for geography.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_geography_assignments() const;
-
-    /**
-     * Retrieves the list of graded computer science assignments associated with the student.
-     *
-     * @return A constant reference to the list of graded computer science assignments.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_computer_science_assignments() const;
-
-    /**
-     * Retrieves the list of graded assignments for the physical education subject.
-     *
-     * @return A constant reference to a list of graded assignments specific to physical education.
-     */
-    [[nodiscard]] const std::list<Assignment> & get_physical_education_assignments() const;
-
-    /**
      * Compares two Student objects for equality.
      *
      * @param lhs The first Student object to compare.
@@ -311,16 +220,12 @@ public:
     friend std::ostream & operator<<(std::ostream &os, const Student &obj);
 
     /**
-     * Streams the list of graded assignments for a given subject and student to the provided output stream.
+     * Retrieves the list of assignments associated with a specific subject.
      *
-     * @param os The output stream to which the assignment data will be written.
-     * @param subject The subject for which the assignments should be retrieved and streamed.
-     * @param obj The student whose assignments are being accessed and streamed.
-     * @return A reference to the output stream after streaming the assignments.
+     * @param subject The subject for which assignments need to be retrieved.
+     * @return A constant reference to a vector containing the assignments for the provided subject.
      */
-    friend std::ostream & stream_assignments(std::ostream & os, const Subject &subject, const Student &obj);
-
-    [[nodiscard]] const std::vector<Assignment> & get_assignments_from_subject_vector(const Subject &subject) const;
+    [[nodiscard]] const std::vector<Assignment> & get_assignments_from_subject(const Subject &subject) const;
 };
 
 
