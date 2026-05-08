@@ -11,7 +11,17 @@ Assigment::Assigment(const std::string &name, const std::string &description, co
     description(description),
     subject(subject) {
     id = ++counter;
+    grade = 0;
 }
+
+Assigment::Assigment(const std::string &name, const std::string &description, const std::string &subject,
+    const int grade): name(name),
+                      description(description),
+                      subject(subject),
+                      grade(grade) {
+    id = ++counter;
+}
+
 
 
 Assigment::Assigment(const Assigment &other): id(other.id),

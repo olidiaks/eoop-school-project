@@ -9,17 +9,14 @@
 
 
 /**
- * @class Assignment
- * @brief Represents a task or work assigned to a person or group, typically for evaluation or completion purposes.
+ * @brief Exchanges the contents of two Assigment objects.
  *
- * The Assignment class is designed to encapsulate the details related to an assignment,
- * such as its attributes, behavior, and potential operations that can be performed
- * on it. This class serves as a model or blueprint for assignments in various contexts,
- * such as educational institutions, work environments, or projects.
+ * This function swaps the attributes of the current Assigment object
+ * with another provided Assigment object. It ensures that all attributes,
+ * including ID, name, description, subject, and grade, are exchanged
+ * between the two objects.
  *
- * Responsibilities of this class may include managing the assignment's state,
- * facilitating interactions with its data, and providing utility methods relevant
- * to assignments.
+ * @param other The Assigment object to swap contents with.
  */
 class Assigment {
 private:
@@ -27,7 +24,11 @@ private:
     std::string name;
     std::string description;
     std::string subject;
+    int grade;
     static int counter;
+
+
+public:
 
     /**
      * @brief Constructs a new Assigment object with the provided name, description, and subject.
@@ -40,8 +41,20 @@ private:
      * @param subject The subject associated with the assignment.
      * @return A new instance of the Assigment class.
      */
-public:
     Assigment(const std::string &name, const std::string &description, const std::string &subject);
+
+    /**
+     * @brief Constructs a new Assigment object with the specified attributes.
+     *
+     * This constructor initializes the Assigment object with the given name, description, subject, and grade.
+     * It also assigns a unique identifier to the Assigment instance.
+     *
+     * @param name The name of the assignment.
+     * @param description A brief description of the assignment.
+     * @param subject The subject associated with the assignment.
+     * @param grade The grade associated with the assignment.
+     */
+    Assigment(const std::string &name, const std::string &description, const std::string &subject, const int grade);
 
     /**
      * @brief Copy constructor for the Assigment class.
@@ -169,7 +182,7 @@ public:
      */
     void set_description(const std::string &description);
 
-    /**
+ /**
      * @brief Compares two Assignment objects for equality.
      *
      * Determines whether two Assignment instances are considered equal by
