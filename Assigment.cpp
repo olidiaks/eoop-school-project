@@ -80,6 +80,22 @@ void Assigment::set_description(const std::string &description) {
     this->description = description;
 }
 
+int Assigment::get_grade() const {
+    return grade;
+}
+
+void Assigment::set_grade(const int grade) {
+    this->grade = grade;
+}
+
+void Assigment::remove_grade() {
+    this->grade = 0;
+}
+
+bool Assigment::is_assigment_graded() {
+    return !this->grade;
+}
+
 bool Assigment::operator==(const Assigment &rhs) const {
     return id == rhs.id
            && name == rhs.name

@@ -182,7 +182,47 @@ public:
      */
     void set_description(const std::string &description);
 
- /**
+    /**
+     * @brief Retrieves the grade of the Assigment object.
+     *
+     * This function provides access to the grade associated with
+     * the Assigment object. The grade represents the evaluation
+     * result of the Assigment.
+     *
+     * @return The grade of the Assigment as an integer.
+     */
+    [[nodiscard]] int get_grade() const;
+
+    /**
+     * @brief Sets the grade for the Assigment object.
+     *
+     * This function assigns a new value to the grade attribute
+     * of the current Assigment object.
+     *
+     * @param grade The grade to be assigned to the Assigment object.
+     */
+    void set_grade(int grade);
+
+    /**
+     * @brief Removes the grade from the Assigment object.
+     *
+     * This function resets the grade attribute of the current Assigment object
+     * to zero, effectively clearing any previously assigned grade.
+     */
+    void remove_grade();
+
+    /**
+     * @brief Checks if the assignment has been graded.
+     *
+     * Determines whether the grade for the current assignment object
+     * has been set. If a grade is present, it indicates that the assignment
+     * has been evaluated; otherwise, it is ungraded.
+     *
+     * @return True if the assignment is graded, false otherwise.
+     */
+    [[nodiscard]] bool is_assigment_graded();
+
+    /**
      * @brief Compares two Assignment objects for equality.
      *
      * Determines whether two Assignment instances are considered equal by
