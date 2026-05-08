@@ -145,20 +145,18 @@ public:
     /**
      * @brief Checks if two Person instances are identical across all fields.
      * 
-     * @param lhs The first person to compare.
      * @param rhs The second person to compare.
      * @return True if ID, name, email, and birth date all match.
      */
-    friend bool operator==(const Person &lhs, const Person &rhs);
+    bool operator==(const Person &rhs) const;
 
     /**
      * @brief Checks if two Person instances differ in any field.
      * 
-     * @param lhs The first person to compare.
      * @param rhs The second person to compare.
      * @return True if any attribute differs between the two objects.
      */
-    friend bool operator!=(const Person &lhs, const Person &rhs);
+    bool operator!=(const Person &rhs) const;
 
     /**
      * @brief Formats the Person's information for output to a stream.

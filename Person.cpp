@@ -128,16 +128,16 @@ Person &Person::operator=(Person &&other) noexcept {
 }
 
 
-bool operator==(const Person &lhs, const Person &rhs) {
-    return lhs.id == rhs.id
-           && lhs.firstName == rhs.firstName
-           && lhs.lastName == rhs.lastName
-           && lhs.email == rhs.email
-           && lhs.birthDate == rhs.birthDate;
+bool operator==(const Person &rhs) const{
+    return id == rhs.id
+           && firstName == rhs.firstName
+           && lastName == rhs.lastName
+           && email == rhs.email
+           && birthDate == rhs.birthDate;
 }
 
-bool operator!=(const Person &lhs, const Person &rhs) {
-    return !(lhs == rhs);
+bool operator!=(const Person &rhs) const {
+    return !(this == rhs);
 }
 
 std::ostream &operator<<(std::ostream &os, const Person &obj) {
