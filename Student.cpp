@@ -190,6 +190,12 @@ void Student::add_assignment(const Subject &subject, const Assignment &assigment
     }
 }
 
+void Student::add_assignment(const Subject &subject, const Assignment &assignment, int grade) {
+    Assignment graded_assignment(assignment);
+    graded_assignment.set_grade(grade);
+    add_assignment(subject, graded_assignment);
+}
+
 
 const std::list<Assignment> &Student::get_math_assignments() const {
     return mathAssignments;

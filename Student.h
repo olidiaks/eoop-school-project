@@ -196,6 +196,8 @@ public:
      */
     void add_assignment(const Subject &subject, const Assignment &assigment);
 
+    void add_assignment(const Subject &subject, const Assignment &assignment, int grade);
+
     /**
      * Adds an assignment to the student for a specific subject.
      *
