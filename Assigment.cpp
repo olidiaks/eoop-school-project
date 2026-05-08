@@ -4,6 +4,8 @@
 
 #include "Assigment.h"
 
+#include <algorithm>
+
 int Assigment::counter = 0;
 
 
@@ -27,13 +29,15 @@ Assigment::Assigment(const std::string &name, const std::string &description, co
 Assigment::Assigment(const Assigment &other): id(other.id),
                                               name(other.name),
                                               description(other.description),
-                                              subject(other.subject) {
+                                              subject(other.subject),
+                                              grade(other.grade)  {
 }
 
 Assigment::Assigment(Assigment &&other) noexcept: id(other.id),
                                                   name(std::move(other.name)),
                                                   description(std::move(other.description)),
-                                                  subject(std::move(other.subject)) {
+                                                  subject(std::move(other.subject)),
+                                                    grade(other.grade){
 }
 
 Assigment & Assigment::operator=(const Assigment &other) {
@@ -43,6 +47,7 @@ Assigment & Assigment::operator=(const Assigment &other) {
     name = other.name;
     description = other.description;
     subject = other.subject;
+    grade = other.grade;
     return *this;
 }
 
@@ -53,6 +58,7 @@ Assigment & Assigment::operator=(Assigment &&other) noexcept {
     name = std::move(other.name);
     description = std::move(other.description);
     subject = std::move(other.subject);
+    grade = other.grade;
     return *this;
 }
 
@@ -92,7 +98,7 @@ void Assigment::remove_grade() {
     this->grade = 0;
 }
 
-bool Assigment::is_assigment_graded() {
+bool Assigment::is_assigment_graded() const {
     return !this->grade;
 }
 
@@ -112,7 +118,8 @@ std::ostream & operator<<(std::ostream &os, const Assigment &obj) {
            << "id: " << obj.id
            << " name: " << obj.name
            << " description: " << obj.description
-           << " subject: " << obj.subject;
+           << " subject: " << obj.subject
+           << " grade: " << obj.grade;
 }
 
 void swap(Assigment &lhs, Assigment &rhs) noexcept {
@@ -121,5 +128,6 @@ void swap(Assigment &lhs, Assigment &rhs) noexcept {
     swap(lhs.name, rhs.name);
     swap(lhs.description, rhs.description);
     swap(lhs.subject, rhs.subject);
+    swap(lhs.grade, rhs.grade);
 }
 

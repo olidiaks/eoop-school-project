@@ -220,7 +220,7 @@ public:
      *
      * @return True if the assignment is graded, false otherwise.
      */
-    [[nodiscard]] bool is_assigment_graded();
+    [[nodiscard]] bool is_assigment_graded() const;
 
     /**
      * @brief Compares two Assignment objects for equality.
