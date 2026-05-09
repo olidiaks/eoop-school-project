@@ -275,6 +275,16 @@ public:
     void add_assignment(const Subject &subject, const Assignment &assignment, int grade);
 
     /**
+     * @brief Adds an assignment to all students in the class.
+     *
+     * @param subject The subject associated with the assignment.
+     * @param name The name of the assignment.
+     * @param description A brief description of the assignment.
+     * @param grade The grade or score associated with the assignment.
+     */
+    void add_assignment(const Subject &subject, const std::string &name, const std::string &description, int grade);
+
+    /**
      * @brief Advances the class to the next school year.
      *
      * Updates the current year of the class. If the class reaches the fifth year,
