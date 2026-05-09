@@ -97,7 +97,12 @@ bool Student::operator!=(const Student &rhs) const {
 }
 
 const std::vector<Assignment> & Student::get_assignments_from_subject(const Subject &subject) const {
-    return assignments.at(subject);
+    auto it = assignments.find(subject);
+    if (it == assignments.end()) {
+        static constexpr std::vector<Assignment> empty_list;
+        return empty_list;
+    };
+    return it->second;
 }
 
 std::ostream &operator<<(std::ostream &os, const Student &obj) {
