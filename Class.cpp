@@ -296,7 +296,7 @@ const Student &Class::get_student(const int &id) const {
     return students.at(student_index);
 }
 
-std::vector<Student> &Class::get_students() {
+const std::vector<Student> &Class::get_students() const{
     return students;
 }
 
