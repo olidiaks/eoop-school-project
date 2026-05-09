@@ -503,6 +503,12 @@ void Class::add_assignment(const Subject &subject, const std::string &name, cons
     }
 }
 
+void Class::add_assignment(const Subject &subject, const Assignment &assignment, int grade) {
+    for (auto &student: students) {
+        student.add_assignment(subject, assignment, grade);
+    }
+}
+
 void Class::new_school_year() {
     if (++year == 5) {
         year = -1;
