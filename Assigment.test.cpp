@@ -16,10 +16,12 @@ TEST(AssigmentTest, ConstructorWithoutGrade) {
 }
 
 TEST(AssigmentTest, ConstructorWithGrade) {
-    Assignment a("Math HW", "Calculus problems", "Math");
+    Assignment a("Math HW", "Calculus problems", "Math", 5);
     EXPECT_EQ(a.get_name(), "Math HW");
     EXPECT_EQ(a.get_description(), "Calculus problems");
     EXPECT_EQ(a.get_subject(), "Math");
+    EXPECT_EQ(a.get_grade(), 5);
+    EXPECT_TRUE(a.is_assigment_graded());
 }
 
 // Test setters and getters
@@ -27,9 +29,16 @@ TEST(AssigmentTest, SettersAndGetters) {
     Assignment a("Name", "Desc", "Subj");
     a.set_name("New Name");
     a.set_description("New Desc");
+    a.set_grade(4);
 
     EXPECT_EQ(a.get_name(), "New Name");
     EXPECT_EQ(a.get_description(), "New Desc");
+    EXPECT_EQ(a.get_grade(), 4);
+    EXPECT_TRUE(a.is_assigment_graded());
+
+    a.remove_grade();
+    EXPECT_EQ(a.get_grade(), 0);
+    EXPECT_FALSE(a.is_assigment_graded());
 }
 
 // Test copy constructor
