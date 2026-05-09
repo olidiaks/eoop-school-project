@@ -62,7 +62,9 @@ unsigned long Student::get_count_of_grades_from_students_subjects(const Subject 
 }
 
 float Student::get_average_grade_from_subject(const Subject &subject) const {
-    return get_sum_of_grades_from_subjects(subject) / get_count_of_grades_from_students_subjects(subject);
+    auto count = get_count_of_grades_from_students_subjects(subject);
+    if (count == 0) return 0.0f;
+    return static_cast<float>(get_sum_of_grades_from_subjects(subject)) / count;
 }
 
 
