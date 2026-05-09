@@ -48,7 +48,7 @@ float Student::get_average_grade() const {
     return sum / count;
 }
 
-int Student::get_sum_of_grades_from_students_subjects(const Subject &subject) const {
+int Student::get_sum_of_grades_from_subjects(const Subject &subject) const {
     int sum = 0;
     for (auto &assignment: get_assignments_from_subject(subject)) {
         sum += assignment.get_grade();
@@ -56,10 +56,13 @@ int Student::get_sum_of_grades_from_students_subjects(const Subject &subject) co
     return sum;
 }
 
-int Student::get_count_of_grades_from_students_subjects(const Subject &subject) const {
+unsigned long Student::get_count_of_grades_from_students_subjects(const Subject &subject) const {
     return get_assignments_from_subject(subject).size();
 }
 
+float Student::get_average_grade_from_subject(const Subject &subject) const {
+    return get_sum_of_grades_from_subjects(subject) / get_count_of_grades_from_students_subjects(subject);
+}
 
 
 void Student::add_assignment(const Subject &subject, const std::string &name, const std::string &description) {

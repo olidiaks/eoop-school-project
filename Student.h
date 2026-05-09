@@ -86,7 +86,7 @@ public:
      * @return The total sum of grades as an integer for the specified subject. If no grades
      *         are present for the given subject, the result will be zero.
      */
-    [[nodiscard]] int get_sum_of_grades_from_students_subjects(const Subject &subject) const;
+    [[nodiscard]] int get_sum_of_grades_from_subjects(const Subject &subject) const;
 
     /**
      * Retrieves the count of graded assignments the student has for a specific subject.
@@ -95,81 +95,9 @@ public:
      * @return The number of graded assignments associated with the specified subject as an integer.
      *         If no assignments exist for the given subject, the result will be zero.
      */
-    [[nodiscard]] int get_count_of_grades_from_students_subjects(const Subject &subject) const;
+    [[nodiscard]] unsigned long get_count_of_grades_from_students_subjects(const Subject &subject) const;
 
-    /**
-     * Computes and retrieves the average grade from the student's graded math assignments.
-     *
-     * @return The average grade of math assignments as a floating-point value.
-     *         If no graded math assignments are present, the result will be zero.
-     */
-    [[nodiscard]] float get_average_grade_from_math() const;
-
-    /**
-     * Computes and retrieves the average grade from the student's graded English assignments.
-     *
-     * @return The average grade of English assignments as a floating-point value. If no graded English
-     *         assignments are present, the result will be zero.
-     */
-    [[nodiscard]] float get_average_grade_from_english() const;
-
-    /**
-     * Computes and retrieves the average grade from the student's graded Polish assignments.
-     *
-     * @return The average grade of Polish assignments as a floating-point value.
-     *         If no graded Polish assignments are present, the result will be zero.
-     */
-    [[nodiscard]] float get_average_grade_from_polish() const;
-
-    /**
-     * Computes and retrieves the average grade from the student's graded history assignments.
-     *
-     * @return The average grade of history assignments as a floating-point value.
-     *         If no graded history assignments are present, the result will be zero.
-     */
-    [[nodiscard]] float get_average_grade_from_history() const;
-
-    /**
-     * Calculates and retrieves the average grade from biology assignments for the student.
-     *
-     * @return The average grade of the student in biology.
-     */
-    [[nodiscard]] float get_average_grade_from_biology() const;
-
-    /**
-     * Computes and retrieves the average grade for physics assignments.
-     *
-     * @return The average grade of the physics assignments as a floating-point value.
-     */
-    [[nodiscard]] float get_average_grade_from_physics() const;
-
-    /**
-     * Retrieves the average grade obtained by the student in chemistry assignments.
-     *
-     * @return The average grade for chemistry assignments as a floating-point value.
-     */
-    [[nodiscard]] float get_average_grade_from_chemistry() const;
-
-    /**
-     * Calculates and retrieves the average grade for geography assignments.
-     *
-     * @return The average grade as a floating-point number for geography assignments.
-     */
-    [[nodiscard]] float get_average_grade_from_geography() const;
-
-    /**
-     * Retrieves the average grade achieved by the student in computer science assignments.
-     *
-     * @return The average grade of the student in computer science as a floating-point number.
-     */
-    [[nodiscard]] float get_average_grade_from_computer_science() const;
-
-    /**
-     * Retrieves the average grade achieved by the student in physical education.
-     *
-     * @return The average grade computed from all physical education assignments.
-     */
-    [[nodiscard]] float get_average_grade_from_physical_education() const;
+    [[nodiscard]] float get_average_grade_from_subject(const Subject &subject) const;
 
     /**
      * Adds an assignment related to a specific subject to the student's record.
