@@ -21,6 +21,11 @@ TEST_F(StudentTest, ConstructorAndInheritance) {
     EXPECT_EQ(student.get_year_of_birth(), 2005);
 }
 
+TEST_F(StudentTest, Not_Initalized_Subject) {
+    const std::vector<Assignment> & math = student.get_assignments_from_subject(Subject::Math);
+    ASSERT_EQ(math.size(), 0);
+}
+
 TEST_F(StudentTest, AddAssignment_Object) {
     Assignment a("HW1", "Desc1", "Math");
     student.add_assignment(Subject::Math, a);
