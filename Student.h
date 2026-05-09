@@ -131,6 +131,14 @@ public:
      */
     void add_assignment(const Subject &subject, const std::string &name, const std::string &description);
 
+    /**
+     * Adds a new assignment to the student's record for a specific subject.
+     *
+     * @param subject The subject to which the assignment belongs.
+     * @param name The name of the assignment.
+     * @param description A brief description of the assignment.
+     * @param grade The grade achieved for the assignment.
+     */
     void add_assignment(const Subject &subject, const std::string &name, const std::string &description, int grade);
 
     /**
