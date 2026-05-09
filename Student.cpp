@@ -45,7 +45,8 @@ float Student::get_average_grade() const {
             count++;
         }
     }
-    return sum / count;
+    if (count == 0) return 0.0f;
+    return static_cast<float>(sum) / count;
 }
 
 int Student::get_sum_of_grades_from_subjects(const Subject &subject) const {
