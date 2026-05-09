@@ -18,17 +18,7 @@
 class Class {
 private:
     int id;
-    Teacher &mathTeacher;
-    Teacher &englishTeacher;
-    Teacher &polishTeacher;
-    Teacher &historyTeacher;
-    Teacher &biologyTeacher;
-    Teacher &physicsTeacher;
-    Teacher &chemistryTeacher;
-    Teacher &geographyTeacher;
-    Teacher &computerScienceTeacher;
-    Teacher &physicalEducationTeacher;
-    Teacher &superVisingTeacher;
+    std::vector<Teacher> teachers;
     std::vector<Student> students;
     static int counter;
 
@@ -49,122 +39,7 @@ private:
      */
     int find_student_index(const int &id) const;
 
-    /**
-     * @brief Constructs a Class object with a full set of teachers, year, and letter designation.
-     *
-     * Initializes the Class object with the provided teachers for different subjects,
-     * along with the academic year and letter designation. Also assigns a unique ID
-     * to the class and initializes it as not graduated.
-     *
-     * @param math_teacher The teacher responsible for mathematics.
-     * @param english_teacher The teacher responsible for English.
-     * @param polish_teacher The teacher responsible for Polish.
-     * @param history_teacher The teacher responsible for history.
-     * @param biology_teacher The teacher responsible for biology.
-     * @param physics_teacher The teacher responsible for physics.
-     * @param chemistry_teacher The teacher responsible for chemistry.
-     * @param geography_teacher The teacher responsible for geography.
-     * @param computer_science_teacher The teacher responsible for computer science.
-     * @param physical_education_teacher The teacher responsible for physical education.
-     * @param super_vising_teacher The teacher assigned as the supervising teacher for the class.
-     * @param year The year the class belongs to.
-     * @param letter The letter designation of the class.
-     */
 public:
-    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
-        Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher,
-        Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
-        Teacher &super_vising_teacher, int year, char letter);
-
-    /**
-     * @brief Constructs a Class object with assigned teachers, students, year, and letter.
-     *
-     * @param math_teacher Reference to the math teacher for the class.
-     * @param english_teacher Reference to the English teacher for the class.
-     * @param polish_teacher Reference to the Polish teacher for the class.
-     * @param history_teacher Reference to the history teacher for the class.
-     * @param biology_teacher Reference to the biology teacher for the class.
-     * @param physics_teacher Reference to the physics teacher for the class.
-     * @param chemistry_teacher Reference to the chemistry teacher for the class.
-     * @param geography_teacher Reference to the geography teacher for the class.
-     * @param computer_science_teacher Reference to the computer science teacher for the class.
-     * @param physical_education_teacher Reference to the physical education teacher for the class.
-     * @param super_vising_teacher Reference to the supervising teacher responsible for the class.
-     * @param students Vector containing the list of students in the class.
-     * @param year The academic year of the class.
-     * @param letter The letter identifier for the class (e.g., 'A', 'B').
-     */
-    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
-          Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
-          Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
-          const std::vector<Student> &students, int year, char letter);
-
-    /**
-     * @brief Constructs a new Class object with the specified teachers, students, and class identifier.
-     *
-     * @param math_teacher Reference to the math teacher assigned to the class.
-     * @param english_teacher Reference to the English teacher assigned to the class.
-     * @param polish_teacher Reference to the Polish teacher assigned to the class.
-     * @param history_teacher Reference to the history teacher assigned to the class.
-     * @param biology_teacher Reference to the biology teacher assigned to the class.
-     * @param physics_teacher Reference to the physics teacher assigned to the class.
-     * @param chemistry_teacher Reference to the chemistry teacher assigned to the class.
-     * @param geography_teacher Reference to the geography teacher assigned to the class.
-     * @param computer_science_teacher Reference to the computer science teacher assigned to the class.
-     * @param physical_education_teacher Reference to the physical education teacher assigned to the class.
-     * @param super_vising_teacher Reference to the supervising teacher assigned to the class.
-     * @param students Vector of students assigned to this class.
-     * @param letter The identifying letter for the class (e.g., 'A', 'B').
-     */
-    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
-          Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
-          Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
-          const std::vector<Student> &students, char letter);
-
-    /**
-     * @brief Constructs a Class object with specified teachers and graduation status.
-     *
-     * @param math_teacher The teacher responsible for teaching mathematics.
-     * @param english_teacher The teacher responsible for teaching English.
-     * @param polish_teacher The teacher responsible for teaching Polish.
-     * @param history_teacher The teacher responsible for teaching history.
-     * @param biology_teacher The teacher responsible for teaching biology.
-     * @param physics_teacher The teacher responsible for teaching physics.
-     * @param chemistry_teacher The teacher responsible for teaching chemistry.
-     * @param geography_teacher The teacher responsible for teaching geography.
-     * @param computer_science_teacher The teacher responsible for teaching computer science.
-     * @param physical_education_teacher The teacher responsible for teaching physical education.
-     * @param super_vising_teacher The teacher responsible for supervising the class.
-     * @param is_class_graduated Indicates whether the class has graduated.
-     */
-    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
-          Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
-          Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
-          bool is_class_graduated);
-
-    /**
-     * @brief Constructs a Class object with associated teachers and a class identifier.
-     *
-     * This constructor initializes a Class instance by assigning the provided teachers to their respective subjects
-     * and setting the class's letter identifier. It also initializes the class's ID, sets its year to 1, and marks it as not graduated.
-     *
-     * @param math_teacher Reference to the teacher responsible for math.
-     * @param english_teacher Reference to the teacher responsible for English.
-     * @param polish_teacher Reference to the teacher responsible for Polish.
-     * @param history_teacher Reference to the teacher responsible for history.
-     * @param biology_teacher Reference to the teacher responsible for biology.
-     * @param physics_teacher Reference to the teacher responsible for physics.
-     * @param chemistry_teacher Reference to the teacher responsible for chemistry.
-     * @param geography_teacher Reference to the teacher responsible for geography.
-     * @param computer_science_teacher Reference to the teacher responsible for computer science.
-     * @param physical_education_teacher Reference to the teacher responsible for physical education.
-     * @param super_vising_teacher Reference to the teacher responsible for supervising the class.
-     * @param letter Character denoting the class's unique letter identifier.
-     */
-    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
-          Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
-          Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
-          const char letter);
 
     /**
      * @brief Copy constructor for the Class object.
@@ -186,53 +61,6 @@ public:
      *              may no longer be in a valid state.
      */
     Class(Class &&other) noexcept;
-
-    /**
-     * @brief Constructs a new Class object with assigned teachers, students, and a class letter.
-     *
-     * @param math_teacher              Reference to the math teacher assigned to the class.
-     * @param english_teacher           Reference to the English teacher assigned to the class.
-     * @param polish_teacher            Reference to the Polish teacher assigned to the class.
-     * @param history_teacher           Reference to the history teacher assigned to the class.
-     * @param biology_teacher           Reference to the biology teacher assigned to the class.
-     * @param physics_teacher           Reference to the physics teacher assigned to the class.
-     * @param chemistry_teacher         Reference to the chemistry teacher assigned to the class.
-     * @param geography_teacher         Reference to the geography teacher assigned to the class.
-     * @param computer_science_teacher  Reference to the computer science teacher assigned to the class.
-     * @param physical_education_teacher Reference to the physical education teacher assigned to the class.
-     * @param super_vising_teacher      Reference to the supervising teacher assigned to manage the class.
-     * @param students                  Reference to a vector containing the list of students in the class.
-     * @param letter                    Character representing the letter identifier of the class.
-     *
-     * @return A newly constructed Class object.
-     */
-    Class( Teacher & math_teacher,  Teacher & english_teacher,  Teacher & polish_teacher,  Teacher & history_teacher,  Teacher & biology_teacher,  Teacher & physics_teacher,  Teacher & chemistry_teacher,
-           Teacher & geography_teacher,  Teacher & computer_science_teacher,  Teacher & physical_education_teacher,  Teacher & super_vising_teacher,  std::vector<Student> & students, char letter);
-
-    /**
-     * @brief Constructs an instance of the Class object with specified teachers, students, graduation status, and identifier.
-     *
-     * @param math_teacher Reference to the assigned math teacher.
-     * @param english_teacher Reference to the assigned English teacher.
-     * @param polish_teacher Reference to the assigned Polish teacher.
-     * @param history_teacher Reference to the assigned history teacher.
-     * @param biology_teacher Reference to the assigned biology teacher.
-     * @param physics_teacher Reference to the assigned physics teacher.
-     * @param chemistry_teacher Reference to the assigned chemistry teacher.
-     * @param geography_teacher Reference to the assigned geography teacher.
-     * @param computer_science_teacher Reference to the assigned computer science teacher.
-     * @param physical_education_teacher Reference to the assigned physical education teacher.
-     * @param super_vising_teacher Reference to the supervising teacher of the class.
-     * @param students List of students in the class.
-     * @param is_class_graduated Indicates whether the class has graduated.
-     * @param letter The letter identifier of the class.
-     *
-     * @return None.
-     */
-    Class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher, Teacher &history_teacher,
-          Teacher &biology_teacher, Teacher &physics_teacher, Teacher &chemistry_teacher, Teacher &geography_teacher,
-          Teacher &computer_science_teacher, Teacher &physical_education_teacher, Teacher &super_vising_teacher,
-          const std::vector<Student> &students, bool is_class_graduated, char letter);
 
     /**
      * @brief Overloads the assignment operator for the Class object.
@@ -335,7 +163,7 @@ public:
      * @brief Retrieves the list of students associated with the class.
      * @return A reference to a vector containing the students in the class.
      */
-    std::vector<Student> &get_students();
+    const std::vector<Student> &get_students() const;
 
     /**
      * @brief Calculates the average grade of the class for a given subject.
@@ -391,138 +219,6 @@ public:
      * @param rhs A reference to the second Class object.
      */
     friend void swap(Class &lhs, Class &rhs) noexcept;
-
-    /**
-     * @brief Retrieves the math teacher associated with the class.
-     * @return The math teacher of the class.
-     */
-    [[nodiscard]] Teacher get_math_teacher() const;
-
-    /**
-     * @brief Sets the math teacher for the class.
-     * @param math_teacher A reference to the Teacher object to be assigned as the math teacher.
-     */
-    void set_math_teacher(const Teacher &math_teacher);
-
-    /**
-     * @brief Retrieves the English teacher assigned to the class.
-     * @return The English teacher of the class as a Teacher object.
-     */
-    [[nodiscard]] Teacher get_english_teacher() const;
-
-    /**
-     * @brief Sets the English teacher for the class.
-     * @param english_teacher A reference to the Teacher object to be assigned as the English teacher.
-     */
-    void set_english_teacher(const Teacher &english_teacher);
-
-    /**
-     * @brief Retrieves the Polish teacher assigned to the class.
-     * @return The Polish teacher associated with the class.
-     */
-    [[nodiscard]] Teacher get_polish_teacher() const;
-
-    /**
-     * @brief Sets the Polish teacher for the class.
-     * @param polish_teacher The teacher to be assigned as the Polish teacher.
-     */
-    void set_polish_teacher(const Teacher &polish_teacher);
-
-    /**
-     * @brief Retrieves the history teacher assigned to the class.
-     * @return The teacher responsible for teaching history in the class.
-     */
-    [[nodiscard]] Teacher get_history_teacher() const;
-
-    /**
-     * @brief Sets the history teacher for the class.
-     * @param history_teacher The teacher to be assigned as the history teacher.
-     */
-    void set_history_teacher(const Teacher &history_teacher);
-
-    /**
-     * @brief Retrieves the biology teacher assigned to the class.
-     * @return The teacher object representing the biology teacher.
-     */
-    [[nodiscard]] Teacher get_biology_teacher() const;
-
-    /**
-     * @brief Sets the biology teacher for the class.
-     * @param biology_teacher The Teacher object representing the biology teacher to be assigned.
-     */
-    void set_biology_teacher(const Teacher &biology_teacher);
-
-    /**
-     * @brief Retrieves the physics teacher of the class.
-     * @return The physics teacher associated with the class.
-     */
-    [[nodiscard]] Teacher get_physics_teacher() const;
-
-    /**
-     * @brief Assigns a physics teacher to the class.
-     * @param physics_teacher The Teacher object representing the physics teacher to be assigned.
-     */
-    void set_physics_teacher(const Teacher &physics_teacher);
-
-    /**
-     * @brief Retrieves the chemistry teacher for the class.
-     * @return The teacher assigned to chemistry for this class.
-     */
-    [[nodiscard]] Teacher get_chemistry_teacher() const;
-
-    /**
-     * @brief Sets the chemistry teacher for the class.
-     * @param chemistry_teacher A reference to the Teacher object to be assigned as the chemistry teacher.
-     */
-    void set_chemistry_teacher(const Teacher &chemistry_teacher);
-
-    /**
-     * @brief Retrieves the geography teacher associated with the class.
-     * @return The teacher responsible for teaching geography.
-     */
-    [[nodiscard]] Teacher get_geography_teacher() const;
-
-    /**
-     * @brief Sets the geography teacher for the class.
-     * @param geography_teacher The teacher object to be assigned as the geography teacher.
-     */
-    void set_geography_teacher(const Teacher &geography_teacher);
-
-    /**
-     * @brief Retrieves the computer science teacher for the class.
-     * @return The teacher assigned to computer science in the class.
-     */
-    [[nodiscard]] Teacher get_computer_science_teacher() const;
-
-    /**
-     * @brief Sets the computer science teacher for the class.
-     * @param computer_science_teacher The Teacher object representing the computer science teacher to be assigned.
-     */
-    void set_computer_science_teacher(const Teacher &computer_science_teacher);
-
-    /**
-     * @brief Retrieves the physical education teacher of the class.
-     * @return The teacher assigned to physical education.
-     */
-    [[nodiscard]] Teacher get_physical_education_teacher() const;
-
-    /**
-     * @brief Sets the physical education teacher for the class.
-     * @param physical_education_teacher The teacher to assign as the physical education teacher.
-     */
-    void set_physical_education_teacher(const Teacher &physical_education_teacher);
-
-    /**
-     * @brief Retrieves the supervising teacher of the class.
-     * @return The teacher supervising the class.
-     */
-    [[nodiscard]] Teacher get_super_vising_teacher() const;
-
-    /**
-     * @brief Sets the supervising teacher for the class.
-     * @param super_vising_teacher A reference to the Teacher object to be assigned as the supervising teacher.
-     */
-    void set_super_vising_teacher(const Teacher &super_vising_teacher);
 
     /**
      * @brief Retrieves the unique identifier of the class.
