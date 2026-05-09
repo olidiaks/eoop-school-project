@@ -285,6 +285,27 @@ public:
     void add_assignment(const Subject &subject, const std::string &name, const std::string &description, int grade);
 
     /**
+     * @brief Adds a teacher to the class.
+     * @param teacher A reference to the Teacher object to be added.
+     */
+    void add_teacher(const Teacher &teacher);
+
+    /**
+     * @brief Adds a new teacher to the class.
+     *
+     * @param first_name The first name of the teacher.
+     * @param last_name The last name of the teacher.
+     * @param email The email address of the teacher.
+     * @param day The day of the teacher's date of birth.
+     * @param month The month of the teacher's date of birth.
+     * @param year The year of the teacher's date of birth.
+     * @param subject The subject taught by the teacher.
+     * @param salary The salary of the teacher.
+     */
+    void add_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
+                     const int &day, const int &month, const int &year, const Subject &subject, int salary);
+
+    /**
      * @brief Advances the class to the next school year.
      *
      * Updates the current year of the class. If the class reaches the fifth year,
