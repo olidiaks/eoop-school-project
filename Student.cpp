@@ -78,7 +78,7 @@ void Student::add_assignment(const Subject &subject, const std::string &name, co
 }
 
 void Student::add_assignment(const Subject &subject, const Assignment &assigment) {
-    assignments.at(subject).emplace_back(assigment);
+    assignments[subject].emplace_back(assigment);
 }
 
 void Student::add_assignment(const Subject &subject, const Assignment &assignment, int grade) {
