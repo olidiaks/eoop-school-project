@@ -97,6 +97,12 @@ public:
      */
     [[nodiscard]] unsigned long get_count_of_grades_from_students_subjects(const Subject &subject) const;
 
+    /**
+     * Calculates the average grade of the student for the specified subject.
+     *
+     * @param subject The subject for which the average grade is to be calculated.
+     * @return The average grade of the student for the given subject.
+     */
     [[nodiscard]] float get_average_grade_from_subject(const Subject &subject) const;
 
     /**
