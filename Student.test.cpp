@@ -4,21 +4,12 @@
 
 #include <gtest/gtest.h>
 #include <sstream>
-#include <list>
+#include <vector>
 #include "Student.h"
 
 class StudentTest : public ::testing::Test {
 protected:
-    // Create a default student for testing
     Student student{"John", "Doe", "john.doe@example.com", 15, 4, 2005};
-
-    // Helper to check if an assignment exists in a list
-    bool contains_assignment(const std::list<Assigment_graded>& list, const std::string& name) {
-        for (const auto& ag : list) {
-            if (ag.get_assigment().get_name() == name) return true;
-        }
-        return false;
-    }
 };
 
 TEST_F(StudentTest, ConstructorAndInheritance) {
@@ -34,46 +25,44 @@ TEST_F(StudentTest, AddAssignment_Object) {
     Assignment a("HW1", "Desc1", "Math");
     student.add_assignment(Subject::Math, a);
     
-    const auto& math = student.get_math_assignments();
+    const std::vector<Assignment> & math = student.get_assignments_from_subject(Subject::Math);
     ASSERT_EQ(math.size(), 1);
-    EXPECT_EQ(math.front().get_assigment().get_name(), "HW1");
+    EXPECT_EQ(math.front().get_name(), "HW1");
     EXPECT_EQ(math.front().get_grade(), 0);
 }
 
 TEST_F(StudentTest, AddAssignment_NameDescription) {
     student.add_assignment(Subject::English, "Essay", "Summer theme");
-    
-    const auto& english = student.get_english_assignments();
+
+    const std::vector<Assignment>& english = student.get_assignments_from_subject(Subject::English);
     ASSERT_EQ(english.size(), 1);
-    EXPECT_EQ(english.front().get_assigment().get_name(), "Essay");
-    EXPECT_EQ(english.front().get_assigment().get_description(), "Summer theme");
+    EXPECT_EQ(english.front().get_name(), "Essay");
+    EXPECT_EQ(english.front().get_description(), "Summer theme");
 }
 
 TEST_F(StudentTest, AddAssignment_WithGrade) {
     Assignment a("Test1", "History quiz", "History");
     student.add_assignment(Subject::History, a, 5);
     
-    const auto& history = student.get_history_assignments();
+    const auto& history = student.get_assignments_from_subject(Subject::History);
     ASSERT_EQ(history.size(), 1);
     EXPECT_EQ(history.front().get_grade(), 5);
 }
 
 TEST_F(StudentTest, AddAssignment_GradedObject) {
-    Assignment a("Lab1", "Biology lab", "Biology");
-    Assigment_graded ag(a, 4);
-    student.add_assignment(Subject::Biology, ag);
+    Assignment a("Lab1", "Biology lab", "Biology", 4);
+    student.add_assignment(Subject::Biology, a);
     
-    const auto& biology = student.get_biology_assignments();
+    const auto& biology = student.get_assignments_from_subject(Subject::Biology);
     ASSERT_EQ(biology.size(), 1);
     EXPECT_EQ(biology.front().get_grade(), 4);
 }
 
 TEST_F(StudentTest, AddAssignment_GradedObjectWithNewGrade) {
-    Assignment a("Prob1", "Physics problems", "Physics");
-    Assigment_graded ag(a, 2);
-    student.add_assignment(Subject::Physics, ag, 5);
+    Assignment a("Prob1", "Physics problems", "Physics", 2);
+    student.add_assignment(Subject::Physics, a, 5);
     
-    const auto& physics = student.get_physics_assignments();
+    const auto& physics = student.get_assignments_from_subject(Subject::Physics);
     ASSERT_EQ(physics.size(), 1);
     EXPECT_EQ(physics.front().get_grade(), 5);
 }
@@ -81,12 +70,12 @@ TEST_F(StudentTest, AddAssignment_GradedObjectWithNewGrade) {
 TEST_F(StudentTest, AverageGradePerSubject) {
     student.add_assignment(Subject::Math, Assignment("M1", "D1", "Math"), 5);
     student.add_assignment(Subject::Math, Assignment("M2", "D2", "Math"), 3);
-    EXPECT_FLOAT_EQ(student.get_average_grade_from_math(), 4.0f);
+    EXPECT_FLOAT_EQ(student.get_average_grade_from_subject(Subject::Math), 4.0f);
 
     student.add_assignment(Subject::Polish, Assignment("P1", "D1", "Polish"), 2);
     student.add_assignment(Subject::Polish, Assignment("P2", "D2", "Polish"), 4);
     student.add_assignment(Subject::Polish, Assignment("P3", "D3", "Polish"), 6);
-    EXPECT_FLOAT_EQ(student.get_average_grade_from_polish(), 4.0f);
+    EXPECT_FLOAT_EQ(student.get_average_grade_from_subject(Subject::Polish), 4.0f);
 }
 
 TEST_F(StudentTest, TotalAverageGrade) {
@@ -111,15 +100,14 @@ TEST_F(StudentTest, GetAllAssignments) {
     student.add_assignment(Subject::ComputerScience, "CS1", "D1");
     student.add_assignment(Subject::PhysicalEducation, "PE1", "D1");
 
-    EXPECT_EQ(student.get_chemistry_assignments().size(), 1);
-    EXPECT_EQ(student.get_geography_assignments().size(), 1);
-    EXPECT_EQ(student.get_computer_science_assignments().size(), 1);
-    EXPECT_EQ(student.get_physical_education_assignments().size(), 1);
+    EXPECT_EQ(student.get_assignments_from_subject(Subject::Chemistry).size(), 1);
+    EXPECT_EQ(student.get_assignments_from_subject(Subject::Geography).size(), 1);
+    EXPECT_EQ(student.get_assignments_from_subject(Subject::ComputerScience).size(), 1);
+    EXPECT_EQ(student.get_assignments_from_subject(Subject::PhysicalEducation).size(), 1);
 }
 
 TEST_F(StudentTest, EqualityOperators) {
     Student student2{"John", "Doe", "john.doe@example.com", 15, 4, 2005};
-    // Since Person has unique IDs (unless default constructor -1), they won't be equal.
     EXPECT_NE(student, student2);
 
     Student student3(student);
@@ -137,17 +125,7 @@ TEST_F(StudentTest, StreamOperator) {
     
     EXPECT_NE(output.find("John"), std::string::npos);
     EXPECT_NE(output.find("Doe"), std::string::npos);
-    EXPECT_NE(output.find("mathAssignments:"), std::string::npos);
-}
-
-TEST_F(StudentTest, StreamAssignments) {
-    student.add_assignment(Subject::Math, Assignment("M1", "D1", "Math"), 5);
-    std::stringstream ss;
-    stream_assignments(ss, Subject::Math, student);
-    std::string output = ss.str();
-
-    EXPECT_NE(output.find("Subject: Math"), std::string::npos);
-    EXPECT_NE(output.find("grade: 5"), std::string::npos);
+    EXPECT_NE(output.find("Math assignments:"), std::string::npos);
 }
 
 TEST_F(StudentTest, ToStringSubject) {
