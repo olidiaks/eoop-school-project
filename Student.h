@@ -113,6 +113,13 @@ public:
      */
     void add_assignment(const Subject &subject, const Assignment &assigment);
 
+    /**
+     * Adds a graded assignment for the specified subject to the student's record.
+     *
+     * @param subject The subject to which the assignment belongs.
+     * @param assignment The assignment details without a grade.
+     * @param grade The grade to be assigned to the assignment.
+     */
     void add_assignment(const Subject &subject, const Assignment &assignment, int grade);
 
     /**
