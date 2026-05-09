@@ -128,7 +128,7 @@ Person &Person::operator=(Person &&other) noexcept {
 }
 
 
-bool operator==(const Person &rhs) const{
+bool Person::operator==(const Person &rhs) const{
     return id == rhs.id
            && firstName == rhs.firstName
            && lastName == rhs.lastName
@@ -136,8 +136,8 @@ bool operator==(const Person &rhs) const{
            && birthDate == rhs.birthDate;
 }
 
-bool operator!=(const Person &rhs) const {
-    return !(this == rhs);
+bool Person::operator!=(const Person &rhs) const {
+    return !(*this == rhs);
 }
 
 std::ostream &operator<<(std::ostream &os, const Person &obj) {
