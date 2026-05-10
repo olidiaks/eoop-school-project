@@ -245,7 +245,7 @@ int Class::get_count_of_grades_from_subject(const Subject &subject) const {
 }
 
 float Class::get_average_grade_of_class() {
-    int count = 0;
+    unsigned long count = 0;
     int sum = 0;
 
     constexpr std::array<Subject, 10> subjects = {
