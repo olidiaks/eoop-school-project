@@ -26,7 +26,33 @@ private:
     int year;
     char letter;
 
+    /**
+     * @brief Checks if a specific teacher is assigned to the class.
+     * @param teacher The teacher to check for assignment.
+     * @return True if the teacher is assigned to the class, otherwise false.
+     */
     [[nodiscard]] bool is_teacher_assigned(const Teacher &teacher) const;
+
+    /**
+     * @brief Checks if a given student is assigned to the class.
+     *
+     * @param student The student to check for assignment in the class.
+     * @return true if the student is assigned to the class, false otherwise.
+     */
+    [[nodiscard]] bool is_student_assigned(const Student &student) const;
+
+    /**
+     * @brief Checks whether a student with specific identifying details is assigned to the class.
+     *
+     * @param firstname The first name of the student.
+     * @param last_name The last name of the student.
+     * @param email The email address of the student.
+     * @param day The day of birth of the student.
+     * @param month The month of birth of the student.
+     * @param year The year of birth of the student.
+     * @return True if a student matching the specified details is assigned to the class, false otherwise.
+     */
+    bool is_student_assigned(const std::string & firstname, const std::string & last_name, const std::string & email, int day, int month, int year);
 
     /**
      * @brief Finds the index of a student in the class by their unique ID.
@@ -106,9 +132,9 @@ public:
      * @brief Adds a student to the class.
      * @param student The student to be added to the class.
      */
-    void add_student(const Student &student);
+    bool add_student(const Student &student);
 
-    /**
+        /**
      * @brief Adds a new student to the class roster.
      *
      * @param first_name The first name of the student.
@@ -118,7 +144,7 @@ public:
      * @param month The month of the student's birth date.
      * @param year The year of the student's birth date.
      */
-    void add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
+    bool add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
                      const int &day, const int &month, const int &year);
 
     /**

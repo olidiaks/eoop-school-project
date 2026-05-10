@@ -12,6 +12,18 @@ bool Class::is_teacher_assigned(const Teacher& teacher)  const{
     return std::any_of(teachers.begin(), teachers.end(), [&](const Teacher &_teacher) {return _teacher == teacher;});
 }
 
+bool Class::is_student_assigned(const Student &student) const {
+    return std::any_of(students.begin(), students.end(), [&](const Student &_student) {return _student == student;});
+}
+
+bool Class::is_student_assigned(const std::string &firstname, const std::string &last_name, const std::string &email,
+    int day, int month, int year) {
+    return std::any_of(students.begin(), students.end(),
+                        [firstname, last_name, email, day, month, year](const Student &_student) {
+                            return _student.get_first_name() == firstname && _student.get_last_name() == last_name && _student.get_email() == email && _student.get_day_of_birth() == day && _student.get_month_of_birth() == month && _student.get_year_of_birth() == year;
+                        });
+}
+
 int Class::find_student_index(const int &id) const {
     int i = 0;
     for (const auto &student: students) {
@@ -112,13 +124,17 @@ char Class::get_letter() const {
     return letter;
 }
 
-void Class::add_student(const Student &student) {
+bool Class::add_student(const Student &student) {
+    if (is_student_assigned(student)) return false;
     students.push_back(student);
+    return true;
 }
 
-void Class::add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
+bool Class::add_student(const std::string &first_name, const std::string &last_name, const std::string &email,
                         const int &day, const int &month, const int &year) {
+    if (is_student_assigned(first_name, last_name, email, day, month, year)) return false;
     students.emplace_back(first_name, last_name, email, day, month, year);
+    return true;
 }
 
 bool Class::remove_student(const int &id) {
@@ -317,12 +333,9 @@ void Class::new_school_year() {
     }
 }
 
-
-
 bool Class::operator!=(const Class &rhs) const {
     return !(*this == rhs);
 }
-
 
 std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students) {
     for (const Student &student: students) {
