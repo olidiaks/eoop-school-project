@@ -301,21 +301,11 @@ std::ostream & operator<<(std::ostream &os, const std::list<Class> &classes) {
 
 std::ostream &operator<<(std::ostream &os, const Class &obj) {
     return os
-           << "id: " << obj.id
-           << " year: " << obj.year
-           << " letter: " << obj.letter
-           << " isClassGraduated: " << obj.isClassGraduated
-           << " mathTeacher: " << obj.mathTeacher
-           << " englishTeacher: " << obj.englishTeacher
-           << " polishTeacher: " << obj.polishTeacher
-           << " historyTeacher: " << obj.historyTeacher
-           << " biologyTeacher: " << obj.biologyTeacher
-           << " physicsTeacher: " << obj.physicsTeacher
-           << " chemistryTeacher: " << obj.chemistryTeacher
-           << " geographyTeacher: " << obj.geographyTeacher
-           << " computerScienceTeacher: " << obj.computerScienceTeacher
-           << " physicalEducationTeacher: " << obj.physicalEducationTeacher
-           << " superVisingTeacher: " << obj.superVisingTeacher
+           << "id: " << obj.id << std::endl
+           << " year: " << obj.year << std::endl
+           << " letter: " << obj.letter << std::endl
+           << " isClassGraduated: " << obj.isClassGraduated << std::endl
+           << " teachers: " << obj.teachers
            << " students: " << obj.students;
 }
 
