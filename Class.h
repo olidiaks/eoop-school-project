@@ -362,6 +362,8 @@ public:
      */
     bool remove_teacher(const int &id);
 
+    bool remove_teacher(const Teacher &teacher);
+
     /**
      * @brief Advances the class to the next school year.
      *
