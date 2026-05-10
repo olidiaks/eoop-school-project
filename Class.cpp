@@ -296,6 +296,19 @@ void Class::add_teacher(const std::string &first_name, const std::string &last_n
     teachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
 }
 
+bool Class::remove_teacher(const int &id) {
+    const auto it = teachers.begin();
+
+    for (auto i = it; i != teachers.end(); ++i) {
+        if (i->get_id() == id) {
+            teachers.erase(i);
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void Class::new_school_year() {
     if (++year == 5) {
         year = -1;

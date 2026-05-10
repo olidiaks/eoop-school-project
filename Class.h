@@ -306,6 +306,17 @@ public:
                      const int &day, const int &month, const int &year, const Subject &subject, int salary);
 
     /**
+     * @brief Removes a teacher from the class by their unique ID.
+     *
+     * This method iterates through the list of teachers and removes the teacher
+     * whose ID matches the provided value.
+     *
+     * @param id A reference to the unique ID of the teacher to be removed.
+     * @return true if a teacher with the specified ID was found and removed, false otherwise.
+     */
+    bool remove_teacher(const int &id);
+
+    /**
      * @brief Advances the class to the next school year.
      *
      * Updates the current year of the class. If the class reaches the fifth year,
