@@ -26,6 +26,8 @@ private:
     int year;
     char letter;
 
+    [[nodiscard]] bool is_teacher_assigned(const Teacher &teacher) const;
+
     /**
      * @brief Finds the index of a student in the class by their unique ID.
      *
@@ -288,7 +290,7 @@ public:
      * @brief Adds a teacher to the class.
      * @param teacher A reference to the Teacher object to be added.
      */
-    void add_teacher(const Teacher &teacher);
+    bool add_teacher(const Teacher &teacher);
 
     /**
      * @brief Removes a teacher from the class by their unique ID.

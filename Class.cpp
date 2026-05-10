@@ -8,6 +8,10 @@
 
 int Class::counter = 0;
 
+bool Class::is_teacher_assigned(const Teacher& teacher)  const{
+    return std::any_of(teachers.begin(), teachers.end(), [&](const Teacher &_teacher) {return _teacher == teacher;});
+}
+
 int Class::find_student_index(const int &id) const {
     int i = 0;
     for (const auto &student: students) {
@@ -287,8 +291,10 @@ void Class::add_assignment(const Subject &subject, const std::string &name, cons
     }
 }
 
-void Class::add_teacher(const Teacher &teacher) {
+bool Class::add_teacher(const Teacher &teacher) {
+    if (is_teacher_assigned(teacher)) return false;
     teachers.push_back(teacher);
+    return true;
 }
 
 bool Class::remove_teacher(const int &id) {
