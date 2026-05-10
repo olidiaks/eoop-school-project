@@ -156,17 +156,7 @@ int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const 
 bool Class::operator==(const Class &rhs) const {
 
     bool is_equal = id == rhs.id
-           && mathTeacher == rhs.mathTeacher
-           && englishTeacher == rhs.englishTeacher
-           && polishTeacher == rhs.polishTeacher
-           && historyTeacher == rhs.historyTeacher
-           && biologyTeacher == rhs.biologyTeacher
-           && physicsTeacher == rhs.physicsTeacher
-           && chemistryTeacher == rhs.chemistryTeacher
-           && geographyTeacher == rhs.geographyTeacher
-           && computerScienceTeacher == rhs.computerScienceTeacher
-           && physicalEducationTeacher == rhs.physicalEducationTeacher
-           && superVisingTeacher == rhs.superVisingTeacher
+           && teachers == rhs.teachers
            && isClassGraduated == rhs.isClassGraduated
            && year == rhs.year
            && letter == rhs.letter;;;
