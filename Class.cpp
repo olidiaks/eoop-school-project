@@ -115,18 +115,15 @@ void Class::print_students() const {
     std::cout << students << std::endl;
 }
 
+std::ostream & operator<<(std::ostream & os, const std::vector<Teacher> & vector) {
+    for (const Teacher & teacher: vector) {
+        os << teacher.get_subject() << " teacher:" << std::endl << teacher << std::endl;
+    }
+    return os;
+}
+
 void Class::print_teachers() const {
-    std::cout << " mathTeacher: " << mathTeacher
-            << " englishTeacher: " << englishTeacher
-            << " polishTeacher: " << polishTeacher
-            << " historyTeacher: " << historyTeacher
-            << " biologyTeacher: " << biologyTeacher
-            << " physicsTeacher: " << physicsTeacher
-            << " chemistryTeacher: " << chemistryTeacher
-            << " geographyTeacher: " << geographyTeacher
-            << " computerScienceTeacher: " << computerScienceTeacher
-            << " physicalEducationTeacher: " << physicalEducationTeacher
-            << " superVisingTeacher: " << superVisingTeacher << std::endl;
+    std::cout << teachers << std::endl;
 }
 
 const Student &Class::get_student(const int &id) const {
