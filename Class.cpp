@@ -4,6 +4,7 @@
 
 #include "Class.h"
 
+#include <algorithm>
 #include <iostream>
 
 int Class::counter = 0;
@@ -37,33 +38,13 @@ int Class::find_student_index(const int &id) const {
 }
 
 Class::Class(const Class &other) : id(other.id),
-                                   mathTeacher(other.mathTeacher),
-                                   englishTeacher(other.englishTeacher),
-                                   polishTeacher(other.polishTeacher),
-                                   historyTeacher(other.historyTeacher),
-                                   biologyTeacher(other.biologyTeacher),
-                                   physicsTeacher(other.physicsTeacher),
-                                   chemistryTeacher(other.chemistryTeacher),
-                                   geographyTeacher(other.geographyTeacher),
-                                   computerScienceTeacher(other.computerScienceTeacher),
-                                   physicalEducationTeacher(other.physicalEducationTeacher),
-                                   superVisingTeacher(other.superVisingTeacher),
+                                   teachers(other.teachers),
                                    students(other.students), isClassGraduated(other.isClassGraduated), year(other.year),
                                    letter(other.letter) {
 }
 
 Class::Class(Class &&other) noexcept : id(other.id),
-                                       mathTeacher(other.mathTeacher),
-                                       englishTeacher(other.englishTeacher),
-                                       polishTeacher(other.polishTeacher),
-                                       historyTeacher(other.historyTeacher),
-                                       biologyTeacher(other.biologyTeacher),
-                                       physicsTeacher(other.physicsTeacher),
-                                       chemistryTeacher(other.chemistryTeacher),
-                                       geographyTeacher(other.geographyTeacher),
-                                       computerScienceTeacher(other.computerScienceTeacher),
-                                       physicalEducationTeacher(other.physicalEducationTeacher),
-                                       superVisingTeacher(other.superVisingTeacher),
+                                       teachers(std::move(other.teachers)),
                                        students(std::move(other.students)), isClassGraduated(other.isClassGraduated),
                                        year(other.year), letter(other.letter) {
 }
@@ -72,17 +53,7 @@ Class &Class::operator=(const Class &other) {
     if (this == &other)
         return *this;
     id = other.id;
-    mathTeacher = other.mathTeacher;
-    englishTeacher = other.englishTeacher;
-    polishTeacher = other.polishTeacher;
-    historyTeacher = other.historyTeacher;
-    biologyTeacher = other.biologyTeacher;
-    physicsTeacher = other.physicsTeacher;
-    chemistryTeacher = other.chemistryTeacher;
-    geographyTeacher = other.geographyTeacher;
-    computerScienceTeacher = other.computerScienceTeacher;
-    physicalEducationTeacher = other.physicalEducationTeacher;
-    superVisingTeacher = other.superVisingTeacher;
+    teachers = other.teachers;
     students = other.students;
     isClassGraduated = other.isClassGraduated;
     year = other.year;
@@ -94,17 +65,7 @@ Class &Class::operator=(Class &&other) noexcept {
     if (this == &other)
         return *this;
     id = other.id;
-    mathTeacher = other.mathTeacher;
-    englishTeacher = other.englishTeacher;
-    polishTeacher = other.polishTeacher;
-    historyTeacher = other.historyTeacher;
-    biologyTeacher = other.biologyTeacher;
-    physicsTeacher = other.physicsTeacher;
-    chemistryTeacher = other.chemistryTeacher;
-    geographyTeacher = other.geographyTeacher;
-    computerScienceTeacher = other.computerScienceTeacher;
-    physicalEducationTeacher = other.physicalEducationTeacher;
-    superVisingTeacher = other.superVisingTeacher;
+    teachers = std::move(other.teachers);
     students = std::move(other.students);
     isClassGraduated = other.isClassGraduated;
     year = other.year;
