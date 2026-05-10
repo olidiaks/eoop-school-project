@@ -291,11 +291,6 @@ void Class::add_teacher(const Teacher &teacher) {
     teachers.push_back(teacher);
 }
 
-void Class::add_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
-    const int &day, const int &month, const int &year, const Subject &subject, int salary) {
-    teachers.emplace_back(first_name, last_name, email, day, month, year, salary, subject);
-}
-
 bool Class::remove_teacher(const int &id) {
     const auto it = teachers.begin();
 

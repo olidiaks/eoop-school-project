@@ -291,21 +291,6 @@ public:
     void add_teacher(const Teacher &teacher);
 
     /**
-     * @brief Adds a new teacher to the class.
-     *
-     * @param first_name The first name of the teacher.
-     * @param last_name The last name of the teacher.
-     * @param email The email address of the teacher.
-     * @param day The day of the teacher's date of birth.
-     * @param month The month of the teacher's date of birth.
-     * @param year The year of the teacher's date of birth.
-     * @param subject The subject taught by the teacher.
-     * @param salary The salary of the teacher.
-     */
-    void add_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,
-                     const int &day, const int &month, const int &year, const Subject &subject, int salary);
-
-    /**
      * @brief Removes a teacher from the class by their unique ID.
      *
      * This method iterates through the list of teachers and removes the teacher
