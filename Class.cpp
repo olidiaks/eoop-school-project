@@ -312,17 +312,7 @@ std::ostream &operator<<(std::ostream &os, const Class &obj) {
 void swap(Class &lhs, Class &rhs) noexcept {
     using std::swap;
     swap(lhs.id, rhs.id);
-    swap(lhs.mathTeacher, rhs.mathTeacher);
-    swap(lhs.englishTeacher, rhs.englishTeacher);
-    swap(lhs.polishTeacher, rhs.polishTeacher);
-    swap(lhs.historyTeacher, rhs.historyTeacher);
-    swap(lhs.biologyTeacher, rhs.biologyTeacher);
-    swap(lhs.physicsTeacher, rhs.physicsTeacher);
-    swap(lhs.chemistryTeacher, rhs.chemistryTeacher);
-    swap(lhs.geographyTeacher, rhs.geographyTeacher);
-    swap(lhs.computerScienceTeacher, rhs.computerScienceTeacher);
-    swap(lhs.physicalEducationTeacher, rhs.physicalEducationTeacher);
-    swap(lhs.superVisingTeacher, rhs.superVisingTeacher);
+    swap(lhs.teachers, rhs.teachers);
     swap(lhs.students, rhs.students);
     swap(lhs.isClassGraduated, rhs.isClassGraduated);
     swap(lhs.year, rhs.year);
