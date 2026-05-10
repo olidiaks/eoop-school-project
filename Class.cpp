@@ -37,6 +37,15 @@ int Class::find_student_index(const int &id) const {
     return -1;
 }
 
+Class::Class(const std::vector<Teacher> &teachers, const std::vector<Student> &students, int year, char letter): id(counter++), teachers(teachers), students(students), isClassGraduated(false), year(year), letter(letter) {
+}
+
+Class::Class(int year, char letter) : id(counter++), isClassGraduated(false), year(year), letter(letter) {
+}
+
+Class::Class() : id(counter++), isClassGraduated(false), year(0), letter(' ') {
+}
+
 Class::Class(const Class &other) : id(other.id),
                                    teachers(other.teachers),
                                    students(other.students), isClassGraduated(other.isClassGraduated), year(other.year),
@@ -132,6 +141,10 @@ const Student &Class::get_student(const int &id) const {
         throw std::runtime_error("Student with id " + std::to_string(id) + " not found");
     }
     return students.at(student_index);
+}
+
+std::vector<Student> &Class::get_students() {
+    return students;
 }
 
 const std::vector<Student> &Class::get_students() const{

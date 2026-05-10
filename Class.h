@@ -68,6 +68,33 @@ private:
     int find_student_index(const int &id) const;
 
 public:
+    /**
+     * @brief Constructs a new Class object with assigned teachers, students, year, and letter.
+     *
+     * @param teachers A vector containing the teachers assigned to the class.
+     * @param students A vector containing the students enrolled in the class.
+     * @param year The academic year in which the class exists.
+     * @param letter The letter identifier of the class.
+     */
+    Class(const std::vector<Teacher> &teachers, const std::vector<Student> &students, int year, char letter);
+
+    /**
+     * @brief Constructs a Class instance with a specified year and letter.
+     *
+     * @param year The academic year of the class.
+     * @param letter The letter representing the class section.
+     */
+    Class(int year, char letter);
+
+    /**
+     * @brief Constructs a Class object with default values.
+     *
+     * Initializes the class with a unique ID, sets the graduation status to false,
+     * sets the year to 0, and assigns a default empty letter.
+     *
+     * @return A newly created Class object with initialized attributes.
+     */
+    Class();
 
     /**
      * @brief Copy constructor for the Class object.
@@ -186,6 +213,12 @@ public:
      * @throws std::runtime_error If no student with the specified identifier is found.
      */
     const Student &get_student(const int &id) const;
+
+    /**
+     * @brief Retrieves the list of students associated with the class.
+     * @return A reference to a vector containing the students in the class.
+     */
+    std::vector<Student> &get_students();
 
     /**
      * @brief Retrieves the list of students associated with the class.
