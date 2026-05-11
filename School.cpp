@@ -49,19 +49,11 @@ bool School::operator!=(const School &rhs) const {
     return !(*this == rhs);
 }
 
+
+
 std::ostream & operator<<(std::ostream &os, const School &obj) {
     return os
-           << "mathTeachers: " << obj.mathTeachers
-           << " englishTeachers: " << obj.englishTeachers
-           << " polishTeachers: " << obj.polishTeachers
-           << " historyTeachers: " << obj.historyTeachers
-           << " biologyTeachers: " << obj.biologyTeachers
-           << " physicsTeachers: " << obj.physicsTeachers
-           << " chemistryTeachers: " << obj.chemistryTeachers
-           << " geographyTeachers: " << obj.geographyTeachers
-           << " computerScienceTeachers: " << obj.computerScienceTeachers
-           << " physicalEducationTeachers: " << obj.physicalEducationTeachers
-           << " superVisingTeachers: " << obj.superVisingTeachers
+           << "teachers: " << obj.teachers
            << " classes: " << obj.classes
            << " name: " << obj.name;
 }
