@@ -201,6 +201,10 @@ bool Class::operator==(const Class &rhs) const {
     return true;
 }
 
+bool Class::operator!=(const Class &rhs) const {
+    return !(*this == rhs);
+}
+
 std::ostream &operator<<(std::ostream &os, const std::map<Subject, Teacher &> &map) {
     os << "Teachers: " << std::endl;
     for (const auto &teacher: map) {
@@ -208,6 +212,16 @@ std::ostream &operator<<(std::ostream &os, const std::map<Subject, Teacher &> &m
     }
     return os;
 };
+void swap(Class &lhs, Class &rhs) noexcept {
+    using std::swap;
+    swap(lhs.id, rhs.id);
+    swap(lhs.teachers, rhs.teachers);
+    swap(lhs.students, rhs.students);
+    swap(lhs.isClassGraduated, rhs.isClassGraduated);
+    swap(lhs.year, rhs.year);
+    swap(lhs.letter, rhs.letter);
+}
+
 int Class::get_id() const {
     return id;
 }
