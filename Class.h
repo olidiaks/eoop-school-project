@@ -100,6 +100,21 @@ public:
     Class(Class &&other) noexcept;
 
     /**
+     * @brief Constructs a Class object with specified attributes.
+     *
+     * The constructor initializes a classroom with a set of students, teachers,
+     * and a supervising teacher. It automatically assigns a unique ID to the class
+     * and sets its year to the default value of 1. By default, the class is marked
+     * as not graduated.
+     *
+     * @param letter A character representing the class identifier (e.g., 'A', 'B').
+     * @param supervisingTeacher A reference to the supervising teacher of the class.
+     * @param teachers A map associating subjects with their respective teaching staff.
+     * @param students A vector containing the list of students in the class.
+     */
+    Class(char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers, const std::vector<Student> & students);
+
+    /**
      * @brief Constructs a Class instance with the specified parameters.
      *
      * @param letter The letter identifier for the class (e.g., 'A', 'B', etc.).
@@ -123,6 +138,7 @@ public:
      * @param supervisingTeacher A reference to the teacher responsible for supervising the class.
      */
     Class(char letter, const Teacher & supervisingTeacher);
+
     /**
      * @brief Overloads the assignment operator for the Class object.
      *        Copies all attributes from the given Class object into this object.
