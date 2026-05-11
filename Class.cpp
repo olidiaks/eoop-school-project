@@ -331,7 +331,10 @@ bool Class::remove_teacher(const int &id) {
 }
 
 bool Class::remove_teacher(const Teacher &teacher) {
-    return remove_teacher(teacher.get_id());
+    if (teachers.empty()) return false;
+    Subject subject = teacher.get_subject();
+    if (teachers.erase(subject) > 0) return true;
+    return false;
 }
 
 void Class::new_school_year() {
