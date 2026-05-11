@@ -11,39 +11,7 @@
 School::School() = default;
 
 
-School::School(const std::list<Teacher> &math_teachers, const std::list<Teacher> &english_teachers,
-               const std::list<Teacher> &polish_teachers, const std::list<Teacher> &history_teachers,
-               const std::list<Teacher> &biology_teachers, const std::list<Teacher> &physics_teachers,
-               const std::list<Teacher> &chemistry_teachers, const std::list<Teacher> &geography_teachers,
-               const std::list<Teacher> &computer_science_teachers,
-               const std::list<Teacher> &physical_education_teachers,
-               const std::list<Teacher> &super_vising_teachers, const std::list<Class> &classes,
-               const std::string &school_name) : mathTeachers(math_teachers),
-                                                 englishTeachers(english_teachers),
-                                                 polishTeachers(polish_teachers),
-                                                 historyTeachers(history_teachers),
-                                                 biologyTeachers(biology_teachers),
-                                                 physicsTeachers(physics_teachers),
-                                                 chemistryTeachers(chemistry_teachers),
-                                                 geographyTeachers(geography_teachers),
-                                                 computerScienceTeachers(computer_science_teachers),
-                                                 physicalEducationTeachers(physical_education_teachers),
-                                                 superVisingTeachers(super_vising_teachers),
-                                                 name(school_name),
-                                                 classes(classes) {
-}
-
-School::School(const School &other) : mathTeachers(other.mathTeachers),
-                                      englishTeachers(other.englishTeachers),
-                                      polishTeachers(other.polishTeachers),
-                                      historyTeachers(other.historyTeachers),
-                                      biologyTeachers(other.biologyTeachers),
-                                      physicsTeachers(other.physicsTeachers),
-                                      chemistryTeachers(other.chemistryTeachers),
-                                      geographyTeachers(other.geographyTeachers),
-                                      computerScienceTeachers(other.computerScienceTeachers),
-                                      physicalEducationTeachers(other.physicalEducationTeachers),
-                                      superVisingTeachers(other.superVisingTeachers),
+School::School(const School &other) : teachers(other.teachers),
                                       name(other.name),
                                       classes(other.classes) {
 }
