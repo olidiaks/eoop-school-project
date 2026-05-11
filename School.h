@@ -16,17 +16,7 @@
  */
 class School {
 private:
-    std::list<Teacher> mathTeachers;
-    std::list<Teacher> englishTeachers;
-    std::list<Teacher> polishTeachers;
-    std::list<Teacher> historyTeachers;
-    std::list<Teacher> biologyTeachers;
-    std::list<Teacher> physicsTeachers;
-    std::list<Teacher> chemistryTeachers;
-    std::list<Teacher> geographyTeachers;
-    std::list<Teacher> computerScienceTeachers;
-    std::list<Teacher> physicalEducationTeachers;
-    std::list<Teacher> superVisingTeachers;
+    std::map<Subject, std::vector<Teacher>> teachers;
     std::list<Class> classes;
     std::string name;
 
