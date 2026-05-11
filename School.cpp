@@ -24,17 +24,7 @@ School::School(School &&other) noexcept : teachers(std::move(other.teachers)),
 School &School::operator=(const School &other) {
     if (this == &other)
         return *this;
-    mathTeachers = other.mathTeachers;
-    englishTeachers = other.englishTeachers;
-    polishTeachers = other.polishTeachers;
-    historyTeachers = other.historyTeachers;
-    biologyTeachers = other.biologyTeachers;
-    physicsTeachers = other.physicsTeachers;
-    chemistryTeachers = other.chemistryTeachers;
-    geographyTeachers = other.geographyTeachers;
-    computerScienceTeachers = other.computerScienceTeachers;
-    physicalEducationTeachers = other.physicalEducationTeachers;
-    superVisingTeachers = other.superVisingTeachers;
+    teachers = other.teachers;
     classes = other.classes;
     name = other.name;
     return *this;
