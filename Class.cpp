@@ -60,7 +60,7 @@ Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subj
     id = ++counter;
 }
 
-Class::Class(Class &&other) noexcept : id(other.id),
+Class::Class(Class &&other) noexcept : id(other.id), supervising_teacher(other.supervising_teacher),
                                        teachers(std::move(other.teachers)),
                                        students(std::move(other.students)), isClassGraduated(other.isClassGraduated),
                                        year(other.year), letter(other.letter) {
