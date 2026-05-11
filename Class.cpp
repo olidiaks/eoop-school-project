@@ -212,6 +212,17 @@ std::ostream &operator<<(std::ostream &os, const std::map<Subject, Teacher &> &m
     }
     return os;
 };
+
+std::ostream &operator<<(std::ostream &os, const Class &obj) {
+    return os
+           << "id: " << obj.id << std::endl
+           << " year: " << obj.year << std::endl
+           << " letter: " << obj.letter << std::endl
+           << " isClassGraduated: " << obj.isClassGraduated << std::endl
+           << " teachers: " << obj.teachers
+           << " students: " << obj.students;
+}
+
 void swap(Class &lhs, Class &rhs) noexcept {
     using std::swap;
     swap(lhs.id, rhs.id);
