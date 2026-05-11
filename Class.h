@@ -399,6 +399,13 @@ public:
      * @return A vector containing all subjects taught by the teachers in the classroom.
      */
     [[nodiscard]] std::vector<Subject> get_subjects() const;
+
+    /**
+     * @brief Checks if the specified teacher is currently teaching in the class.
+     * @param teacher The teacher to check for teaching status.
+     * @return True if the teacher is teaching, false otherwise.
+     */
+    bool is_teacher_teaching(const Teacher & teacher) const;
 };
 
 /**

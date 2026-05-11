@@ -359,6 +359,11 @@ std::vector<Subject> Class::get_subjects() const {
     return subjects;
 }
 
+bool Class::is_teacher_teaching(const Teacher &teacher) const {
+    const Subject subject = teacher.get_subject();
+    return teachers.contains(subject);
+}
+
 std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students) {
     for (const Student &student: students) {
         os << student << std::endl;
