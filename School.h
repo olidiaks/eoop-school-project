@@ -157,6 +157,13 @@ public:
     [[nodiscard]] float get_average_students_grades_of_teacher(const int &id) const;
 
     /**
+     * @brief Calculates the average grade of all students in the school across all classes and subjects.
+     *
+     * @return The average grade as a floating-point value. Returns 0 if no grades are available.
+     */
+    [[nodiscard]] float get_average_grade_of_school() const;
+
+    /**
      * @brief Retrieves the name of the school.
      * @return The name of the school as a string.
      */

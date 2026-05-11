@@ -77,6 +77,20 @@ float School::get_average_students_grades_of_teacher(const int &id) const {
     throw std::runtime_error("Not implemented");
 }
 
+float School::get_average_grade_of_school() const {
+    unsigned long count = 0;
+    unsigned long sum = 0;
+
+    for (auto &i : classes) {
+        for (auto &student : i.get_students()) {
+            sum += student.get_sum_of_grades_from_all_subjects();
+            count += student.get_count_of_grades_from_all_subjects();
+        }
+    }
+
+    return count == 0 ? 0 : static_cast<float>(sum) / count;
+}
+
 std::string School::get_name() const {
     return name;
 }
