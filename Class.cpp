@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <ranges>
 
 int Class::counter = 0;
 
