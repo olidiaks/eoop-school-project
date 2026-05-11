@@ -343,30 +343,6 @@ public:
                    Teacher &super_vising_teacher, int year, char letter, const std::vector<Student> &students);
 
     /**
-     * @brief Adds a new class to the school, associating subject-specific teachers, a supervising teacher,
-     *        a letter identifier, and a list of students.
-     *
-     * @param math_teacher The teacher responsible for teaching mathematics.
-     * @param english_teacher The teacher responsible for teaching English.
-     * @param polish_teacher The teacher responsible for teaching Polish language.
-     * @param history_teacher The teacher responsible for teaching history.
-     * @param biology_teacher The teacher responsible for teaching biology.
-     * @param physics_teacher The teacher responsible for teaching physics.
-     * @param chemistry_teacher The teacher responsible for teaching chemistry.
-     * @param geography_teacher The teacher responsible for teaching geography.
-     * @param computer_science_teacher The teacher responsible for teaching computer science.
-     * @param physical_education_teacher The teacher responsible for teaching physical education.
-     * @param super_vising_teacher The teacher supervising the class.
-     * @param letter A character representing the class identifier (e.g., 'A', 'B').
-     * @param students A vector containing students who are part of the class.
-     */
-    void add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
-                   Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
-                   Teacher &chemistry_teacher,
-                   Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
-                   Teacher &super_vising_teacher, char letter, std::vector<Student> &students);
-
-    /**
      * @brief Adds a new class to the school, assigning teachers, students, and specific properties to the class.
      *
      * @param math_teacher The teacher responsible for math classes.
