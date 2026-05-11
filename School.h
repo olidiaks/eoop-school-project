@@ -44,7 +44,7 @@ private:
      * @return A reference to the teacher with the matching first and last name.
      * @throws std::runtime_error If no teacher with the specified name is found.
      */
-    [[nodiscard]] Teacher & find_teacher(const std::string &first_name, const std::string &last_name);
+    [[nodiscard]] Teacher & find_teacher(const std::string &first_name, const std::string &last_name) const;
 
     /**
      * @brief Constructs a new instance of the School class with default empty teacher and class lists.
