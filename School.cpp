@@ -234,9 +234,17 @@ void School::hire_teacher(const std::string &first_name, const std::string &last
    teachers[subject].emplace_back(first_name, last_name, email, day, month, year, salary, subject);
 }
 
-void School::fire_teacher(const int &id) {
-    Teacher p;
-    swap(find_teacher(id), p);
+bool School::fire_teacher(const int &id) {
+    for (auto &i: teachers) {
+        std::vector<Teacher> & teachers = i.second;
+        for (auto it = teachers.begin(); it != teachers.end(); ++it) {
+            if (it->get_id() == id) {
+                teachers.erase(it);
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 void School::fire_teacher(const std::string &firstname, const std::string &lastname) {

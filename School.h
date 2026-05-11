@@ -420,8 +420,9 @@ public:
     /**
      * @brief Removes a teacher from the school by their unique identifier.
      * @param id The unique identifier of the teacher to be removed.
+     * @return True if the teacher was deleted and False if teacher was already non-present.
      */
-    void fire_teacher(const int &id);
+    bool fire_teacher(const int &id);
 
     /**
      * @brief Removes a teacher from the school based on their first and last name.
