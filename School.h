@@ -339,10 +339,7 @@ public:
      * @param letter The section or identifier of the class.
      * @param students A vector containing the students belonging to the class.
      */
-    void add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
-                   Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
-                   Teacher &chemistry_teacher,
-                   Teacher &geography_teacher, Teacher &computer_science_teacher, Teacher &physical_education_teacher,
+    void add_class(const std::vector<Teacher> &teachers,
                    Teacher &super_vising_teacher, int year, char letter, const std::vector<Student> &students);
 
     /**
