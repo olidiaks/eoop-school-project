@@ -59,6 +59,9 @@ Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subj
 Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers) : letter(letter), supervising_teacher(supervisingTeacher), teachers(teachers), year(1), isClassGraduated(false)  {
     id = ++counter;
 }
+Class::Class(char letter, const Teacher &supervisingTeacher): letter(letter), supervising_teacher(supervisingTeacher), year(1), isClassGraduated(false) {
+    id = ++counter;
+}
 
 Class::Class(Class &&other) noexcept : id(other.id), supervising_teacher(other.supervising_teacher),
                                        teachers(std::move(other.teachers)),
