@@ -44,10 +44,11 @@ int Class::find_student_index(const int &id) const {
     return -1;
 }
 
-Class::Class(const std::vector<Teacher> &teachers, const std::vector<Student> &students, int year, char letter): id(counter++), teachers(teachers), students(students), isClassGraduated(false), year(year), letter(letter) {
-}
-
-Class::Class(int year, char letter) : id(counter++), isClassGraduated(false), year(year), letter(letter) {
+Class::Class(const Teacher &supervisingTeacher, int year, char letter) : supervising_teacher(supervisingTeacher),
+                                                                         isClassGraduated(false) {
+    id = ++counter;
+    this->year = year;
+    this->letter = letter;
 }
 
 Class::Class() : id(counter++), isClassGraduated(false), year(0), letter(' ') {
