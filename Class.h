@@ -18,8 +18,9 @@
 class Class {
 private:
     int id;
-    std::vector<Teacher> teachers;
+    std::map<Subject,Teacher&> teachers;
     std::vector<Student> students;
+    const Teacher &supervising_teacher;
     static int counter;
 
     bool isClassGraduated;
