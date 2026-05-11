@@ -39,20 +39,10 @@ School &School::operator=(School &&other) noexcept {
     return *this;
 }
 
-bool School::operator==(const School &rhs) const{
-    return mathTeachers == rhs.mathTeachers
-           && englishTeachers == rhs.englishTeachers
-           && polishTeachers == rhs.polishTeachers
-           && historyTeachers == rhs.historyTeachers
-           && biologyTeachers == rhs.biologyTeachers
-           && physicsTeachers == rhs.physicsTeachers
-           && chemistryTeachers == rhs.chemistryTeachers
-           && geographyTeachers == rhs.geographyTeachers
-           && computerScienceTeachers == rhs.computerScienceTeachers
-           && physicalEducationTeachers == rhs.physicalEducationTeachers
-           && superVisingTeachers == rhs.superVisingTeachers
-           && classes == rhs.classes
-           && name == rhs.name;
+bool School::operator==(const School &obj) const{
+    return teachers == obj.teachers
+           && classes == obj.classes
+           && name == obj.name;
 }
 
 bool School::operator!=(const School &rhs) const {
