@@ -28,7 +28,6 @@
  * - PhysicalEducation: Physical education and sports activities.
  */
 enum class Subject {
-    None,
     Math,
     English,
     Polish,
@@ -39,6 +38,7 @@ enum class Subject {
     Geography,
     ComputerScience,
     PhysicalEducation,
+    None,
 };
 
 /**
