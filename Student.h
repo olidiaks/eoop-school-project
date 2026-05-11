@@ -181,7 +181,14 @@ public:
      *
      * @return The total number of grades recorded for the student.
      */
-    unsigned long get_count_of_grades() const;
+    unsigned long get_count_of_grades_from_all_subjects() const;
+
+    /**
+     * Calculates the total sum of grades across all subjects for the student.
+     *
+     * @return The total sum of grades as an unsigned long.
+     */
+    unsigned long get_sum_of_grades_from_all_subjects() const;
 };
 
 

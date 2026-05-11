@@ -105,12 +105,22 @@ const std::vector<Assignment> & Student::get_assignments_from_subject(const Subj
     return it->second;
 }
 
-unsigned long Student::get_count_of_grades() const {
+unsigned long Student::get_count_of_grades_from_all_subjects() const {
     unsigned long count = 0;
     for (auto &[subject, assignment]: assignments) {
         count += assignment.size();
     }
     return count;
+}
+
+unsigned long Student::get_sum_of_grades_from_all_subjects() const {
+    unsigned long sum = 0;
+    for (auto &[subject, assignment]: assignments) {
+        for (auto &assignment_from_subject: assignment) {
+            sum += assignment_from_subject.get_grade();
+        }
+    }
+    return sum;
 }
 
 std::ostream &operator<<(std::ostream &os, const Student &obj) {
