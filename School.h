@@ -431,5 +431,6 @@ public:
     void fire_teacher(const std::string & firstname, const std::string & lastname);
 };
 
+std::ostream & operator<<(std::ostream & os, const std::map<Subject, std::vector<Teacher>> & map);
 
 #endif //PROJECT_SCHOOL_H
