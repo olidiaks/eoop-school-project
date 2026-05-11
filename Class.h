@@ -72,20 +72,11 @@ public:
     /**
      * @brief Constructs a Class instance with a specified year and letter.
      *
+     * @param supervisingTeacher is a reference to supervising teacher.
      * @param year The academic year of the class.
      * @param letter The letter representing the class section.
      */
-    Class(int year, char letter);
-
-    /**
-     * @brief Constructs a Class object with default values.
-     *
-     * Initializes the class with a unique ID, sets the graduation status to false,
-     * sets the year to 0, and assigns a default empty letter.
-     *
-     * @return A newly created Class object with initialized attributes.
-     */
-    Class();
+    Class(const Teacher & supervisingTeacher,int year, char letter);
 
     /**
      * @brief Copy constructor for the Class object.
