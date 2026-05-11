@@ -201,6 +201,13 @@ bool Class::operator==(const Class &rhs) const {
     return true;
 }
 
+std::ostream &operator<<(std::ostream &os, const std::map<Subject, Teacher &> &map) {
+    os << "Teachers: " << std::endl;
+    for (const auto &teacher: map) {
+        os << "Subject:" << teacher.first << "Teacher: " << teacher.second << std::endl;
+    }
+    return os;
+};
 int Class::get_id() const {
     return id;
 }
