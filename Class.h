@@ -394,6 +394,14 @@ std::ostream & operator<<(std::ostream & os, const std::list<Class> & classes);
  */
 std::ostream & operator<<(std::ostream & os, const std::vector<Teacher> & vector);
 
+/**
+ * @brief Overloads the stream insertion operator to output a map of Teacher objects.
+ *
+ * @param os The output stream where the formatted data will be written.
+ * @param map The map of Teacher objects to be written to the output stream.
+ * @return A reference to the output stream after writing the data.
+ */
+std::ostream & operator<<(std::ostream & os, const std::map<Subject, Teacher &> & map);
 
 
 #endif //PROJECT_CLASS_H
