@@ -161,7 +161,7 @@ const std::vector<Student> &Class::get_students() const{
 
 int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const {
     int sum = 0;
-    int count = 0;
+    unsigned long count = 0;
     for (const auto &student: students) {
         sum += student.get_sum_of_grades_from_subjects(subject);
         count += student.get_count_of_grades_from_students_subjects(subject);
