@@ -362,22 +362,9 @@ std::ostream & operator<<(std::ostream &os, const std::list<Class> &classes) {
     return os;
 }
 
-std::ostream &operator<<(std::ostream &os, const Class &obj) {
-    return os
-           << "id: " << obj.id << std::endl
-           << " year: " << obj.year << std::endl
-           << " letter: " << obj.letter << std::endl
-           << " isClassGraduated: " << obj.isClassGraduated << std::endl
-           << " teachers: " << obj.teachers
-           << " students: " << obj.students;
-}
-
-void swap(Class &lhs, Class &rhs) noexcept {
-    using std::swap;
-    swap(lhs.id, rhs.id);
-    swap(lhs.teachers, rhs.teachers);
-    swap(lhs.students, rhs.students);
-    swap(lhs.isClassGraduated, rhs.isClassGraduated);
-    swap(lhs.year, rhs.year);
-    swap(lhs.letter, rhs.letter);
+std::ostream &operator<<(std::ostream &os, const std::vector<Teacher> &vector) {
+    for (const Teacher &teacher: vector) {
+        os << teacher.get_subject() << " teacher:" << std::endl << teacher << std::endl;
+    }
+    return os;
 }
