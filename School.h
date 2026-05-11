@@ -102,10 +102,10 @@ public:
      * the two School instances are equal.
      *
      * @param lhs The first School instance to compare.
-     * @param rhs The second School instance to compare.
+     * @param obj The second School instance to compare.
      * @return true if all corresponding members of the two School instances are equal, false otherwise.
      */
-    bool operator==(const School &rhs) const;
+    bool operator==(const School &obj) const;
 
     /**
      * @brief Compares two School objects for inequality.
