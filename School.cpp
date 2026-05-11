@@ -224,41 +224,9 @@ void School::remove_class(int year, char letter) {
     }
 }
 
-void School::hire_teacher(Teacher &teacher) {
-    switch (teacher.get_subject()) {
-        case Subject::Math:
-            mathTeachers.push_back(teacher);
-            break;
-        case Subject::English:
-            englishTeachers.push_back(teacher);
-            break;
-        case Subject::Polish:
-            polishTeachers.push_back(teacher);
-            break;
-        case Subject::None:
-            break;
-        case Subject::History:
-            historyTeachers.push_back(teacher);
-            break;
-        case Subject::Biology:
-            biologyTeachers.push_back(teacher);
-            break;
-        case Subject::Physics:
-            physicsTeachers.push_back(teacher);
-            break;
-        case Subject::Chemistry:
-            chemistryTeachers.push_back(teacher);
-            break;
-        case Subject::Geography:
-            geographyTeachers.push_back(teacher);
-            break;
-        case Subject::ComputerScience:
-            computerScienceTeachers.push_back(teacher);
-            break;
-        case Subject::PhysicalEducation:
-            physicalEducationTeachers.push_back(teacher);
-            break;
-    }
+void School::hire_teacher(const Teacher &teacher) {
+    const Subject &subject = teacher.get_subject();
+    teachers[subject].push_back(teacher);
 }
 
 void School::hire_teacher(const std::string &first_name, const std::string &last_name, const std::string &email,

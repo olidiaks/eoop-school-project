@@ -396,7 +396,7 @@ public:
      *
      * @param teacher The teacher to be hired, whose subject specialization determines the group they are added to.
      */
-    void hire_teacher(Teacher &teacher);
+    void hire_teacher(const Teacher &teacher);
 
     /**
      * @brief Hires a new teacher and assigns them to a specific subject department.
