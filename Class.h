@@ -70,16 +70,6 @@ private:
 
 public:
     /**
-     * @brief Constructs a new Class object with assigned teachers, students, year, and letter.
-     *
-     * @param teachers A vector containing the teachers assigned to the class.
-     * @param students A vector containing the students enrolled in the class.
-     * @param year The academic year in which the class exists.
-     * @param letter The letter identifier of the class.
-     */
-    Class(const std::vector<Teacher> &teachers, const std::vector<Student> &students, int year, char letter);
-
-    /**
      * @brief Constructs a Class instance with a specified year and letter.
      *
      * @param year The academic year of the class.
