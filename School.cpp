@@ -8,15 +8,7 @@
 
 
 
-    for (auto &i: all_lists) {
-        for (Teacher &j: *i) {
-            if (j.get_first_name() == first_name && j.get_last_name() == last_name) {
-                return j;
-            }
-        }
-    }
-    throw std::runtime_error("Teacher not found");
-}
+School::School() = default;
 
 
 School::School(const std::list<Teacher> &math_teachers, const std::list<Teacher> &english_teachers,
