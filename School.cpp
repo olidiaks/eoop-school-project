@@ -247,9 +247,18 @@ bool School::fire_teacher(const int &id) {
     return false;
 }
 
-void School::fire_teacher(const std::string &firstname, const std::string &lastname) {
-    Teacher p;
-    swap(find_teacher(firstname, lastname), p);
+int School::fire_teacher(const std::string &firstname, const std::string &lastname) {
+    int count = 0;
+    for (auto &i: teachers) {
+        std::vector<Teacher> & teachers = i.second;
+        for (auto it = teachers.begin(); it != teachers.end(); ++it) {
+            if (it->get_first_name() == firstname && it->get_last_name() == lastname) {
+                teachers.erase(it);
+                count++;
+            }
+        }
+    }
+    return count;
 }
 
 std::ostream & operator<<(std::ostream &os, const std::map<Subject, std::vector<Teacher>> &map) {

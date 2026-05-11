@@ -426,10 +426,16 @@ public:
 
     /**
      * @brief Removes a teacher from the school based on their first and last name.
+     *
+     * This method searches through all the teachers in the school and removes
+     * those that match the specified first and last name. It tracks and returns
+     * the number of teachers removed.
+     *
      * @param firstname The first name of the teacher to be removed.
      * @param lastname The last name of the teacher to be removed.
+     * @return The number of teachers removed from the school.
      */
-    void fire_teacher(const std::string & firstname, const std::string & lastname);
+    int fire_teacher(const std::string &firstname, const std::string &lastname);
 };
 
 std::ostream & operator<<(std::ostream & os, const std::map<Subject, std::vector<Teacher>> & map);
