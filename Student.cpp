@@ -105,6 +105,14 @@ const std::vector<Assignment> & Student::get_assignments_from_subject(const Subj
     return it->second;
 }
 
+unsigned long Student::get_count_of_grades() const {
+    unsigned long count = 0;
+    for (auto &[subject, assignment]: assignments) {
+        count += assignment.size();
+    }
+    return count;
+}
+
 std::ostream &operator<<(std::ostream &os, const Student &obj) {
     os
            << static_cast<const Person &>(obj);

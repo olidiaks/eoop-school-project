@@ -175,6 +175,13 @@ public:
      * @return A constant reference to a vector containing the assignments for the provided subject.
      */
     [[nodiscard]] const std::vector<Assignment> & get_assignments_from_subject(const Subject &subject) const;
+
+    /**
+     * Retrieves the total count of grades across all assignments for the student.
+     *
+     * @return The total number of grades recorded for the student.
+     */
+    unsigned long get_count_of_grades() const;
 };
 
 
