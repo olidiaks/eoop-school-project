@@ -33,17 +33,7 @@ School &School::operator=(const School &other) {
 School &School::operator=(School &&other) noexcept {
     if (this == &other)
         return *this;
-    mathTeachers = std::move(other.mathTeachers);
-    englishTeachers = std::move(other.englishTeachers);
-    polishTeachers = std::move(other.polishTeachers);
-    historyTeachers = std::move(other.historyTeachers);
-    biologyTeachers = std::move(other.biologyTeachers);
-    physicsTeachers = std::move(other.physicsTeachers);
-    chemistryTeachers = std::move(other.chemistryTeachers);
-    geographyTeachers = std::move(other.geographyTeachers);
-    computerScienceTeachers = std::move(other.computerScienceTeachers);
-    physicalEducationTeachers = std::move(other.physicalEducationTeachers);
-    superVisingTeachers = std::move(other.superVisingTeachers);
+    teachers = std::move(other.teachers);
     classes = std::move(other.classes);
     name = std::move(other.name);
     return *this;
