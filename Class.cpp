@@ -10,8 +10,14 @@
 
 int Class::counter = 0;
 
-bool Class::is_teacher_assigned(const Teacher& teacher)  const{
-    return std::any_of(teachers.begin(), teachers.end(), [&](const Teacher &_teacher) {return _teacher == teacher;});
+bool Class::is_teacher_assigned(const Teacher &teacher) const {
+    Subject subject = teacher.get_subject();
+    try {
+        teachers.at(subject);
+    } catch (std::out_of_range &e) {
+        return false;
+    }
+    return true;
 }
 
 bool Class::is_student_assigned(const Student &student) const {
