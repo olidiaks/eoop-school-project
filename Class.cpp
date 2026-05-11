@@ -252,7 +252,7 @@ int Class::get_sum_of_grades_from_subject(const Subject &subject) const {
 }
 
 int Class::get_count_of_grades_from_subject(const Subject &subject) const {
-    int count = 0;
+    unsigned long count = 0;
 
     for (const auto &student: students) {
         count += student.get_count_of_grades_from_students_subjects(subject);
