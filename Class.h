@@ -100,6 +100,15 @@ public:
     Class(Class &&other) noexcept;
 
     /**
+     * @brief Constructs a Class instance with the specified parameters.
+     *
+     * @param letter The letter identifier for the class (e.g., 'A', 'B', etc.).
+     * @param supervisingTeacher The teacher designated to supervise the class.
+     * @param teachers A map that associates subjects with their respective teachers.
+     */
+    Class(char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers);
+
+    /**
      * @brief Constructs a Class object with specified attributes.
      *
      * @param letter The letter identifier for the class (e.g., 'A', 'B').
