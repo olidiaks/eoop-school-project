@@ -308,3 +308,12 @@ void School::fire_teacher(const std::string &firstname, const std::string &lastn
     Teacher p;
     swap(find_teacher(firstname, lastname), p);
 }
+
+std::ostream & operator<<(std::ostream &os, const std::map<Subject, std::vector<Teacher>> &map) {
+    os << "Teachers: " << std::endl;
+    for (const auto &teacher: map) {
+        os << "Subject:" << teacher.first << std::endl
+        << "Teacher: " << teacher.second << std::endl;
+    }
+    return os;
+}
