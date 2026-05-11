@@ -58,21 +58,11 @@ std::ostream & operator<<(std::ostream &os, const School &obj) {
            << " name: " << obj.name;
 }
 
-void swap(School &lhs, School &rhs) noexcept {
+void School::swap(School &obj) noexcept {
     using std::swap;
-    swap(lhs.mathTeachers, rhs.mathTeachers);
-    swap(lhs.englishTeachers, rhs.englishTeachers);
-    swap(lhs.polishTeachers, rhs.polishTeachers);
-    swap(lhs.historyTeachers, rhs.historyTeachers);
-    swap(lhs.biologyTeachers, rhs.biologyTeachers);
-    swap(lhs.physicsTeachers, rhs.physicsTeachers);
-    swap(lhs.chemistryTeachers, rhs.chemistryTeachers);
-    swap(lhs.geographyTeachers, rhs.geographyTeachers);
-    swap(lhs.computerScienceTeachers, rhs.computerScienceTeachers);
-    swap(lhs.physicalEducationTeachers, rhs.physicalEducationTeachers);
-    swap(lhs.superVisingTeachers, rhs.superVisingTeachers);
-    swap(lhs.classes, rhs.classes);
-    swap(lhs.name, rhs.name);
+    swap(teachers, obj.teachers);
+    swap(classes, obj.classes);
+    swap(name, obj.name);
 }
 
 std::list<Teacher> School::get_math_teachers() const {

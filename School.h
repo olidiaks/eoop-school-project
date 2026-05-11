@@ -132,10 +132,9 @@ public:
      * including teacher lists for various subjects, classes, and the school name,
      * ensuring their states are fully exchanged.
      *
-     * @param lhs The first School instance to be swapped.
-     * @param rhs The second School instance to be swapped.
+     * @param obj The other School instance to be swapped.
      */
-    friend void swap(School &lhs, School &rhs) noexcept;
+    void swap(School &obj) noexcept;
 
     /**
      * @brief Retrieves a list of mathematics teachers associated with the school.
