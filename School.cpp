@@ -209,6 +209,12 @@ Class &School::add_class(const Teacher &super_vising_teacher, const std::vector<
     return classes.back();
 }
 
+Class &School::add_class(const Teacher &super_vising_teacher, char letter) {
+    classes.emplace_back(letter, super_vising_teacher);
+    return classes.back();
+}
+
+
 void School::remove_class(int year, char letter) {
     auto it = std::ranges::find_if(classes, [year, letter](const Class &c) {
         return c.get_year() == year && c.get_letter() == letter;
