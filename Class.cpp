@@ -175,7 +175,6 @@ int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const 
 }
 
 bool Class::operator==(const Class &rhs) const {
-
     bool is_equal = id == rhs.id
            && teachers == rhs.teachers
            && isClassGraduated == rhs.isClassGraduated
@@ -344,8 +343,12 @@ void Class::new_school_year() {
     }
 }
 
-bool Class::operator!=(const Class &rhs) const {
-    return !(*this == rhs);
+std::vector<Subject> Class::get_subjects() const {
+    std::vector<Subject> subjects;
+    for (const auto &subject: teachers | std::views::keys) {
+        subjects.push_back(subject);
+    }
+    return subjects;
 }
 
 std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students) {
