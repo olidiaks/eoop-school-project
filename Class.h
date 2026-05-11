@@ -353,6 +353,12 @@ public:
      * it resets the year to an initial state and marks the class as graduated.
      */
     void new_school_year();
+
+    /**
+     * @brief Retrieves a list of subjects of which students of that class are taught.
+     * @return A vector containing all subjects taught by the teachers in the classroom.
+     */
+    [[nodiscard]] std::vector<Subject> get_subjects() const;
 };
 
 /**
