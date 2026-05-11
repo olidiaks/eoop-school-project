@@ -194,16 +194,14 @@ void School::add_class(const Class &class_to_add) {
 }
 
 
-void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
-                       Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
-                       Teacher &chemistry_teacher, Teacher &geography_teacher, Teacher &computer_science_teacher,
-                       Teacher &physical_education_teacher, Teacher &super_vising_teacher, char letter,
-                       std::vector<Student> &students) {
-    classes.emplace_back(math_teacher, english_teacher, polish_teacher, history_teacher, biology_teacher,
-                         physics_teacher,
-                         chemistry_teacher, geography_teacher, computer_science_teacher, physical_education_teacher,
-                         super_vising_teacher,
-                         students, letter);
+void School::add_class(const Teacher &super_vising_teacher, const std::map<Subject, Teacher &> &teachers, char letter,
+    std::vector<Student> &students) {
+    classes.emplace_back(letter, super_vising_teacher, teachers, students);
+}
+
+Class &School::add_class(const Teacher &super_vising_teacher, const std::map<Subject, Teacher &> &teachers, char letter) {
+    classes.emplace_back(letter, super_vising_teacher, teachers);
+    return classes.back();
 }
 
 void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
