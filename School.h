@@ -57,31 +57,6 @@ public:
     School();
 
     /**
-     * @brief Constructs a School object with a specified set of teachers, classes, and the school's name.
-     *
-     * @param math_teachers List of math teachers associated with the school.
-     * @param english_teachers List of English teachers associated with the school.
-     * @param polish_teachers List of Polish teachers associated with the school.
-     * @param history_teachers List of history teachers associated with the school.
-     * @param biology_teachers List of biology teachers associated with the school.
-     * @param physics_teachers List of physics teachers associated with the school.
-     * @param chemistry_teachers List of chemistry teachers associated with the school.
-     * @param geography_teachers List of geography teachers associated with the school.
-     * @param computer_science_teachers List of computer science teachers associated with the school.
-     * @param physical_education_teachers List of physical education teachers associated with the school.
-     * @param super_vising_teachers List of teachers responsible for supervising activities in the school.
-     * @param classes List of classes offered by the school.
-     * @param school_name Name of the school.
-     */
-    School(const std::list<Teacher> &math_teachers, const std::list<Teacher> &english_teachers,
-           const std::list<Teacher> &polish_teachers, const std::list<Teacher> &history_teachers,
-           const std::list<Teacher> &biology_teachers, const std::list<Teacher> &physics_teachers,
-           const std::list<Teacher> &chemistry_teachers, const std::list<Teacher> &geography_teachers,
-           const std::list<Teacher> &computer_science_teachers, const std::list<Teacher> &physical_education_teachers,
-           const std::list<Teacher> &super_vising_teachers, const std::list<Class> &classes,
-           const std::string &school_name);
-
-    /**
      * @brief Copy constructor for the School class that creates a new School instance
      *        by copying the properties from another School instance.
      *
