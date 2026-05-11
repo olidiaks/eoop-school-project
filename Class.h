@@ -332,7 +332,7 @@ public:
     /**
      * @brief Calculates the average grade of the class across all subjects and students.
      */
-    [[nodiscard]] float get_average_grade_of_class();
+    [[nodiscard]] float get_average_grade_of_class() const;
 
     /**
      * @brief Assigns a new assignment to all students in the class for a specific subject.
