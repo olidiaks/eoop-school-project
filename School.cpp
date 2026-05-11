@@ -6,29 +6,7 @@
 
 #include <algorithm>
 
-Teacher &School::find_teacher(int id) {
-    std::list<Teacher> *all_lists[] = {
-        &mathTeachers, &englishTeachers, &polishTeachers, &historyTeachers,
-        &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
-        &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
-    };
 
-    for (auto &i: all_lists) {
-        for (Teacher &j: *i) {
-            if (j.get_id() == id) {
-                return j;
-            }
-        }
-    }
-    throw std::runtime_error("Teacher not found");
-}
-
-Teacher &School::find_teacher(const std::string &first_name, const std::string &last_name) {
-    std::list<Teacher> *all_lists[] = {
-        &mathTeachers, &englishTeachers, &polishTeachers, &historyTeachers,
-        &biologyTeachers, &physicsTeachers, &chemistryTeachers, &geographyTeachers,
-        &computerScienceTeachers, &physicalEducationTeachers, &superVisingTeachers
-    };
 
     for (auto &i: all_lists) {
         for (Teacher &j: *i) {
@@ -40,20 +18,6 @@ Teacher &School::find_teacher(const std::string &first_name, const std::string &
     throw std::runtime_error("Teacher not found");
 }
 
-School::School() {
-    mathTeachers = {};
-    englishTeachers = {};
-    polishTeachers = {};
-    historyTeachers = {};
-    biologyTeachers = {};
-    physicsTeachers = {};
-    chemistryTeachers = {};
-    geographyTeachers = {};
-    computerScienceTeachers = {};
-    physicalEducationTeachers = {};
-    superVisingTeachers = {};
-    classes = {};
-}
 
 School::School(const std::list<Teacher> &math_teachers, const std::list<Teacher> &english_teachers,
                const std::list<Teacher> &polish_teachers, const std::list<Teacher> &history_teachers,
@@ -317,16 +281,6 @@ void School::add_class(const Class &class_to_add) {
     classes.push_back(class_to_add);
 }
 
-void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
-                       Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
-                       Teacher &chemistry_teacher, Teacher &geography_teacher, Teacher &computer_science_teacher,
-                       Teacher &physical_education_teacher, Teacher &super_vising_teacher, int year, char letter,
-                       const std::vector<Student> &students) {
-    classes.emplace_back(math_teacher, english_teacher, polish_teacher, history_teacher, biology_teacher,
-                         physics_teacher,
-                         chemistry_teacher, geography_teacher, computer_science_teacher, physical_education_teacher,
-                         super_vising_teacher, students, year, letter);
-}
 
 void School::add_class(Teacher &math_teacher, Teacher &english_teacher, Teacher &polish_teacher,
                        Teacher &history_teacher, Teacher &biology_teacher, Teacher &physics_teacher,
