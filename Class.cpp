@@ -316,10 +316,12 @@ bool Class::add_teacher(const Teacher &teacher) {
 }
 
 bool Class::remove_teacher(const int &id) {
+    if (teachers.empty()) return false;
+
     const auto it = teachers.begin();
 
     for (auto i = it; i != teachers.end(); ++i) {
-        if (i->get_id() == id) {
+        if (i->second.get_id() == id) {
             teachers.erase(i);
             return true;
         }
