@@ -406,6 +406,13 @@ public:
      * @return True if the teacher is teaching, false otherwise.
      */
     bool is_teacher_teaching(const Teacher & teacher) const;
+
+    /**
+     * @brief Checks if a teacher with the given ID is currently teaching in the class.
+     * @param id The unique identifier of the teacher.
+     * @return True if the teacher with the specified ID is teaching, otherwise false.
+     */
+    bool is_teacher_teaching(int id) const;
 };
 
 /**

@@ -21,15 +21,17 @@ bool Class::is_teacher_assigned(const Teacher &teacher) const {
 }
 
 bool Class::is_student_assigned(const Student &student) const {
-    return std::any_of(students.begin(), students.end(), [&](const Student &_student) {return _student == student;});
+    return std::any_of(students.begin(), students.end(), [&](const Student &_student) { return _student == student; });
 }
 
 bool Class::is_student_assigned(const std::string &firstname, const std::string &last_name, const std::string &email,
-    int day, int month, int year) {
+                                int day, int month, int year) {
     return std::any_of(students.begin(), students.end(),
-                        [firstname, last_name, email, day, month, year](const Student &_student) {
-                            return _student.get_first_name() == firstname && _student.get_last_name() == last_name && _student.get_email() == email && _student.get_day_of_birth() == day && _student.get_month_of_birth() == month && _student.get_year_of_birth() == year;
-                        });
+                       [firstname, last_name, email, day, month, year](const Student &_student) {
+                           return _student.get_first_name() == firstname && _student.get_last_name() == last_name &&
+                                  _student.get_email() == email && _student.get_day_of_birth() == day && _student.
+                                  get_month_of_birth() == month && _student.get_year_of_birth() == year;
+                       });
 }
 
 int Class::find_student_index(const int &id) const {
@@ -52,19 +54,24 @@ Class::Class(const Teacher &supervisingTeacher, int year, char letter) : supervi
 }
 
 Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers,
-    const std::vector<Student> &students) : supervising_teacher(supervisingTeacher), letter(letter), year(1), isClassGraduated(false), teachers(teachers), students(students) {
+             const std::vector<Student> &students) : supervising_teacher(supervisingTeacher), letter(letter), year(1),
+                                                     isClassGraduated(false), teachers(teachers), students(students) {
     id = ++counter;
 }
 
-Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers) : letter(letter), supervising_teacher(supervisingTeacher), teachers(teachers), year(1), isClassGraduated(false)  {
+Class::Class(char letter, const Teacher &supervisingTeacher,
+             const std::map<Subject, Teacher &> &teachers) : letter(letter), supervising_teacher(supervisingTeacher),
+                                                             teachers(teachers), year(1), isClassGraduated(false) {
     id = ++counter;
 }
 
-Class::Class(char letter, const Teacher &supervisingTeacher, const std::vector<Student> &students): letter(letter), supervising_teacher(supervisingTeacher), students(students), year(1), isClassGraduated(false) {
+Class::Class(char letter, const Teacher &supervisingTeacher, const std::vector<Student> &students) : letter(letter),
+    supervising_teacher(supervisingTeacher), students(students), year(1), isClassGraduated(false) {
     id = ++counter;
 }
 
-Class::Class(char letter, const Teacher &supervisingTeacher): letter(letter), supervising_teacher(supervisingTeacher), year(1), isClassGraduated(false) {
+Class::Class(char letter, const Teacher &supervisingTeacher) : letter(letter), supervising_teacher(supervisingTeacher),
+                                                               year(1), isClassGraduated(false) {
     id = ++counter;
 }
 
@@ -140,8 +147,8 @@ void Class::print_students() const {
     std::cout << students << std::endl;
 }
 
-std::ostream & operator<<(std::ostream & os, const std::vector<Teacher> & vector) {
-    for (const Teacher & teacher: vector) {
+std::ostream &operator<<(std::ostream &os, const std::vector<Teacher> &vector) {
+    for (const Teacher &teacher: vector) {
         os << teacher.get_subject() << " teacher:" << std::endl << teacher << std::endl;
     }
     return os;
@@ -163,7 +170,7 @@ std::vector<Student> &Class::get_students() {
     return students;
 }
 
-const std::vector<Student> &Class::get_students() const{
+const std::vector<Student> &Class::get_students() const {
     return students;
 }
 
@@ -184,10 +191,10 @@ int Class::get_average_grade_of_clas_from_subject(const Subject &subject) const 
 
 bool Class::operator==(const Class &rhs) const {
     bool is_equal = id == rhs.id
-           && teachers == rhs.teachers
-           && isClassGraduated == rhs.isClassGraduated
-           && year == rhs.year
-           && letter == rhs.letter;;;
+                    && teachers == rhs.teachers
+                    && isClassGraduated == rhs.isClassGraduated
+                    && year == rhs.year
+                    && letter == rhs.letter;;;
 
     if (!is_equal) {
         return false;
@@ -364,6 +371,15 @@ bool Class::is_teacher_teaching(const Teacher &teacher) const {
     return teachers.contains(subject);
 }
 
+bool Class::is_teacher_teaching(int id) const {
+    for (auto &[subject, teacher]: teachers) {
+        if (teacher.get_id() == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
 std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students) {
     for (const Student &student: students) {
         os << student << std::endl;
@@ -374,13 +390,6 @@ std::ostream &operator<<(std::ostream &os, const std::vector<Student> &students)
 std::ostream &operator<<(std::ostream &os, const std::list<Class> &classes) {
     for (const Class &class_: classes) {
         os << class_ << std::endl;
-    }
-    return os;
-}
-
-std::ostream &operator<<(std::ostream &os, const std::vector<Teacher> &vector) {
-    for (const Teacher &teacher: vector) {
-        os << teacher.get_subject() << " teacher:" << std::endl << teacher << std::endl;
     }
     return os;
 }
