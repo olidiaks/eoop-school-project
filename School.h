@@ -345,26 +345,41 @@ public:
     /**
      * @brief Adds a new class to the school, assigning teachers, students, and specific properties to the class.
      *
-     * @param math_teacher The teacher responsible for math classes.
-     * @param english_teacher The teacher responsible for English classes.
-     * @param polish_teacher The teacher responsible for Polish language classes.
-     * @param history_teacher The teacher responsible for history classes.
-     * @param biology_teacher The teacher responsible for biology classes.
-     * @param physics_teacher The teacher responsible for physics classes.
-     * @param chemistry_teacher The teacher responsible for chemistry classes.
-     * @param geography_teacher The teacher responsible for geography classes.
-     * @param computer_science_teacher The teacher responsible for computer science classes.
-     * @param physical_education_teacher The teacher responsible for physical education classes.
+     * @param teachers Map of teachers assigned to subjects.
      * @param super_vising_teacher The class's supervising teacher.
      * @param letter The letter identifier of the class.
      * @param students A list of students assigned to the class.
-     * @param is_graduated Indicates whether the class has graduated.
      */
-    void add_class( Teacher &math_teacher,  Teacher &english_teacher,  Teacher &polish_teacher,
-                    Teacher &history_teacher,  Teacher &biology_teacher,  Teacher &physics_teacher,
-                    Teacher &chemistry_teacher,
-                    Teacher &geography_teacher,  Teacher &computer_science_teacher,  Teacher &physical_education_teacher,
-                    Teacher &super_vising_teacher, char letter,  std::vector<Student> &students, bool is_graduated);
+    void add_class(const Teacher & super_vising_teacher, const std::map<Subject, Teacher&> &teachers, char letter,  std::vector<Student> &students);
+
+    /**
+     * @brief Adds a new class to the school with a supervising teacher and a set of subject-specific teachers.
+     *
+     * @param super_vising_teacher The teacher responsible for supervising the new class.
+     * @param teachers A map associating each subject with its corresponding teacher.
+     * @param letter The identifier letter for the class being added.
+     * @return A reference to the newly added class.
+     */
+    Class &add_class(const Teacher &super_vising_teacher, const std::map<Subject, Teacher &> &teachers, char letter);
+
+    /**
+     * @brief Adds a new class to the school, assigning it a supervising teacher, a list of students, and an identifying letter.
+     *
+     * @param super_vising_teacher The teacher assigned to supervise the class.
+     * @param students The list of students to be included in the class.
+     * @param letter The identifying letter of the class.
+     * @return A reference to the newly added class within the school.
+     */
+    Class &add_class(const Teacher &super_vising_teacher, const std::vector<Student> &students, char letter);
+
+    /**
+     * @brief Adds a new class to the school with the specified supervising teacher and letter identifier.
+     *
+     * @param super_vising_teacher The teacher assigned to supervise the class.
+     * @param letter The letter identifier of the class.
+     * @return A reference to the newly added class.
+     */
+    Class &add_class(const Teacher &super_vising_teacher, char letter);
 
     /**
      * @brief Removes a class from the school based on the specified year and letter.
