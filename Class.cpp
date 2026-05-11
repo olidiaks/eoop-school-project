@@ -261,7 +261,7 @@ int Class::get_count_of_grades_from_subject(const Subject &subject) const {
     return count;
 }
 
-float Class::get_average_grade_of_class() {
+float Class::get_average_grade_of_class() const {
     unsigned long count = 0;
     int sum = 0;
 
