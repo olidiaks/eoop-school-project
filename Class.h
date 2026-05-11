@@ -100,6 +100,15 @@ public:
     Class(Class &&other) noexcept;
 
     /**
+     * @brief Constructs a Class object with specified attributes.
+     *
+     * @param letter The letter identifier for the class (e.g., 'A', 'B').
+     * @param supervisingTeacher The teacher assigned to supervise the class.
+     * @param students A list of students assigned to the class.
+     */
+    Class(char letter, const Teacher & supervisingTeacher, const std::vector<Student> & students);
+
+    /**
      * @brief Constructs a new Class object with a given class letter and supervising teacher.
      * @param letter The letter representing the class (e.g., 'A', 'B').
      * @param supervisingTeacher A reference to the teacher responsible for supervising the class.
