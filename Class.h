@@ -100,6 +100,12 @@ public:
     Class(Class &&other) noexcept;
 
     /**
+     * @brief Constructs a new Class object with a given class letter and supervising teacher.
+     * @param letter The letter representing the class (e.g., 'A', 'B').
+     * @param supervisingTeacher A reference to the teacher responsible for supervising the class.
+     */
+    Class(char letter, const Teacher & supervisingTeacher);
+    /**
      * @brief Overloads the assignment operator for the Class object.
      *        Copies all attributes from the given Class object into this object.
      *
