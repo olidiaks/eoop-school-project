@@ -48,12 +48,12 @@ TEST_F(SchoolTest, HireTeacher) {
 }
 
 TEST_F(SchoolTest, HireTeacherDetailed) {
-    school.hire_teacher("Jane", "Smith", "jane.smith@school.com", 15, 5, 1985, 6000, Subject::English);
+    Teacher jane("Jane", "Smith", "jane.smith@school.com", 15, 5, 1985, 6000, Subject::English);
+    school.hire_teacher(jane);
     
-    auto englishTeachers = school.get_english_teachers();
-    ASSERT_EQ(englishTeachers.size(), 1);
-    EXPECT_EQ(englishTeachers.front().get_first_name(), "Jane");
-    EXPECT_EQ(englishTeachers.front().get_subject(), Subject::English);
+    School expected;
+    expected.hire_teacher(jane);
+    EXPECT_EQ(school, expected);
 }
 
 TEST_F(SchoolTest, AddAndRemoveClass) {
