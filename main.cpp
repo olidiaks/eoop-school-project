@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
+#include <map>
 #include "School.h"
 #include "Teacher.h"
 #include "Student.h"
@@ -100,9 +101,22 @@ int main() {
     char letters[] = {'A', 'B', 'C', 'D', 'E'};
     std::vector<Class> academyClasses;
 
+    std::map<Subject, const Teacher&> teacherMap = {
+        {Subject::Math, tMath},
+        {Subject::English, tEng},
+        {Subject::Polish, tPol},
+        {Subject::History, tHis},
+        {Subject::Biology, tBio},
+        {Subject::Physics, tPhy},
+        {Subject::Chemistry, tChe},
+        {Subject::Geography, tGeo},
+        {Subject::ComputerScience, tCS},
+        {Subject::PhysicalEducation, tPE}
+    };
+
     for (int i = 0; i < 5; ++i) {
         std::vector<Student> squad = generateStudentSquad(i, letters[i]);
-        Class newClass(tMath, tEng, tPol, tHis, tBio, tPhy, tChe, tGeo, tCS, tPE, tSuper, squad, 1, letters[i]);
+        Class newClass(1, letters[i], tSuper, teacherMap, squad);
         academyClasses.push_back(newClass);
         printClassStudents("Class 1" + std::string(1, letters[i]), squad);
     }
