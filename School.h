@@ -30,7 +30,7 @@ private:
      * @return A reference to the Teacher object with the specified ID.
      * @throws std::runtime_error If no teacher with the given ID is found.
      */
-    [[nodiscard]] Teacher & find_teacher(int id) const;
+    [[nodiscard]] const Teacher &find_teacher(int id) const;
 
     /**
      * @brief Finds and returns a reference to a teacher based on their first and last name.

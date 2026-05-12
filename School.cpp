@@ -10,6 +10,16 @@
 
 School::School() = default;
 
+const Teacher &School::find_teacher(int id) const {
+    for (auto & [subject,department] : teachers) {
+        for (const Teacher &teacher : department) {
+            if (teacher.get_id() == id) {
+                return teacher;
+            }
+        }
+    }
+    throw std::runtime_error("Teacher with id " + std::to_string(id) + " not found");
+}
 
 School::School(const School &other) : teachers(other.teachers),
                                       name(other.name),
