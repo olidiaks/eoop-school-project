@@ -144,6 +144,14 @@ void School::add_class(const Class &class_to_add) {
     classes.push_back(class_to_add);
 }
 
+void School::add_class(const std::vector<Teacher> &teachers,
+                       Teacher &super_vising_teacher, int year, char letter, const std::vector<Student> &students) {
+    std::map<Subject, const Teacher&> teachers_map;
+    for (const auto &teacher : teachers) {
+        teachers_map.emplace(teacher.get_subject(), teacher);
+    }
+    classes.emplace_back(year, letter, super_vising_teacher, teachers_map, students);
+}
 
 void School::add_class(const Teacher &super_vising_teacher, const std::map<Subject, const Teacher &> &teachers, char letter,
                        std::vector<Student> &students) {
