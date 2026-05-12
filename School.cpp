@@ -21,6 +21,19 @@ const Teacher &School::find_teacher(int id) const {
     throw std::runtime_error("Teacher with id " + std::to_string(id) + " not found");
 }
 
+const Teacher &School::find_teacher(const std::string &first_name, const std::string &last_name) const {
+    for (auto & [subject, department] : teachers) {
+        for (auto & teacher : department) {
+            if (teacher.get_first_name() == first_name && teacher.get_last_name() == last_name) {
+                return teacher;
+            }
+        }
+    }
+    throw std::runtime_error("Teacher " + first_name + " " + last_name + " not found");
+}
+
+
+
 School::School(const School &other) : teachers(other.teachers),
                                       name(other.name),
                                       classes(other.classes) {
