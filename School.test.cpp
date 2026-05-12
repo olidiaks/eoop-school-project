@@ -88,7 +88,7 @@ TEST_F(SchoolTest, CopyConstructor) {
     
     School copy(school);
     EXPECT_EQ(copy.get_name(), "Original");
-    EXPECT_EQ(copy.get_math_teachers().size(), 1);
+    EXPECT_EQ(copy, school);
 }
 
 TEST_F(SchoolTest, CopyAssignment) {
