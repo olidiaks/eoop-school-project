@@ -53,6 +53,17 @@ Class::Class(const Teacher &supervisingTeacher, int year, char letter) : supervi
     this->letter = letter;
 }
 
+Class::Class(const Class &other) : 
+    id(other.id), 
+    teachers(other.teachers), 
+    students(other.students), 
+    supervising_teacher(other.supervising_teacher),
+    isClassGraduated(other.isClassGraduated), 
+    year(other.year), 
+    letter(other.letter) 
+{}
+
+
 Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subject,const Teacher&> &teachers,
              const std::vector<Student> &students) : supervising_teacher(supervisingTeacher), letter(letter), year(1),
                                                      isClassGraduated(false), teachers(teachers), students(students) {
