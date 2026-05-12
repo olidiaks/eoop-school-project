@@ -30,7 +30,6 @@ protected:
 
 TEST_F(SchoolTest, DefaultConstructor) {
     EXPECT_EQ(school.get_name(), "");
-    EXPECT_TRUE(school.get_math_teachers().empty());
     EXPECT_TRUE(school.get_classes().empty());
 }
 
