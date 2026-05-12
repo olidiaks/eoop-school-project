@@ -180,14 +180,3 @@ TEST_F(ClassTest, MoreAssignments) {
     EXPECT_EQ(testClass.get_count_of_grades_from_subject(Subject::Math), 4); // 2 students * 2 assignments
 }
 
-// Implementation of missing copy constructor from Class.h
-Class::Class(const Class &other) : 
-    id(other.id), 
-    teachers(other.teachers), 
-    students(other.students), 
-    supervising_teacher(other.supervising_teacher),
-    isClassGraduated(other.isClassGraduated), 
-    year(other.year), 
-    letter(other.letter) 
-{}
-
