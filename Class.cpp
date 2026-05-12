@@ -344,7 +344,7 @@ void Class::add_assignment(const Subject &subject, const std::string &name, cons
 bool Class::add_teacher(const Teacher &teacher) {
     if (is_teacher_assigned(teacher)) return false;
     Subject subject = teacher.get_subject();
-    teachers[subject] = teacher;
+    teachers.emplace(subject, teacher);
     return true;
 }
 
