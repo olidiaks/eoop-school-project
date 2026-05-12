@@ -186,11 +186,13 @@ void School::hire_teacher(const std::string &first_name, const std::string &last
 }
 
 bool School::fire_teacher(const int &id) {
-    for (auto &i: teachers) {
-        std::vector<Teacher> & teachers = i.second;
-        for (auto it = teachers.begin(); it != teachers.end(); ++it) {
+    for (auto &[subject, i_teachers]: teachers) {
+        for (auto it = i_teachers.begin(); it != i_teachers.end(); ++it) {
             if (it->get_id() == id) {
-                teachers.erase(it);
+                i_teachers.erase(it);
+                if (i_teachers.empty()) {
+                    teachers.erase(subject);
+                }
                 return true;
             }
         }
