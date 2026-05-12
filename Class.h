@@ -18,7 +18,7 @@
 class Class {
 private:
     int id;
-    std::map<Subject,Teacher&> teachers;
+    std::map<Subject,const Teacher&> teachers;
     std::vector<Student> students;
     const Teacher &supervising_teacher;
     static int counter;
@@ -112,7 +112,7 @@ public:
      * @param teachers A map associating subjects with their respective teaching staff.
      * @param students A vector containing the list of students in the class.
      */
-    Class(char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers, const std::vector<Student> & students);
+    Class(char letter, const Teacher & supervisingTeacher, const std::map<Subject,const Teacher&> & teachers, const std::vector<Student> & students);
 
     /**
      * @brief Constructs a Class instance with the specified parameters.
@@ -121,7 +121,7 @@ public:
      * @param supervisingTeacher The teacher designated to supervise the class.
      * @param teachers A map that associates subjects with their respective teachers.
      */
-    Class(char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers);
+    Class(char letter, const Teacher & supervisingTeacher, const std::map<Subject,const Teacher&> & teachers);
 
     /**
      * @brief Constructs a Class object with specified attributes.
@@ -148,7 +148,7 @@ public:
      * @param teachers A map associating subjects with the respective teachers.
      * @param students A list of students in the class.
      */
-    Class(int year, char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers, const std::vector<Student> & students);
+    Class(int year, char letter, const Teacher & supervisingTeacher, const std::map<Subject,const Teacher&> & teachers, const std::vector<Student> & students);
 
     /**
      * @brief Constructs a Class object with specified year, letter, supervising teacher, and subject teachers.
@@ -158,7 +158,7 @@ public:
      * @param teachers A map associating each subject with the respective teacher responsible for it.
      * @return No return value as this is a constructor.
      */
-    Class(int year, char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers);
+    Class(int year, char letter, const Teacher & supervisingTeacher, const std::map<Subject,const Teacher&> & teachers);
 
     /**
      * @brief Constructs a new Class object with the specified year, letter, supervising teacher, and list of students.
@@ -496,7 +496,7 @@ std::ostream & operator<<(std::ostream & os, const std::vector<Teacher> & vector
  * @param map The map of Teacher objects to be written to the output stream.
  * @return A reference to the output stream after writing the data.
  */
-std::ostream & operator<<(std::ostream & os, const std::map<Subject, Teacher &> & map);
+std::ostream & operator<<(std::ostream & os, const std::map<Subject,const Teacher&> & map);
 
 
 #endif //PROJECT_CLASS_H

@@ -53,14 +53,14 @@ Class::Class(const Teacher &supervisingTeacher, int year, char letter) : supervi
     this->letter = letter;
 }
 
-Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers,
+Class::Class(char letter, const Teacher &supervisingTeacher, const std::map<Subject,const Teacher&> &teachers,
              const std::vector<Student> &students) : supervising_teacher(supervisingTeacher), letter(letter), year(1),
                                                      isClassGraduated(false), teachers(teachers), students(students) {
     id = ++counter;
 }
 
 Class::Class(char letter, const Teacher &supervisingTeacher,
-             const std::map<Subject, Teacher &> &teachers) : letter(letter), supervising_teacher(supervisingTeacher),
+             const std::map<Subject,const Teacher&> &teachers) : letter(letter), supervising_teacher(supervisingTeacher),
                                                              teachers(teachers), year(1), isClassGraduated(false) {
     id = ++counter;
 }
@@ -75,13 +75,13 @@ Class::Class(char letter, const Teacher &supervisingTeacher) : letter(letter), s
     id = ++counter;
 }
 
-Class::Class(int year, char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers,
+Class::Class(int year, char letter, const Teacher &supervisingTeacher, const std::map<Subject,const Teacher&> &teachers,
     const std::vector<Student> &students): teachers(teachers), students(students), supervising_teacher(supervisingTeacher),
     isClassGraduated(false), year(year), letter(letter) {
     id = ++counter;
 }
 
-Class::Class(int year, char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers): teachers(teachers),
+Class::Class(int year, char letter, const Teacher &supervisingTeacher, const std::map<Subject,const Teacher&> &teachers): teachers(teachers),
     supervising_teacher(supervisingTeacher), isClassGraduated(false), year(year), letter(letter) {
    id = ++counter;
 }
@@ -238,7 +238,7 @@ bool Class::operator!=(const Class &rhs) const {
     return !(*this == rhs);
 }
 
-std::ostream &operator<<(std::ostream &os, const std::map<Subject, Teacher &> &map) {
+std::ostream &operator<<(std::ostream &os, const std::map<Subject,const Teacher&> &map) {
     os << "Teachers: " << std::endl;
     for (const auto &teacher: map) {
         os << "Subject:" << teacher.first << "Teacher: " << teacher.second << std::endl;
