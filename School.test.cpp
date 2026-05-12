@@ -57,21 +57,11 @@ TEST_F(SchoolTest, HireTeacherDetailed) {
 }
 
 TEST_F(SchoolTest, AddAndRemoveClass) {
-    Teacher tMath = createTeacher("Math", "T", Subject::Math);
-    Teacher tEng = createTeacher("Eng", "T", Subject::English);
-    Teacher tPol = createTeacher("Pol", "T", Subject::Polish);
-    Teacher tHist = createTeacher("Hist", "T", Subject::History);
-    Teacher tBio = createTeacher("Bio", "T", Subject::Biology);
-    Teacher tPhys = createTeacher("Phys", "T", Subject::Physics);
-    Teacher tChem = createTeacher("Chem", "T", Subject::Chemistry);
-    Teacher tGeo = createTeacher("Geo", "T", Subject::Geography);
-    Teacher tCS = createTeacher("CS", "T", Subject::ComputerScience);
-    Teacher tPE = createTeacher("PE", "T", Subject::PhysicalEducation);
     Teacher tSup = createTeacher("Sup", "T", Subject::Math);
     
     auto students = createStudents(5);
     
-    school.add_class(tMath, tEng, tPol, tHist, tBio, tPhys, tChem, tGeo, tCS, tPE, tSup, 1, 'A', students);
+    school.add_class(tSup, 'A');
     
     ASSERT_EQ(school.get_classes().size(), 1);
     EXPECT_EQ(school.get_classes().front().get_year(), 1);
