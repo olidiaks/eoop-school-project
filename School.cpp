@@ -201,17 +201,20 @@ bool School::fire_teacher(const int &id) {
 }
 
 int School::fire_teacher(const std::string &firstname, const std::string &lastname) {
-    int count = 0;
-    for (auto &i: teachers) {
-        std::vector<Teacher> & teachers = i.second;
-        for (auto it = teachers.begin(); it != teachers.end(); ++it) {
-            if (it->get_first_name() == firstname && it->get_last_name() == lastname) {
-                teachers.erase(it);
-                count++;
-            }
+    int total_removed = 0;
+    for (auto it = teachers.begin(); it != teachers.end(); ) {
+        std::vector<Teacher> & teacher_vec = it->second;
+        auto removed = std::erase_if(teacher_vec, [&firstname, &lastname](const Teacher& t) {
+            return t.get_first_name() == firstname && t.get_last_name() == lastname;
+        });
+        total_removed += removed;
+        if (teacher_vec.empty()) {
+            it = teachers.erase(it);
+        } else {
+            ++it;
         }
     }
-    return count;
+    return total_removed;
 }
 
 std::ostream & operator<<(std::ostream &os, const std::map<Subject, std::vector<Teacher>> &map) {
