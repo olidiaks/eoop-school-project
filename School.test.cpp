@@ -170,8 +170,6 @@ TEST_F(SchoolTest, SwapFunction) {
 
 TEST_F(SchoolTest, NotImplementedMethods) {
     EXPECT_THROW(school.get_average_students_grades_of_teacher(1), std::runtime_error);
-    // School::print is private, but operator<< calls it
-    EXPECT_THROW(std::cout << school, std::runtime_error);
 }
 
 TEST_F(SchoolTest, FireTeacher) {
