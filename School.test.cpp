@@ -42,10 +42,9 @@ TEST_F(SchoolTest, HireTeacher) {
     Teacher t1 = createTeacher("John", "Doe", Subject::Math);
     school.hire_teacher(t1);
     
-    auto mathTeachers = school.get_math_teachers();
-    ASSERT_EQ(mathTeachers.size(), 1);
-    EXPECT_EQ(mathTeachers.front().get_first_name(), "John");
-    EXPECT_EQ(mathTeachers.front().get_last_name(), "Doe");
+    School expected;
+    expected.hire_teacher(t1);
+    EXPECT_EQ(school, expected);
 }
 
 TEST_F(SchoolTest, HireTeacherDetailed) {
