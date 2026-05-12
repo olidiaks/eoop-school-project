@@ -215,7 +215,7 @@ public:
      * @param letter The letter identifier of the class.
      * @param students A list of students assigned to the class.
      */
-    void add_class(const Teacher & super_vising_teacher, const std::map<Subject, Teacher&> &teachers, char letter,  std::vector<Student> &students);
+    void add_class(const Teacher & super_vising_teacher, const std::map<Subject, const Teacher &> &teachers, char letter, std::vector<Student> &students);
 
     /**
      * @brief Adds a new class to the school with a supervising teacher and a set of subject-specific teachers.
@@ -225,7 +225,7 @@ public:
      * @param letter The identifier letter for the class being added.
      * @return A reference to the newly added class.
      */
-    Class &add_class(const Teacher &super_vising_teacher, const std::map<Subject, Teacher &> &teachers, char letter);
+    Class &add_class(const Teacher &super_vising_teacher, const std::map<Subject, const Teacher &> &teachers, char letter);
 
     /**
      * @brief Adds a new class to the school, assigning it a supervising teacher, a list of students, and an identifying letter.

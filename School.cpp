@@ -122,12 +122,12 @@ void School::add_class(const Class &class_to_add) {
 }
 
 
-void School::add_class(const Teacher &super_vising_teacher, const std::map<Subject, Teacher &> &teachers, char letter,
-    std::vector<Student> &students) {
+void School::add_class(const Teacher &super_vising_teacher, const std::map<Subject, const Teacher &> &teachers, char letter,
+                       std::vector<Student> &students) {
     classes.emplace_back(letter, super_vising_teacher, teachers, students);
 }
 
-Class &School::add_class(const Teacher &super_vising_teacher, const std::map<Subject, Teacher &> &teachers, char letter) {
+Class &School::add_class(const Teacher &super_vising_teacher, const std::map<Subject, const Teacher &> &teachers, char letter) {
     classes.emplace_back(letter, super_vising_teacher, teachers);
     return classes.back();
 }
