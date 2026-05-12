@@ -170,6 +170,48 @@ TEST_F(ClassTest, AdditionalMethods) {
     EXPECT_EQ(studentList.size(), 3);
 }
 
+TEST_F(ClassTest, SwapFunction) {
+    Teacher otherTeacher("Other", "Teacher", "other@school.com", 1, 1, 1980, 5000, Subject::Physics);
+    Class otherClass(2, 'B', otherTeacher);
+    otherClass.add_student("Charlie", "Brown", "charlie@school.com", 1, 1, 2010);
+    
+    int id1 = testClass.get_id();
+    int id2 = otherClass.get_id();
+    
+    swap(testClass, otherClass);
+    
+    EXPECT_EQ(testClass.get_id(), id2);
+    EXPECT_EQ(testClass.get_letter(), 'B');
+    EXPECT_EQ(otherClass.get_id(), id1);
+    EXPECT_EQ(otherClass.get_letter(), 'A');
+}
+
+TEST_F(ClassTest, OtherConstructors) {
+    std::map<Subject, const Teacher&> teachers;
+    teachers.emplace(Subject::Math, mathTeacher);
+    
+    Class c1('C', mathTeacher, teachers, students);
+    EXPECT_EQ(c1.get_letter(), 'C');
+    EXPECT_EQ(c1.get_count_of_students(), 2);
+    
+    Class c2('D', mathTeacher, teachers);
+    EXPECT_EQ(c2.get_letter(), 'D');
+    EXPECT_EQ(c2.get_count_of_students(), 0);
+    
+    Class c3('E', mathTeacher, students);
+    EXPECT_EQ(c3.get_letter(), 'E');
+    EXPECT_EQ(c3.get_count_of_students(), 2);
+}
+
+TEST_F(ClassTest, PrintMethods) {
+    // Just ensure they don't crash
+    testing::internal::CaptureStdout();
+    testClass.print_students();
+    testClass.print_teachers();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_FALSE(output.empty());
+}
+
 TEST_F(ClassTest, MoreAssignments) {
     testClass.add_assignment(Subject::Math, "HW1", "Desc1", 4);
     //Alice and Bob already in class, Charlie added in previous test (but tests are independent)
