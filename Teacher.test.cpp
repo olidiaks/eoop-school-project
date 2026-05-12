@@ -111,3 +111,29 @@ TEST(teacher_test_suite, teacher_test_output_operator) {
 
     EXPECT_EQ(ss.str(), expected.str());
 }
+
+TEST(teacher_test_suite, teacher_test_swap) {
+    Teacher t1("John", "Smith", "john@school.com", 1, 1, 1980, 5000, Subject::Math);
+    Teacher t2("Jane", "Doe", "jane@school.com", 2, 2, 1990, 6000, Subject::Physics);
+    
+    Teacher t1_copy(t1);
+    Teacher t2_copy(t2);
+    
+    swap(t1, t2);
+    
+    EXPECT_EQ(t1, t2_copy);
+    EXPECT_EQ(t2, t1_copy);
+}
+
+TEST(teacher_test_suite, teacher_test_list_output) {
+    std::list<Teacher> teachers;
+    teachers.emplace_back("John", "Smith", "john@school.com", 1, 1, 1980, 5000, Subject::Math);
+    teachers.emplace_back("Jane", "Doe", "jane@school.com", 2, 2, 1990, 6000, Subject::Physics);
+    
+    std::stringstream ss;
+    ss << teachers;
+    
+    std::string output = ss.str();
+    EXPECT_NE(output.find("John"), std::string::npos);
+    EXPECT_NE(output.find("Jane"), std::string::npos);
+}
