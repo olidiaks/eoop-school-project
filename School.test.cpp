@@ -162,7 +162,7 @@ TEST_F(SchoolTest, SwapFunction) {
     s1.set_name("School1");
     s2.set_name("School2");
     
-    swap(s1, s2);
+    s1.swap(s2);
     
     EXPECT_EQ(s1.get_name(), "School2");
     EXPECT_EQ(s2.get_name(), "School1");
