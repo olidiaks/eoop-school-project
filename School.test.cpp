@@ -101,8 +101,11 @@ TEST_F(SchoolTest, CopyAssignment) {
 
 TEST_F(SchoolTest, MoveConstructor) {
     school.set_name("Original");
+    School other;
+    other.set_name("Original");
     School moved(std::move(school));
     EXPECT_EQ(moved.get_name(), "Original");
+    EXPECT_EQ(moved, other);
 }
 
 TEST_F(SchoolTest, MoveAssignment) {
