@@ -145,3 +145,21 @@ TEST_F(StudentTest, ToStringSubject) {
     EXPECT_STREQ(to_string(Subject::ComputerScience), "ComputerScience");
     EXPECT_STREQ(to_string(Subject::PhysicalEducation), "PhysicalEducation");
 }
+
+TEST_F(StudentTest, GradeMetrics) {
+    student.add_assignment(Subject::Math, "M1", "D1", 5);
+    student.add_assignment(Subject::Math, "M2", "D2", 3);
+    student.add_assignment(Subject::English, "E1", "D1", 4);
+
+    EXPECT_EQ(student.get_sum_of_grades_from_subjects(Subject::Math), 8);
+    EXPECT_EQ(student.get_count_of_grades_from_students_subjects(Subject::Math), 2);
+    EXPECT_EQ(student.get_sum_of_grades_from_all_subjects(), 12);
+    EXPECT_EQ(student.get_count_of_grades_from_all_subjects(), 3);
+}
+
+TEST(StudentStaticTest, TimeTConstructor) {
+    time_t now = time(nullptr);
+    Student s("Alice", "Wonder", "alice@wonder.com", now);
+    EXPECT_EQ(s.get_first_name(), "Alice");
+    EXPECT_EQ(s.get_birth_date(), now);
+}
