@@ -140,6 +140,47 @@ public:
     Class(char letter, const Teacher & supervisingTeacher);
 
     /**
+     * @brief Constructs a Class object with the given attributes.
+     *
+     * @param year The year the class corresponds to.
+     * @param letter A single character representing the class section.
+     * @param supervisingTeacher The teacher supervising the class.
+     * @param teachers A map associating subjects with the respective teachers.
+     * @param students A list of students in the class.
+     */
+    Class(int year, char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers, const std::vector<Student> & students);
+
+    /**
+     * @brief Constructs a Class object with specified year, letter, supervising teacher, and subject teachers.
+     * @param year The educational year of the class (e.g., grade level).
+     * @param letter The letter identifier for the class (e.g., 'A', 'B').
+     * @param supervisingTeacher The teacher supervising the class.
+     * @param teachers A map associating each subject with the respective teacher responsible for it.
+     * @return No return value as this is a constructor.
+     */
+    Class(int year, char letter, const Teacher & supervisingTeacher, const std::map<Subject, Teacher &> & teachers);
+
+    /**
+     * @brief Constructs a new Class object with the specified year, letter, supervising teacher, and list of students.
+     *
+     * @param year The numerical year associated with the class (e.g., grade level or academic year).
+     * @param letter The letter designation of the class (e.g., 'A', 'B').
+     * @param supervisingTeacher The teacher responsible for supervising the class.
+     * @param students A collection of students belonging to the class.
+     * @return None
+     */
+    Class(int year, char letter, const Teacher & supervisingTeacher, const std::vector<Student> & students);
+
+    /**
+     * @class Class
+     * @param year The numerical year associated with the class (e.g., grade level or academic year).
+     * @param letter The letter designation of the class (e.g., 'A', 'B').
+     * @param supervisingTeacher The teacher responsible for supervising the class.
+     * @brief Represents a school class with a specific year, section letter, and supervising teacher.
+     */
+    Class(int year, char letter, const Teacher & supervisingTeacher);
+
+    /**
      * @brief Overloads the assignment operator for the Class object.
      *        Copies all attributes from the given Class object into this object.
      *

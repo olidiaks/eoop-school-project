@@ -75,6 +75,25 @@ Class::Class(char letter, const Teacher &supervisingTeacher) : letter(letter), s
     id = ++counter;
 }
 
+Class::Class(int year, char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers,
+    const std::vector<Student> &students): teachers(teachers), students(students), supervising_teacher(supervisingTeacher),
+    isClassGraduated(false), year(year), letter(letter) {
+    id = ++counter;
+}
+
+Class::Class(int year, char letter, const Teacher &supervisingTeacher, const std::map<Subject, Teacher &> &teachers): teachers(teachers),
+    supervising_teacher(supervisingTeacher), isClassGraduated(false), year(year), letter(letter) {
+   id = ++counter;
+}
+
+Class::Class(int year, char letter, const Teacher &supervisingTeacher, const std::vector<Student> &students): year(year), letter(letter), supervising_teacher(supervisingTeacher), students(students), isClassGraduated(false) {
+    id = ++counter;
+}
+
+Class::Class(int year, char letter, const Teacher &supervisingTeacher): supervising_teacher(supervisingTeacher), isClassGraduated(false), year(year), letter(letter) {
+    id = ++counter;
+}
+
 Class::Class(Class &&other) noexcept : id(other.id), supervising_teacher(other.supervising_teacher),
                                        teachers(std::move(other.teachers)),
                                        students(std::move(other.students)), isClassGraduated(other.isClassGraduated),
