@@ -172,6 +172,44 @@ TEST_F(SchoolTest, NotImplementedMethods) {
     EXPECT_THROW(school.get_average_students_grades_of_teacher(1), std::runtime_error);
 }
 
+TEST_F(SchoolTest, SchoolMetrics) {
+    Teacher tSup = createTeacher("Sup", "T", Subject::Math);
+    school.hire_teacher(tSup);
+    
+    Class& c = school.add_class(tSup, 'A');
+    c.add_teacher(tSup); // Ensure teacher is in the subject map
+    Student s1("S1", "L1", "s1@school.com", 1, 1, 2010);
+    s1.add_assignment(Subject::Math, "HW1", "D1", 5);
+    c.add_student(s1);
+    
+    EXPECT_FLOAT_EQ(school.get_average_grade_of_school(), 5.0f);
+    EXPECT_FLOAT_EQ(school.get_average_students_grades_of_teacher(tSup.get_id()), 5.0f);
+}
+
+TEST_F(SchoolTest, SetClasses) {
+    Teacher tSup = createTeacher("Sup", "T", Subject::Math);
+    Class c1(1, 'A', tSup);
+    std::list<Class> classes = {c1};
+    school.set_classes(classes);
+    EXPECT_EQ(school.get_classes().size(), 1);
+}
+
+TEST_F(SchoolTest, AddClassAdvancedOverloads) {
+    Teacher tSup = createTeacher("Sup", "T", Subject::Math);
+    std::vector<Teacher> teachers = {tSup};
+    std::vector<Student> students = createStudents(2);
+    
+    school.add_class(teachers, tSup, 1, 'D', students);
+    EXPECT_EQ(school.get_classes().size(), 1);
+    EXPECT_EQ(school.get_classes().back().get_letter(), 'D');
+    
+    std::map<Subject, const Teacher&> tMap;
+    tMap.emplace(Subject::Math, tSup);
+    school.add_class(tSup, tMap, 'E', students);
+    EXPECT_EQ(school.get_classes().size(), 2);
+    EXPECT_EQ(school.get_classes().back().get_letter(), 'E');
+}
+
 TEST_F(SchoolTest, FireTeacher) {
     Teacher t = createTeacher("John", "Doe", Subject::Math);
     School comper, experiment;
