@@ -5,6 +5,17 @@
 
 class ClassTest : public ::testing::Test {
 protected:
+    std::vector<Student> students;
+    Teacher mathTeacher;
+    Teacher englishTeacher;
+    Class testClass;
+
+    ClassTest() : 
+        mathTeacher("Albert", "Einstein", "einstein@example.com", 14, 3, 1879, 1000, Subject::Math),
+        englishTeacher("William", "Shakespeare", "shakespeare@example.com", 23, 4, 1564, 900, Subject::English),
+        testClass(1, 'A', mathTeacher)
+    {}
+
     void SetUp() override {
         // Create some students
         students = {
@@ -17,16 +28,11 @@ protected:
         englishTeacher = Teacher("William", "Shakespeare", "shakespeare@example.com", 23, 4, 1564, 900, Subject::English);
         
         // Create a class
-        testClass = Class(1, 'A');
+        testClass = Class(1, 'A', mathTeacher);
         testClass.add_student(students[0]);
         testClass.add_student(students[1]);
         testClass.add_teacher(mathTeacher);
     }
-
-    std::vector<Student> students;
-    Teacher mathTeacher;
-    Teacher englishTeacher;
-    Class testClass;
 };
 
 TEST_F(ClassTest, BasicProperties) {
@@ -138,3 +144,50 @@ TEST_F(ClassTest, StreamOperators) {
     EXPECT_NE(output.find("letter: A"), std::string::npos);
     EXPECT_NE(output.find("Alice"), std::string::npos);
 }
+
+TEST_F(ClassTest, AdditionalMethods) {
+    // Test add_student by components
+    EXPECT_TRUE(testClass.add_student("Charlie", "Day", "charlie@itshappening.com", 5, 5, 1980));
+    EXPECT_EQ(testClass.get_count_of_students(), 3);
+    
+    // Test get_id
+    EXPECT_GT(testClass.get_id(), 0);
+    
+    // Test get_subjects
+    auto subjects = testClass.get_subjects();
+    EXPECT_FALSE(subjects.empty());
+    bool foundMath = false;
+    for(auto s : subjects) if(s == Subject::Math) foundMath = true;
+    EXPECT_TRUE(foundMath);
+    
+    // Test is_teacher_teaching
+    EXPECT_TRUE(testClass.is_teacher_teaching(mathTeacher));
+    EXPECT_TRUE(testClass.is_teacher_teaching(mathTeacher.get_id()));
+    EXPECT_FALSE(testClass.is_teacher_teaching(englishTeacher));
+    
+    // Test get_students
+    const auto& studentList = testClass.get_students();
+    EXPECT_EQ(studentList.size(), 3);
+}
+
+TEST_F(ClassTest, MoreAssignments) {
+    testClass.add_assignment(Subject::Math, "HW1", "Desc1", 4);
+    //Alice and Bob already in class, Charlie added in previous test (but tests are independent)
+    //SetUp adds Alice and Bob.
+    EXPECT_EQ(testClass.get_sum_of_grades_from_subject(Subject::Math), 8); // 4 (Alice) + 4 (Bob)
+    
+    testClass.add_assignment(Subject::Math, "HW2", "Desc2"); // Ungraded (grade=0)
+    EXPECT_EQ(testClass.get_count_of_grades_from_subject(Subject::Math), 4); // 2 students * 2 assignments
+}
+
+// Implementation of missing copy constructor from Class.h
+Class::Class(const Class &other) : 
+    id(other.id), 
+    teachers(other.teachers), 
+    students(other.students), 
+    supervising_teacher(other.supervising_teacher),
+    isClassGraduated(other.isClassGraduated), 
+    year(other.year), 
+    letter(other.letter) 
+{}
+
