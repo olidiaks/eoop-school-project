@@ -146,15 +146,15 @@ TEST_F(SchoolTest, AddClassOverloads) {
     Teacher t = createTeacher("T", "T", Subject::Math);
     std::vector<Student> students = createStudents(1);
     
-    // Test overload with letter and students (defaults year)
-    school.add_class(t, t, t, t, t, t, t, t, t, t, t, 'B', students);
+    // Test overload with letter and students
+    school.add_class(t, students, 'B');
     EXPECT_EQ(school.get_classes().size(), 1);
     EXPECT_EQ(school.get_classes().back().get_letter(), 'B');
     
-    // Test overload with graduation status
-    school.add_class(t, t, t, t, t, t, t, t, t, t, t, 'C', students, true);
+    // Test overload with just supervising teacher and letter
+    school.add_class(t, 'C');
     EXPECT_EQ(school.get_classes().size(), 2);
-    EXPECT_TRUE(school.get_classes().back().is_class_graduated());
+    EXPECT_EQ(school.get_classes().back().get_letter(), 'C');
 }
 
 TEST_F(SchoolTest, SwapFunction) {
