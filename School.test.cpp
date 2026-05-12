@@ -96,6 +96,7 @@ TEST_F(SchoolTest, CopyAssignment) {
     School other;
     other = school;
     EXPECT_EQ(other.get_name(), "Original");
+    EXPECT_EQ(other, school);
 }
 
 TEST_F(SchoolTest, MoveConstructor) {
