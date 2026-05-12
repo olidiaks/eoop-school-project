@@ -174,28 +174,13 @@ TEST_F(SchoolTest, NotImplementedMethods) {
 
 TEST_F(SchoolTest, FireTeacher) {
     Teacher t = createTeacher("John", "Doe", Subject::Math);
-    school.hire_teacher(t);
-    int id = school.get_math_teachers().front().get_id();
+    School comper, experiment;
+    EXPECT_EQ(comper, experiment);
+    experiment.hire_teacher(t);
+    EXPECT_NE(comper, experiment);
     
-    // Fire by ID
-    school.fire_teacher(id);
-    
-    // Wait, the fire_teacher implementation is:
-    /*
-    void School::fire_teacher(const int &id) {
-        Teacher p;
-        swap(find_teacher(id), p);
-    }
-    */
-    // Since find_teacher returns a reference to the teacher in the internal list,
-    // swapping it with a default Teacher effectively "clears" it but doesn't remove it from the list.
-    // However, find_teacher might return a reference to a temporary or some other behavior if not found.
-    // Let's check find_teacher implementation.
-    
-    auto mathTeachers = school.get_math_teachers();
-    // It should still have 1 teacher, but its data might be default-initialized now (if swap worked as intended)
-    ASSERT_EQ(mathTeachers.size(), 1);
-    EXPECT_EQ(mathTeachers.front().get_first_name(), ""); // Default Person has empty name
+    EXPECT_TRUE(experiment.fire_teacher(t.get_id()));
+    EXPECT_EQ(comper, experiment);
 }
 
 TEST_F(SchoolTest, FireTeacherByName) {
