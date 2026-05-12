@@ -41,3 +41,16 @@ add_executable(class-test Class.test.cpp Class.cpp Class.h Student.cpp Student.h
 target_link_libraries(class-test PUBLIC gtest_main)
 add_executable(school-test School.test.cpp School.cpp School.h Class.cpp Class.h Student.cpp Student.h Teacher.cpp Teacher.h Person.cpp Person.h Assignment.cpp Assignment.h Subject.cpp Subject.h)
 target_link_libraries(school-test PUBLIC gtest_main)
+
+enable_testing()
+add_test(NAME PersonTest COMMAND test-person)
+add_test(NAME AssignmentTest COMMAND Assigment-test)
+add_test(NAME TeacherTest COMMAND Teacher-test)
+add_test(NAME StudentTest COMMAND Student-test)
+add_test(NAME ClassTest COMMAND class-test)
+add_test(NAME SchoolTest COMMAND school-test)
+
+add_custom_target(run-tests
+    COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
+    DEPENDS test-person Assigment-test Teacher-test Student-test class-test school-test
+)
