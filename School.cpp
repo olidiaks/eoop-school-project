@@ -100,7 +100,7 @@ float School::get_average_students_grades_of_teacher(const int &id) const {
     unsigned long count = 0;
     unsigned long sum = 0;
 
-    Teacher &teacher = find_teacher(id);
+    const Teacher &teacher = find_teacher(id);
     for (auto &i : classes) {
         if (i.is_teacher_teaching(teacher)) {
             for (auto &student : i.get_students()) {
