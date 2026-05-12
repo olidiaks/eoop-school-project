@@ -187,7 +187,6 @@ TEST_F(SchoolTest, FireTeacherByName) {
     school.hire_teacher("Jane", "Smith", "jane@school.com", 1, 1, 1980, 5000, Subject::English);
     school.fire_teacher("Jane", "Smith");
     
-    auto englishTeachers = school.get_english_teachers();
-    ASSERT_EQ(englishTeachers.size(), 1);
-    EXPECT_EQ(englishTeachers.front().get_first_name(), "");
+    School empty;
+    EXPECT_EQ(school, empty);
 }
