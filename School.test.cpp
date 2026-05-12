@@ -132,20 +132,14 @@ TEST_F(SchoolTest, HireAllSubjects) {
         Subject::ComputerScience, Subject::PhysicalEducation
     };
     
+    School expected;
     for (auto s : subjects) {
-        school.hire_teacher("First", "Last", "email@test.com", 1, 1, 1990, 5000, s);
+        Teacher t("First", "Last", "email@test.com", 1, 1, 1990, 5000, s);
+        school.hire_teacher(t);
+        expected.hire_teacher(t);
     }
     
-    EXPECT_EQ(school.get_math_teachers().size(), 1);
-    EXPECT_EQ(school.get_english_teachers().size(), 1);
-    EXPECT_EQ(school.get_polish_teachers().size(), 1);
-    EXPECT_EQ(school.get_history_teachers().size(), 1);
-    EXPECT_EQ(school.get_biology_teachers().size(), 1);
-    EXPECT_EQ(school.get_physics_teachers().size(), 1);
-    EXPECT_EQ(school.get_chemistry_teachers().size(), 1);
-    EXPECT_EQ(school.get_geography_teachers().size(), 1);
-    EXPECT_EQ(school.get_computer_science_teachers().size(), 1);
-    EXPECT_EQ(school.get_physical_education_teachers().size(), 1);
+    EXPECT_EQ(school, expected);
 }
 
 TEST_F(SchoolTest, AddClassOverloads) {
