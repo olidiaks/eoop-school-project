@@ -99,7 +99,7 @@ void Assignment::remove_grade() {
 }
 
 bool Assignment::is_assigment_graded() const {
-    return !this->grade;
+    return this->grade != 0;
 }
 
 bool Assignment::operator==(const Assignment &rhs) const {
