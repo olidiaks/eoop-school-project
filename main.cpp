@@ -62,7 +62,10 @@ void performIndividualGrading(Class& c, Subject sub, const std::string& name, co
     std::uniform_int_distribution<int> dist(2, 5); // Grades from 2 to 5
     
     for (auto& student : c.get_students()) {
-        student.add_assignment(sub, task, dist(g_rng));
+        int grade = dist(g_rng);
+        student.add_assignment(sub, task, grade);
+        std::string student_name = student.get_first_name() + " " + student.get_last_name();
+        std::cout << "    " << std::left << std::setw(25) << student_name << " | " << grade << std::endl;
     }
 }
 
