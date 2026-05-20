@@ -51,7 +51,8 @@ void printClassStudents(const std::string& className, const std::vector<Student>
 }
 
 // Global random engine for grading
-std::mt19937 g_rng(1337);
+std::random_device rd;
+std::mt19937 g_rng(rd());
 
 void performIndividualGrading(Class& c, Subject sub, const std::string& name, const std::string& desc) {
     Assignment task(name, desc, to_string(sub));
