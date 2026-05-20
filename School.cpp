@@ -104,7 +104,7 @@ float School::get_average_students_grades_of_teacher(const int &id) const {
     for (auto &i : classes) {
         if (i.is_teacher_teaching(teacher)) {
             for (auto &student : i.get_students()) {
-                sum += student.get_average_grade();
+                sum += student.get_average_grade_from_subject(teacher.get_subject());
                 count++;
             }
         }
