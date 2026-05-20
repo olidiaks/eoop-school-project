@@ -135,8 +135,8 @@ int main() {
     std::cout << "Enrollment complete. 100 students distributed across 5 classes." << std::endl;
 
     for (auto& c : theAcademy.get_classes()) {
-        performIndividualGrading(const_cast<Class&>(c), Subject::Math, "Calculus Basics", "Derivatives.");
-        performIndividualGrading(const_cast<Class&>(c), Subject::ComputerScience, "Logic Circuits", "Boolean Algebra.");
+        performIndividualGrading(c, Subject::Math, "Calculus Basics", "Derivatives.");
+        performIndividualGrading(c, Subject::ComputerScience, "Logic Circuits", "Boolean Algebra.");
     }
 
     std::cout << "Year 1 Averages: School GPA is " << std::fixed << std::setprecision(2) << theAcademy.get_average_grade_of_school() << std::endl;
@@ -151,8 +151,8 @@ int main() {
     theAcademy.new_school_year();
 
     for (auto& c : theAcademy.get_classes()) {
-        performIndividualGrading(const_cast<Class&>(c), Subject::Biology, "Natural Selection", "Survival.");
-        performIndividualGrading(const_cast<Class&>(c), Subject::Chemistry, "Radioactive Decay", "Half-life.");
+        performIndividualGrading(c, Subject::Biology, "Natural Selection", "Survival.");
+        performIndividualGrading(c, Subject::Chemistry, "Radioactive Decay", "Half-life.");
     }
 
     /* --- THE GADFLY CRISIS --- */
@@ -173,9 +173,9 @@ int main() {
     theAcademy.new_school_year();
 
     for (auto& c : theAcademy.get_classes()) {
-        performIndividualGrading(const_cast<Class&>(c), Subject::English, "Hamlet Analysis", "To be.");
-        performIndividualGrading(const_cast<Class&>(c), Subject::History, "Peloponnesian War", "Conflict.");
-        performIndividualGrading(const_cast<Class&>(c), Subject::Polish, "Epic Poetry", "Pan Tadeusz.");
+        performIndividualGrading(c, Subject::English, "Hamlet Analysis", "To be.");
+        performIndividualGrading(c, Subject::History, "Peloponnesian War", "Conflict.");
+        performIndividualGrading(c, Subject::Polish, "Epic Poetry", "Pan Tadeusz.");
     }
 
     std::cout << "\n[PROMOTION] Year 3: The humanities faculty receive raises." << std::endl;
@@ -189,9 +189,9 @@ int main() {
     theAcademy.new_school_year();
 
     for (auto& c : theAcademy.get_classes()) {
-        performIndividualGrading(const_cast<Class&>(c), Subject::Physics, "Laws of Motion", "F = ma.");
-        performIndividualGrading(const_cast<Class&>(c), Subject::Geography, "Global Mapping", "Systems.");
-        performIndividualGrading(const_cast<Class&>(c), Subject::PhysicalEducation, "Endurance", "Marathon.");
+        performIndividualGrading(c, Subject::Physics, "Laws of Motion", "F = ma.");
+        performIndividualGrading(c, Subject::Geography, "Global Mapping", "Systems.");
+        performIndividualGrading(c, Subject::PhysicalEducation, "Endurance", "Marathon.");
     }
 
     std::cout << "\n[PROMOTION] Year 4: The physics and PE faculty receive final raises." << std::endl;
