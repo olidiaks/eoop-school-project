@@ -88,7 +88,7 @@ void School::swap(School &obj) noexcept {
     swap(name, obj.name);
 }
 
-std::list<Class> School::get_classes() const {
+std::list<Class> &School::get_classes() {
     return classes;
 }
 

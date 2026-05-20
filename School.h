@@ -140,7 +140,7 @@ public:
      * @brief Retrieves the list of classes associated with the school.
      * @return A list containing the classes of the school.
      */
-    [[nodiscard]] std::list<Class> get_classes() const;
+    [[nodiscard]] std::list<Class> &get_classes();
 
     /**
      * @brief Sets the list of classes for the School.
