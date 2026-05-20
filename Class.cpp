@@ -309,23 +309,16 @@ float Class::get_average_grade_of_class() const {
     unsigned long count = 0;
     int sum = 0;
 
-    constexpr std::array<Subject, 10> subjects = {
-        Subject::Biology, Subject::Chemistry, Subject::ComputerScience, Subject::English, Subject::Geography,
-        Subject::History, Subject::Math, Subject::Physics, Subject::PhysicalEducation, Subject::Polish
-    };
-
     for (const auto &student: students) {
-        for (const auto &subject: subjects) {
-            sum += student.get_sum_of_grades_from_subjects(subject);
-            count += student.get_count_of_grades_from_students_subjects(subject);
-        }
+        sum += student.get_sum_of_grades_from_all_subjects();
+        count += student.get_count_of_grades_from_all_subjects();
     }
 
     if (count == 0) {
         return 0;
     }
 
-    return sum / count;
+    return static_cast<float> (sum) / count;
 }
 
 void Class::add_assignment(const Subject &subject, const Assignment &assigment) {
